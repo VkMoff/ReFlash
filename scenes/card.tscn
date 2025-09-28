@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://chxm7ytid0plt"]
+
+[ext_resource type="Script" uid="uid://b51vbhx0xb4r2" path="res://scripts/Card.cs" id="1_d81rb"]
+[ext_resource type="Resource" uid="uid://bu0nfowtbnkgg" path="res://resources/cards/Attack.tres" id="2_6u4wf"]
+[ext_resource type="Texture2D" uid="uid://cofrdnnd20fwr" path="res://icon.svg" id="3_ktuci"]
+
+[node name="Card" type="GridContainer"]
+script = ExtResource("1_d81rb")
+CardData = ExtResource("2_6u4wf")
+
+[node name="Sprite" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("3_ktuci")

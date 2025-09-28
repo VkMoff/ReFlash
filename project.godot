@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Wasteland"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+run/main_scene="uid://cejoie260lx31"
+config/features=PackedStringArray("4.5", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
@@ -20,5 +25,6 @@ project/assembly_name="Wasteland"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

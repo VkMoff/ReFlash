@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://bu0nfowtbnkgg"]
+
+[ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/CardResource.cs" id="1_t4l0u"]
+[ext_resource type="Texture2D" uid="uid://cofrdnnd20fwr" path="res://icon.svg" id="2_a0d7d"]
+
+[resource]
+script = ExtResource("1_t4l0u")
+Texture = ExtResource("2_a0d7d")
+metadata/_custom_type_script = "uid://ds6nyytwhdiye"
