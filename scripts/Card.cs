@@ -8,7 +8,7 @@ public partial class Card : GridContainer
 	private bool isHovered;
 	private bool isDragging;
 	private Vector2 dragOffset;
-	private Vector2 originalScale;
+	private Vector2 originalScale, originalPos;
 	private Level level;
 
 	public override void _Ready()
@@ -30,6 +30,7 @@ public partial class Card : GridContainer
 		{
 			// Воспроизводим анимацию увеличения при наведении
 			CreateTween().TweenProperty(this, "scale", originalScale * 1.2f, 0.1f);
+			Size = new(300, 300);
 		}
 	}
 
@@ -70,6 +71,7 @@ public partial class Card : GridContainer
 
 		ZIndex = 100;
 		CreateTween().TweenProperty(this, "scale", originalScale * 1.2f, 0.1f);
+
 	}
 
 	private void EndDrag()
@@ -80,6 +82,10 @@ public partial class Card : GridContainer
 		if (GetGlobalMousePosition().Y < 500)
 		{
 			PlayCard();
+		}
+		else
+		{
+			GetParent<HBoxContainer>().QueueSort();
 		}
 	}
 
