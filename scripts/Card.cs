@@ -93,6 +93,7 @@ public partial class Card : GridContainer
 	{
 		level.Hand.RemoveChild(this);
 		level.Discard(this);
+		level.Player.DealDamage(10);
 	}
 
 }

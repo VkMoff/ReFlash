@@ -14,24 +14,45 @@ public partial class Level : Node2D
 		get;
 		private set;
 	}
-	List<Card> discardPile;
-	DiscardPile discardPileUI;
+	public Character Player
+	{
+		get;
+		private set;
+	}
+	DiscardPile discardPile;
+	
 	public override void _Ready()
 	{
 		Deck = GetNode<Deck>("Deck");
 		Hand = GetNode<Hand>("Hand");
-		discardPile = new();
-		discardPileUI = GetNode<DiscardPile>("DiscardPile");
-		Hand.Add(Deck.Pull());
-		Hand.Add(Deck.Pull());
-		Hand.Add(Deck.Pull());
-
+		Player = GetNode<Character>("Character");
+		discardPile = GetNode<DiscardPile>("DiscardPile");
+		PullCardFromDeck(5);
 	}
 
 	public void Discard(Card card)
 	{
 		discardPile.Add(card);
-		discardPileUI.SetCount(discardPile.Count); //ОБЪЕДИНИТЬ
-		GD.Print($"В стопке сброса {discardPile.Count} карт");
+	}
+
+	public void PullCardFromDeck(int count = 1)
+	{
+		for (int i = 0; i < count; i++)
+		{
+			Hand.Add(Deck.Pull());
+		}
+	}
+
+	public bool RefillDeck()
+	{
+		if (discardPile.Cards.Count <= 0) return false;
+		foreach (Card card in discardPile.Cards)
+		{
+			Deck.Push(card);
+		}
+		discardPile.Clear();
+		discardPile.UpdateCount();
+		Deck.Shuffle();
+		return true;
 	}
 }

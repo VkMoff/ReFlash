@@ -3,59 +3,39 @@
 [ext_resource type="Script" uid="uid://c8crq3cs46p6g" path="res://scripts/Level.cs" id="1_udnaf"]
 [ext_resource type="PackedScene" uid="uid://d10tin671k03" path="res://scenes/hand.tscn" id="2_04hsl"]
 [ext_resource type="PackedScene" uid="uid://galmt3uvtupu" path="res://scenes/deck.tscn" id="3_o3n3m"]
-[ext_resource type="Texture2D" uid="uid://cofrdnnd20fwr" path="res://icon.svg" id="4_04hsl"]
-[ext_resource type="Script" uid="uid://mwsy7ybku87h" path="res://scripts/DiscardPile.cs" id="4_o3n3m"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_04hsl"]
-font_size = 32
+[ext_resource type="PackedScene" uid="uid://cngelmldb7dqq" path="res://scenes/discard_pile.tscn" id="4_ppgk2"]
+[ext_resource type="PackedScene" uid="uid://dj3y15cjhlbdq" path="res://scenes/character.tscn" id="6_2r41h"]
+[ext_resource type="Script" uid="uid://njhltskdx0p0" path="res://scripts/PullCardButton.cs" id="7_klq6b"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_udnaf")
 
 [node name="Hand" parent="." instance=ExtResource("2_04hsl")]
-offset_left = 142.0
-offset_top = 542.0
-offset_right = 142.0
-offset_bottom = 542.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 576.0
+offset_top = 644.0
+offset_right = 576.0
+offset_bottom = 644.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="Deck" parent="." instance=ExtResource("3_o3n3m")]
+offset_left = 13.0
+offset_top = 345.0
+offset_right = 213.0
+offset_bottom = 645.0
 
-[node name="DiscardPile" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 954.0
-offset_top = 389.0
-offset_right = 1143.0
-offset_bottom = 642.0
-grow_horizontal = 0
-grow_vertical = 0
-script = ExtResource("4_o3n3m")
+[node name="DiscardPile" parent="." instance=ExtResource("4_ppgk2")]
 
-[node name="TextureRect" type="TextureRect" parent="DiscardPile"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_04hsl")
-expand_mode = 1
+[node name="PullCardButton" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "[Debug] Pull card"
+script = ExtResource("7_klq6b")
 
-[node name="Label" type="Label" parent="DiscardPile"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -89.0
-offset_top = -33.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "123"
-label_settings = SubResource("LabelSettings_04hsl")
-horizontal_alignment = 2
+[node name="Character" parent="." instance=ExtResource("6_2r41h")]
+position = Vector2(97, 154)

@@ -10,11 +10,12 @@ public partial class Hand : HBoxContainer
 
 	public void Add(Card card)
 	{
+		if (card is null) return;
 		AddChild(card);
 	}
 
-	public void UpdatePositions()
+	public void ChangeGap(Node node)
 	{
-
+		AddThemeConstantOverride("separation", -2 * (int)Math.Sqrt(100 * GetChildCount()));
 	}
 }
