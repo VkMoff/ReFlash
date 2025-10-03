@@ -13,14 +13,17 @@ public partial class Card : GridContainer
 
 	public override void _Ready()
 	{
-		GetNode<TextureRect>("Sprite").Texture = CardData.Texture;
 		level = GetParent().GetParent<Level>();
-		// Сохраняем исходный масштаб для анимаций
 		originalScale = Scale;
 
-		// Настраиваем обработку ввода
 		MouseEntered += OnMouseEntered;
 		MouseExited += OnMouseExited;
+	}
+
+	public void Init(CardResource resource)
+	{
+		CardData = resource;
+		GetNode<TextureRect>("Sprite").Texture = CardData.Texture;
 	}
 
 	private void OnMouseEntered()
@@ -93,7 +96,13 @@ public partial class Card : GridContainer
 	{
 		level.Hand.RemoveChild(this);
 		level.Discard(this);
-		level.Player.DealDamage(10);
+
+		foreach (EffectResource effect in CardData.Effects)
+		{
+			effect.Execute(level.Player, [level.Player]);
+		}
+
+		
 	}
 
 }

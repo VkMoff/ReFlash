@@ -36,4 +36,9 @@ public partial class Character : Node2D
 	{
 		GD.Print("Im DED");
 	}
+	public void Heal(int healValue)
+	{
+		Hp = Math.Min(Hp + healValue, MaxHp);
+		healthBar.SetHealth(Hp);
+	}
 }
