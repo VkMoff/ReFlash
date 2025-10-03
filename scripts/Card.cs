@@ -31,9 +31,9 @@ public partial class Card : GridContainer
 		isHovered = true;
 		if (!isDragging)
 		{
-			// Воспроизводим анимацию увеличения при наведении
 			CreateTween().TweenProperty(this, "scale", originalScale * 1.2f, 0.1f);
-			Size = new(300, 300);
+			CreateTween().TweenProperty(this, "custom_minimum_size", new Vector2(180, 100), 0.1f);
+			ZIndex = 1;
 		}
 	}
 
@@ -42,8 +42,9 @@ public partial class Card : GridContainer
 		isHovered = false;
 		if (!isDragging)
 		{
-			// Возвращаем исходный размер, если карту не перетаскивают
 			CreateTween().TweenProperty(this, "scale", originalScale, 0.1f);
+			CreateTween().TweenProperty(this, "custom_minimum_size", Vector2.Zero, 0.1f);
+			ZIndex = 0;
 		}
 	}
 

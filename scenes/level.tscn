@@ -24,12 +24,14 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Deck" parent="." instance=ExtResource("3_o3n3m")]
-offset_left = 13.0
-offset_top = 345.0
-offset_right = 213.0
-offset_bottom = 645.0
+offset_left = 10.0
+offset_top = 429.0
+offset_right = 150.0
+offset_bottom = 639.0
 
 [node name="DiscardPile" parent="." instance=ExtResource("4_ppgk2")]
+offset_left = 1002.0
+offset_top = 429.0
 
 [node name="PullCardButton" type="Button" parent="."]
 offset_right = 8.0
