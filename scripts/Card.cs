@@ -50,7 +50,6 @@ public partial class Card : GridContainer
 
 	public override void _GuiInput(InputEvent @event)
 	{
-		// Обрабатываем нажатие кнопки мыши
 		if (@event is InputEventMouseButton mouseButtonEvent && mouseButtonEvent.ButtonIndex == MouseButton.Left)
 		{
 			if (mouseButtonEvent.Pressed)
@@ -100,10 +99,7 @@ public partial class Card : GridContainer
 
 		foreach (EffectResource effect in CardData.Effects)
 		{
-			effect.Execute(level.Player, [level.Player]);
+			effect.Execute(level.Player, [level.Enemies[0]]);
 		}
-
-		
 	}
-
 }

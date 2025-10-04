@@ -19,6 +19,11 @@ public partial class Level : Node2D
 		get;
 		private set;
 	}
+	public List<Character> Enemies
+	{
+		get;
+		private set;
+	}
 	DiscardPile discardPile;
 	
 	public override void _Ready()
@@ -27,6 +32,8 @@ public partial class Level : Node2D
 		Hand = GetNode<Hand>("Hand");
 		Player = GetNode<Character>("Character");
 		discardPile = GetNode<DiscardPile>("DiscardPile");
+		Enemies = new();
+		Enemies.Add(GetNode<Character>("Enemy"));
 		PullCardFromDeck(5);
 	}
 

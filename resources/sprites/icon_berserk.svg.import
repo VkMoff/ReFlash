@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs322lmclu6jj"
-path="res://.godot/imported/icon_damage.svg-48d03887ae5a7a9aa155bef9b9234594.ctex"
+uid="uid://c3p4v53fyrbav"
+path="res://.godot/imported/icon_berserk.svg-c1c782a669236fdf4e87a87c2074b77c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon_damage.svg"
-dest_files=["res://.godot/imported/icon_damage.svg-48d03887ae5a7a9aa155bef9b9234594.ctex"]
+source_file="res://resources/sprites/icon_berserk.svg"
+dest_files=["res://.godot/imported/icon_berserk.svg-c1c782a669236fdf4e87a87c2074b77c.ctex"]
 
 [params]
 

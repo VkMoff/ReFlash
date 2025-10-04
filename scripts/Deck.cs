@@ -23,26 +23,24 @@ public partial class Deck : Control
 		CardResource damageResource = GD.Load<CardResource>("res://resources/cards/Attack.tres");
 		CardResource healResource = GD.Load<CardResource>("res://resources/cards/Heal.tres");
 		CardResource heavyAttackResource = GD.Load<CardResource>("res://resources/cards/HeavyAttack.tres");
+		CardResource berserkAttackResource = GD.Load<CardResource>("res://resources/cards/BerserkAttack.tres");
 
 		CardFactory cardFactory = new();
 
 		Cards.Add(cardFactory.CreateCard(damageResource));
 		Cards.Add(cardFactory.CreateCard(damageResource));
 		Cards.Add(cardFactory.CreateCard(damageResource));
-		Cards.Add(cardFactory.CreateCard(damageResource));
-		Cards.Add(cardFactory.CreateCard(healResource));
 		Cards.Add(cardFactory.CreateCard(healResource));
 		Cards.Add(cardFactory.CreateCard(healResource));
 		Cards.Add(cardFactory.CreateCard(healResource));
 		Cards.Add(cardFactory.CreateCard(heavyAttackResource));
 		Cards.Add(cardFactory.CreateCard(heavyAttackResource));
 		Cards.Add(cardFactory.CreateCard(heavyAttackResource));
+		Cards.Add(cardFactory.CreateCard(berserkAttackResource));
+		Cards.Add(cardFactory.CreateCard(berserkAttackResource));
+
 		Shuffle();
 
-		foreach (Card card in Cards)
-		{
-			GD.Print(card);
-		}
 		label = GetNode<Label>("Label");
 		level = GetParent<Level>();
 	}

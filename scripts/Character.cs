@@ -4,6 +4,8 @@ using System;
 public partial class Character : Node2D
 {
 	HealthBar healthBar;
+	AnimatedSprite2D sprite;
+	[Export] SpriteFrames spriteFrames;
 	public int MaxHp
 	{
 		get;
@@ -21,6 +23,9 @@ public partial class Character : Node2D
 		healthBar.SetMaxHp(MaxHp);
 		Hp = MaxHp;
 		healthBar.SetHealth(Hp);
+		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite");
+		sprite.SpriteFrames = spriteFrames;
+		sprite.Play();
 	}
 
 	public void DealDamage(int dmg)
