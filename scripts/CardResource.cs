@@ -7,6 +7,6 @@ using System.Collections.Generic;
 public partial class CardResource : Resource
 {
 	[Export] public Texture2D Texture;
-
 	[Export] public Array<EffectResource> Effects;
+	[Export] public bool IsAOE;
 }

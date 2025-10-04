@@ -34,6 +34,7 @@ public partial class Level : Node2D
 		discardPile = GetNode<DiscardPile>("DiscardPile");
 		Enemies = new();
 		Enemies.Add(GetNode<Character>("Enemy"));
+		Enemies.Add(GetNode<Character>("Enemy2"));
 		PullCardFromDeck(5);
 	}
 

@@ -46,5 +46,9 @@ position = Vector2(160, 162)
 spriteFrames = ExtResource("7_8c41q")
 
 [node name="Enemy" parent="." instance=ExtResource("6_2r41h")]
-position = Vector2(937, 162)
+position = Vector2(773, 162)
+spriteFrames = ExtResource("8_b121j")
+
+[node name="Enemy2" parent="." instance=ExtResource("6_2r41h")]
+position = Vector2(1021, 162)
 spriteFrames = ExtResource("8_b121j")

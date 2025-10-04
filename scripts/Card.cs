@@ -31,7 +31,7 @@ public partial class Card : GridContainer
 		isHovered = true;
 		if (!isDragging)
 		{
-			CreateTween().TweenProperty(this, "scale", originalScale * 1.2f, 0.1f);
+			CreateTween().TweenProperty(this, "scale", originalScale * 1.2f, 0.1f); //Анимации забагованы. Возможно есть смысл использовать AnimatuinPlayer
 			CreateTween().TweenProperty(this, "custom_minimum_size", new Vector2(180, 100), 0.1f);
 			ZIndex = 1;
 		}
@@ -42,7 +42,7 @@ public partial class Card : GridContainer
 		isHovered = false;
 		if (!isDragging)
 		{
-			CreateTween().TweenProperty(this, "scale", originalScale, 0.1f);
+			CreateTween().TweenProperty(this, "scale", originalScale, 0.1f); //Анимации забагованы. Возможно есть смысл использовать AnimatuinPlayer
 			CreateTween().TweenProperty(this, "custom_minimum_size", Vector2.Zero, 0.1f);
 			ZIndex = 0;
 		}
@@ -75,6 +75,10 @@ public partial class Card : GridContainer
 		ZIndex = 100;
 		CreateTween().TweenProperty(this, "scale", originalScale * 1.2f, 0.1f);
 
+		if (CardData.IsAOE)
+		{
+			GD.Print("AOE");
+		}
 	}
 
 	private void EndDrag()
@@ -99,7 +103,7 @@ public partial class Card : GridContainer
 
 		foreach (EffectResource effect in CardData.Effects)
 		{
-			effect.Execute(level.Player, [level.Enemies[0]]);
+			effect.Execute(level.Player, CardData.IsAOE ? level.Enemies.ToArray() : [level.Enemies[0]]);
 		}
 	}
 }

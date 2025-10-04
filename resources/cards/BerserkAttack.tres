@@ -19,4 +19,5 @@ metadata/_custom_type_script = "uid://b3wfq85tl35o0"
 script = ExtResource("1_523oi")
 Texture = ExtResource("3_fpjf3")
 Effects = Array[Object]([SubResource("Resource_6jp6x"), SubResource("Resource_6ca0w")])
+IsAOE = true
 metadata/_custom_type_script = "uid://ds6nyytwhdiye"
