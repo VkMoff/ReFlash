@@ -24,8 +24,24 @@ public partial class Level : Node2D
 		get;
 		private set;
 	}
+	public Character TargetEnemy
+	{
+		get;
+		set;
+	}
+	public int Energy
+	{
+		get;
+		private set;
+	}
+	public int DefaultHandSize
+	{
+		get;
+		private set;
+	}
+	Label energyLabel;
 	DiscardPile discardPile;
-	
+
 	public override void _Ready()
 	{
 		Deck = GetNode<Deck>("Deck");
@@ -35,11 +51,16 @@ public partial class Level : Node2D
 		Enemies = new();
 		Enemies.Add(GetNode<Character>("Enemy"));
 		Enemies.Add(GetNode<Character>("Enemy2"));
-		PullCardFromDeck(5);
+		Energy = 3;
+		energyLabel = GetNode<Label>("EnergyLabel");
+		UpdateEnergyLabel();
+		DefaultHandSize = 5;
+		PullCardFromDeck(DefaultHandSize);
 	}
 
 	public void Discard(Card card)
 	{
+		Hand.RemoveChild(card);
 		discardPile.Add(card);
 	}
 
@@ -62,5 +83,35 @@ public partial class Level : Node2D
 		discardPile.UpdateCount();
 		Deck.Shuffle();
 		return true;
+	}
+
+	public void TargetEnemyChanged(Character target)
+	{
+		TargetEnemy = target;
+	}
+	public void UpdateEnergyLabel()
+	{
+		energyLabel.Text = Energy.ToString();
+	}
+	public bool TryPlay(int cost)
+	{
+		if (Energy >= cost)
+		{
+			Energy -= cost;
+			UpdateEnergyLabel();
+			return true;
+		}
+		return false;
+	}
+	public void EndTurn()
+	{
+		foreach (Card card in Hand.GetChildren())
+		{
+			Discard(card);
+		}
+		Energy = 3;
+		UpdateEnergyLabel();
+		PullCardFromDeck(DefaultHandSize);
+
 	}
 }

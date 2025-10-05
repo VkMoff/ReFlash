@@ -8,5 +8,6 @@ public partial class CardResource : Resource
 {
 	[Export] public Texture2D Texture;
 	[Export] public Array<EffectResource> Effects;
-	[Export] public bool IsAOE;
+	[Export] public bool IsTargeted;
+	[Export] public int Cost;
 }

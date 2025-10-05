@@ -5,8 +5,15 @@
 [ext_resource type="Texture2D" uid="uid://cofrdnnd20fwr" path="res://resources/sprites/icon.svg" id="3_ktuci"]
 
 [node name="Card" type="GridContainer"]
+offset_right = 128.0
+offset_bottom = 155.0
 script = ExtResource("1_d81rb")
 CardData = ExtResource("2_6u4wf")
+
+[node name="CostLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "1"
 
 [node name="Sprite" type="TextureRect" parent="."]
 layout_mode = 2

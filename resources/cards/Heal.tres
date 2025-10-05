@@ -13,4 +13,5 @@ metadata/_custom_type_script = "uid://b3wfq85tl35o0"
 script = ExtResource("1_73pmj")
 Texture = ExtResource("2_uvhne")
 Effects = Array[Object]([SubResource("Resource_uvhne")])
+Cost = 1
 metadata/_custom_type_script = "uid://ds6nyytwhdiye"

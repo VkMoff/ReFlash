@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Card : GridContainer
+public partial class Card : Control
 {
 	[Export] public CardResource CardData;
 
@@ -10,10 +10,17 @@ public partial class Card : GridContainer
 	private Vector2 dragOffset;
 	private Vector2 originalScale, originalPos;
 	private Level level;
-
+	private Label costLabel;
+	public int Cost
+	{
+		get;
+		private set;
+	}
 	public override void _Ready()
 	{
 		level = GetParent().GetParent<Level>();
+		costLabel = GetNode<Label>("CostLabel");
+		costLabel.Text = Cost.ToString();
 		originalScale = Scale;
 
 		MouseEntered += OnMouseEntered;
@@ -23,6 +30,7 @@ public partial class Card : GridContainer
 	public void Init(CardResource resource)
 	{
 		CardData = resource;
+		Cost = CardData.Cost; //Сделать для других свойств, т.к. CardData - ссылка, улучшения не будут работать
 		GetNode<TextureRect>("Sprite").Texture = CardData.Texture;
 	}
 
@@ -75,10 +83,7 @@ public partial class Card : GridContainer
 		ZIndex = 100;
 		CreateTween().TweenProperty(this, "scale", originalScale * 1.2f, 0.1f);
 
-		if (CardData.IsAOE)
-		{
-			GD.Print("AOE");
-		}
+
 	}
 
 	private void EndDrag()
@@ -86,7 +91,7 @@ public partial class Card : GridContainer
 		isDragging = false;
 		ZIndex = 0; // Возвращаем исходный ZIndex
 
-		if (GetGlobalMousePosition().Y < 500)
+		if (level.TargetEnemy is not null || (!CardData.IsTargeted && GetGlobalMousePosition().Y < 500))
 		{
 			PlayCard();
 		}
@@ -94,16 +99,21 @@ public partial class Card : GridContainer
 		{
 			GetParent<HBoxContainer>().QueueSort();
 		}
+		level.TargetEnemy = null;
 	}
 
 	public void PlayCard()
 	{
-		level.Hand.RemoveChild(this);
+		if (!level.TryPlay(Cost))
+		{
+			GetParent<HBoxContainer>().QueueSort();
+			return;
+		}
 		level.Discard(this);
 
 		foreach (EffectResource effect in CardData.Effects)
 		{
-			effect.Execute(level.Player, CardData.IsAOE ? level.Enemies.ToArray() : [level.Enemies[0]]);
+			effect.Execute(level.Player, CardData.IsTargeted ? [level.TargetEnemy] : level.Enemies.ToArray());
 		}
 	}
 }

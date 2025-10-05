@@ -4,19 +4,46 @@
 [ext_resource type="Script" uid="uid://crm4jsgrofs1t" path="res://scripts/Character.cs" id="1_rkhd4"]
 [ext_resource type="SpriteFrames" uid="uid://pv8myj3lvb8y" path="res://resources/animations/player.tres" id="3_lrhn5"]
 
-[node name="Character" type="Node2D"]
+[node name="Character" type="Control"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 110.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_rkhd4")
 
 [node name="HealthBar" parent="." instance=ExtResource("1_agfs1")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -103.5
+offset_top = -45.0
+offset_right = 103.5
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -103.0
-offset_top = 112.0
-offset_right = 104.0
-offset_bottom = 157.0
 grow_horizontal = 2
 
-[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(0, 75)
 sprite_frames = ExtResource("3_lrhn5")
 frame_progress = 0.664454
+
+[connection signal="mouse_entered" from="." to="." method="MouseEnter"]

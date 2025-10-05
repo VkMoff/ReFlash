@@ -6,8 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://cngelmldb7dqq" path="res://scenes/discard_pile.tscn" id="4_ppgk2"]
 [ext_resource type="PackedScene" uid="uid://dj3y15cjhlbdq" path="res://scenes/character.tscn" id="6_2r41h"]
 [ext_resource type="SpriteFrames" uid="uid://pv8myj3lvb8y" path="res://resources/animations/player.tres" id="7_8c41q"]
-[ext_resource type="Script" uid="uid://njhltskdx0p0" path="res://scripts/PullCardButton.cs" id="7_klq6b"]
 [ext_resource type="SpriteFrames" uid="uid://brp012yfo2cq7" path="res://resources/animations/enemy.tres" id="8_b121j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b121j"]
+font_size = 20
+font_color = Color(1, 1, 0, 1)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_udnaf")
@@ -39,16 +42,55 @@ offset_top = 429.0
 offset_right = 8.0
 offset_bottom = 8.0
 text = "[Debug] Pull card"
-script = ExtResource("7_klq6b")
+
+[node name="EndTurnButton" type="Button" parent="."]
+offset_top = 41.0
+offset_right = 140.0
+offset_bottom = 72.0
+text = "[Debug] End turn"
 
 [node name="Character" parent="." instance=ExtResource("6_2r41h")]
-position = Vector2(160, 162)
+offset_left = 160.0
+offset_top = 162.0
+offset_right = 320.0
+offset_bottom = 362.0
 spriteFrames = ExtResource("7_8c41q")
 
 [node name="Enemy" parent="." instance=ExtResource("6_2r41h")]
-position = Vector2(773, 162)
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 665.0
+offset_top = 162.0
+offset_right = 865.0
+offset_bottom = 362.0
+grow_horizontal = 1
+grow_vertical = 1
 spriteFrames = ExtResource("8_b121j")
 
 [node name="Enemy2" parent="." instance=ExtResource("6_2r41h")]
-position = Vector2(1021, 162)
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 892.0
+offset_top = 162.0
+offset_right = 1092.0
+offset_bottom = 362.0
+grow_horizontal = 1
+grow_vertical = 1
 spriteFrames = ExtResource("8_b121j")
+
+[node name="EnergyLabel" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 373.0
+offset_right = 58.0
+offset_bottom = 401.0
+text = "123"
+label_settings = SubResource("LabelSettings_b121j")
+
+[connection signal="pressed" from="PullCardButton" to="." method="PullCardFromDeck" binds= [1]]
+[connection signal="pressed" from="EndTurnButton" to="." method="EndTurn"]

@@ -1,11 +1,12 @@
 using Godot;
 using System;
 
-public partial class Character : Node2D
+public partial class Character : Control
 {
 	HealthBar healthBar;
 	AnimatedSprite2D sprite;
 	[Export] SpriteFrames spriteFrames;
+	Level level;
 	public int MaxHp
 	{
 		get;
@@ -18,12 +19,13 @@ public partial class Character : Node2D
 	}
 	public override void _Ready()
 	{
+		level = GetParent<Level>();
 		healthBar = GetNode<HealthBar>("HealthBar");
 		MaxHp = 100;
 		healthBar.SetMaxHp(MaxHp);
 		Hp = MaxHp;
 		healthBar.SetHealth(Hp);
-		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite");
+		sprite = GetNode<AnimatedSprite2D>("Control/AnimatedSprite");
 		sprite.SpriteFrames = spriteFrames;
 		sprite.Play();
 	}
@@ -45,5 +47,9 @@ public partial class Character : Node2D
 	{
 		Hp = Math.Min(Hp + healValue, MaxHp);
 		healthBar.SetHealth(Hp);
+	}
+	public void MouseEnter()
+	{
+		level.TargetEnemyChanged(this);
 	}
 }
