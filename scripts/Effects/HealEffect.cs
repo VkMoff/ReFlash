@@ -9,4 +9,13 @@ public partial class HealEffect : EffectResource
         caster.Heal(healValue);
     }
 
+    public HealEffect()
+    {
+        
+    }
+    public HealEffect(int healValue)
+    {
+        this.healValue = healValue;
+    }
+
 }

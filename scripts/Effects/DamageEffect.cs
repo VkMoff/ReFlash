@@ -12,4 +12,13 @@ public partial class DamageEffect : EffectResource
             target.DealDamage(damage);
         }
     }
+
+    public DamageEffect()
+    {
+        
+    }
+    public DamageEffect(int damage)
+    {
+        this.damage = damage;
+    }
 }

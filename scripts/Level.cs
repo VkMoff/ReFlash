@@ -109,9 +109,15 @@ public partial class Level : Node2D
 		{
 			Discard(card);
 		}
+		foreach (Enemy enemy in Enemies)
+		{
+			if (enemy.IsAlive)
+			{
+				enemy.NextAttack();
+			}
+		}
 		Energy = 3;
 		UpdateEnergyLabel();
 		PullCardFromDeck(DefaultHandSize);
-
 	}
 }

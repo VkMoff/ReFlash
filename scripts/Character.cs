@@ -6,7 +6,12 @@ public partial class Character : Control
 	HealthBar healthBar;
 	AnimatedSprite2D sprite;
 	[Export] SpriteFrames spriteFrames;
-	Level level;
+	protected Level level;
+	public bool IsAlive
+	{
+		get;
+		private set;
+	}
 	public int MaxHp
 	{
 		get;
@@ -28,6 +33,7 @@ public partial class Character : Control
 		sprite = GetNode<AnimatedSprite2D>("Control/AnimatedSprite");
 		sprite.SpriteFrames = spriteFrames;
 		sprite.Play();
+		IsAlive = true;
 	}
 
 	public void DealDamage(int dmg)
@@ -41,6 +47,7 @@ public partial class Character : Control
 	}
 	public void Die()
 	{
+		IsAlive = false;
 		GD.Print("Im DED");
 	}
 	public void Heal(int healValue)
@@ -48,8 +55,5 @@ public partial class Character : Control
 		Hp = Math.Min(Hp + healValue, MaxHp);
 		healthBar.SetHealth(Hp);
 	}
-	public void MouseEnter()
-	{
-		level.TargetEnemyChanged(this);
-	}
+	
 }
