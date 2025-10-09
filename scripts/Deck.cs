@@ -24,6 +24,7 @@ public partial class Deck : Control
 		CardResource healResource = GD.Load<CardResource>("res://resources/cards/Heal.tres");
 		CardResource heavyAttackResource = GD.Load<CardResource>("res://resources/cards/HeavyAttack.tres");
 		CardResource berserkAttackResource = GD.Load<CardResource>("res://resources/cards/BerserkAttack.tres");
+		CardResource violetAttack = GD.Load<CardResource>("res://resources/cards/Violet.tres");
 
 		CardFactory cardFactory = new();
 
@@ -38,6 +39,7 @@ public partial class Deck : Control
 		Cards.Add(cardFactory.CreateCard(heavyAttackResource));
 		Cards.Add(cardFactory.CreateCard(berserkAttackResource));
 		Cards.Add(cardFactory.CreateCard(berserkAttackResource));
+		Cards.Add(cardFactory.CreateCard(violetAttack));
 
 		Shuffle();
 

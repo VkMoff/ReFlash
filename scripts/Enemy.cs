@@ -29,7 +29,7 @@ public partial class Enemy : Character
 	}
 
 	public void NextAttack()
-	{
+	{	//Переписать! Определять действие следующего хода на текущем ходу!
 		foreach (EffectResource action in actionPatterns[currentAction][GD.Randi() % actionPatterns[currentAction].Length])
 		{
 			GD.Print(action.GetType().Name);
