@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 public partial class Level : Node2D
 {
@@ -119,5 +120,22 @@ public partial class Level : Node2D
 		Energy = 3;
 		UpdateEnergyLabel();
 		PullCardFromDeck(DefaultHandSize);
+	}
+
+	public void CharacterDied(Character character)
+	{
+		if (character is Enemy)
+		{
+			Enemies.Remove(character);
+			if (Enemies.Count == 0)
+			{
+				GD.Print("LEVEL COMPLETED!");
+			}
+		}
+		else
+		{
+			GD.Print("GAME OVER");
+		}
+		character.QueueFree();
 	}
 }

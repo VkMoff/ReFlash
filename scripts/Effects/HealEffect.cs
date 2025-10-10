@@ -6,7 +6,7 @@ public partial class HealEffect : EffectResource
     [Export] private int healValue;
     public override void Execute(Character caster, Character[] targets)
     {
-        caster.Heal(healValue);
+        caster.ChangeHP(healValue);
     }
 
     public HealEffect()

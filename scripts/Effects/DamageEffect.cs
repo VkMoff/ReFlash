@@ -9,7 +9,7 @@ public partial class DamageEffect : EffectResource
     {
         foreach (Character target in targets)
         {
-            target.DealDamage(damage);
+            target.ChangeHP(-damage);
         }
     }
 

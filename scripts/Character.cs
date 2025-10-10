@@ -3,9 +3,9 @@ using System;
 
 public partial class Character : Control
 {
+	[Export] SpriteFrames spriteFrames;
 	HealthBar healthBar;
 	AnimatedSprite2D sprite;
-	[Export] SpriteFrames spriteFrames;
 	protected Level level;
 	public bool IsAlive
 	{
@@ -34,26 +34,23 @@ public partial class Character : Control
 		sprite.SpriteFrames = spriteFrames;
 		sprite.Play();
 		IsAlive = true;
+
 	}
 
-	public void DealDamage(int dmg)
+	public void ChangeHP(int change)
 	{
-		Hp -= dmg;
+		Hp = Math.Min(Hp + change, MaxHp);
 		if (Hp <= 0)
 		{
 			Die();
 		}
 		healthBar.SetHealth(Hp);
-	}
+		}
+
 	public void Die()
 	{
 		IsAlive = false;
 		GD.Print("Im DED");
+		level.CharacterDied(this);
 	}
-	public void Heal(int healValue)
-	{
-		Hp = Math.Min(Hp + healValue, MaxHp);
-		healthBar.SetHealth(Hp);
-	}
-	
 }
