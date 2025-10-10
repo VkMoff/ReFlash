@@ -18,28 +18,8 @@ public partial class Deck : Control
 	public override void _Ready()
 	{
 		Cards = new();
+		Cards.AddRange(PlayerData.Instance.Deck);
 		card = GD.Load<PackedScene>("res://scenes/card.tscn");
-
-		CardResource damageResource = GD.Load<CardResource>("res://resources/cards/Attack.tres");
-		CardResource healResource = GD.Load<CardResource>("res://resources/cards/Heal.tres");
-		CardResource heavyAttackResource = GD.Load<CardResource>("res://resources/cards/HeavyAttack.tres");
-		CardResource berserkAttackResource = GD.Load<CardResource>("res://resources/cards/BerserkAttack.tres");
-		CardResource violetAttack = GD.Load<CardResource>("res://resources/cards/Violet.tres");
-
-		CardFactory cardFactory = new();
-
-		Cards.Add(cardFactory.CreateCard(damageResource));
-		Cards.Add(cardFactory.CreateCard(damageResource));
-		Cards.Add(cardFactory.CreateCard(damageResource));
-		Cards.Add(cardFactory.CreateCard(healResource));
-		Cards.Add(cardFactory.CreateCard(healResource));
-		Cards.Add(cardFactory.CreateCard(healResource));
-		Cards.Add(cardFactory.CreateCard(heavyAttackResource));
-		Cards.Add(cardFactory.CreateCard(heavyAttackResource));
-		Cards.Add(cardFactory.CreateCard(heavyAttackResource));
-		Cards.Add(cardFactory.CreateCard(berserkAttackResource));
-		Cards.Add(cardFactory.CreateCard(berserkAttackResource));
-		Cards.Add(cardFactory.CreateCard(violetAttack));
 
 		Shuffle();
 

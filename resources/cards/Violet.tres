@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://bbjnd3pwhxno4"]
 
-[ext_resource type="Script" uid="uid://df0u5yf65u8um" path="res://scripts/Effects/DamageEffect.cs" id="1_j3een"]
+[ext_resource type="Script" uid="uid://df0u5yf65u8um" path="res://scripts/effects/DamageEffect.cs" id="1_j3een"]
 [ext_resource type="Texture2D" uid="uid://dg4xexwwqn8eq" path="res://resources/sprites/icon_viol.svg" id="2_qhw8n"]
 [ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/CardResource.cs" id="3_3ekij"]
 

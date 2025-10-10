@@ -15,6 +15,11 @@ run/main_scene="uid://cejoie260lx31"
 config/features=PackedStringArray("4.5", "C#", "GL Compatibility")
 config/icon="res://resources/sprites/icon.svg"
 
+[autoload]
+
+SceneManager="*res://scripts/autoload/SceneManager.cs"
+PlayerData="*res://scripts/autoload/PlayerData.cs"
+
 [display]
 
 window/stretch/mode="canvas_items"

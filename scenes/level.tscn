@@ -1,17 +1,32 @@
-[gd_scene load_steps=10 format=3 uid="uid://cejoie260lx31"]
+[gd_scene load_steps=12 format=3 uid="uid://cejoie260lx31"]
 
 [ext_resource type="Script" uid="uid://c8crq3cs46p6g" path="res://scripts/Level.cs" id="1_udnaf"]
 [ext_resource type="PackedScene" uid="uid://d10tin671k03" path="res://scenes/hand.tscn" id="2_04hsl"]
 [ext_resource type="PackedScene" uid="uid://galmt3uvtupu" path="res://scenes/deck.tscn" id="3_o3n3m"]
 [ext_resource type="PackedScene" uid="uid://cngelmldb7dqq" path="res://scenes/discard_pile.tscn" id="4_ppgk2"]
-[ext_resource type="PackedScene" uid="uid://dj3y15cjhlbdq" path="res://scenes/character.tscn" id="6_2r41h"]
-[ext_resource type="SpriteFrames" uid="uid://pv8myj3lvb8y" path="res://resources/animations/player.tres" id="7_8c41q"]
+[ext_resource type="PackedScene" uid="uid://b7xgj6akffqxm" path="res://scenes/player.tscn" id="7_b121j"]
 [ext_resource type="PackedScene" uid="uid://1dtp1k8r4my" path="res://scenes/enemy.tscn" id="7_klq6b"]
+[ext_resource type="Texture2D" uid="uid://cofrdnnd20fwr" path="res://resources/sprites/icon.svg" id="8_8c41q"]
 [ext_resource type="SpriteFrames" uid="uid://brp012yfo2cq7" path="res://resources/animations/enemy.tres" id="8_b121j"]
+[ext_resource type="Texture2D" uid="uid://bhtis8c6emxqg" path="res://resources/sprites/icon_heal.svg" id="9_olg7q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b121j"]
 font_size = 20
 font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8c41q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_8c41q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_olg7q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_udnaf")
@@ -50,13 +65,6 @@ offset_right = 140.0
 offset_bottom = 72.0
 text = "[Debug] End turn"
 
-[node name="Character" parent="." instance=ExtResource("6_2r41h")]
-offset_left = 160.0
-offset_top = 162.0
-offset_right = 320.0
-offset_bottom = 362.0
-spriteFrames = ExtResource("7_8c41q")
-
 [node name="EnergyLabel" type="Label" parent="."]
 offset_left = 20.0
 offset_top = 373.0
@@ -78,6 +86,13 @@ offset_top = 173.0
 offset_right = 1135.0
 offset_bottom = 373.0
 spriteFrames = ExtResource("8_b121j")
+
+[node name="Player" parent="." instance=ExtResource("7_b121j")]
+offset_left = 150.0
+offset_top = 173.0
+offset_right = 360.0
+offset_bottom = 373.0
+spriteFrames = SubResource("SpriteFrames_8c41q")
 
 [connection signal="pressed" from="PullCardButton" to="." method="PullCardFromDeck" binds= [1]]
 [connection signal="pressed" from="EndTurnButton" to="." method="EndTurn"]

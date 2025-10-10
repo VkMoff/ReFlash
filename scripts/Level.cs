@@ -47,24 +47,26 @@ public partial class Level : Node2D
 	{
 		Deck = GetNode<Deck>("Deck");
 		Hand = GetNode<Hand>("Hand");
-		Player = GetNode<Character>("Character");
+		Player = GetNode<Character>("Player");
 		discardPile = GetNode<DiscardPile>("DiscardPile");
 		Enemies = new();
+
 		Enemies.Add(GetNode<Character>("Enemy"));
+		Enemies[0].Init(50);
 		Enemies.Add(GetNode<Character>("Enemy2"));
+		Enemies[1].Init(100);
+
 		Energy = 3;
 		energyLabel = GetNode<Label>("EnergyLabel");
 		UpdateEnergyLabel();
 		DefaultHandSize = 5;
 		PullCardFromDeck(DefaultHandSize);
 	}
-
 	public void Discard(Card card)
 	{
 		Hand.RemoveChild(card);
 		discardPile.Add(card);
 	}
-
 	public void PullCardFromDeck(int count = 1)
 	{
 		for (int i = 0; i < count; i++)
@@ -72,7 +74,6 @@ public partial class Level : Node2D
 			Hand.Add(Deck.Pull());
 		}
 	}
-
 	public bool RefillDeck()
 	{
 		if (discardPile.Cards.Count <= 0) return false;
@@ -85,7 +86,6 @@ public partial class Level : Node2D
 		Deck.Shuffle();
 		return true;
 	}
-
 	public void TargetEnemyChanged(Character target)
 	{
 		TargetEnemy = target;
@@ -131,10 +131,6 @@ public partial class Level : Node2D
 			{
 				GD.Print("LEVEL COMPLETED!");
 			}
-		}
-		else
-		{
-			GD.Print("GAME OVER");
 		}
 		character.QueueFree();
 	}
