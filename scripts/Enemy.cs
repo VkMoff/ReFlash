@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 
 public partial class Enemy : Character
 {
@@ -23,6 +24,14 @@ public partial class Enemy : Character
 
 		];
 	}
+	
+	public void Init(EnemyResource enemyResource)
+	{
+		base.Init(enemyResource.MaxHP, enemyResource.Animation);
+		actionPatterns = enemyResource.ActionPatterns;
+		
+	}
+
 	public void MouseEnter()
 	{
 		level.TargetEnemyChanged(this);

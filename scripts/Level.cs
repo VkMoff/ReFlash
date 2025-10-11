@@ -42,19 +42,28 @@ public partial class Level : Node2D
 	}
 	Label energyLabel;
 	DiscardPile discardPile;
+	HBoxContainer enemyContainer;
 
 	public override void _Ready()
 	{
+		enemyContainer = GetNode<HBoxContainer>("EnemyContainer");
 		Deck = GetNode<Deck>("Deck");
 		Hand = GetNode<Hand>("Hand");
 		Player = GetNode<Character>("Player");
 		discardPile = GetNode<DiscardPile>("DiscardPile");
 		Enemies = new();
 
-		Enemies.Add(GetNode<Character>("Enemy"));
-		Enemies[0].Init(50);
-		Enemies.Add(GetNode<Character>("Enemy2"));
-		Enemies[1].Init(100);
+		EnemyResource test_enemy = GD.Load<EnemyResource>("res://resources/enemies/test_enemy.tres");
+
+		EnemyFactory enemyFactory = new();
+		Enemies.Add(enemyFactory.CreateEnemy(test_enemy));
+		Enemies.Add(enemyFactory.CreateEnemy(test_enemy));
+		Enemies.Add(enemyFactory.CreateEnemy(test_enemy));
+		foreach (Enemy enemy in Enemies)
+				{
+			enemyContainer.AddChild(enemy);
+				}
+		
 
 		Energy = 3;
 		energyLabel = GetNode<Label>("EnergyLabel");

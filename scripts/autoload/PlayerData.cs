@@ -25,7 +25,6 @@ public partial class PlayerData : Node
         }
         set
         {
-            GD.Print(HealthChanged);
             hp = Math.Clamp(value, 0, MaxHP);
             if (hp == 0)
             {
@@ -73,7 +72,6 @@ public partial class PlayerData : Node
         Deck.Add(cardFactory.CreateCard(berserkAttackResource));
         Deck.Add(cardFactory.CreateCard(berserkAttackResource));
         Deck.Add(cardFactory.CreateCard(violetAttack));
-
     }
 
 

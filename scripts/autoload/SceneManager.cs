@@ -18,5 +18,10 @@ public partial class SceneManager : Node
             ProcessMode = ProcessModeEnum.Always;
         }
     }
+
+    public void LoadLevel()
+    {
+        
+    }
     
 }

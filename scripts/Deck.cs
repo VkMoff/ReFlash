@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public partial class Deck : Control
 {
 	Random random = new();
-	PackedScene card;
+	// PackedScene card;
 	Label label;
 
 	Level level;
@@ -19,7 +19,7 @@ public partial class Deck : Control
 	{
 		Cards = new();
 		Cards.AddRange(PlayerData.Instance.Deck);
-		card = GD.Load<PackedScene>("res://scenes/card.tscn");
+		// card = GD.Load<PackedScene>("res://scenes/card.tscn");
 
 		Shuffle();
 

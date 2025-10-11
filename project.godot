@@ -33,6 +33,7 @@ project/assembly_name="Wasteland"
 folder_colors={
 "res://resources/animations/": "teal",
 "res://resources/cards/": "yellow",
+"res://resources/enemies/": "red",
 "res://resources/sprites/": "orange",
 "res://scenes/": "red",
 "res://scripts/": "blue"

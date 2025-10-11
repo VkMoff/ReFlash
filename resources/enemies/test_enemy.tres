@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://uphj2ebaqjxl"]
+
+[ext_resource type="Script" uid="uid://6j10jfwxgj7v" path="res://scripts/EnemyResource.cs" id="1_rk4lu"]
+[ext_resource type="SpriteFrames" uid="uid://brp012yfo2cq7" path="res://resources/animations/enemy.tres" id="1_xdanq"]
+
+[resource]
+script = ExtResource("1_rk4lu")
+ActionPatterns = null
+MaxHP = 100
+Animation = ExtResource("1_xdanq")
+metadata/_custom_type_script = "uid://6j10jfwxgj7v"
