@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Card : Control
+public partial class Card : Control, ICloneable
 {
 	[Export] public CardResource CardData;
 
@@ -82,8 +82,6 @@ public partial class Card : Control
 
 		ZIndex = 100;
 		CreateTween().TweenProperty(this, "scale", originalScale * 1.2f, 0.1f);
-
-
 	}
 
 	private void EndDrag()
@@ -109,11 +107,24 @@ public partial class Card : Control
 			GetParent<HBoxContainer>().QueueSort();
 			return;
 		}
-		level.Discard(this);
+		Discard();
 
 		foreach (EffectResource effect in CardData.Effects)
 		{
 			effect.Execute(level.Player, CardData.IsTargeted ? [level.TargetEnemy] : level.Enemies.ToArray());
 		}
 	}
+
+	public void Discard()
+	{
+		GetParent().RemoveChild(this);
+		level.DiscardPile.Add(this);
+	}
+
+		public object Clone()
+	{
+		Card card = CardFactory.CreateCard(CardData);
+		return card;
+		}
+
 }

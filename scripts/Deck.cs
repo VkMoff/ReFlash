@@ -18,9 +18,12 @@ public partial class Deck : Control
 	public override void _Ready()
 	{
 		Cards = new();
-		Cards.AddRange(PlayerData.Instance.Deck);
-		// card = GD.Load<PackedScene>("res://scenes/card.tscn");
-
+		foreach (Card card in PlayerData.Instance.Deck)
+		{
+			Cards.Add((Card)card.Clone());
+		}
+		// Cards.AddRange(PlayerData.Instance.Deck);
+		// GD.Print("Cards in deck: " + Cards.Count);
 		Shuffle();
 
 		label = GetNode<Label>("Label");

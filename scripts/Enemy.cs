@@ -23,6 +23,8 @@ public partial class Enemy : Character
 			]
 
 		];
+
+		MouseEntered += MouseEnter;
 	}
 	
 	public void Init(EnemyResource enemyResource)

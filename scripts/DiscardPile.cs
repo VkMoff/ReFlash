@@ -16,8 +16,20 @@ public partial class DiscardPile : Control
 		label = GetNode<Label>("Label");
 		UpdateCount();
 	}
+	public override void _ExitTree()
+	{
+		foreach (Card card in Cards)
+		{
+			card.QueueFree();
+		}
+		base._ExitTree();
+	}
 	public void UpdateCount()
 	{
+		label = GetNode<Label>("Label");
+
+		// GD.Print("label: " + label);
+		// GD.Print("cards: " + Cards.Count);
 		label.Text = Cards.Count.ToString();
 		if (Cards.Count <= 0)
 		{

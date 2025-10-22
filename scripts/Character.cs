@@ -62,7 +62,7 @@ public partial class Character : Control
 		healthBar.SetHealth(Hp);
 	}
 
-	public void Die()
+	public virtual void Die()
 	{
 		IsAlive = false;
 		GD.Print("Im DED");

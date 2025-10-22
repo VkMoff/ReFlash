@@ -15,6 +15,9 @@ public partial class Player : Character
 		};
 		base._Ready();
 	}
-
-
+	public override void Die()
+	{
+		base.Die();
+		SceneManager.Instance.GoToMenu();
+	}
 }

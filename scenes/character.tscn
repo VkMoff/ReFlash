@@ -45,5 +45,3 @@ grow_horizontal = 2
 position = Vector2(0, 75)
 sprite_frames = ExtResource("3_lrhn5")
 frame_progress = 0.664454
-
-[connection signal="mouse_entered" from="." to="." method="MouseEnter"]

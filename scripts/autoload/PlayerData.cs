@@ -60,18 +60,18 @@ public partial class PlayerData : Node
 
         CardFactory cardFactory = new();
 
-        Deck.Add(cardFactory.CreateCard(damageResource));
-        Deck.Add(cardFactory.CreateCard(damageResource));
-        Deck.Add(cardFactory.CreateCard(damageResource));
-        Deck.Add(cardFactory.CreateCard(healResource));
-        Deck.Add(cardFactory.CreateCard(healResource));
-        Deck.Add(cardFactory.CreateCard(healResource));
-        Deck.Add(cardFactory.CreateCard(heavyAttackResource));
-        Deck.Add(cardFactory.CreateCard(heavyAttackResource));
-        Deck.Add(cardFactory.CreateCard(heavyAttackResource));
-        Deck.Add(cardFactory.CreateCard(berserkAttackResource));
-        Deck.Add(cardFactory.CreateCard(berserkAttackResource));
-        Deck.Add(cardFactory.CreateCard(violetAttack));
+        Deck.Add(CardFactory.CreateCard(damageResource));
+        Deck.Add(CardFactory.CreateCard(damageResource));
+        Deck.Add(CardFactory.CreateCard(damageResource));
+        Deck.Add(CardFactory.CreateCard(healResource));
+        Deck.Add(CardFactory.CreateCard(healResource));
+        Deck.Add(CardFactory.CreateCard(healResource));
+        Deck.Add(CardFactory.CreateCard(heavyAttackResource));
+        Deck.Add(CardFactory.CreateCard(heavyAttackResource));
+        Deck.Add(CardFactory.CreateCard(heavyAttackResource));
+        Deck.Add(CardFactory.CreateCard(berserkAttackResource));
+        Deck.Add(CardFactory.CreateCard(berserkAttackResource));
+        Deck.Add(CardFactory.CreateCard(violetAttack));
     }
 
 

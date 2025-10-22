@@ -10,6 +10,7 @@ damage = 50
 metadata/_custom_type_script = "uid://df0u5yf65u8um"
 
 [resource]
+resource_name = "Violet"
 script = ExtResource("3_3ekij")
 Texture = ExtResource("2_qhw8n")
 Effects = Array[Object]([SubResource("Resource_eye0n")])

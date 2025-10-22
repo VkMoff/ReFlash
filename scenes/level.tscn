@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cejoie260lx31"]
+[gd_scene load_steps=9 format=3 uid="uid://cejoie260lx31"]
 
 [ext_resource type="Script" uid="uid://c8crq3cs46p6g" path="res://scripts/Level.cs" id="1_udnaf"]
 [ext_resource type="PackedScene" uid="uid://d10tin671k03" path="res://scenes/hand.tscn" id="2_04hsl"]
+[ext_resource type="Texture2D" uid="uid://b14d8rags4ckb" path="res://resources/sprites/background_1.jpg" id="2_klq6b"]
 [ext_resource type="PackedScene" uid="uid://galmt3uvtupu" path="res://scenes/deck.tscn" id="3_o3n3m"]
 [ext_resource type="PackedScene" uid="uid://cngelmldb7dqq" path="res://scenes/discard_pile.tscn" id="4_ppgk2"]
 [ext_resource type="SpriteFrames" uid="uid://pv8myj3lvb8y" path="res://resources/animations/player.tres" id="6_2r41h"]
@@ -13,6 +14,11 @@ font_color = Color(1, 1, 0, 1)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_udnaf")
+
+[node name="BackgroundImage" type="Sprite2D" parent="."]
+position = Vector2(593.3334, 322.5)
+scale = Vector2(0.8822752, 0.8822752)
+texture = ExtResource("2_klq6b")
 
 [node name="Hand" parent="." instance=ExtResource("2_04hsl")]
 anchors_preset = 7
@@ -48,6 +54,13 @@ offset_right = 140.0
 offset_bottom = 72.0
 text = "[Debug] End turn"
 
+[node name="ReloadSceneButton" type="Button" parent="."]
+offset_top = 82.0
+offset_right = 176.0
+offset_bottom = 113.0
+text = "[Debug] Reload Scene
+"
+
 [node name="EnergyLabel" type="Label" parent="."]
 offset_left = 20.0
 offset_top = 373.0
@@ -55,13 +68,6 @@ offset_right = 58.0
 offset_bottom = 401.0
 text = "123"
 label_settings = SubResource("LabelSettings_b121j")
-
-[node name="Player" parent="." instance=ExtResource("7_b121j")]
-offset_left = 150.0
-offset_top = 173.0
-offset_right = 360.0
-offset_bottom = 373.0
-spriteFrames = ExtResource("6_2r41h")
 
 [node name="EnemyContainer" type="HBoxContainer" parent="."]
 offset_left = 420.0
@@ -71,5 +77,9 @@ offset_bottom = 373.0
 theme_override_constants/separation = 20
 alignment = 2
 
-[connection signal="pressed" from="PullCardButton" to="." method="PullCardFromDeck" binds= [1]]
-[connection signal="pressed" from="EndTurnButton" to="." method="EndTurn"]
+[node name="Player" parent="." instance=ExtResource("7_b121j")]
+offset_left = 150.0
+offset_top = 173.0
+offset_right = 360.0
+offset_bottom = 373.0
+spriteFrames = ExtResource("6_2r41h")

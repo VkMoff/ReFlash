@@ -41,7 +41,12 @@ public partial class Level : Node2D
 		private set;
 	}
 	Label energyLabel;
-	DiscardPile discardPile;
+	Button pullCardButton, endTurnButton, reloadSceneButton;
+	public DiscardPile DiscardPile
+	{
+		get;
+		private set;
+	}
 	HBoxContainer enemyContainer;
 
 	public override void _Ready()
@@ -50,19 +55,27 @@ public partial class Level : Node2D
 		Deck = GetNode<Deck>("Deck");
 		Hand = GetNode<Hand>("Hand");
 		Player = GetNode<Character>("Player");
-		discardPile = GetNode<DiscardPile>("DiscardPile");
+		DiscardPile = GetNode<DiscardPile>("DiscardPile");
 		Enemies = new();
+
+		//Кнопки
+		pullCardButton = GetNode<Button>("PullCardButton");
+		endTurnButton = GetNode<Button>("EndTurnButton");
+		reloadSceneButton = GetNode<Button>("ReloadSceneButton");
+		//Добавление сигналов
+		pullCardButton.Pressed += PullCardFromDeck;
+		endTurnButton.Pressed += EndTurn;
+		reloadSceneButton.Pressed += RestartScene;
 
 		EnemyResource test_enemy = GD.Load<EnemyResource>("res://resources/enemies/test_enemy.tres");
 
 		EnemyFactory enemyFactory = new();
 		Enemies.Add(enemyFactory.CreateEnemy(test_enemy));
 		Enemies.Add(enemyFactory.CreateEnemy(test_enemy));
-		Enemies.Add(enemyFactory.CreateEnemy(test_enemy));
 		foreach (Enemy enemy in Enemies)
-				{
+		{
 			enemyContainer.AddChild(enemy);
-				}
+		}
 		
 
 		Energy = 3;
@@ -74,9 +87,13 @@ public partial class Level : Node2D
 	public void Discard(Card card)
 	{
 		Hand.RemoveChild(card);
-		discardPile.Add(card);
+		DiscardPile.Add(card);
 	}
-	public void PullCardFromDeck(int count = 1)
+	public void PullCardFromDeck()
+	{
+		PullCardFromDeck(1);
+	}
+	public void PullCardFromDeck(int count)
 	{
 		for (int i = 0; i < count; i++)
 		{
@@ -85,13 +102,13 @@ public partial class Level : Node2D
 	}
 	public bool RefillDeck()
 	{
-		if (discardPile.Cards.Count <= 0) return false;
-		foreach (Card card in discardPile.Cards)
+		if (DiscardPile.Cards.Count <= 0) return false;
+		foreach (Card card in DiscardPile.Cards)
 		{
 			Deck.Push(card);
 		}
-		discardPile.Clear();
-		discardPile.UpdateCount();
+		DiscardPile.Clear();
+		DiscardPile.UpdateCount();
 		Deck.Shuffle();
 		return true;
 	}
@@ -117,7 +134,7 @@ public partial class Level : Node2D
 	{
 		foreach (Card card in Hand.GetChildren())
 		{
-			Discard(card);
+			card.Discard();
 		}
 		foreach (Enemy enemy in Enemies)
 		{
@@ -139,8 +156,15 @@ public partial class Level : Node2D
 			if (Enemies.Count == 0)
 			{
 				GD.Print("LEVEL COMPLETED!");
+				SceneManager.Instance.GoToMenu();
 			}
 		}
 		character.QueueFree();
+	}
+
+	public void RestartScene()
+	{
+		QueueFree();
+		SceneManager.Instance.LoadLevel();
 	}
 }

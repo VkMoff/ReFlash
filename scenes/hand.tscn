@@ -5,6 +5,3 @@
 [node name="Hand" type="HBoxContainer"]
 theme_override_constants/separation = 0
 script = ExtResource("1_cmdsa")
-
-[connection signal="child_entered_tree" from="." to="." method="ChangeGap"]
-[connection signal="child_exiting_tree" from="." to="." method="ChangeGap"]
