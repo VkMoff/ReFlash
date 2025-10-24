@@ -8,6 +8,7 @@ public partial class Enemy : Character
 	EffectResource[][][] actionPatterns;
 	public override void _Ready()
 	{
+		level = GetParent().GetParent<Level>();
 		base._Ready();
 
 		actionPatterns = //ПРОКЛЯТО

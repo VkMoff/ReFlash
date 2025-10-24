@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://b53ggpqg4t373"]
 
-[ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/CardResource.cs" id="1_523oi"]
+[ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/resources/CardResource.cs" id="1_523oi"]
 [ext_resource type="Script" uid="uid://df0u5yf65u8um" path="res://scripts/effects/DamageEffect.cs" id="1_u2ovj"]
 [ext_resource type="Script" uid="uid://b3wfq85tl35o0" path="res://scripts/effects/HealEffect.cs" id="2_fpjf3"]
 [ext_resource type="Texture2D" uid="uid://c3p4v53fyrbav" path="res://resources/sprites/icon_berserk.svg" id="3_fpjf3"]

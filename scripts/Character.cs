@@ -24,7 +24,6 @@ public partial class Character : Control
 	}
 	public override void _Ready() //Общая логика анимации
 	{
-		level = (Level)GetTree().CurrentScene;
 		healthBar = GetNode<HealthBar>("HealthBar");
 		sprite = GetNode<AnimatedSprite2D>("Control/AnimatedSprite");
 		
@@ -35,14 +34,6 @@ public partial class Character : Control
 
 		IsAlive = true;
 	}
-
-	// public Character(int maxHp) //Заглушка. Передавать EnemyResource
-	// {
-	// 	MaxHp = maxHp;
-	// 	Hp = MaxHp;
-	// 	healthBar.SetMaxHp(MaxHp);
-	// 	healthBar.SetHealth(Hp);
-	// }
 
 	public void Init(int maxHp, SpriteFrames spriteFrames) //А вот это надо убрать куда подальше
 	{

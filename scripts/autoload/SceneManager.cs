@@ -13,6 +13,7 @@ public partial class SceneManager : Node
 
 	PackedScene level = GD.Load<PackedScene>("res://scenes/level.tscn");
 	PackedScene startMenu = GD.Load<PackedScene>("res://scenes/start_menu.tscn");
+	RoomResource testRoom = GD.Load<RoomResource>("res://resources/rooms/test_room.tres");
 
 	public override void _Ready()
 	{
@@ -26,7 +27,16 @@ public partial class SceneManager : Node
 
 	public void LoadLevel()
 	{
-		GetTree().ChangeSceneToPacked(level);
+		CallDeferred(MethodName.DeferredLoadLevel);
+	}
+
+	private void DeferredLoadLevel()
+	{
+		GetTree().CurrentScene.Free();
+		Level nextLevel = level.Instantiate<Level>();
+		GetTree().Root.AddChild(nextLevel);
+		GetTree().CurrentScene = nextLevel;
+		nextLevel.InitRoom(testRoom);
 	}
 
 	public void GoToMenu()

@@ -7,6 +7,7 @@ public partial class Player : Character
 
 	public override void _Ready()
 	{
+		level = GetParent<Level>();
 		PlayerData playerData = PlayerData.Instance;
 		Init(playerData.MaxHP, spriteFrames);
 		playerData.HealthChanged += (int hp) =>

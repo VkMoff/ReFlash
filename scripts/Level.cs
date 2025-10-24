@@ -56,7 +56,6 @@ public partial class Level : Node2D
 		Hand = GetNode<Hand>("Hand");
 		Player = GetNode<Character>("Player");
 		DiscardPile = GetNode<DiscardPile>("DiscardPile");
-		Enemies = new();
 
 		//Кнопки
 		pullCardButton = GetNode<Button>("PullCardButton");
@@ -67,15 +66,7 @@ public partial class Level : Node2D
 		endTurnButton.Pressed += EndTurn;
 		reloadSceneButton.Pressed += RestartScene;
 
-		EnemyResource test_enemy = GD.Load<EnemyResource>("res://resources/enemies/test_enemy.tres");
-
-		EnemyFactory enemyFactory = new();
-		Enemies.Add(enemyFactory.CreateEnemy(test_enemy));
-		Enemies.Add(enemyFactory.CreateEnemy(test_enemy));
-		foreach (Enemy enemy in Enemies)
-		{
-			enemyContainer.AddChild(enemy);
-		}
+		Enemies = new();
 		
 
 		Energy = 3;
@@ -83,6 +74,17 @@ public partial class Level : Node2D
 		UpdateEnergyLabel();
 		DefaultHandSize = 5;
 		PullCardFromDeck(DefaultHandSize);
+	}
+	public void InitRoom(RoomResource roomResource)
+	{
+		foreach (EnemyResource enemyResource in roomResource.Enemies)
+		{
+			Enemies.Add(EnemyFactory.CreateEnemy(enemyResource));
+		}	
+		foreach (Enemy enemy in Enemies)
+		{
+			enemyContainer.AddChild(enemy);
+		}
 	}
 	public void Discard(Card card)
 	{
@@ -147,7 +149,6 @@ public partial class Level : Node2D
 		UpdateEnergyLabel();
 		PullCardFromDeck(DefaultHandSize);
 	}
-
 	public void CharacterDied(Character character)
 	{
 		if (character is Enemy)
@@ -161,7 +162,6 @@ public partial class Level : Node2D
 		}
 		character.QueueFree();
 	}
-
 	public void RestartScene()
 	{
 		QueueFree();
