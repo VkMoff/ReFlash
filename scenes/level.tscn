@@ -9,15 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://b7xgj6akffqxm" path="res://scenes/player.tscn" id="7_b121j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b121j"]
-font_size = 20
+font_size = 32
 font_color = Color(1, 1, 0, 1)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_udnaf")
 
 [node name="BackgroundImage" type="Sprite2D" parent="."]
-position = Vector2(593.3334, 322.5)
-scale = Vector2(0.8822752, 0.8822752)
+position = Vector2(1129.2063, 533.5)
+scale = Vector2(1.4404762, 1.4404763)
 texture = ExtResource("2_klq6b")
 
 [node name="Hand" parent="." instance=ExtResource("2_04hsl")]
@@ -26,22 +26,24 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 576.0
-offset_top = 644.0
-offset_right = 576.0
-offset_bottom = 644.0
+offset_left = 960.0
+offset_top = 1045.0
+offset_right = 960.0
+offset_bottom = 1045.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Deck" parent="." instance=ExtResource("3_o3n3m")]
-offset_left = 10.0
-offset_top = 429.0
-offset_right = 150.0
-offset_bottom = 639.0
+offset_left = 20.0
+offset_top = 835.0
+offset_right = 160.0
+offset_bottom = 1045.0
 
 [node name="DiscardPile" parent="." instance=ExtResource("4_ppgk2")]
-offset_left = 1002.0
-offset_top = 429.0
+offset_left = 1733.0
+offset_top = 835.0
+offset_right = 1873.0
+offset_bottom = 1045.0
 
 [node name="PullCardButton" type="Button" parent="."]
 offset_right = 8.0
@@ -61,25 +63,34 @@ offset_bottom = 113.0
 text = "[Debug] Reload Scene
 "
 
+[node name="GoToMapButton" type="Button" parent="."]
+offset_top = 123.0
+offset_right = 156.0
+offset_bottom = 154.0
+text = "[Debug] Go to map
+"
+
 [node name="EnergyLabel" type="Label" parent="."]
-offset_left = 20.0
-offset_top = 373.0
-offset_right = 58.0
-offset_bottom = 401.0
+offset_left = 174.0
+offset_top = 783.0
+offset_right = 229.0
+offset_bottom = 828.0
 text = "123"
 label_settings = SubResource("LabelSettings_b121j")
 
 [node name="EnemyContainer" type="HBoxContainer" parent="."]
-offset_left = 420.0
-offset_top = 173.0
-offset_right = 1084.0
-offset_bottom = 373.0
+offset_left = 1116.0
+offset_top = 535.0
+offset_right = 1780.0
+offset_bottom = 735.0
 theme_override_constants/separation = 20
 alignment = 2
 
 [node name="Player" parent="." instance=ExtResource("7_b121j")]
-offset_left = 150.0
-offset_top = 173.0
-offset_right = 360.0
-offset_bottom = 373.0
+offset_left = 255.0
+offset_top = 536.0
+offset_right = 465.0
+offset_bottom = 736.0
 spriteFrames = ExtResource("6_2r41h")
+
+[connection signal="pressed" from="GoToMapButton" to="." method="GoToMap"]

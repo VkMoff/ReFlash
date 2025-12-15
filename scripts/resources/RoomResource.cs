@@ -3,7 +3,8 @@ using Godot.Collections;
 using System;
 
 [GlobalClass]
-public partial class RoomResource : Resource
+public partial class RoomResource : EncounterResource
 {
     [Export] public Array<EnemyResource> Enemies;
+    [Export] public int Difficulty;
 }

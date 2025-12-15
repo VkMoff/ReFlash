@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ShopResource" load_steps=2 format=3 uid="uid://my506to78e55"]
+
+[ext_resource type="Script" uid="uid://cilepthtdynql" path="res://scripts/resources/ShopResource.cs" id="1_w7rt6"]
+
+[resource]
+script = ExtResource("1_w7rt6")
+metadata/_custom_type_script = "uid://cilepthtdynql"

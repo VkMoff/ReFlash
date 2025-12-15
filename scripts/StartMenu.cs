@@ -8,6 +8,10 @@ public partial class StartMenu : Control
 	}
 	public void StartGame()
 	{
-		SceneManager.Instance.LoadLevel();
+		SceneManager.Instance.GoToMap();
+	}
+	public void ExitGame()
+	{
+		GetTree().Quit();
 	}
 }

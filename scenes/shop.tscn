@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://k0dduq63u0rw"]
+
+[ext_resource type="Script" uid="uid://ea8x5muoeruk" path="res://scripts/Shop.cs" id="1_lx5au"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lx5au")
+
+[node name="GoToMapButton" type="Button" parent="."]
+layout_mode = 0
+offset_top = 26.0
+offset_right = 156.0
+offset_bottom = 57.0
+text = "[Debug] Go to map
+"
+
+[connection signal="pressed" from="GoToMapButton" to="." method="GoToMap"]

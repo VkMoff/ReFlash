@@ -22,6 +22,8 @@ PlayerData="*res://scripts/autoload/PlayerData.cs"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 
 [dotnet]
@@ -33,8 +35,8 @@ project/assembly_name="Wasteland"
 folder_colors={
 "res://resources/animations/": "teal",
 "res://resources/cards/": "yellow",
+"res://resources/encounters/": "purple",
 "res://resources/enemies/": "red",
-"res://resources/rooms/": "purple",
 "res://resources/sprites/": "orange",
 "res://scenes/": "red",
 "res://scripts/": "blue"

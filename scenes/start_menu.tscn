@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhmkdxjvo6y4l"]
+[gd_scene load_steps=6 format=3 uid="uid://bhmkdxjvo6y4l"]
 
 [ext_resource type="Script" uid="uid://cwaqvcgn1w07f" path="res://scripts/StartMenu.cs" id="1_ouf4f"]
+
+[sub_resource type="Gradient" id="Gradient_ouf4f"]
+colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.2, 0.2, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_thu50"]
+gradient = SubResource("Gradient_ouf4f")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m7x51"]
+texture = SubResource("GradientTexture1D_thu50")
+
+[sub_resource type="Theme" id="Theme_h61rw"]
+Button/font_sizes/font_size = 64
+Button/styles/normal = SubResource("StyleBoxTexture_m7x51")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,10 +24,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ouf4f")
 
-[node name="Button" type="Button" parent="."]
+[node name="Exit button" type="Button" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 27.0
+offset_top = 190.0
+offset_right = 664.0
+offset_bottom = 297.0
+theme = SubResource("Theme_h61rw")
+text = "EXIT THIS SHIT"
+
+[node name="Start button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 37.0
+offset_right = 664.0
+offset_bottom = 144.0
+theme = SubResource("Theme_h61rw")
 text = "START SUFFERING"
 
-[connection signal="pressed" from="Button" to="." method="StartGame"]
+[connection signal="pressed" from="Exit button" to="." method="ExitGame"]
+[connection signal="pressed" from="Start button" to="." method="StartGame"]

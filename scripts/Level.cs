@@ -47,6 +47,7 @@ public partial class Level : Node2D
 		get;
 		private set;
 	}
+	RoomResource roomResource;
 	HBoxContainer enemyContainer;
 
 	public override void _Ready()
@@ -67,7 +68,7 @@ public partial class Level : Node2D
 		reloadSceneButton.Pressed += RestartScene;
 
 		Enemies = new();
-		
+
 
 		Energy = 3;
 		energyLabel = GetNode<Label>("EnergyLabel");
@@ -77,14 +78,16 @@ public partial class Level : Node2D
 	}
 	public void InitRoom(RoomResource roomResource)
 	{
+		this.roomResource = roomResource;
 		foreach (EnemyResource enemyResource in roomResource.Enemies)
 		{
 			Enemies.Add(EnemyFactory.CreateEnemy(enemyResource));
-		}	
+		}
 		foreach (Enemy enemy in Enemies)
 		{
 			enemyContainer.AddChild(enemy);
 		}
+
 	}
 	public void Discard(Card card)
 	{
@@ -157,14 +160,18 @@ public partial class Level : Node2D
 			if (Enemies.Count == 0)
 			{
 				GD.Print("LEVEL COMPLETED!");
-				SceneManager.Instance.GoToMenu();
+				SceneManager.Instance.GoToMap();
 			}
 		}
 		character.QueueFree();
 	}
+	public void GoToMap()
+	{
+		SceneManager.Instance.GoToMap();
+	}
 	public void RestartScene()
 	{
 		QueueFree();
-		SceneManager.Instance.LoadLevel();
+		SceneManager.Instance.LoadLevel(roomResource);
 	}
 }
