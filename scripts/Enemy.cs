@@ -37,6 +37,7 @@ public partial class Enemy : Character
 		SetDamageLabel();
 
 		MouseEntered += MouseEnter;
+		MouseExited += MouseExit;
 	}
 
 	public void Init(EnemyResource enemyResource)
@@ -49,6 +50,10 @@ public partial class Enemy : Character
 	public void MouseEnter()
 	{
 		level.TargetEnemyChanged(this);
+	}
+	public void MouseExit()
+	{
+		level.TargetEnemyChanged(null);
 	}
 
 	public void ExecuteNextAction()
