@@ -145,7 +145,7 @@ public partial class Level : Node2D
 		{
 			if (enemy.IsAlive)
 			{
-				enemy.NextAttack();
+				enemy.ExecuteNextAction();
 			}
 		}
 		Energy = 3;

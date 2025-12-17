@@ -31,7 +31,7 @@ offset_top = 190.0
 offset_right = 664.0
 offset_bottom = 297.0
 theme = SubResource("Theme_h61rw")
-text = "EXIT THIS SHIT"
+text = "EXIT"
 
 [node name="Start button" type="Button" parent="."]
 layout_mode = 0
