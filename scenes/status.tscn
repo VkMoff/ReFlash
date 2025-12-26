@@ -1,13 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://8arxmlj4wo75"]
 
-[ext_resource type="Texture2D" uid="uid://br7nn7b7x36e1" path="res://resources/sprites/statuses/status_poison.svg" id="1_puj0d"]
 [ext_resource type="Script" uid="uid://6olcyf6clsit" path="res://scripts/Status.cs" id="1_u3ihd"]
+[ext_resource type="Texture2D" uid="uid://cwxqt8f8wyekq" path="res://resources/sprites/unknown.png" id="2_u3ihd"]
 
 [node name="Status" type="Control"]
 custom_minimum_size = Vector2(20, 32)
 layout_mode = 3
-offset_right = 0.79999924
-offset_bottom = -0.40000153
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
@@ -15,13 +17,13 @@ size_flags_vertical = 4
 script = ExtResource("1_u3ihd")
 
 [node name="StatusSprite" type="Sprite2D" parent="."]
-position = Vector2(9.6, 16.2)
-texture = ExtResource("1_puj0d")
+position = Vector2(16, 16)
+texture = ExtResource("2_u3ihd")
 
 [node name="ValueLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 9.6
-offset_top = 16.2
-offset_right = 49.6
-offset_bottom = 39.2
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 56.0
+offset_bottom = 39.0
 text = "2"

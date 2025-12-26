@@ -77,10 +77,11 @@ public partial class Character : Control
 		{
 			var statusScene = GD.Load<PackedScene>("res://scenes/status.tscn");
 			Status status = statusScene.Instantiate<Status>();
-			status.SetResource(statusResource);
 			status.Value = value;
 
 			statusContainer.AddChild(status);
+			
+			status.SetResource(statusResource);
 
 			Statuses[statusType] = status;
 		}

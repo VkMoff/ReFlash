@@ -4,6 +4,7 @@ using Godot;
 public abstract partial class StatusResource : Resource
 {
 	protected Status status;
+	public Texture2D StatusTexture;
 	public void SetStatusInstance(Status status)
     {
 		this.status = status;

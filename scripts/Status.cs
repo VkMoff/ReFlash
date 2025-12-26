@@ -37,6 +37,7 @@ public partial class Status : Control
 	public void SetResource(StatusResource statusResource)
 	{
 		this.statusResource = statusResource;
+		statusSprite.Texture = statusResource.StatusTexture;
 		this.statusResource.SetStatusInstance(this);
 	}
 	public void AddValue(int additionalValue)

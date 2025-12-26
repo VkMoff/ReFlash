@@ -69,6 +69,7 @@ public partial class Level : Node2D
 
 		Enemies = new();
 
+		Player.AddStatus(new RegenStatus(), 10);
 
 		Energy = 3;
 		energyLabel = GetNode<Label>("EnergyLabel");
