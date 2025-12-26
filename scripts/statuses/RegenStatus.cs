@@ -11,5 +11,10 @@ public partial class RegenStatus : StatusResource
     {
         status.ParentCharacter.ChangeHP(status.Value);
         status.Value -= 1;
+
+        if (status.Value <= 0)
+        {
+            status.Remove();
+        }
     }
 }

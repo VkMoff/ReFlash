@@ -44,6 +44,11 @@ public partial class Status : Control
 	{
 		Value += additionalValue;
 	}
+	public void Remove()
+	{
+		ParentCharacter.Statuses.Remove(statusResource.GetType());
+		QueueFree();
+	}
 	public void OnTurnEnd()
 	{
 		statusResource.OnTurnEnd();
