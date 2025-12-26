@@ -3,26 +3,26 @@ using Godot;
 [GlobalClass]
 public partial class DamageEffect : EffectResource
 {
-    [Export] public int Damage
-    {
-        get;
-        private set;
-    }
+	[Export] public int Damage
+	{
+		get;
+		private set;
+	}
 
-    public override void Execute(Character caster, Character[] targets)
-    {
-        foreach (Character target in targets)
-        {
-            target.ChangeHP(-Damage);
-        }
-    }
+	public override void Execute(Character caster, Character[] targets)
+	{
+		foreach (Character target in targets)
+		{
+			target.ChangeHP(-Damage);
+		}
+	}
 
-    public DamageEffect()
-    {
-        
-    }
-    public DamageEffect(int damage)
-    {
-        this.Damage = damage;
-    }
+	public DamageEffect()
+	{
+		
+	}
+	public DamageEffect(int damage)
+	{
+		this.Damage = damage;
+	}
 }

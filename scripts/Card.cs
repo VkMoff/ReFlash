@@ -111,6 +111,7 @@ public partial class Card : Control, ICloneable
 
 		foreach (EffectResource effect in CardData.Effects)
 		{
+			//Выбрасывает исключение NullReferenceException
 			effect.Execute(level.Player, CardData.IsTargeted ? [level.TargetEnemy] : level.Enemies.ToArray());
 		}
 	}

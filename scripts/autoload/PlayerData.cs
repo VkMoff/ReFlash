@@ -57,21 +57,22 @@ public partial class PlayerData : Node
         CardResource heavyAttackResource = GD.Load<CardResource>("res://resources/cards/HeavyAttack.tres");
         CardResource berserkAttackResource = GD.Load<CardResource>("res://resources/cards/BerserkAttack.tres");
         CardResource violetAttack = GD.Load<CardResource>("res://resources/cards/Violet.tres");
+        CardResource poison = GD.Load<CardResource>("res://resources/cards/Poison.tres");
 
         CardFactory cardFactory = new();
 
         Deck.Add(CardFactory.CreateCard(damageResource));
         Deck.Add(CardFactory.CreateCard(damageResource));
-        Deck.Add(CardFactory.CreateCard(damageResource));
         Deck.Add(CardFactory.CreateCard(healResource));
         Deck.Add(CardFactory.CreateCard(healResource));
-        Deck.Add(CardFactory.CreateCard(healResource));
-        Deck.Add(CardFactory.CreateCard(heavyAttackResource));
         Deck.Add(CardFactory.CreateCard(heavyAttackResource));
         Deck.Add(CardFactory.CreateCard(heavyAttackResource));
         Deck.Add(CardFactory.CreateCard(berserkAttackResource));
         Deck.Add(CardFactory.CreateCard(berserkAttackResource));
         Deck.Add(CardFactory.CreateCard(violetAttack));
+        Deck.Add(CardFactory.CreateCard(poison));
+        Deck.Add(CardFactory.CreateCard(poison));
+
     }
 
 

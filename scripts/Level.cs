@@ -135,19 +135,52 @@ public partial class Level : Node2D
 		}
 		return false;
 	}
+
+	//?
+	private List<Character> pendingRemovals = new();
+
+
 	public void EndTurn()
 	{
 		foreach (Card card in Hand.GetChildren())
 		{
 			card.Discard();
 		}
+
+		foreach (var (statusType, status) in Player.Statuses)
+		{
+			status.OnTurnEnd();
+		}
+
 		foreach (Enemy enemy in Enemies)
 		{
-			if (enemy.IsAlive)
+			if (!enemy.IsAlive) continue;
+
+			foreach (var (statusType, status) in enemy.Statuses)
 			{
-				enemy.ExecuteNextAction();
+				status.OnTurnEnd();
 			}
+
 		}
+
+		foreach (Enemy enemy in Enemies)
+		{
+			if (!enemy.IsAlive) continue;
+
+			enemy.ExecuteNextAction();
+		}
+
+		foreach (var character in pendingRemovals)
+		{
+			Enemies.Remove(character);
+		}
+		pendingRemovals.Clear();
+
+		if (Enemies.Count == 0)
+		{
+			Win();
+		}
+
 		Energy = 3;
 		UpdateEnergyLabel();
 		PullCardFromDeck(DefaultHandSize);
@@ -156,14 +189,18 @@ public partial class Level : Node2D
 	{
 		if (character is Enemy)
 		{
-			Enemies.Remove(character);
-			if (Enemies.Count == 0)
-			{
-				GD.Print("LEVEL COMPLETED!");
-				SceneManager.Instance.GoToMap();
-			}
+			pendingRemovals.Add(character);
+		}
+		if (pendingRemovals.Count == Enemies.Count)
+		{
+			Win();
 		}
 		character.QueueFree();
+	}
+	public void Win()
+	{
+		GD.Print("LEVEL COMPLETED!");
+		SceneManager.Instance.GoToMap();
 	}
 	public void GoToMap()
 	{
