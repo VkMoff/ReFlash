@@ -57,12 +57,13 @@ public partial class Character : Control
 
 	public void ChangeHP(int change) //Общая логика работы с хп
 	{
+		GD.Print($"{this} Changing HP {Hp} + {change}");
 		Hp = Math.Min(Hp + change, MaxHp);
+		healthBar.SetHealth(Hp);
 		if (Hp <= 0)
 		{
 			Die();
 		}
-		healthBar.SetHealth(Hp);
 	}
 
 	public void AddStatus(StatusResource statusResource, int value)
@@ -75,6 +76,7 @@ public partial class Character : Control
 		}
 		else
 		{
+			//оптимизировать
 			var statusScene = GD.Load<PackedScene>("res://scenes/status.tscn");
 			Status status = statusScene.Instantiate<Status>();
 			status.Value = value;

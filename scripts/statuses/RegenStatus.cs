@@ -7,8 +7,9 @@ public partial class RegenStatus : StatusResource
     {
         StatusTexture = GD.Load<Texture2D>("res://resources/sprites/statuses/status_regen.svg");
     }
-    public override void OnTurnEnd()
+    public override void OnTurnEnd(Status status, Character[] targets)
     {
+        //избыточно?
         status.ParentCharacter.ChangeHP(status.Value);
         status.Value -= 1;
 

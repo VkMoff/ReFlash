@@ -69,6 +69,7 @@ public partial class Level : Node2D
 
 		Enemies = new();
 
+		//test
 		Player.AddStatus(new RegenStatus(), 10);
 
 		Energy = 3;
@@ -88,6 +89,9 @@ public partial class Level : Node2D
 		{
 			enemyContainer.AddChild(enemy);
 		}
+
+		//test
+		// Enemies[0].AddStatus(new PoisonStatus(), 5);
 
 	}
 	public void Discard(Card card)
@@ -150,7 +154,7 @@ public partial class Level : Node2D
 
 		foreach (var (statusType, status) in Player.Statuses)
 		{
-			status.OnTurnEnd();
+			status.OnTurnEnd([Player]);
 		}
 
 		foreach (Enemy enemy in Enemies)
@@ -159,16 +163,9 @@ public partial class Level : Node2D
 
 			foreach (var (statusType, status) in enemy.Statuses)
 			{
-				status.OnTurnEnd();
+				status.OnTurnEnd([enemy]);
 			}
 
-		}
-
-		foreach (Enemy enemy in Enemies)
-		{
-			if (!enemy.IsAlive) continue;
-
-			enemy.ExecuteNextAction();
 		}
 
 		foreach (var character in pendingRemovals)
@@ -182,6 +179,16 @@ public partial class Level : Node2D
 			Win();
 		}
 
+		foreach (Enemy enemy in Enemies)
+		{
+			if (!enemy.IsAlive) continue;
+
+			enemy.ExecuteNextAction();
+		}
+
+		
+
+		
 		Energy = 3;
 		UpdateEnergyLabel();
 		PullCardFromDeck(DefaultHandSize);
@@ -191,12 +198,13 @@ public partial class Level : Node2D
 		if (character is Enemy)
 		{
 			pendingRemovals.Add(character);
+			character.Visible = false;
 		}
 		if (pendingRemovals.Count == Enemies.Count)
 		{
 			Win();
 		}
-		character.QueueFree();
+		// character.QueueFree();
 	}
 	public void Win()
 	{

@@ -7,13 +7,17 @@ public partial class PoisonStatus : StatusResource
     {
         StatusTexture = GD.Load<Texture2D>("res://resources/sprites/statuses/status_poison.svg");
     }
-    public override void OnTurnEnd()
+    public override void OnTurnEnd(Status status, Character[] targets)
     {
-        status.ParentCharacter.ChangeHP(-status.Value);
+        foreach (Character target in targets)
+        {
+            target.ChangeHP(-status.Value);
+        }
         status.Value -= 1;
         
         if (status.Value <= 0)
         {
+            // GD.Print($"Poison calling status.Remove");
             status.Remove();
         }
     }

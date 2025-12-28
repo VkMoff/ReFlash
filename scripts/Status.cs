@@ -1,5 +1,7 @@
 using Godot;
-
+/// <summary>
+/// Instance of status
+/// </summary>
 public partial class Status : Control
 {
 	private int value = 0;
@@ -38,7 +40,6 @@ public partial class Status : Control
 	{
 		this.statusResource = statusResource;
 		statusSprite.Texture = statusResource.StatusTexture;
-		this.statusResource.SetStatusInstance(this);
 	}
 	public void AddValue(int additionalValue)
 	{
@@ -46,11 +47,13 @@ public partial class Status : Control
 	}
 	public void Remove()
 	{
+		GD.Print($"Removing status {statusResource.GetType()}");
 		ParentCharacter.Statuses.Remove(statusResource.GetType());
 		QueueFree();
 	}
-	public void OnTurnEnd()
+	public void OnTurnEnd(Character[] targets)
 	{
-		statusResource.OnTurnEnd();
+		GD.Print($"Status.OnTurnEnd - {statusResource.GetType()}, {value}");
+		statusResource.OnTurnEnd(this, targets);
 	}
 }
