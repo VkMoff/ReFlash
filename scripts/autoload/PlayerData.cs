@@ -4,17 +4,8 @@ using System.Collections.Generic;
 
 public partial class PlayerData : Node
 {
-    public static PlayerData Instance
-    {
-        get;
-        private set;
-    }
-
-    public List<Card> Deck
-    {
-        get;
-        private set;
-    }
+    public static PlayerData Instance { get; private set; }
+    public List<Card> Deck { get; private set; }
     public int MaxHP { get; set; } = 100;
     private int hp;
     public int HP
@@ -34,7 +25,7 @@ public partial class PlayerData : Node
         }
     }
     public int Gold { get; set; } = 0;
-    public List<string> Relics { get; set; } = new List<string>(); //ЗАГЛУШКА
+    public List<Artifact> Relics { get; set; } = new List<Artifact>();
 
     public event Action<int> HealthChanged;
     public event Action<int> GoldChanged;

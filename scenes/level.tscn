@@ -12,7 +12,9 @@
 font_size = 32
 font_color = Color(1, 1, 0, 1)
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_udnaf")
 
 [node name="BackgroundImage" type="Sprite2D" parent="."]
@@ -21,42 +23,52 @@ scale = Vector2(1.4404762, 1.4404763)
 texture = ExtResource("2_klq6b")
 
 [node name="Hand" parent="." instance=ExtResource("2_04hsl")]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 960.0
-offset_top = 1045.0
-offset_right = 960.0
-offset_bottom = 1045.0
+offset_left = 909.0
+offset_top = 879.0
+offset_right = 909.0
+offset_bottom = 879.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Deck" parent="." instance=ExtResource("3_o3n3m")]
-offset_left = 20.0
-offset_top = 835.0
-offset_right = 160.0
-offset_bottom = 1045.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 687.0
+offset_right = 155.0
+offset_bottom = 897.0
+grow_vertical = 0
 
 [node name="DiscardPile" parent="." instance=ExtResource("4_ppgk2")]
-offset_left = 1733.0
-offset_top = 835.0
-offset_right = 1873.0
-offset_bottom = 1045.0
+layout_mode = 1
+offset_left = 1442.0
+offset_top = 687.0
+offset_right = 1582.0
+offset_bottom = 897.0
 
 [node name="PullCardButton" type="Button" parent="."]
+layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 text = "[Debug] Pull card"
 
 [node name="EndTurnButton" type="Button" parent="."]
+layout_mode = 0
 offset_top = 41.0
 offset_right = 140.0
 offset_bottom = 72.0
 text = "[Debug] End turn"
 
 [node name="ReloadSceneButton" type="Button" parent="."]
+layout_mode = 0
 offset_top = 82.0
 offset_right = 176.0
 offset_bottom = 113.0
@@ -64,6 +76,7 @@ text = "[Debug] Reload Scene
 "
 
 [node name="GoToMapButton" type="Button" parent="."]
+layout_mode = 0
 offset_top = 123.0
 offset_right = 156.0
 offset_bottom = 154.0
@@ -71,26 +84,42 @@ text = "[Debug] Go to map
 "
 
 [node name="EnergyLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 174.0
-offset_top = 783.0
+offset_top = 628.0
 offset_right = 229.0
-offset_bottom = 828.0
+offset_bottom = 673.0
 text = "123"
 label_settings = SubResource("LabelSettings_b121j")
 
 [node name="EnemyContainer" type="HBoxContainer" parent="."]
-offset_left = 1116.0
-offset_top = 535.0
-offset_right = 1780.0
-offset_bottom = 735.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 909.0
+offset_top = 469.0
+offset_right = 1573.0
+offset_bottom = 669.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_constants/separation = 20
 alignment = 2
 
 [node name="Player" parent="." instance=ExtResource("7_b121j")]
-offset_left = 255.0
-offset_top = 536.0
-offset_right = 465.0
-offset_bottom = 736.0
+layout_mode = 1
+offset_left = 257.0
+offset_top = 469.0
+offset_right = 467.0
+offset_bottom = 669.0
 spriteFrames = ExtResource("6_2r41h")
+
+[node name="ArtifactContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 229.0
+offset_right = 712.0
+offset_bottom = 41.0
 
 [connection signal="pressed" from="GoToMapButton" to="." method="GoToMap"]

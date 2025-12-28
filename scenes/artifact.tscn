@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd643q8s1gxci"]
+
+[ext_resource type="Script" uid="uid://df3lco62dbavj" path="res://scripts/Artifact.cs" id="1_0lcuo"]
+[ext_resource type="Texture2D" uid="uid://cmiwo0ndiv74" path="res://resources/sprites/artifacts/artifact_poisonspray.svg" id="2_7gita"]
+
+[node name="Artifact" type="Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0lcuo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7gita")
+offset = Vector2(32, 32)

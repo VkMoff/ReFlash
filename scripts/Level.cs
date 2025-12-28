@@ -1,62 +1,37 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 
-public partial class Level : Node2D
+public partial class Level : Control
 {
-	public Deck Deck
-	{
-		get;
-		private set;
-	}
-	public Hand Hand
-	{
-		get;
-		private set;
-	}
-	public Character Player
-	{
-		get;
-		private set;
-	}
-	public List<Character> Enemies
-	{
-		get;
-		private set;
-	}
-	public Character TargetEnemy
-	{
-		get;
-		set;
-	}
-	public int Energy
-	{
-		get;
-		private set;
-	}
-	public int DefaultHandSize
-	{
-		get;
-		private set;
-	}
-	Label energyLabel;
-	Button pullCardButton, endTurnButton, reloadSceneButton;
-	public DiscardPile DiscardPile
-	{
-		get;
-		private set;
-	}
-	RoomResource roomResource;
-	HBoxContainer enemyContainer;
+	public Deck Deck { get; private set; }
+	public Hand Hand { get; private set; }
+	public Character Player { get; private set; }
+	public List<Character> Enemies { get; private set; }
+	public Character TargetEnemy { get; set; }
+	public int Energy { get; private set; }
+	public int DefaultHandSize { get; private set; }
+	public DiscardPile DiscardPile { get; private set; }
+	private Label energyLabel;
+	private Button pullCardButton, endTurnButton, reloadSceneButton;
+	private RoomResource roomResource;
+	private HBoxContainer enemyContainer;
+	private HBoxContainer artifactContainer;
+	private PackedScene artifactScene;
+	public event Action TurnStart, TurnEnd;
+
 
 	public override void _Ready()
 	{
 		enemyContainer = GetNode<HBoxContainer>("EnemyContainer");
+		artifactContainer = GetNode<HBoxContainer>("ArtifactContainer");
 		Deck = GetNode<Deck>("Deck");
 		Hand = GetNode<Hand>("Hand");
 		Player = GetNode<Character>("Player");
 		DiscardPile = GetNode<DiscardPile>("DiscardPile");
+
+		artifactScene = GD.Load<PackedScene>("res://scenes/artifact.tscn");
+		
 
 		//Кнопки
 		pullCardButton = GetNode<Button>("PullCardButton");
@@ -68,9 +43,6 @@ public partial class Level : Node2D
 		reloadSceneButton.Pressed += RestartScene;
 
 		Enemies = new();
-
-		//test
-		Player.AddStatus(new RegenStatus(), 10);
 
 		Energy = 3;
 		energyLabel = GetNode<Label>("EnergyLabel");
@@ -92,8 +64,16 @@ public partial class Level : Node2D
 
 		//test
 		// Enemies[0].AddStatus(new PoisonStatus(), 5);
-		Player.AddStatus(new SpikesStatus(), 3);
+		// Player.AddStatus(new SpikesStatus(), 3);
+		// Player.AddStatus(new RegenStatus(), 10);
+		Artifact testArtifact = artifactScene.Instantiate<Artifact>();
+		artifactContainer.AddChild(testArtifact);
+		testArtifact.SetArtifact(new PoisonSpray());
+		testArtifact.ArtifactResource.Init(this);
+		testArtifact.UpdateTexture();
 
+
+		TurnStart?.Invoke();
 	}
 	public void Discard(Card card)
 	{
@@ -153,6 +133,8 @@ public partial class Level : Node2D
 			card.Discard();
 		}
 
+		TurnEnd?.Invoke();
+
 		foreach (var (statusType, status) in Player.Statuses)
 		{
 			status.OnTurnEnd([Player]);
@@ -187,12 +169,14 @@ public partial class Level : Node2D
 			enemy.ExecuteNextAction();
 		}
 
-		
 
-		
+
+
 		Energy = 3;
 		UpdateEnergyLabel();
 		PullCardFromDeck(DefaultHandSize);
+
+		TurnStart?.Invoke();
 	}
 	public void CharacterDied(Character character)
 	{

@@ -14,7 +14,6 @@ public partial class Status : Control
 		set
 		{
 			this.value = value;
-			GD.Print(value);
 			if (valueLabel is not null)
 			{
 				valueLabel.Text = this.value.ToString();
