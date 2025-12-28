@@ -4,14 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://cwxqt8f8wyekq" path="res://resources/sprites/unknown.png" id="2_u3ihd"]
 
 [node name="Status" type="Control"]
-custom_minimum_size = Vector2(20, 32)
+custom_minimum_size = Vector2(30, 32)
 layout_mode = 3
+anchors_preset = 0
 offset_left = -16.0
 offset_top = -16.0
 offset_right = 16.0
 offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 script = ExtResource("1_u3ihd")

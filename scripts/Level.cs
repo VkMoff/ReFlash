@@ -92,6 +92,7 @@ public partial class Level : Node2D
 
 		//test
 		// Enemies[0].AddStatus(new PoisonStatus(), 5);
+		Player.AddStatus(new SpikesStatus(), 3);
 
 	}
 	public void Discard(Card card)
