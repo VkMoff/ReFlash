@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cejoie260lx31"]
+[gd_scene load_steps=10 format=3 uid="uid://cejoie260lx31"]
 
 [ext_resource type="Script" uid="uid://c8crq3cs46p6g" path="res://scripts/Level.cs" id="1_udnaf"]
 [ext_resource type="PackedScene" uid="uid://d10tin671k03" path="res://scenes/hand.tscn" id="2_04hsl"]
@@ -7,14 +7,22 @@
 [ext_resource type="PackedScene" uid="uid://cngelmldb7dqq" path="res://scenes/discard_pile.tscn" id="4_ppgk2"]
 [ext_resource type="SpriteFrames" uid="uid://pv8myj3lvb8y" path="res://resources/animations/player.tres" id="6_2r41h"]
 [ext_resource type="PackedScene" uid="uid://b7xgj6akffqxm" path="res://scenes/player.tscn" id="7_b121j"]
+[ext_resource type="Texture2D" uid="uid://jf3jwhdghh5u" path="res://resources/sprites/battery.svg" id="8_b121j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b121j"]
 font_size = 32
-font_color = Color(1, 1, 0, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Level" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1600.0
+offset_bottom = -900.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_udnaf")
 
 [node name="BackgroundImage" type="Sprite2D" parent="."]
@@ -23,18 +31,20 @@ scale = Vector2(1.4404762, 1.4404763)
 texture = ExtResource("2_klq6b")
 
 [node name="Hand" parent="." instance=ExtResource("2_04hsl")]
+custom_minimum_size = Vector2(0, 180)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 909.0
-offset_top = 879.0
-offset_right = 909.0
-offset_bottom = 879.0
+offset_left = 403.0
+offset_top = 334.0
+offset_right = 1197.0
+offset_bottom = 898.0
 grow_horizontal = 2
 grow_vertical = 0
+alignment = 1
 
 [node name="Deck" parent="." instance=ExtResource("3_o3n3m")]
 layout_mode = 1
@@ -83,15 +93,6 @@ offset_bottom = 154.0
 text = "[Debug] Go to map
 "
 
-[node name="EnergyLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 174.0
-offset_top = 628.0
-offset_right = 229.0
-offset_bottom = 673.0
-text = "123"
-label_settings = SubResource("LabelSettings_b121j")
-
 [node name="EnemyContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -99,21 +100,22 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 909.0
-offset_top = 469.0
-offset_right = 1573.0
-offset_bottom = 669.0
+offset_left = 911.0
+offset_top = 244.0
+offset_right = 1575.0
+offset_bottom = 444.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 theme_override_constants/separation = 20
 alignment = 2
 
 [node name="Player" parent="." instance=ExtResource("7_b121j")]
 layout_mode = 1
-offset_left = 257.0
-offset_top = 469.0
-offset_right = 467.0
-offset_bottom = 669.0
+offset_left = 259.0
+offset_top = 244.0
+offset_right = 469.0
+offset_bottom = 444.0
 spriteFrames = ExtResource("6_2r41h")
 
 [node name="ArtifactContainer" type="HBoxContainer" parent="."]
@@ -121,5 +123,25 @@ layout_mode = 0
 offset_left = 229.0
 offset_right = 712.0
 offset_bottom = 41.0
+
+[node name="Energy" type="Sprite2D" parent="."]
+position = Vector2(179, 602)
+texture = ExtResource("8_b121j")
+
+[node name="EnergyLabel" type="Label" parent="Energy"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -87.0
+offset_right = -8.5
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "123"
+label_settings = SubResource("LabelSettings_b121j")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="GoToMapButton" to="." method="GoToMap"]

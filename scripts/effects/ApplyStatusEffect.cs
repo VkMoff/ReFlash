@@ -25,7 +25,7 @@ public partial class ApplyStatusEffect : EffectResource
 
 	public ApplyStatusEffect()
 	{
-		
+		this.Description = "Накладывает {StatusValue} {StatusType}";
 	}
     // Нужно что-то сделать с конструкторами
 }

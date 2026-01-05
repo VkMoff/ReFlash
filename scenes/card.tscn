@@ -1,22 +1,123 @@
-[gd_scene load_steps=4 format=3 uid="uid://chxm7ytid0plt"]
+[gd_scene load_steps=7 format=3 uid="uid://chxm7ytid0plt"]
 
 [ext_resource type="Script" uid="uid://b51vbhx0xb4r2" path="res://scripts/Card.cs" id="1_d81rb"]
-[ext_resource type="Resource" uid="uid://bu0nfowtbnkgg" path="res://resources/cards/Attack.tres" id="2_6u4wf"]
+[ext_resource type="Texture2D" uid="uid://jf3jwhdghh5u" path="res://resources/sprites/battery.svg" id="2_ktuci"]
 [ext_resource type="Texture2D" uid="uid://cofrdnnd20fwr" path="res://resources/sprites/icon.svg" id="3_ktuci"]
 
-[node name="Card" type="GridContainer"]
-offset_right = 128.0
-offset_bottom = 155.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktuci"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2520277, 0.25202766, 0.25202748, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_ktuci"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_kg30u"]
+font_size = 18
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[node name="Card" type="Control"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 3
+anchor_left = 0.437
+anchor_top = 0.66700006
+anchor_right = 0.56200004
+anchor_bottom = 1.0
+offset_left = 0.7999878
+offset_top = -0.30004883
+offset_right = 0.79992676
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
 script = ExtResource("1_d81rb")
-CardData = ExtResource("2_6u4wf")
 
-[node name="CostLabel" type="Label" parent="."]
-layout_mode = 2
-size_flags_horizontal = 0
-text = "1"
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ktuci")
 
-[node name="Sprite" type="TextureRect" parent="."]
-layout_mode = 2
+[node name="Sprite" type="TextureRect" parent="Panel"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.42700002
+offset_bottom = -0.1000061
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+mouse_filter = 2
 texture = ExtResource("3_ktuci")
+
+[node name="Cost" type="Control" parent="Panel"]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 10.0
+offset_bottom = 138.0
+mouse_filter = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/Cost"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ktuci")
+
+[node name="CostLabel" type="Label" parent="Panel/Cost"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = -14.0
+offset_right = 7.0
+offset_bottom = 20.0
+size_flags_horizontal = 0
+text = "1"
+label_settings = SubResource("LabelSettings_ktuci")
+
+[node name="NameLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.44300002
+anchor_right = 0.5
+anchor_bottom = 0.53000003
+offset_left = -100.0
+offset_top = 0.099990845
+offset_right = 100.0
+offset_bottom = -1.5258789e-05
+grow_horizontal = 2
+grow_vertical = 2
+text = "Удар"
+label_settings = SubResource("LabelSettings_kg30u")
+horizontal_alignment = 1
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.53000003
+anchor_right = 0.9850001
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -1.5258789e-05
+offset_right = -1.5258789e-05
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[outline_size=2][font_size=14]Наносит 5 урона[/font_size]"
+
+[connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]
+[connection signal="mouse_exited" from="." to="." method="OnMouseExited"]

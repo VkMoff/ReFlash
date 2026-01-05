@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://b53ggpqg4t373"]
 
 [ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/resources/CardResource.cs" id="1_523oi"]
-[ext_resource type="Script" uid="uid://df0u5yf65u8um" path="res://scripts/effects/DamageEffect.cs" id="1_u2ovj"]
-[ext_resource type="Script" uid="uid://b3wfq85tl35o0" path="res://scripts/effects/HealEffect.cs" id="2_fpjf3"]
+[ext_resource type="Script" uid="uid://nytqoc0ix0v0" path="res://scripts/effects/DamageEffect.cs" id="1_u2ovj"]
+[ext_resource type="Script" uid="uid://5uaggvrqvmk7" path="res://scripts/effects/SelfDamageEffect.cs" id="2_fpjf3"]
 [ext_resource type="Texture2D" uid="uid://c3p4v53fyrbav" path="res://resources/sprites/icon_berserk.svg" id="3_fpjf3"]
 
 [sub_resource type="Resource" id="Resource_6jp6x"]
@@ -12,12 +12,14 @@ metadata/_custom_type_script = "uid://df0u5yf65u8um"
 
 [sub_resource type="Resource" id="Resource_6ca0w"]
 script = ExtResource("2_fpjf3")
-healValue = -10
-metadata/_custom_type_script = "uid://b3wfq85tl35o0"
+damageValue = 5
+metadata/_custom_type_script = "uid://5uaggvrqvmk7"
 
 [resource]
 resource_name = "BerserkAttack"
 script = ExtResource("1_523oi")
+Name = "Удар берсерка"
+Description = "Наносит 20 урона всем врагам, отнимает 10 здоровья"
 Texture = ExtResource("3_fpjf3")
 Effects = Array[Object]([SubResource("Resource_6jp6x"), SubResource("Resource_6ca0w")])
 Cost = 2

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://bbjnd3pwhxno4"]
 
-[ext_resource type="Script" uid="uid://df0u5yf65u8um" path="res://scripts/effects/DamageEffect.cs" id="1_j3een"]
+[ext_resource type="Script" uid="uid://nytqoc0ix0v0" path="res://scripts/effects/DamageEffect.cs" id="1_j3een"]
 [ext_resource type="Texture2D" uid="uid://dg4xexwwqn8eq" path="res://resources/sprites/icon_viol.svg" id="2_qhw8n"]
 [ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/resources/CardResource.cs" id="3_3ekij"]
 
@@ -12,6 +12,8 @@ metadata/_custom_type_script = "uid://df0u5yf65u8um"
 [resource]
 resource_name = "Violet"
 script = ExtResource("3_3ekij")
+Name = "Жестокий удар"
+Description = "Наносит 50 урона"
 Texture = ExtResource("2_qhw8n")
 Effects = Array[Object]([SubResource("Resource_eye0n")])
 IsTargeted = true

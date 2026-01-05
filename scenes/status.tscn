@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://8arxmlj4wo75"]
+[gd_scene load_steps=4 format=3 uid="uid://8arxmlj4wo75"]
 
 [ext_resource type="Script" uid="uid://6olcyf6clsit" path="res://scripts/Status.cs" id="1_u3ihd"]
 [ext_resource type="Texture2D" uid="uid://cwxqt8f8wyekq" path="res://resources/sprites/unknown.png" id="2_u3ihd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u3ihd"]
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Status" type="Control"]
 custom_minimum_size = Vector2(30, 32)
@@ -26,3 +30,4 @@ offset_top = 16.0
 offset_right = 56.0
 offset_bottom = 39.0
 text = "2"
+label_settings = SubResource("LabelSettings_u3ihd")
