@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Threading;
 
+[Obsolete("Я не знал о существовании TextureProgressBar, когда писал это")]
 public partial class HealthBar : PanelContainer
 {
 	private ColorRect bar;

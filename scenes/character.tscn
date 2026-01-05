@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dj3y15cjhlbdq"]
+[gd_scene load_steps=6 format=3 uid="uid://dj3y15cjhlbdq"]
 
-[ext_resource type="PackedScene" uid="uid://bqnhos7yvul2" path="res://scenes/health_bar.tscn" id="1_agfs1"]
 [ext_resource type="Script" uid="uid://crm4jsgrofs1t" path="res://scripts/Character.cs" id="1_rkhd4"]
+[ext_resource type="Texture2D" uid="uid://ci7txme63n4qj" path="res://resources/sprites/Rectangle 11 (3).png" id="2_dp8ca"]
+[ext_resource type="Texture2D" uid="uid://bbk3u6jje4l37" path="res://resources/sprites/Rectangle 12.png" id="3_0lw5n"]
 [ext_resource type="SpriteFrames" uid="uid://pv8myj3lvb8y" path="res://resources/animations/player.tres" id="3_lrhn5"]
+[ext_resource type="LabelSettings" uid="uid://xfk4cm3qqcae" path="res://resources/PileLabelSettings.tres" id="4_2cgup"]
 
 [node name="Character" type="Control"]
 custom_minimum_size = Vector2(200, 200)
@@ -20,19 +22,39 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rkhd4")
 
-[node name="HealthBar" parent="." instance=ExtResource("1_agfs1")]
+[node name="HealthBar" type="TextureProgressBar" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -103.5
+offset_left = -100.0
 offset_top = -45.0
-offset_right = 103.5
-offset_bottom = 0.0
+offset_right = 100.0
 grow_horizontal = 2
 grow_vertical = 0
+value = 100.0
+texture_under = ExtResource("2_dp8ca")
+texture_progress = ExtResource("3_0lw5n")
+texture_progress_offset = Vector2(2, 2)
+
+[node name="Label" type="Label" parent="HealthBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -22.5
+offset_right = 61.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "100/100"
+label_settings = ExtResource("4_2cgup")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1

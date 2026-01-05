@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public partial class Character : Control
 {
-	HealthBar healthBar;
+	TextureProgressBar healthBar;
+	Label healthLabel;
 	AnimatedSprite2D sprite;
 	SpriteFrames spriteFrames;
 	HBoxContainer statusContainer;
@@ -33,12 +34,13 @@ public partial class Character : Control
 	{
 		Statuses = [];
 		statusContainer = GetNode<HBoxContainer>("StatusContainer");
+		healthBar = GetNode<TextureProgressBar>("HealthBar");
+		healthLabel = GetNode<Label>("HealthBar/Label");
 
-		healthBar = GetNode<HealthBar>("HealthBar");
 		sprite = GetNode<AnimatedSprite2D>("Control/AnimatedSprite");
 
-		healthBar.SetMaxHp(MaxHp);
-		healthBar.SetHealth(Hp);
+		healthBar.MaxValue = MaxHp;
+		ShowHPValue();
 		sprite.SpriteFrames = spriteFrames;
 		sprite.Play();
 
@@ -57,11 +59,17 @@ public partial class Character : Control
 	{
 		GD.Print($"{this} Changing HP {Hp} + {change}");
 		Hp = Math.Min(Hp + change, MaxHp);
-		healthBar.SetHealth(Hp);
+		ShowHPValue();
 		if (Hp <= 0)
 		{
 			Die();
 		}
+	}
+
+	public void ShowHPValue()
+	{
+		healthLabel.Text = $"{Hp} / {MaxHp}";
+		healthBar.Value = Hp;
 	}
 
 	public void AddStatus(StatusResource statusResource, int value)
@@ -80,7 +88,7 @@ public partial class Character : Control
 			status.Value = value;
 
 			statusContainer.AddChild(status);
-			
+
 			status.SetResource(statusResource);
 
 			Statuses[statusType] = status;
