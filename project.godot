@@ -38,6 +38,7 @@ folder_colors={
 "res://resources/encounters/": "purple",
 "res://resources/enemies/": "red",
 "res://resources/sprites/": "orange",
+"res://resources/styles/": "pink",
 "res://scenes/": "red",
 "res://scripts/": "blue"
 }

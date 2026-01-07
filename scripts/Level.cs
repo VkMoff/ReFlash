@@ -66,11 +66,12 @@ public partial class Level : Control
 		// Enemies[0].AddStatus(new PoisonStatus(), 5);
 		// Player.AddStatus(new SpikesStatus(), 3);
 		// Player.AddStatus(new RegenStatus(), 10);
-		Artifact testArtifact = artifactScene.Instantiate<Artifact>();
-		artifactContainer.AddChild(testArtifact);
-		testArtifact.SetArtifact(new PoisonSpray());
-		testArtifact.ArtifactResource.Init(this);
-		testArtifact.UpdateTexture();
+		
+		// Artifact testArtifact = artifactScene.Instantiate<Artifact>();
+		// artifactContainer.AddChild(testArtifact);
+		// testArtifact.SetArtifact(new PoisonSpray());
+		// testArtifact.ArtifactResource.Init(this);
+		// testArtifact.UpdateTexture();
 
 
 		TurnStart?.Invoke();

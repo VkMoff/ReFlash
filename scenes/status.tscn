@@ -2,10 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6olcyf6clsit" path="res://scripts/Status.cs" id="1_u3ihd"]
 [ext_resource type="Texture2D" uid="uid://cwxqt8f8wyekq" path="res://resources/sprites/unknown.png" id="2_u3ihd"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_u3ihd"]
-outline_size = 2
-outline_color = Color(0, 0, 0, 1)
+[ext_resource type="LabelSettings" uid="uid://cdwtgwcu7kv7r" path="res://resources/styles/baseLabelSettings.tres" id="3_rvgb4"]
 
 [node name="Status" type="Control"]
 custom_minimum_size = Vector2(30, 32)
@@ -30,4 +27,4 @@ offset_top = 16.0
 offset_right = 56.0
 offset_bottom = 39.0
 text = "2"
-label_settings = SubResource("LabelSettings_u3ihd")
+label_settings = ExtResource("3_rvgb4")

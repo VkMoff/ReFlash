@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b51vbhx0xb4r2" path="res://scripts/Card.cs" id="1_d81rb"]
 [ext_resource type="Texture2D" uid="uid://jf3jwhdghh5u" path="res://resources/sprites/battery.svg" id="2_ktuci"]
 [ext_resource type="Texture2D" uid="uid://cofrdnnd20fwr" path="res://resources/sprites/icon.svg" id="3_ktuci"]
+[ext_resource type="LabelSettings" uid="uid://cdwtgwcu7kv7r" path="res://resources/styles/baseLabelSettings.tres" id="4_kg30u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktuci"]
 border_width_left = 2
@@ -17,12 +18,6 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_ktuci"]
 font_size = 24
-
-[sub_resource type="LabelSettings" id="LabelSettings_kg30u"]
-font_size = 18
-outline_size = 2
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 0
 
 [node name="Card" type="Control"]
 custom_minimum_size = Vector2(200, 300)
@@ -100,7 +95,7 @@ offset_bottom = -1.5258789e-05
 grow_horizontal = 2
 grow_vertical = 2
 text = "Удар"
-label_settings = SubResource("LabelSettings_kg30u")
+label_settings = ExtResource("4_kg30u")
 horizontal_alignment = 1
 
 [node name="DescriptionLabel" type="RichTextLabel" parent="Panel"]

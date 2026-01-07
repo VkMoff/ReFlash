@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cdwtgwcu7kv7r"]
+
+[ext_resource type="FontFile" uid="uid://cxe7kfddmqoln" path="res://resources/styles/Play-Regular.ttf" id="1_3ty4u"]
+
+[resource]
+font = ExtResource("1_3ty4u")
+font_size = 20
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
