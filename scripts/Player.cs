@@ -10,6 +10,7 @@ public partial class Player : Character
 		level = GetParent<Level>();
 		PlayerData playerData = PlayerData.Instance;
 		Init(playerData.MaxHP, spriteFrames);
+		GetNode<Label>("NameLabel").Text = "Игрок";
 		playerData.HealthChanged += (int hp) =>
 		{
 			Hp = hp;

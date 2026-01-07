@@ -44,7 +44,7 @@ public partial class Enemy : Character
 	{
 		base.Init(enemyResource.MaxHP, enemyResource.Animation);
 		actionPatterns = enemyResource.ActionPatterns;
-
+		GetNode<Label>("NameLabel").Text = enemyResource.Name;
 	}
 
 	public void MouseEnter()

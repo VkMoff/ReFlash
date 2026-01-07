@@ -7,6 +7,9 @@
 [node name="Enemy" instance=ExtResource("1_md0e3")]
 script = ExtResource("2_4ra3w")
 
+[node name="Control" parent="." index="0"]
+mouse_filter = 2
+
 [node name="NextActionSprite" type="Sprite2D" parent="." index="2"]
 position = Vector2(105, -19)
 texture = ExtResource("3_4ra3w")
@@ -16,3 +19,6 @@ offset_left = 5.0
 offset_top = 7.0
 offset_right = 45.0
 offset_bottom = 30.0
+
+[connection signal="mouse_entered" from="." to="." method="MouseEnter"]
+[connection signal="mouse_exited" from="." to="." method="MouseExit"]

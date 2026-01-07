@@ -6,34 +6,29 @@
 [ext_resource type="SpriteFrames" uid="uid://pv8myj3lvb8y" path="res://resources/animations/player.tres" id="3_lrhn5"]
 [ext_resource type="LabelSettings" uid="uid://xfk4cm3qqcae" path="res://resources/PileLabelSettings.tres" id="4_2cgup"]
 
-[node name="Character" type="Control"]
+[node name="Character" type="VBoxContainer"]
 custom_minimum_size = Vector2(200, 200)
-layout_mode = 3
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -100.0
-offset_right = 110.0
-offset_bottom = 100.0
+offset_right = 100.0
+offset_bottom = 230.0
 grow_horizontal = 2
-grow_vertical = 2
+alignment = 1
 script = ExtResource("1_rkhd4")
 
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(100, 75)
+sprite_frames = ExtResource("3_lrhn5")
+frame_progress = 0.664454
+
 [node name="HealthBar" type="TextureProgressBar" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -45.0
-offset_right = 100.0
-grow_horizontal = 2
-grow_vertical = 0
+layout_mode = 2
 value = 100.0
 texture_under = ExtResource("2_dp8ca")
 texture_progress = ExtResource("3_0lw5n")
@@ -56,25 +51,10 @@ size_flags_horizontal = 4
 text = "100/100"
 label_settings = ExtResource("4_2cgup")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-grow_horizontal = 2
-
-[node name="AnimatedSprite" type="AnimatedSprite2D" parent="Control"]
-position = Vector2(0, 75)
-sprite_frames = ExtResource("3_lrhn5")
-frame_progress = 0.664454
-
 [node name="StatusContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.010000001
-anchor_top = 1.0
-anchor_right = 0.010000001
-anchor_bottom = 1.0
-offset_left = -0.10000014
-offset_right = 90.9
-offset_bottom = 40.0
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 2
+text = "CharacterName"
+horizontal_alignment = 1
