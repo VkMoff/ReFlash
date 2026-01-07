@@ -47,7 +47,7 @@ public partial class Card : Control, ICloneable
 			{
 				descriptionLabel.Text += effectResource.Description
 				.Replace("{StatusValue}", $"[color=yellow]{(effectResource as ApplyStatusEffect).Value}[/color]")
-				.Replace("{StatusType}", $"[color=yellow]{(effectResource as ApplyStatusEffect).StatusToApply.GetType()}[/color]");
+				.Replace("{StatusType}", $"[color=yellow]{(effectResource as ApplyStatusEffect).StatusToApply.Name}[/color]");
 			}
 			if (effectResource is SelfDamageEffect)
 			{

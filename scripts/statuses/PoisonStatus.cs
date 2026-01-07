@@ -6,6 +6,7 @@ public partial class PoisonStatus : StatusResource
     public PoisonStatus()
     {
         StatusTexture = GD.Load<Texture2D>("res://resources/sprites/statuses/status_poison.svg");
+        Name = "Яд";
     }
     public override void OnTurnEnd(Status status, Character[] targets)
     {

@@ -39,6 +39,7 @@ public partial class Status : Control
 	{
 		this.statusResource = statusResource;
 		statusSprite.Texture = statusResource.StatusTexture;
+		TooltipText = this.statusResource.Name;
 	}
 	public void AddValue(int additionalValue)
 	{

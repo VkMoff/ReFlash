@@ -6,6 +6,7 @@ public partial class RegenStatus : StatusResource
     public RegenStatus()
     {
         StatusTexture = GD.Load<Texture2D>("res://resources/sprites/statuses/status_regen.svg");
+        Name = "Регенерация";
     }
     public override void OnTurnEnd(Status status, Character[] targets)
     {
