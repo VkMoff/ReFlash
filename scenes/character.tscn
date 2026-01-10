@@ -16,12 +16,14 @@ offset_left = -100.0
 offset_right = 100.0
 offset_bottom = 230.0
 grow_horizontal = 2
+size_flags_vertical = 0
 alignment = 1
 script = ExtResource("1_rkhd4")
 
 [node name="Control" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="Control"]
 position = Vector2(100, 75)
@@ -52,11 +54,11 @@ size_flags_horizontal = 4
 text = "100/100"
 label_settings = ExtResource("4_2cgup")
 
-[node name="StatusContainer" type="HBoxContainer" parent="."]
-layout_mode = 2
-
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 2
 text = "CharacterName"
 label_settings = ExtResource("6_0lw5n")
 horizontal_alignment = 1
+
+[node name="StatusContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
