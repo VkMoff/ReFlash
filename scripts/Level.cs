@@ -69,7 +69,7 @@ public partial class Level : Control
 		
 		// Artifact testArtifact = artifactScene.Instantiate<Artifact>();
 		// artifactContainer.AddChild(testArtifact);
-		// testArtifact.SetArtifact(new PoisonSpray());
+		// testArtifact.SetArtifact(new HourGlass());
 		// testArtifact.ArtifactResource.Init(this);
 		// testArtifact.UpdateTexture();
 
