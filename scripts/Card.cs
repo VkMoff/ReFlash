@@ -37,6 +37,10 @@ public partial class Card : Control, ICloneable
 			{
 				descriptionLabel.Text += effectResource.Description
 				.Replace("{DamageValue}", $"[color=red]{(effectResource as DamageEffect).Damage}[/color]");
+				if (!CardData.IsTargeted)
+				{
+					descriptionLabel.Text += " всем врагам";
+				}
 			}
 			if (effectResource is HealEffect)
 			{
