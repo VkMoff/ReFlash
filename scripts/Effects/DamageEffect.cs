@@ -11,9 +11,9 @@ public partial class DamageEffect : EffectResource
 		{
 			target.ChangeHP(-Damage);
 			foreach (var (statusType, status) in target.Statuses)
-            {
-                status.OnDamageReceive(target, caster);
-            }
+			{
+				status.OnDamageReceive(target, caster);
+			}
 		}
 	}
 
