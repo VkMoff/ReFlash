@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcfx5esbh0n7m"]
+
+[ext_resource type="Texture2D" uid="uid://desmhvdy4dkfl" path="res://resources/sprites/menu_button.svg" id="1_hcee0"]
+[ext_resource type="Script" uid="uid://barsnc18j7uew" path="res://scripts/TopPanelUI.cs" id="1_iuy2t"]
+[ext_resource type="FontFile" uid="uid://cxe7kfddmqoln" path="res://resources/styles/Play-Regular.ttf" id="2_ikc7c"]
+[ext_resource type="Texture2D" uid="uid://w3mijiw71dyq" path="res://resources/sprites/heart.svg" id="3_iuy2t"]
+[ext_resource type="Texture2D" uid="uid://dnva13t8vlc5b" path="res://resources/sprites/gold.svg" id="4_ikc7c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wowjt"]
+font = ExtResource("2_ikc7c")
+font_size = 32
+font_color = Color(1, 0, 0, 1)
+outline_color = Color(0.24705882, 0.050980393, 0.050980393, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_iuy2t"]
+font = ExtResource("2_ikc7c")
+font_size = 32
+font_color = Color(0.9764706, 0.76862746, 0.20784314, 1)
+outline_size = 2
+outline_color = Color(0.8156863, 0.6509804, 0.19607843, 1)
+
+[node name="TopPanelUI" type="Control"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 72.0
+grow_horizontal = 2
+script = ExtResource("1_iuy2t")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11764706, 0.11764706, 0.11764706, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 831.0
+offset_bottom = 72.0
+theme_override_constants/separation = 10
+
+[node name="MenuButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("1_hcee0")
+icon_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_iuy2t")
+
+[node name="HealthLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "100/100"
+label_settings = SubResource("LabelSettings_wowjt")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_ikc7c")
+
+[node name="MoneyLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_iuy2t")

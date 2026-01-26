@@ -10,26 +10,10 @@ public partial class Character : VBoxContainer
 	SpriteFrames spriteFrames;
 	HBoxContainer statusContainer;
 	protected Level level;
-	public bool IsAlive
-	{
-		get;
-		private set;
-	}
-	public int MaxHp
-	{
-		get;
-		private set;
-	}
-	public int Hp
-	{
-		get;
-		protected set;
-	}
-	public Dictionary<Type, Status> Statuses
-	{
-		get;
-		private set;
-	}
+	public bool IsAlive	{ get; private set; }
+	public int MaxHp { get; private set; }
+	public int Hp { get; protected set;	}
+	public Dictionary<Type, Status> Statuses { get;	private set; }
 	public override void _Ready() //Общая логика анимации
 	{
 		Statuses = [];
@@ -55,7 +39,7 @@ public partial class Character : VBoxContainer
 		this.spriteFrames = spriteFrames;
 	}
 
-	public void ChangeHP(int change) //Общая логика работы с хп
+	public virtual void ChangeHP(int change) //Общая логика работы с хп
 	{
 		GD.Print($"{this} Changing HP {Hp} + {change}");
 		Hp = Math.Min(Hp + change, MaxHp);

@@ -6,7 +6,7 @@ public partial class Level : Control
 {
 	public Deck Deck { get; private set; }
 	public Hand Hand { get; private set; }
-	public Character Player { get; private set; }
+	public Player Player { get; private set; }
 	public List<Character> Enemies { get; private set; }
 	public Character TargetEnemy { get; set; }
 	public int Energy { get; private set; }
@@ -18,6 +18,7 @@ public partial class Level : Control
 	private HBoxContainer enemyContainer;
 	private HBoxContainer artifactContainer;
 	private PackedScene artifactScene;
+	private TopPanelUI topPanelUi;
 	public event Action TurnStart, TurnEnd;
 
 
@@ -27,7 +28,7 @@ public partial class Level : Control
 		artifactContainer = GetNode<HBoxContainer>("ArtifactContainer");
 		Deck = GetNode<Deck>("Deck");
 		Hand = GetNode<Hand>("Hand");
-		Player = GetNode<Character>("Player");
+		Player = GetNode<Player>("Player");
 		DiscardPile = GetNode<DiscardPile>("DiscardPile");
 
 		artifactScene = GD.Load<PackedScene>("res://scenes/artifact.tscn");
@@ -49,6 +50,9 @@ public partial class Level : Control
 		UpdateEnergyLabel();
 		DefaultHandSize = 5;
 		PullCardFromDeck(DefaultHandSize);
+
+		topPanelUi = GetNode<TopPanelUI>("TopPanelUI"); 
+		Player.SetHp(PlayerData.Instance.HP);//такое себе
 	}
 	public void InitRoom(RoomResource roomResource)
 	{
@@ -195,6 +199,7 @@ public partial class Level : Control
 	public void Win()
 	{
 		GD.Print("LEVEL COMPLETED!");
+		PlayerData.Instance.AddGold(50);
 		SceneManager.Instance.GoToMap();
 	}
 	public void GoToMap()

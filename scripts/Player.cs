@@ -17,6 +17,23 @@ public partial class Player : Character
 		};
 		base._Ready();
 	}
+	public override void ChangeHP(int change)
+	{
+		base.ChangeHP(change);
+		PlayerData.Instance.HP = Hp;
+	}
+	public void SetHp(int hp)
+	{
+		if (hp <= MaxHp && hp >= 0)
+		{
+			Hp = hp;
+			ShowHPValue();
+		}
+		else
+		{
+			GD.Print("Incorrect HP value");
+		}
+	}
 	public override void Die()
 	{
 		base.Die();

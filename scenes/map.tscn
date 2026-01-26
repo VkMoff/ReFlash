@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://471mfq31k34c"]
+[gd_scene load_steps=4 format=3 uid="uid://471mfq31k34c"]
 
 [ext_resource type="Script" uid="uid://om1lxvybbnq" path="res://scripts/MapMenu.cs" id="1_paxxb"]
 [ext_resource type="Texture2D" uid="uid://b14d8rags4ckb" path="res://resources/sprites/background_1.jpg" id="2_paxxb"]
+[ext_resource type="PackedScene" uid="uid://bcfx5esbh0n7m" path="res://scenes/top_panel_ui.tscn" id="3_gldc4"]
 
 [node name="MapMenu" type="Control"]
 layout_mode = 3
@@ -17,10 +18,14 @@ position = Vector2(1129.2063, 533.5)
 scale = Vector2(1.4404762, 1.4404763)
 texture = ExtResource("2_paxxb")
 
+[node name="TopPanelUI" parent="." instance=ExtResource("3_gldc4")]
+layout_mode = 1
+
 [node name="LevelsBackground" type="ColorRect" parent="."]
 layout_mode = 0
+offset_top = 80.0
 offset_right = 1600.0
-offset_bottom = 224.0
+offset_bottom = 304.0
 color = Color(0, 0, 0, 0.5019608)
 
 [node name="MapLevels" type="HBoxContainer" parent="LevelsBackground"]
