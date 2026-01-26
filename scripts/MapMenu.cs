@@ -8,12 +8,16 @@ public partial class MapMenu : Control
 	{
 		LevelButton levelButton = levelButtonScene.Instantiate<LevelButton>();
 		levelButton.Init(RoomTypes.EnemyRoom, GD.Load<RoomResource>("res://resources/encounters/rooms/test_room.tres"));
-		
+
 		LevelButton shopButton = levelButtonScene.Instantiate<LevelButton>();
 		shopButton.Init(RoomTypes.Shop, GD.Load<ShopResource>("res://resources/encounters/shops/test_shop.tres"));
 
-		GetNode("MapLevels/LevelSelectContainer").AddChild(levelButton);
-		GetNode("MapLevels/LevelSelectContainer").AddChild(shopButton);
+		LevelButton shopButton2 = levelButtonScene.Instantiate<LevelButton>();
+		shopButton2.Init(RoomTypes.Shop, GD.Load<ShopResource>("res://resources/encounters/shops/test_shop.tres"));
+
+		GetNode("LevelsBackground/MapLevels/LevelSelectContainer").AddChild(levelButton);
+		GetNode("LevelsBackground/MapLevels/LevelSelectContainer").AddChild(shopButton);
+		GetNode("LevelsBackground/MapLevels/LevelSelectContainer").AddChild(shopButton2);
 	}
 
 	public void StartEncounter(EncounterResource encounterResource)
@@ -23,8 +27,8 @@ public partial class MapMenu : Control
 			SceneManager.Instance.LoadLevel(encounterResource as RoomResource);
 		}
 		else if (encounterResource is ShopResource)
-				{
-						SceneManager.Instance.LoadShop();
-				}
+		{
+			SceneManager.Instance.LoadShop();
+		}
 	}
 }

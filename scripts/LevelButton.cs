@@ -27,7 +27,7 @@ public partial class LevelButton : Button
 	}
 	public override void _Ready()
 	{
-		mapMenu = GetNode<MapMenu>("../../..");
+		mapMenu = GetTree().Root.GetNode<MapMenu>("MapMenu");
 		Pressed += () =>
 		{
 			mapMenu.StartEncounter(encounterResource);
