@@ -46,7 +46,7 @@ public partial class Level : Control
 		Enemies = new();
 
 		Energy = 3;
-		energyLabel = GetNode<Label>("Energy/EnergyLabel");
+		energyLabel = GetNode<Label>("EnergyContainer/Energy/EnergyLabel");
 		UpdateEnergyLabel();
 		DefaultHandSize = 5;
 		PullCardFromDeck(DefaultHandSize);
