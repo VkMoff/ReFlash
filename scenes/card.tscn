@@ -32,6 +32,7 @@ offset_right = 0.79992676
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
+mouse_filter = 1
 mouse_default_cursor_shape = 2
 script = ExtResource("1_d81rb")
 
@@ -113,6 +114,3 @@ grow_vertical = 2
 mouse_filter = 2
 bbcode_enabled = true
 text = "[outline_size=2][font_size=14]Наносит 5 урона[/font_size]"
-
-[connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]
-[connection signal="mouse_exited" from="." to="." method="OnMouseExited"]

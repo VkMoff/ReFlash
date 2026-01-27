@@ -36,8 +36,8 @@ public partial class Enemy : Character
 		nextActions = GetActions(currentActionIndex);
 		SetDamageLabel();
 
-		MouseEntered += MouseEnter;
-		MouseExited += MouseExit;
+		// MouseEntered += MouseEnter;
+		// MouseExited += MouseExit;
 	}
 
 	public void Init(EnemyResource enemyResource)

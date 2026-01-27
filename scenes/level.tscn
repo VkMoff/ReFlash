@@ -30,6 +30,21 @@ position = Vector2(1129.2063, 533.5)
 scale = Vector2(1.4404762, 1.4404763)
 texture = ExtResource("2_klq6b")
 
+[node name="Hand" parent="." instance=ExtResource("2_04hsl")]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -397.0
+offset_top = -564.0
+offset_right = 397.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
 [node name="Deck" parent="." instance=ExtResource("3_o3n3m")]
 layout_mode = 1
 anchors_preset = 2
@@ -118,21 +133,6 @@ offset_bottom = 41.0
 
 [node name="TopPanelUI" parent="." instance=ExtResource("9_8c41q")]
 layout_mode = 1
-
-[node name="Hand" parent="." instance=ExtResource("2_04hsl")]
-custom_minimum_size = Vector2(0, 180)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -397.0
-offset_top = -564.0
-offset_right = 397.0
-grow_horizontal = 2
-grow_vertical = 0
-alignment = 1
 
 [node name="EnergyContainer" type="Control" parent="."]
 layout_mode = 1

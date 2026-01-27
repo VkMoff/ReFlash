@@ -47,7 +47,7 @@ public partial class SceneManager : Node
 		GetTree().ChangeSceneToPacked(map);
 	}
 	public void LoadShop()
-		{
-				GetTree().ChangeSceneToPacked(shop);
-		}
+	{
+		GetTree().ChangeSceneToPacked(shop);
+	}
 }
