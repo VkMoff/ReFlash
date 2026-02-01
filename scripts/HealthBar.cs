@@ -1,27 +1,41 @@
 using Godot;
-using System;
-using System.Threading;
+using Microsoft.VisualBasic;
 
-[Obsolete("Я не знал о существовании TextureProgressBar, когда писал это")]
 public partial class HealthBar : PanelContainer
 {
+	private int maxValue, value;
+	public int MaxValue
+	{
+		get 
+		{
+			return maxValue;
+		}
+		set
+		{
+			maxValue = value;
+		}
+	}
+	public int Value
+	{
+		get
+		{
+			return Value;
+		}
+		set
+		{
+			this.value = value;
+			bar.CreateTween().TweenProperty(bar, "custom_minimum_size", new Vector2((float)this.value / maxValue * Size.X, 0), 0.2f);
+			// bar.CustomMinimumSize = new((float)this.value / maxValue * Size.X, Size.Y);
+			label.Text = $"{this.value}/{maxValue}";
+		}
+	}
 	private ColorRect bar;
-	private int maxHp = 100; //ТЕСТ
 	private Label label;
 	public override void _Ready()
 	{
 		bar = GetNode<ColorRect>("Bar");
-		label = GetNode<Label>("Label");
-	}
-	public void SetMaxHp(int maxHp)
-	{
-		this.maxHp = maxHp;
-		
-	}
-	public void SetHealth(int hp)
-	{
 		bar.Color = new("#ff0000");
-		bar.CustomMinimumSize = new((float)hp / maxHp * Size.X, 20);
-		label.Text = $"{hp}/{maxHp}";
+		label = GetNode<Label>("Label");
+		bar.CustomMinimumSize = new Vector2(Size.X, 0);
 	}
 }

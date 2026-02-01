@@ -27,7 +27,7 @@ public partial class Player : Character
 		if (hp <= MaxHp && hp >= 0)
 		{
 			Hp = hp;
-			ShowHPValue();
+			healthBar.Value = hp;
 		}
 		else
 		{

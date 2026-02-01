@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public partial class Character : VBoxContainer
 {
-	TextureProgressBar healthBar;
+	protected HealthBar healthBar;
 	Label healthLabel;
 	AnimatedSprite2D sprite;
 	SpriteFrames spriteFrames;
@@ -18,13 +18,14 @@ public partial class Character : VBoxContainer
 	{
 		Statuses = [];
 		statusContainer = GetNode<HBoxContainer>("StatusContainer");
-		healthBar = GetNode<TextureProgressBar>("HealthBar");
-		healthLabel = GetNode<Label>("HealthBar/Label");
+		healthBar = GetNode<HealthBar>("HealthBar");
+		// healthLabel = GetNode<Label>("HealthBar/Label");
 
 		sprite = GetNode<AnimatedSprite2D>("Control/AnimatedSprite");
 
 		healthBar.MaxValue = MaxHp;
-		ShowHPValue();
+		healthBar.Value = Hp;
+
 		sprite.SpriteFrames = spriteFrames;
 		sprite.Play();
 
@@ -43,18 +44,13 @@ public partial class Character : VBoxContainer
 	{
 		GD.Print($"{this} Changing HP {Hp} + {change}");
 		Hp = Math.Min(Hp + change, MaxHp);
-		ShowHPValue();
+		healthBar.Value = Hp;
 		if (Hp <= 0)
 		{
 			Die();
 		}
 	}
 
-	public void ShowHPValue()
-	{
-		healthLabel.Text = $"{Hp} / {MaxHp}";
-		healthBar.Value = Hp;
-	}
 
 	public void AddStatus(StatusResource statusResource, int value)
 	{
