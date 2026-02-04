@@ -26,21 +26,31 @@ script = ExtResource("1_ouf4f")
 
 [node name="Exit button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 27.0
-offset_top = 190.0
-offset_right = 664.0
-offset_bottom = 297.0
+offset_left = 30.0
+offset_top = 200.0
+offset_right = 667.0
+offset_bottom = 307.0
 theme = SubResource("Theme_h61rw")
 text = "EXIT"
 
 [node name="Start button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 27.0
-offset_top = 37.0
-offset_right = 664.0
-offset_bottom = 144.0
+offset_left = 30.0
+offset_top = 60.0
+offset_right = 667.0
+offset_bottom = 167.0
 theme = SubResource("Theme_h61rw")
 text = "START SUFFERING"
 
+[node name="CardEditorButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 340.0
+offset_right = 667.0
+offset_bottom = 447.0
+theme = SubResource("Theme_h61rw")
+text = "CARD EDITOR"
+
 [connection signal="pressed" from="Exit button" to="." method="ExitGame"]
 [connection signal="pressed" from="Start button" to="." method="StartGame"]
+[connection signal="pressed" from="CardEditorButton" to="." method="OpenCardEditor"]

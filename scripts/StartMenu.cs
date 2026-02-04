@@ -14,4 +14,8 @@ public partial class StartMenu : Control
 	{
 		GetTree().Quit();
 	}
+	public void OpenCardEditor()
+	{
+		SceneManager.Instance.GoToCardEditor();
+	}
 }

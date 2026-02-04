@@ -13,6 +13,7 @@ public partial class SceneManager : Node
 	RoomResource testRoom = GD.Load<RoomResource>("res://resources/encounters/rooms/test_room.tres");
 	PackedScene map = GD.Load<PackedScene>("res://scenes/map.tscn");
 	PackedScene shop = GD.Load<PackedScene>("res://scenes/shop.tscn");
+	PackedScene cardEditor = GD.Load<PackedScene>("res://scenes/card_editor.tscn");
 
 	public override void _Ready()
 	{
@@ -49,5 +50,9 @@ public partial class SceneManager : Node
 	public void LoadShop()
 	{
 		GetTree().ChangeSceneToPacked(shop);
+	}
+	public void GoToCardEditor()
+	{
+		GetTree().ChangeSceneToPacked(cardEditor);
 	}
 }
