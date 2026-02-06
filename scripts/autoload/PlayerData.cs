@@ -30,8 +30,6 @@ public partial class PlayerData : Node
     public event Action<int> HealthChanged;
     public event Action<int> GoldChanged;
 
-
-
     public override void _Ready()
     {
         if (Instance is null)
@@ -43,26 +41,26 @@ public partial class PlayerData : Node
         HP = MaxHP;
         Deck = new();
 
-        CardResource damageResource = GD.Load<CardResource>("res://resources/cards/Attack.tres"); //Вынести загрузку в синглтон? Мб словарь карт?
-        CardResource healResource = GD.Load<CardResource>("res://resources/cards/Heal.tres");
-        CardResource heavyAttackResource = GD.Load<CardResource>("res://resources/cards/HeavyAttack.tres");
-        CardResource berserkAttackResource = GD.Load<CardResource>("res://resources/cards/BerserkAttack.tres");
-        CardResource violetAttack = GD.Load<CardResource>("res://resources/cards/Violet.tres");
-        CardResource poison = GD.Load<CardResource>("res://resources/cards/Poison.tres");
+        PackedScene cardScene = GD.Load<PackedScene>("res://scenes/card.tscn");
+        
+        foreach (Card card in CardRegistry.Instance.Cards)
+        {
+            Deck.Add(card.Clone());
+            Deck.Add(card.Clone());
+        }
 
-        CardFactory cardFactory = new();
 
-        Deck.Add(CardFactory.CreateCard(damageResource));
-        Deck.Add(CardFactory.CreateCard(damageResource));
-        Deck.Add(CardFactory.CreateCard(healResource));
-        Deck.Add(CardFactory.CreateCard(healResource));
-        Deck.Add(CardFactory.CreateCard(heavyAttackResource));
-        Deck.Add(CardFactory.CreateCard(heavyAttackResource));
-        Deck.Add(CardFactory.CreateCard(berserkAttackResource));
-        Deck.Add(CardFactory.CreateCard(berserkAttackResource));
-        Deck.Add(CardFactory.CreateCard(violetAttack));
-        Deck.Add(CardFactory.CreateCard(poison));
-        Deck.Add(CardFactory.CreateCard(poison));
+        // Deck.Add(CardFactory.CreateCard(damageResource));
+        // Deck.Add(CardFactory.CreateCard(damageResource));
+        // Deck.Add(CardFactory.CreateCard(healResource));
+        // Deck.Add(CardFactory.CreateCard(healResource));
+        // Deck.Add(CardFactory.CreateCard(heavyAttackResource));
+        // Deck.Add(CardFactory.CreateCard(heavyAttackResource));
+        // Deck.Add(CardFactory.CreateCard(berserkAttackResource));
+        // Deck.Add(CardFactory.CreateCard(berserkAttackResource));
+        // Deck.Add(CardFactory.CreateCard(violetAttack));
+        // Deck.Add(CardFactory.CreateCard(poison));
+        // Deck.Add(CardFactory.CreateCard(poison));
 
     }
 

@@ -20,7 +20,7 @@ public partial class Deck : Control
 		Cards = new();
 		foreach (Card card in PlayerData.Instance.Deck)
 		{
-			Cards.Add((Card)card.Clone()); //Возможно вызывает утечку памяти
+			Cards.Add(card.Clone()); //Возможно вызывает утечку памяти
 		}
 		// Cards.AddRange(PlayerData.Instance.Deck);
 		// GD.Print("Cards in deck: " + Cards.Count);

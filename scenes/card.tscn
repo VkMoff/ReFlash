@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://chxm7ytid0plt"]
 
-[ext_resource type="Script" uid="uid://b51vbhx0xb4r2" path="res://scripts/Card.cs" id="1_d81rb"]
+[ext_resource type="Script" uid="uid://dujd0jyntafvq" path="res://scripts/Card.cs" id="1_d81rb"]
 [ext_resource type="Texture2D" uid="uid://jf3jwhdghh5u" path="res://resources/sprites/battery.svg" id="2_ktuci"]
 [ext_resource type="Texture2D" uid="uid://cofrdnnd20fwr" path="res://resources/sprites/icon.svg" id="3_ktuci"]
 [ext_resource type="LabelSettings" uid="uid://cdwtgwcu7kv7r" path="res://resources/styles/baseLabelSettings.tres" id="4_kg30u"]

@@ -1,22 +1,27 @@
 using Godot;
+using Godot.Collections;
 using System;
 
-public partial class Card : Control, ICloneable
+[GlobalClass]
+public partial class Card : Control
 {
-	[Export] public CardResource CardData;
+	// [Export] public CardResource CardData;
 
 	private bool isHovered;
 	private bool isDragging;
 	private Vector2 dragOffset;
 	private Vector2 originalScale, originalPos, originalSize;
-	private Level level;
-	private Label costLabel, nameLabel;
-	private RichTextLabel descriptionLabel;
-	public int Cost
-	{
-		get;
-		private set;
-	}
+	protected Level level;
+	protected Label costLabel, nameLabel;
+	protected RichTextLabel descriptionLabel;
+	public int Cost	{ get; protected set; }
+	public bool IsTargeted { get; protected set; }
+	public string CardName { get; protected set; }
+	public string Description { get; protected set; }
+	public Texture2D CardTexture { get; protected set; }
+	public Array<EffectResource> Effects;
+	public delegate void Play(Character caster, Character[] targets);
+	Play play;
 	public override void _Ready()
 	{
 		level = GetParent().GetParent<Level>();
@@ -28,48 +33,24 @@ public partial class Card : Control, ICloneable
 		originalSize = CustomMinimumSize;
 
 
-		nameLabel.Text = CardData.Name;
-		descriptionLabel.Text = "[outline_size=2]";
-
-		foreach (EffectResource effectResource in CardData.Effects)
-		{
-			if (effectResource is DamageEffect)
-			{
-				descriptionLabel.Text += effectResource.Description
-				.Replace("{DamageValue}", $"[color=red]{(effectResource as DamageEffect).Damage}[/color]");
-				if (!CardData.IsTargeted)
-				{
-					descriptionLabel.Text += " всем врагам";
-				}
-			}
-			if (effectResource is HealEffect)
-			{
-				descriptionLabel.Text += effectResource.Description
-				.Replace("{HealValue}", $"[color=green]{(effectResource as HealEffect).Value}[/color]");
-			}
-			if (effectResource is ApplyStatusEffect)
-			{
-				descriptionLabel.Text += effectResource.Description
-				.Replace("{StatusValue}", $"[color=yellow]{(effectResource as ApplyStatusEffect).Value}[/color]")
-				.Replace("{StatusType}", $"[color=yellow]{(effectResource as ApplyStatusEffect).StatusToApply.Name}[/color]");
-			}
-			if (effectResource is SelfDamageEffect)
-			{
-				descriptionLabel.Text += effectResource.Description
-				.Replace("{DamageValue}", $"[color=red]{(effectResource as SelfDamageEffect).Damage}[/color]");
-			}
-			descriptionLabel.Text += "\n";
-		}
+		nameLabel.Text = CardName;
+		descriptionLabel.Text = "[outline_size=2]" + Description;
+		GetNode<TextureRect>("Panel/Sprite").Texture = CardTexture;
 
 		MouseEntered += OnMouseEntered;
 		MouseExited += OnMouseExited;
 	}
 
-	public void Init(CardResource resource)
+	public Card Init(string cardName, Texture2D texture, Play onplay, string description = "what?", int cost = 0, bool isTargeted = true)
 	{
-		CardData = resource;
-		Cost = CardData.Cost; //Сделать для других свойств, т.к. CardData - ссылка, улучшения не будут работать
-		GetNode<TextureRect>("Panel/Sprite").Texture = CardData.Texture;
+		CardName = cardName;
+		CardTexture = texture;
+		play += onplay;
+		Description = description;
+		Cost = cost;
+		IsTargeted = isTargeted;
+
+		return this;
 	}
 
 	private void OnMouseEntered()
@@ -132,7 +113,7 @@ public partial class Card : Control, ICloneable
 		isDragging = false;
 		ZIndex = 0; // Возвращаем исходный ZIndex
 
-		if (level.TargetEnemy is not null || (!CardData.IsTargeted && GetGlobalMousePosition().Y < 500)) //заглушка
+		if (level.TargetEnemy is not null || (!IsTargeted && GetGlobalMousePosition().Y < 500)) //заглушка
 		{
 			Scale = originalScale;
 			CustomMinimumSize = originalSize;
@@ -153,12 +134,7 @@ public partial class Card : Control, ICloneable
 			return;
 		}
 		Discard();
-
-		foreach (EffectResource effect in CardData.Effects)
-		{
-			//Выбрасывает исключение NullReferenceException
-			effect.Execute(level.Player, CardData.IsTargeted ? [level.TargetEnemy] : level.Enemies.ToArray());
-		}
+		play(level.Player, IsTargeted ? [level.TargetEnemy] : level.Enemies.ToArray());
 	}
 
 	public void Discard()
@@ -167,10 +143,17 @@ public partial class Card : Control, ICloneable
 		level.DiscardPile.Add(this);
 	}
 
-	public object Clone()
+	public Card Clone()
 	{
-		Card card = CardFactory.CreateCard(CardData);
-		return card;
+		Card clone = GD.Load<PackedScene>(SceneFilePath).Instantiate<Card>().Init(
+			CardName,
+			CardTexture,
+			play,
+			Description,
+			Cost,
+			IsTargeted
+		);
+		return clone;
 	}
 
 }
