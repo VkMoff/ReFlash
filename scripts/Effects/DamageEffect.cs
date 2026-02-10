@@ -1,6 +1,7 @@
 using Godot;
 
 [GlobalClass]
+[System.Obsolete]
 public partial class DamageEffect : EffectResource
 {
 	[Export] public int Damage { get; private set; }
