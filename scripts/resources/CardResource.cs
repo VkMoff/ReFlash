@@ -1,9 +1,9 @@
 using Godot;
 using Godot.Collections;
 using System;
-using System.Collections.Generic;
 
 [GlobalClass]
+[Obsolete("Для создания карт используется реестр карт")]
 public partial class CardResource : Resource
 {
 	[Export] public string Name;

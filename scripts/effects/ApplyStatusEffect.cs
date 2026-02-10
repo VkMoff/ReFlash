@@ -1,7 +1,7 @@
-using System;
 using Godot;
 
 [GlobalClass]
+[System.Obsolete]
 public partial class ApplyStatusEffect : EffectResource
 {
 	[Export] public StatusResource StatusToApply

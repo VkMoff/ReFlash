@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-[GlobalClass]
+[GlobalClass][Obsolete("Для создания карт теперь используется реестр карт")]
 public abstract partial class EffectResource : Resource
 {
     public string Description

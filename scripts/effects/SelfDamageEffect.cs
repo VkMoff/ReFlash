@@ -1,6 +1,7 @@
 using Godot;
 
 [GlobalClass]
+[System.Obsolete]
 public partial class SelfDamageEffect : EffectResource
 {
     [Export] private int damageValue;

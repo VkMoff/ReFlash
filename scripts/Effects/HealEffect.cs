@@ -1,6 +1,7 @@
 using Godot;
 
 [GlobalClass]
+[System.Obsolete]
 public partial class HealEffect : EffectResource
 {
     [Export] private int healValue;
