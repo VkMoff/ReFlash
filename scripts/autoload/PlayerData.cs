@@ -43,24 +43,19 @@ public partial class PlayerData : Node
 
         PackedScene cardScene = GD.Load<PackedScene>("res://scenes/card.tscn");
         
-        foreach (Card card in CardRegistry.Instance.Cards)
-        {
-            Deck.Add(card.Clone());
-            Deck.Add(card.Clone());
-        }
+        var cardRegistry = CardRegistry.Instance.Cards;
 
 
-        // Deck.Add(CardFactory.CreateCard(damageResource));
-        // Deck.Add(CardFactory.CreateCard(damageResource));
-        // Deck.Add(CardFactory.CreateCard(healResource));
-        // Deck.Add(CardFactory.CreateCard(healResource));
-        // Deck.Add(CardFactory.CreateCard(heavyAttackResource));
-        // Deck.Add(CardFactory.CreateCard(heavyAttackResource));
-        // Deck.Add(CardFactory.CreateCard(berserkAttackResource));
-        // Deck.Add(CardFactory.CreateCard(berserkAttackResource));
-        // Deck.Add(CardFactory.CreateCard(violetAttack));
-        // Deck.Add(CardFactory.CreateCard(poison));
-        // Deck.Add(CardFactory.CreateCard(poison));
+
+        Deck.Add(cardRegistry["strike"]);
+        Deck.Add(cardRegistry["strike"]);
+        Deck.Add(cardRegistry["heavy_strike"]);
+        Deck.Add(cardRegistry["heal"]);
+        Deck.Add(cardRegistry["heal"]);
+        Deck.Add(cardRegistry["poison"]);
+        Deck.Add(cardRegistry["berserk_strike"]);
+        Deck.Add(cardRegistry["violent_strike"]);
+
 
     }
 
