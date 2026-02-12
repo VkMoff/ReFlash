@@ -127,9 +127,10 @@ spriteFrames = ExtResource("6_2r41h")
 
 [node name="ArtifactContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 229.0
-offset_right = 712.0
-offset_bottom = 41.0
+offset_left = 191.0
+offset_top = 80.0
+offset_right = 674.0
+offset_bottom = 121.0
 
 [node name="TopPanelUI" parent="." instance=ExtResource("9_8c41q")]
 layout_mode = 1

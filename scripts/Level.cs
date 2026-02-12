@@ -71,6 +71,12 @@ public partial class Level : Control
 		// Player.AddStatus(new SpikesStatus(), 3);
 		// Player.AddStatus(new RegenStatus(), 10);
 		
+		foreach (Artifact artifact in PlayerData.Instance.Artifacts)
+		{
+			artifactContainer.AddChild(artifact);
+			artifact.ArtifactResource.Init(this);
+			artifact.UpdateTexture();
+		}
 		// Artifact testArtifact = artifactScene.Instantiate<Artifact>();
 		// artifactContainer.AddChild(testArtifact);
 		// testArtifact.SetArtifact(new HourGlass());
@@ -210,5 +216,12 @@ public partial class Level : Control
 	{
 		QueueFree();
 		SceneManager.Instance.LoadLevel(roomResource);
+	}
+	public override void _ExitTree() {
+		foreach (Artifact artifact in artifactContainer.GetChildren())
+		{
+			artifactContainer.RemoveChild(artifact);
+		}
+		base._ExitTree();
 	}
 }

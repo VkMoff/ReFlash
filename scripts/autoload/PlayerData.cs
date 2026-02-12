@@ -25,10 +25,12 @@ public partial class PlayerData : Node
         }
     }
     public int Gold { get; set; } = 0;
-    public List<Artifact> Relics { get; set; } = new List<Artifact>();
+    public List<Artifact> Artifacts { get; set; } = new List<Artifact>();
 
     public event Action<int> HealthChanged;
     public event Action<int> GoldChanged;
+
+    PackedScene artifactScene;
 
     public override void _Ready()
     {
@@ -41,8 +43,8 @@ public partial class PlayerData : Node
         HP = MaxHP;
         Deck = new();
 
-        PackedScene cardScene = GD.Load<PackedScene>("res://scenes/card.tscn");
-        
+        artifactScene = GD.Load<PackedScene>("res://scenes/artifact.tscn");
+
         var cardRegistry = CardRegistry.Instance.Cards;
 
 
@@ -64,6 +66,13 @@ public partial class PlayerData : Node
     {
         Gold += amount;
         GoldChanged?.Invoke(Gold);
+    }
+
+    public void InstantiateArtifact(ArtifactResource artifactResource)
+    {
+        Artifact artifact = artifactScene.Instantiate<Artifact>();;
+        artifact.SetArtifact(artifactResource);
+        Artifacts.Add(artifact);
     }
 
     public void Die()

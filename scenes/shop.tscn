@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://k0dduq63u0rw"]
+[gd_scene load_steps=5 format=3 uid="uid://k0dduq63u0rw"]
 
 [ext_resource type="Script" uid="uid://ea8x5muoeruk" path="res://scripts/Shop.cs" id="1_lx5au"]
+[ext_resource type="PackedScene" uid="uid://cnr2i64bmnehk" path="res://scenes/shop_item_button.tscn" id="2_xfvoa"]
+[ext_resource type="Script" uid="uid://dyk1mlj83rdco" path="res://scripts/artifacts/PoisonSpray.cs" id="3_1l46r"]
+
+[sub_resource type="Resource" id="Resource_032fp"]
+script = ExtResource("3_1l46r")
+metadata/_custom_type_script = "uid://dyk1mlj83rdco"
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -19,4 +25,20 @@ offset_bottom = 57.0
 text = "[Debug] Go to map
 "
 
+[node name="ShopItems" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 226.0
+offset_right = 211.0
+offset_bottom = 317.0
+
+[node name="ShopItemButton" parent="ShopItems" instance=ExtResource("2_xfvoa")]
+layout_mode = 2
+
+[node name="ShopItemButton2" parent="ShopItems" instance=ExtResource("2_xfvoa")]
+layout_mode = 2
+artifact = SubResource("Resource_032fp")
+
 [connection signal="pressed" from="GoToMapButton" to="." method="GoToMap"]
+[connection signal="Clicked" from="ShopItems/ShopItemButton" to="." method="BuyArtifact"]
+[connection signal="Clicked" from="ShopItems/ShopItemButton2" to="." method="BuyArtifact"]
