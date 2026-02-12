@@ -74,7 +74,7 @@ public partial class Level : Control
 		foreach (Artifact artifact in PlayerData.Instance.Artifacts)
 		{
 			artifactContainer.AddChild(artifact);
-			artifact.ArtifactResource.Init(this);
+			artifact.ArtifactResource.Load(this);
 			artifact.UpdateTexture();
 		}
 		// Artifact testArtifact = artifactScene.Instantiate<Artifact>();
