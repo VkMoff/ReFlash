@@ -11,6 +11,7 @@ public partial class ShopItemButton : Button
 		Icon = artifact.ArtifactTexture;
 		Pressed += () =>
 		{
+			this.ShowMessage(artifact.Name, GlobalPosition + Size / 2 + Vector2.Up * Size.Y / 2);
 			//Добавить проверку на количество золота
 			EmitSignal(SignalName.Clicked, artifact);
 		};
