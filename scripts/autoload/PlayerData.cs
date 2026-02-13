@@ -40,25 +40,9 @@ public partial class PlayerData : Node
             ProcessMode = ProcessModeEnum.Always;
         }
 
-        HP = MaxHP;
-        Deck = new();
+        Reset();
 
         artifactScene = GD.Load<PackedScene>("res://scenes/artifact.tscn");
-
-        var cardRegistry = CardRegistry.Instance.Cards;
-
-
-
-        Deck.Add(cardRegistry["strike"]);
-        Deck.Add(cardRegistry["strike"]);
-        Deck.Add(cardRegistry["heavy_strike"]);
-        Deck.Add(cardRegistry["heal"]);
-        Deck.Add(cardRegistry["heal"]);
-        Deck.Add(cardRegistry["poison"]);
-        Deck.Add(cardRegistry["berserk_strike"]);
-        Deck.Add(cardRegistry["violent_strike"]);
-
-
     }
 
 
@@ -78,6 +62,23 @@ public partial class PlayerData : Node
     public void Die()
     {
         GD.Print("GAME OVER");
+        Reset();
+    }
+
+    public void Reset()
+    {
+        HP = MaxHP;
+        Deck = new();
+        var cardRegistry = CardRegistry.Instance.Cards;
+
+        Deck.Add(cardRegistry["strike"]);
+        Deck.Add(cardRegistry["strike"]);
+        Deck.Add(cardRegistry["heavy_strike"]);
+        Deck.Add(cardRegistry["heal"]);
+        Deck.Add(cardRegistry["heal"]);
+        Deck.Add(cardRegistry["poison"]);
+        Deck.Add(cardRegistry["berserk_strike"]);
+        Deck.Add(cardRegistry["violent_strike"]);
     }
 
 }
