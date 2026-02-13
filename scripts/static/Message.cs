@@ -10,17 +10,20 @@ public static class Message
         
         ShowMessage(viewport, text, mousePos, duration);
     }
-    public static void ShowMessage(this Node parent, string text, Vector2 globalPosition, float duration = 1.5f)
+    public static void ShowMessage(this Node parent, string text, Vector2 globalPosition, float duration = 1.5f, Color? color = null, Color? outlineColor = null)
     {
+        if (color is null) { color = Colors.White; }
+        if (outlineColor is null) { outlineColor = Colors.Black; }
+
         Label label = new Label();
         label.Text = text;
         label.HorizontalAlignment = HorizontalAlignment.Center;
         label.VerticalAlignment = VerticalAlignment.Center;
-        
-        label.AddThemeColorOverride("font_shadow_color", Colors.Black);
-        label.AddThemeConstantOverride("shadow_offset_x", 1);
-        label.AddThemeConstantOverride("shadow_offset_y", 1);
-        
+
+        label.AddThemeColorOverride("font_color", (Color)color);
+        label.AddThemeColorOverride("font_outline_color", Colors.Black);
+        label.AddThemeConstantOverride("outline_size", 1);
+
         CanvasLayer layer = new CanvasLayer();
         layer.Layer = 100; 
         parent.AddChild(layer);

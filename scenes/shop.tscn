@@ -43,11 +43,13 @@ offset_bottom = 317.0
 
 [node name="ShopItemButton" parent="ShopItems" instance=ExtResource("2_xfvoa")]
 layout_mode = 2
+text = "Placeholder"
 Artifact = SubResource("Resource_2fc2m")
 cost = 50
 
 [node name="ShopItemButton2" parent="ShopItems" instance=ExtResource("2_xfvoa")]
 layout_mode = 2
+text = "Placeholder"
 Artifact = SubResource("Resource_8r1wq")
 cost = 100
 

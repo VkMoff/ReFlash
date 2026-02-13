@@ -21,6 +21,7 @@ public partial class ShopItemButton : Button
 			this.ShowMessage($"Куплен {Artifact.Name}", GlobalPosition + Size / 2 + Vector2.Up * Size.Y / 2);
 			PlayerData.Instance.AddGold(-cost);
 			EmitSignal(SignalName.Clicked, Artifact);
+			Disabled = true;
 		};
 	}
 }

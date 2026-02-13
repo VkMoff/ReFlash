@@ -43,6 +43,15 @@ public partial class Character : VBoxContainer
 	public virtual void ChangeHP(int change) //Общая логика работы с хп
 	{
 		GD.Print($"{this} Changing HP {Hp} + {change}");
+
+		if (change < 0)
+		{
+			this.ShowMessage($"{change}", GlobalPosition + Size / 2, duration: 2f, color: Colors.Red, outlineColor: Colors.White);
+		}
+		else if (change > 0)
+		{
+			this.ShowMessage($"{change}", GlobalPosition + Size / 2, duration: 2f, color: Colors.Green, outlineColor: Colors.DarkGreen);
+		}
 		Hp = Math.Min(Hp + change, MaxHp);
 		healthBar.Value = Hp;
 		if (Hp <= 0)
@@ -78,7 +87,7 @@ public partial class Character : VBoxContainer
 	public virtual void Die()
 	{
 		IsAlive = false;
-		GD.Print("Im DED");
+		this.ShowMessage("Мёртв");
 		level.CharacterDied(this);
 	}
 }
