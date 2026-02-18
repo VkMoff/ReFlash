@@ -44,6 +44,10 @@ folder_colors={
 "res://scripts/": "blue"
 }
 
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
 [input]
 
 left_click={
@@ -54,6 +58,6 @@ left_click={
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
+textures/canvas_textures/default_texture_filter=2
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

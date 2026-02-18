@@ -20,6 +20,7 @@ corner_radius_bottom_left = 5
 font_size = 24
 
 [node name="Card" type="Control"]
+texture_filter = 2
 custom_minimum_size = Vector2(200, 300)
 layout_mode = 3
 anchor_left = 0.437
