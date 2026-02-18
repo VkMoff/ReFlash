@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://k0dduq63u0rw"]
+[gd_scene load_steps=10 format=3 uid="uid://k0dduq63u0rw"]
 
 [ext_resource type="Script" uid="uid://ea8x5muoeruk" path="res://scripts/Shop.cs" id="1_lx5au"]
 [ext_resource type="PackedScene" uid="uid://cnr2i64bmnehk" path="res://scenes/shop_item_button.tscn" id="2_xfvoa"]
 [ext_resource type="Script" uid="uid://dyk1mlj83rdco" path="res://scripts/artifacts/PoisonSpray.cs" id="3_1l46r"]
 [ext_resource type="Script" uid="uid://bel7d4270feh1" path="res://scripts/artifacts/HourGlass.cs" id="3_032fp"]
 [ext_resource type="PackedScene" uid="uid://bcfx5esbh0n7m" path="res://scenes/top_panel_ui.tscn" id="5_2fc2m"]
+[ext_resource type="Script" uid="uid://cb8d0s30iufhs" path="res://scripts/artifacts/BarbedWire.cs" id="5_8r1wq"]
 
 [sub_resource type="Resource" id="Resource_2fc2m"]
 script = ExtResource("3_032fp")
@@ -13,6 +14,10 @@ metadata/_custom_type_script = "uid://bel7d4270feh1"
 [sub_resource type="Resource" id="Resource_8r1wq"]
 script = ExtResource("3_1l46r")
 metadata/_custom_type_script = "uid://dyk1mlj83rdco"
+
+[sub_resource type="Resource" id="Resource_ajxib"]
+script = ExtResource("5_8r1wq")
+metadata/_custom_type_script = "uid://cb8d0s30iufhs"
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -53,9 +58,15 @@ text = "Placeholder"
 Artifact = SubResource("Resource_8r1wq")
 cost = 100
 
+[node name="ShopItemButton3" parent="ShopItems" instance=ExtResource("2_xfvoa")]
+layout_mode = 2
+text = "Placeholder"
+Artifact = SubResource("Resource_ajxib")
+
 [node name="TopPanelUI" parent="." instance=ExtResource("5_2fc2m")]
 layout_mode = 1
 
 [connection signal="pressed" from="GoToMapButton" to="." method="GoToMap"]
 [connection signal="Clicked" from="ShopItems/ShopItemButton" to="." method="BuyArtifact"]
 [connection signal="Clicked" from="ShopItems/ShopItemButton2" to="." method="BuyArtifact"]
+[connection signal="Clicked" from="ShopItems/ShopItemButton3" to="." method="BuyArtifact"]

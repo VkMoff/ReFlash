@@ -19,7 +19,7 @@ public partial class Level : Control
 	private HBoxContainer artifactContainer;
 	private PackedScene artifactScene;
 	private TopPanelUI topPanelUi;
-	public event Action TurnStart, TurnEnd;
+	public event Action TurnStart, TurnEnd, BattleStart;
 
 
 	public override void _Ready()
@@ -83,7 +83,7 @@ public partial class Level : Control
 		// testArtifact.ArtifactResource.Init(this);
 		// testArtifact.UpdateTexture();
 
-
+		BattleStart?.Invoke();
 		TurnStart?.Invoke();
 	}
 	public void Discard(Card card)
