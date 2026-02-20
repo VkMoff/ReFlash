@@ -1,11 +1,9 @@
 using Godot;
 
 [GlobalClass]
-[System.Obsolete]
 public partial class DamageEffect : EffectResource
 {
 	[Export] public int Damage { get; private set; }
-	string baseDescription = "Наносит {DamageValue} урона";
 	public override void Execute(Character caster, Character[] targets)
 	{
 		foreach (Character target in targets)
@@ -18,13 +16,13 @@ public partial class DamageEffect : EffectResource
 		}
 	}
 
-	public DamageEffect()
-	{
-		this.Description = baseDescription;
-	}
+	public DamageEffect() {}
 	public DamageEffect(int damage)
 	{
 		this.Damage = damage;
-		this.Description = baseDescription;
+	}
+	public override string GetDescription()
+	{
+		return $"Наносит [color=red]{Damage}[/color] урона";
 	}
 }

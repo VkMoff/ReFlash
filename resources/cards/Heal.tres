@@ -12,6 +12,7 @@ metadata/_custom_type_script = "uid://b3wfq85tl35o0"
 [resource]
 resource_name = "Heal"
 script = ExtResource("1_73pmj")
+Id = "heal"
 Name = "Лечение"
 Description = "Восстанавливает 5 здоровья"
 Texture = ExtResource("2_uvhne")

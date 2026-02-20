@@ -1,7 +1,6 @@
 using Godot;
 
 [GlobalClass]
-[System.Obsolete]
 public partial class HealEffect : EffectResource
 {
     [Export] private int healValue;
@@ -17,14 +16,14 @@ public partial class HealEffect : EffectResource
         caster.ChangeHP(healValue);
     }
 
-    public HealEffect()
-    {
-        Description = "Восстанавливает {HealValue} здоровья";
-    }
+    public HealEffect() {}
     public HealEffect(int healValue)
     {
         this.healValue = healValue;
-        Description = "Восстанавливает {HealValue} здоровья";
     }
-
+    
+    public override string GetDescription()
+	{
+		return $"Восстанавливает [color=green]{Value}[/color] здоровья";
+	}
 }

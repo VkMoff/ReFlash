@@ -5,7 +5,7 @@ using System;
 [GlobalClass]
 public partial class Card : Control
 {
-	// [Export] public CardResource CardData;
+	[Export] public CardResource CardData;
 
 	private bool isHovered;
 	private bool isDragging;
@@ -20,8 +20,6 @@ public partial class Card : Control
 	public string Description { get; protected set; }
 	public Texture2D CardTexture { get; protected set; }
 	public Array<EffectResource> Effects;
-	public delegate void Play(Character caster, Character[] targets);
-	Play play;
 	public override void _Ready()
 	{
 		level = GetParent().GetParent<Level>();
@@ -33,22 +31,31 @@ public partial class Card : Control
 		originalSize = CustomMinimumSize;
 
 
-		nameLabel.Text = CardName;
-		descriptionLabel.Text = "[outline_size=2]" + Description;
+		nameLabel.Text = CardData.Name;
+		descriptionLabel.Text = "[outline_size=2]";
+		foreach (EffectResource effectResource in CardData.Effects)
+		{
+			descriptionLabel.Text += effectResource.GetDescription();
+			if ((effectResource is DamageEffect) && (!CardData.IsTargeted))
+			{
+				descriptionLabel.Text += " всем врагам";
+			}
+			descriptionLabel.Text += "\n";
+		}
 		GetNode<TextureRect>("Panel/Sprite").Texture = CardTexture;
 
 		MouseEntered += OnMouseEntered;
 		MouseExited += OnMouseExited;
 	}
 
-	public Card Init(string cardName, Texture2D texture, Play onplay, string description = "what?", int cost = 0, bool isTargeted = true)
+	public Card Init(CardResource cardResource)
 	{
-		CardName = cardName;
-		CardTexture = texture;
-		play += onplay;
-		Description = description;
-		Cost = cost;
-		IsTargeted = isTargeted;
+		CardData = cardResource;
+		CardName = cardResource.Name;
+		CardTexture = cardResource.Texture;
+		Effects = cardResource.Effects;
+		IsTargeted = cardResource.IsTargeted;
+		Cost = cardResource.Cost;
 
 		return this;
 	}
@@ -134,7 +141,13 @@ public partial class Card : Control
 			return;
 		}
 		Discard();
-		play(level.Player, IsTargeted ? [level.TargetEnemy] : level.Enemies.ToArray());
+		foreach (EffectResource effect in CardData.Effects)
+		{
+			effect.Execute(level.Player, CardData.IsTargeted ? [level.TargetEnemy] : level.Enemies.ToArray());
+		}
+		CardName += "1";
+		nameLabel.Text = CardName;
+		GD.Print(CardData.Name);
 	}
 
 	public void Discard()
@@ -145,14 +158,7 @@ public partial class Card : Control
 
 	public Card Clone()
 	{
-		Card clone = GD.Load<PackedScene>(SceneFilePath).Instantiate<Card>().Init(
-			CardName,
-			CardTexture,
-			play,
-			Description,
-			Cost,
-			IsTargeted
-		);
+		Card clone = GD.Load<PackedScene>(SceneFilePath).Instantiate<Card>().Init(CardData);
 		return clone;
 	}
 

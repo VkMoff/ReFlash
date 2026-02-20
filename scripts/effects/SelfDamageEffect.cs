@@ -1,11 +1,9 @@
 using Godot;
 
 [GlobalClass]
-[System.Obsolete]
 public partial class SelfDamageEffect : EffectResource
 {
     [Export] private int damageValue;
-    string baseDescription = "Отнимает {DamageValue} здоровья";
     public int Damage
     {
         get
@@ -17,15 +15,14 @@ public partial class SelfDamageEffect : EffectResource
     {
         caster.ChangeHP(-damageValue);
     }
-
-    public SelfDamageEffect()
-    {
-        this.Description = baseDescription;
-    }
+    public SelfDamageEffect() {}
     public SelfDamageEffect(int damageValue)
     {
         this.damageValue = damageValue;
-        this.Description = baseDescription;
     }
 
+    public override string GetDescription()
+	{
+		return $"Отнимает [color=red]{Damage}[/color] здоровья";
+	}
 }

@@ -69,7 +69,8 @@ public partial class PlayerData : Node
     {
         HP = MaxHP;
         Deck = new();
-        var cardRegistry = CardRegistry.Instance.Cards;
+        Gold = 0;
+        var cardRegistry = CardRegistry.Instance;
 
         Deck.Add(cardRegistry["strike"]);
         Deck.Add(cardRegistry["strike"]);

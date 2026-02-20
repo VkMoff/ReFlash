@@ -17,6 +17,7 @@ metadata/_custom_type_script = "uid://dfsv50ovm3n3k"
 
 [resource]
 script = ExtResource("1_x20g4")
+Id = "poison"
 Name = "Яд"
 Description = "Накладывает 5 яда"
 Texture = ExtResource("3_2ri0q")

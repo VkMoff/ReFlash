@@ -1,7 +1,6 @@
 using Godot;
 
 [GlobalClass]
-[System.Obsolete]
 public partial class ApplyStatusEffect : EffectResource
 {
 	[Export] public StatusResource StatusToApply
@@ -23,9 +22,10 @@ public partial class ApplyStatusEffect : EffectResource
 		}
 	}
 
-	public ApplyStatusEffect()
+	public ApplyStatusEffect() {}
+	public override string GetDescription()
 	{
-		this.Description = "Накладывает {StatusValue} {StatusType}";
+		GD.Print(StatusToApply.Color.ToHtml(false));
+		return $"Накладывает [color={StatusToApply.Color.ToHtml(false)}]{Value} {StatusToApply.Name}[/color]";
 	}
-    // Нужно что-то сделать с конструкторами
 }

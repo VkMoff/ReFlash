@@ -18,6 +18,7 @@ metadata/_custom_type_script = "uid://5uaggvrqvmk7"
 [resource]
 resource_name = "BerserkAttack"
 script = ExtResource("1_523oi")
+Id = "berserk_strike"
 Name = "Удар берсерка"
 Description = "Наносит 20 урона всем врагам, отнимает 10 здоровья"
 Texture = ExtResource("3_fpjf3")

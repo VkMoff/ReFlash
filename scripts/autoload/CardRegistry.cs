@@ -5,7 +5,9 @@ using Godot.Collections;
 public partial class CardRegistry : Node
 {
 	public static CardRegistry Instance;
-	public Dictionary<string,Card> Cards { get; private set; }
+	private const string CARDS_PATH = "res://resources/cards/";
+
+	public Dictionary<string, CardResource> Cards { get; private set; }
 	public override void _Ready()
 	{
 		if (Instance is null)
@@ -13,79 +15,97 @@ public partial class CardRegistry : Node
 			Instance = this;
 			ProcessMode = ProcessModeEnum.Always;
 		}
-
-		PackedScene cardScene = GD.Load<PackedScene>("res://scenes/card.tscn");
-		
 		Cards = new();
+		LoadAllCards();
+	}
+	private void LoadAllCards()
+	{
+		Cards.Clear();
+		using var dir = DirAccess.Open(CARDS_PATH);
+		if (dir == null)
+		{
+			GD.PrintErr($"Failed to open directory: {CARDS_PATH}");
+			return;
+		}
 
-		Cards["strike"] = cardScene.Instantiate<Card>().Init(
-			cardName: "Удар",
-			texture: GD.Load<Texture2D>("res://resources/sprites/icon.svg"),
-			onplay: (caster, targets) => {
-				targets[0].ChangeHP(-5);
-			},
-			description: "Наносит 5 урона",
-			cost: 1,
-			isTargeted: true
-			);
+		ScanDirectory(dir, "");
 
-		Cards["heavy_strike"] = cardScene.Instantiate<Card>().Init(
-			cardName: "Тяжёлый удар",
-			texture: GD.Load<Texture2D>("res://resources/sprites/icon_damage.svg"),
-			onplay: (caster, targets) => {
-				targets[0].ChangeHP(-20);
-			},
-			description: "Наносит 20 урона",
-			cost: 2,
-			isTargeted: true
-			);
+		GD.Print($"Loaded {Cards.Count} cards from {CARDS_PATH}");
+	}
 
-		Cards["heal"] =cardScene.Instantiate<Card>().Init(
-			cardName: "Восстановление",
-			texture: GD.Load<Texture2D>("res://resources/sprites/icon_heal.svg"),
-			onplay: (caster, targets) => {
-				caster.ChangeHP(5);
-			},
-			description: "Восстанавливает 5 ОЗ",
-			cost: 1,
-			isTargeted: false
-			);
+	private void ScanDirectory(DirAccess dir, string currentSubPath) //Чёрная магия
+	{
+		dir.ListDirBegin();
 
-		Cards["poison"] = cardScene.Instantiate<Card>().Init(
-			cardName: "Яд",
-			texture: GD.Load<Texture2D>("res://resources/sprites/icon_poison.svg"),
-			onplay: (caster, targets) => {
-				targets[0].AddStatus(new PoisonStatus(), 5);
-			},
-			description: "Накладывает на цель 5 яда",
-			cost: 1,
-			isTargeted: true
-			);
-			
-		Cards["berserk_strike"] = cardScene.Instantiate<Card>().Init(
-			cardName: "Удар берсерка",
-			texture: GD.Load<Texture2D>("res://resources/sprites/icon_berserk.svg"),
-			onplay: (caster, targets) => {
-				foreach (Character target in targets)
+		while (true)
+		{
+			string fileName = dir.GetNext();
+			if (string.IsNullOrEmpty(fileName))
+				break;
+
+			if (fileName == "." || fileName == "..")
+				continue;
+
+			string fullPath = dir.GetCurrentDir() + "/" + fileName;
+
+			if (dir.CurrentIsDir())
+			{
+				using var subDir = DirAccess.Open(fullPath);
+				if (subDir != null)
+					ScanDirectory(subDir, currentSubPath + "/" + fileName);
+			}
+			else
+			{
+				if (fileName.EndsWith(".tres") || fileName.EndsWith(".res"))
 				{
-					target.ChangeHP(-20);
+					LoadCardFromFile(fullPath);
 				}
-				caster.ChangeHP(-5);
-			},
-			description: "Наносит 20 урона всем врагам, отнимает 5 ОЗ",
-			cost: 2,
-			isTargeted: false
-			);
-			
-		Cards["violent_strike"] = cardScene.Instantiate<Card>().Init(
-			cardName: "Жестокий удар",
-			texture: GD.Load<Texture2D>("res://resources/sprites/icon_viol.svg"),
-			onplay: (caster, targets) => {
-				targets[0].ChangeHP(-50);
-			},
-			description: "Наносит 50 урона",
-			cost: 3,
-			isTargeted: true
-			);
+			}
+		}
+
+		dir.ListDirEnd();
+	}
+
+	private void LoadCardFromFile(string path)
+	{
+		var resource = GD.Load(path);
+		if (resource is CardResource cardData)
+		{
+			if (string.IsNullOrEmpty(cardData.Id))
+			{
+				GD.PrintErr($"Card at {path} has no Id! Skipping.");
+				return;
+			}
+
+			if (Cards.ContainsKey(cardData.Id))
+			{
+				GD.PrintErr($"Duplicate card id '{cardData.Id}' from {path} and {Cards[cardData.Id].ResourcePath}");
+				return;
+			}
+
+			Cards.Add(cardData.Id, cardData);
+			GD.Print($"Loaded card: {cardData.Name} (ID: {cardData.Id})");
+		}
+		else
+		{
+			GD.PrintErr($"Resource at {path} is not a CardData.");
+		}
+	}
+
+	public Card this[string id]
+	{
+		get
+		{
+			if (!Cards.TryGetValue(id, out var data))
+			{
+				GD.PrintErr($"Card with id '{id}' not found!");
+				return null;
+			}
+
+			PackedScene scene = GD.Load<PackedScene>("res://scenes/card.tscn");
+			Card card = scene.Instantiate<Card>();
+			card.Init(data);
+			return card;
+		}
 	}
 }

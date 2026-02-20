@@ -12,6 +12,7 @@ metadata/_custom_type_script = "uid://df0u5yf65u8um"
 [resource]
 resource_name = "Violet"
 script = ExtResource("3_3ekij")
+Id = "violent_strike"
 Name = "Жестокий удар"
 Description = "Наносит 50 урона"
 Texture = ExtResource("2_qhw8n")
