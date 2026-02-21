@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Godot;
 
 [GlobalClass]
@@ -11,7 +12,7 @@ public partial class SelfDamageEffect : EffectResource
             return damageValue;
         }
     }
-    public override void Execute(Character caster, Character[] targets)
+    public override async Task Execute(Character caster, Character[] targets)
     {
         caster.ChangeHP(-damageValue);
     }

@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Godot;
 
 [GlobalClass]
@@ -14,7 +15,7 @@ public partial class ApplyStatusEffect : EffectResource
         private set;
     }
 
-	public override void Execute(Character caster, Character[] targets)
+	public override async Task Execute(Character caster, Character[] targets)
 	{
 		foreach (Character target in targets)
 		{

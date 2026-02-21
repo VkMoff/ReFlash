@@ -1,8 +1,9 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public abstract partial class EffectResource : Resource
 {
-    public abstract void Execute(Character caster, Character[] targets);
+    public virtual async Task Execute(Character caster, Character[] targets) {}
     public abstract string GetDescription(); 
 }

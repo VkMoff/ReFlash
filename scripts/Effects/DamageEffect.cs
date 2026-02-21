@@ -1,10 +1,11 @@
+using System.Threading.Tasks;
 using Godot;
 
 [GlobalClass]
 public partial class DamageEffect : EffectResource
 {
 	[Export] public int Damage { get; private set; }
-	public override void Execute(Character caster, Character[] targets)
+	public override async Task Execute(Character caster, Character[] targets)
 	{
 		foreach (Character target in targets)
 		{

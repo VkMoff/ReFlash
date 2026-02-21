@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Threading.Tasks;
 
 [GlobalClass]
 public partial class Card : Control
@@ -115,7 +116,7 @@ public partial class Card : Control
 		CreateTween().TweenProperty(this, "scale", originalScale * 1.2f, 0.1f);
 	}
 
-	private void EndDrag()
+	private async Task EndDrag()
 	{
 		isDragging = false;
 		ZIndex = 0; // Возвращаем исходный ZIndex
@@ -124,7 +125,7 @@ public partial class Card : Control
 		{
 			Scale = originalScale;
 			CustomMinimumSize = originalSize;
-			PlayCard();
+			await PlayCard();
 		}
 		else
 		{
@@ -133,7 +134,7 @@ public partial class Card : Control
 		level.TargetEnemy = null;
 	}
 
-	public void PlayCard()
+	public async Task PlayCard()
 	{
 		if (!level.TryPlay(Cost))
 		{
@@ -143,11 +144,9 @@ public partial class Card : Control
 		Discard();
 		foreach (EffectResource effect in CardData.Effects)
 		{
-			effect.Execute(level.Player, CardData.IsTargeted ? [level.TargetEnemy] : level.Enemies.ToArray());
+			await effect.Execute(level.Player, CardData.IsTargeted ? [level.TargetEnemy] : level.Enemies.ToArray());
+			await ToSignal(PlayerData.Instance.GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
 		}
-		CardName += "1";
-		nameLabel.Text = CardName;
-		GD.Print(CardData.Name);
 	}
 
 	public void Discard()

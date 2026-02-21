@@ -137,7 +137,7 @@ public partial class Level : Control
 	private List<Character> pendingRemovals = new();
 
 
-	public void EndTurn()
+	public async void EndTurn()
 	{
 		foreach (Card card in Hand.GetChildren())
 		{
@@ -173,14 +173,11 @@ public partial class Level : Control
 			Win();
 		}
 
-		var tween = CreateTween(); //переделывать под асинхронность...
 		foreach (Enemy enemy in Enemies)
 		{
 			if (!enemy.IsAlive) continue;
 
-			tween.TweenCallback(Callable.From(() => enemy.ExecuteNextAction()));
-
-			tween.TweenInterval(1f);
+			await enemy.ExecuteNextAction();
 		}
 
 

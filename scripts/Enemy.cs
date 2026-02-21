@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 public partial class Enemy : Character
 {
@@ -56,13 +57,13 @@ public partial class Enemy : Character
 		level.TargetEnemyChanged(null);
 	}
 
-	public void ExecuteNextAction()
+	public async Task ExecuteNextAction()
 	{
 		//Выполнение действий
 		foreach (EffectResource action in nextActions)
 		{
 			GD.Print(action.GetType().Name);
-			action.Execute(this, [level.Player]);
+			await action.Execute(this, [level.Player]);
 		}
 		//Определение индекса след. действий
 		if (++currentActionIndex == actionPatterns.Length)
