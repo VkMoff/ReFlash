@@ -15,6 +15,8 @@ public partial class HealEffect : EffectResource
     public override async Task Execute(Character caster, Character[] targets)
     {
         caster.ChangeHP(healValue);
+        await PlayAnimationWithSpriteFrames(caster, 3);
+
     }
 
     public HealEffect() {}

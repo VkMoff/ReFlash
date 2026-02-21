@@ -8,12 +8,12 @@ public partial class MultiDamageEffect : EffectResource
     [Export] public int Count { get; private set; }
 	public override async Task Execute(Character caster, Character[] targets)
 	{
-		foreach (Character target in targets)
+		foreach (Character target in targets) //Реализовать одновременное нанесение урона, как в DamageEffect
 		{
             for (int i = 0; i < Count; i++)
             {
                 target.ChangeHP(-Damage);
-                await ToSignal(PlayerData.Instance.GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
+				await PlayAnimationWithSpriteFrames(target, 3, 0.25f);
             }
 		}
 	}

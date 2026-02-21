@@ -178,6 +178,8 @@ public partial class Level : Control
 			if (!enemy.IsAlive) continue;
 
 			await enemy.ExecuteNextAction();
+			await ToSignal(PlayerData.Instance.GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
+
 		}
 
 

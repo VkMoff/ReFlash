@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://d18l0vavu5u83"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://d18l0vavu5u83"]
 
+[ext_resource type="SpriteFrames" uid="uid://cuxw6ps72ay64" path="res://resources/animations/anim_slash_green.tres" id="1_oakjy"]
 [ext_resource type="Script" uid="uid://b3fu3pa3h540e" path="res://scripts/effects/MultiDamageEffect.cs" id="1_rw3qc"]
 [ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/resources/CardResource.cs" id="1_vwdye"]
 [ext_resource type="Texture2D" uid="uid://b1e3fyoiwgmog" path="res://resources/sprites/icon_double_strike.svg" id="2_oakjy"]
@@ -8,6 +9,7 @@
 script = ExtResource("1_rw3qc")
 Damage = 4
 Count = 2
+Animation = ExtResource("1_oakjy")
 metadata/_custom_type_script = "uid://b3fu3pa3h540e"
 
 [resource]

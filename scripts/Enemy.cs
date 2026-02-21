@@ -23,13 +23,13 @@ public partial class Enemy : Character
 		actionPatterns = //ПРОКЛЯТО
 		[
 			[
-				[new DamageEffect(10)]//дамаг
+				[new DamageEffect(10) {Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_slash_green.tres")}]//дамаг
 			],
 			[
-				[new DamageEffect(5)], [new HealEffect(3)]//или дамаг, или хил
+				[new DamageEffect(5) {Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_slash_green.tres")}], [new HealEffect(3){Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_heal.tres")}]//или дамаг, или хил
 			],
 			[
-				[new MultiDamageEffect(1,10)]
+				[new MultiDamageEffect(1,10) {Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_slash_green.tres")}]
 			]
 
 		];
