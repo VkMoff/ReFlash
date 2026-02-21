@@ -28,7 +28,7 @@ public partial class Enemy : Character
 				[new DamageEffect(5)], [new HealEffect(3)]//или дамаг, или хил
 			],
 			[
-				[new DamageEffect(5), new DamageEffect(5)]//два тика дамага ЗАМЕНИТЬ НА MultiDamageEffect
+				[new MultiDamageEffect(1,10)]
 			]
 
 		];
@@ -86,17 +86,16 @@ public partial class Enemy : Character
 		//Перенести спрайт в класс ResourceEffect
 		if (nextActions[0] is DamageEffect)
 		{
-			//КОСТЫЛЬ ЗАМЕНИТЬ НА MultiDamageEffect
-			if (nextActions.Length > 1)
-			{
-				attackDamageLabel.Text = $"{(nextActions[0] as DamageEffect).Damage} x {nextActions.Length}";
-			}
-			else
-			{
-				attackDamageLabel.Text = (nextActions[0] as DamageEffect).Damage.ToString();
-			}
+			attackDamageLabel.Text = (nextActions[0] as DamageEffect).Damage.ToString();
 			nextActionSprite.Texture = attackTexture;
 			attackDamageLabel.Visible = true;
+		}
+		else if (nextActions[0] is MultiDamageEffect)
+		{
+			attackDamageLabel.Text = $"{(nextActions[0] as MultiDamageEffect).Damage} x {(nextActions[0] as MultiDamageEffect).Count}";
+			nextActionSprite.Texture = attackTexture;
+			attackDamageLabel.Visible = true;
+
 		}
 		else if (nextActions[0] is HealEffect)
 		{

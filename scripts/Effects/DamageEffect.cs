@@ -9,7 +9,7 @@ public partial class DamageEffect : EffectResource
 		foreach (Character target in targets)
 		{
 			target.ChangeHP(-Damage);
-			foreach (var (statusType, status) in target.Statuses)
+			foreach (var (statusType, status) in target.Statuses) //Триггерит "получение урона" на статусах, т.к. считается атакой
 			{
 				status.OnDamageReceive(target, caster);
 			}

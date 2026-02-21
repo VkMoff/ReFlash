@@ -80,6 +80,7 @@ public partial class PlayerData : Node
         Deck.Add(cardRegistry["poison"]);
         Deck.Add(cardRegistry["berserk_strike"]);
         Deck.Add(cardRegistry["violent_strike"]);
+        Deck.Add(cardRegistry["double_strike"]);
     }
 
 }

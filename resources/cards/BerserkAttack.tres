@@ -20,7 +20,6 @@ resource_name = "BerserkAttack"
 script = ExtResource("1_523oi")
 Id = "berserk_strike"
 Name = "Удар берсерка"
-Description = "Наносит 20 урона всем врагам, отнимает 10 здоровья"
 Texture = ExtResource("3_fpjf3")
 Effects = Array[Object]([SubResource("Resource_6jp6x"), SubResource("Resource_6ca0w")])
 Cost = 2

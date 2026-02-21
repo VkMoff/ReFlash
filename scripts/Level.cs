@@ -173,12 +173,16 @@ public partial class Level : Control
 			Win();
 		}
 
+		var tween = CreateTween(); //переделывать под асинхронность...
 		foreach (Enemy enemy in Enemies)
 		{
 			if (!enemy.IsAlive) continue;
 
-			enemy.ExecuteNextAction();
+			tween.TweenCallback(Callable.From(() => enemy.ExecuteNextAction()));
+
+			tween.TweenInterval(1f);
 		}
+
 
 
 
