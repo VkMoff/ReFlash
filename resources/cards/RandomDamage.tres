@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=8 format=3 uid="uid://do58t84438y3i"]
+
+[ext_resource type="SpriteFrames" uid="uid://cuxw6ps72ay64" path="res://resources/animations/anim_slash_green.tres" id="1_pyjer"]
+[ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/resources/CardResource.cs" id="1_ugupm"]
+[ext_resource type="Script" uid="uid://nytqoc0ix0v0" path="res://scripts/effects/DamageEffect.cs" id="2_rppvk"]
+[ext_resource type="Texture2D" uid="uid://gti6atvew0ot" path="res://resources/sprites/icon_blue.svg" id="3_gmmkk"]
+[ext_resource type="Script" uid="uid://8lnfqayx6bi3" path="res://scripts/effects/RandomTargetApplyEffect.cs" id="3_rppvk"]
+
+[sub_resource type="Resource" id="Resource_gmmkk"]
+script = ExtResource("2_rppvk")
+Damage = 10
+Animation = ExtResource("1_pyjer")
+metadata/_custom_type_script = "uid://nytqoc0ix0v0"
+
+[sub_resource type="Resource" id="Resource_v8sj3"]
+script = ExtResource("3_rppvk")
+Effect = SubResource("Resource_gmmkk")
+Count = 3
+metadata/_custom_type_script = "uid://8lnfqayx6bi3"
+
+[resource]
+script = ExtResource("1_ugupm")
+Id = "random_damage"
+Name = "Случайный  удар"
+Texture = ExtResource("3_gmmkk")
+Effects = Array[Resource]([SubResource("Resource_v8sj3")])
+Cost = 2
+metadata/_custom_type_script = "uid://ds6nyytwhdiye"
