@@ -56,10 +56,14 @@ public partial class Status : Control
 		GD.Print($"Status.OnTurnEnd - {statusResource.GetType()}, {value}");
 		statusResource.OnTurnEnd(this, targets);
 	}
+	public void OnTurnStart(Character[] targets)
+	{
+		GD.Print($"Status.OnTurnStart - {statusResource.GetType()}, {value}");
+		statusResource.OnTurnStart(this, targets);
+	}
 	public void OnDamageReceive(Character receiver, Character dealer)
-		{
+	{
 		GD.Print($"Status.OnDamageReceive - {statusResource.GetType()}, {value}, {receiver}, {dealer}");
-				statusResource.OnDamageReceive(this, receiver, dealer);
-		}
-
+		statusResource.OnDamageReceive(this, receiver, dealer);
+	}
 }

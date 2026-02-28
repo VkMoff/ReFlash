@@ -13,7 +13,7 @@ public partial class Enemy : Character
 	Texture2D attackTexture, healTexture;
 	public override void _Ready()
 	{
-		level = GetParent().GetParent<Level>();
+		Level = GetParent().GetParent<Level>();
 		nextActionSprite = GetNode<Sprite2D>("NextActionSprite");
 		attackTexture = GD.Load<Texture2D>("res://resources/sprites/enemy_actions/action_attack.svg");
 		healTexture = GD.Load<Texture2D>("res://resources/sprites/enemy_actions/action_heal.svg");
@@ -50,11 +50,11 @@ public partial class Enemy : Character
 
 	public void MouseEnter()
 	{
-		level.TargetEnemyChanged(this);
+		Level.TargetEnemyChanged(this);
 	}
 	public void MouseExit()
 	{
-		level.TargetEnemyChanged(null);
+		Level.TargetEnemyChanged(null);
 	}
 
 	public async Task ExecuteNextAction()
@@ -63,7 +63,7 @@ public partial class Enemy : Character
 		foreach (EffectResource action in nextActions)
 		{
 			GD.Print(action.GetType().Name);
-			await action.Execute(this, [level.Player]);
+			await action.Execute(this, [Level.Player]);
 		}
 		//Определение индекса след. действий
 		if (++currentActionIndex == actionPatterns.Length)

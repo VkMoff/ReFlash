@@ -9,7 +9,7 @@ public partial class Character : VBoxContainer
 	AnimatedSprite2D sprite;
 	SpriteFrames spriteFrames;
 	HBoxContainer statusContainer;
-	protected Level level;
+	public Level Level {get; protected set;}
 	public bool IsAlive	{ get; private set; }
 	public int MaxHp { get; private set; }
 	public int Hp { get; protected set;	}
@@ -88,6 +88,6 @@ public partial class Character : VBoxContainer
 	{
 		IsAlive = false;
 		this.ShowMessage("Мёртв");
-		level.CharacterDied(this);
+		Level.CharacterDied(this);
 	}
 }

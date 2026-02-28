@@ -69,7 +69,7 @@ public partial class Level : Control
 		//test
 		// Enemies[0].AddStatus(new PoisonStatus(), 5);
 		// Player.AddStatus(new SpikesStatus(), 3);
-		// Player.AddStatus(new RegenStatus(), 10);
+		// Player.AddStatus(new AccelerationStatus(), 2);
 		
 		foreach (Artifact artifact in PlayerData.Instance.Artifacts)
 		{
@@ -82,6 +82,14 @@ public partial class Level : Control
 		// testArtifact.SetArtifact(new HourGlass());
 		// testArtifact.ArtifactResource.Init(this);
 		// testArtifact.UpdateTexture();
+
+		TurnStart += () => 
+		{
+			foreach (var (statusType, status) in Player.Statuses)
+			{
+				status.OnTurnStart([Player]);
+			}
+		};
 
 		BattleStart?.Invoke();
 		TurnStart?.Invoke();
@@ -168,10 +176,10 @@ public partial class Level : Control
 		}
 		pendingRemovals.Clear();
 
-		if (Enemies.Count == 0)
-		{
-			Win();
-		}
+		// if (Enemies.Count == 0)
+		// {
+		// 	Win();
+		// }
 
 		foreach (Enemy enemy in Enemies)
 		{

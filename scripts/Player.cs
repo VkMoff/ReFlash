@@ -7,7 +7,7 @@ public partial class Player : Character
 
 	public override void _Ready()
 	{
-		level = GetParent<Level>();
+		Level = GetParent<Level>();
 		PlayerData playerData = PlayerData.Instance;
 		Init(playerData.MaxHP, spriteFrames);
 		GetNode<Label>("NameLabel").Text = "Игрок";
