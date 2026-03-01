@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://dfahd4von2nxi"]
+
+[ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/resources/CardResource.cs" id="1_h17jt"]
+[ext_resource type="Script" uid="uid://c1t37lhyhjdd1" path="res://scripts/statuses/StrengthStatus.cs" id="1_l85jg"]
+[ext_resource type="Script" uid="uid://dfsv50ovm3n3k" path="res://scripts/effects/ApplyStatusEffect.cs" id="2_ydcr1"]
+[ext_resource type="Texture2D" uid="uid://cl3del4o66usc" path="res://resources/sprites/cards/card_amplify.png" id="3_6hcyy"]
+
+[sub_resource type="Resource" id="Resource_7lubr"]
+script = ExtResource("1_l85jg")
+metadata/_custom_type_script = "uid://c1t37lhyhjdd1"
+
+[sub_resource type="Resource" id="Resource_xy0ty"]
+script = ExtResource("2_ydcr1")
+StatusToApply = SubResource("Resource_7lubr")
+Value = 2
+metadata/_custom_type_script = "uid://dfsv50ovm3n3k"
+
+[resource]
+script = ExtResource("1_h17jt")
+Id = "amplify"
+Name = "Усиление"
+Texture = ExtResource("3_6hcyy")
+Effects = Array[Resource]([SubResource("Resource_xy0ty")])
+ToPlayer = true
+Cost = 2
+metadata/_custom_type_script = "uid://ds6nyytwhdiye"

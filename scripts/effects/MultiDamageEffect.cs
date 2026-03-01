@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Godot;
 
@@ -6,14 +7,20 @@ public partial class MultiDamageEffect : EffectResource
 {
 	[Export] public int Damage { get; private set; }
     [Export] public int Count { get; private set; }
+	public int StrengthModifier { get; set; } = 0;
+
 	public override async Task Execute(Character caster, Character[] targets)
 	{
 		foreach (Character target in targets) //Реализовать одновременное нанесение урона, как в DamageEffect
 		{
             for (int i = 0; i < Count; i++)
             {
-                target.ChangeHP(-Damage);
+				target.ChangeHP(Math.Min(-Damage - StrengthModifier, 0));
 				await PlayAnimationWithSpriteFrames(target, 3, 0.25f);
+				foreach (var (statusType, status) in target.Statuses)
+				{
+					status.OnDamageReceive(target, caster);
+				}
             }
 		}
 	}
@@ -26,6 +33,6 @@ public partial class MultiDamageEffect : EffectResource
 	}
 	public override string GetDescription()
 	{
-		return $"Наносит [color=red]{Damage}[/color] урона {Count} раз";
+		return $"Наносит [color=red]{Damage + StrengthModifier}[/color] урона {Count} раз";
 	}
 }

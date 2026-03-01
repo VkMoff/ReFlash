@@ -73,15 +73,14 @@ public partial class PlayerData : Node
         var cardRegistry = CardRegistry.Instance;
 
         Deck.Add(cardRegistry["strike"]);
-        Deck.Add(cardRegistry["strike"]);
         Deck.Add(cardRegistry["heavy_strike"]);
-        Deck.Add(cardRegistry["heal"]);
         Deck.Add(cardRegistry["heal"]);
         Deck.Add(cardRegistry["poison"]);
         Deck.Add(cardRegistry["berserk_strike"]);
         Deck.Add(cardRegistry["violent_strike"]);
         Deck.Add(cardRegistry["double_strike"]);
         Deck.Add(cardRegistry["random_damage"]);
+        Deck.Add(cardRegistry["amplify"]);
     }
 
 }

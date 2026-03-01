@@ -39,4 +39,53 @@ public partial class Player : Character
 		base.Die();
 		SceneManager.Instance.GoToMenu();
 	}
+	public override void RecalculateStrength()
+	{
+		foreach (Card card in level.Deck.Cards)
+		{
+			foreach (EffectResource effect in card.Effects)
+			{
+				if (effect is DamageEffect)
+				{
+					((DamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
+				}
+				if (effect is MultiDamageEffect)
+				{
+					((MultiDamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
+				}
+			}
+			card.UpdateDescription();
+		}
+		foreach (Card card in level.Hand.GetChildren())
+		{
+			foreach (EffectResource effect in card.Effects)
+			{
+				if (effect is DamageEffect)
+				{
+					((DamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
+				}
+				if (effect is MultiDamageEffect)
+				{
+					((MultiDamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
+				}
+			}
+			card.UpdateDescription();
+		}
+		foreach (Card card in level.DiscardPile.Cards)
+		{
+			foreach (EffectResource effect in card.Effects)
+			{
+				if (effect is DamageEffect)
+				{
+					((DamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
+				}
+				if (effect is MultiDamageEffect)
+				{
+					((MultiDamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
+				}
+			}
+			card.UpdateDescription();
+		}
+	}
+
 }

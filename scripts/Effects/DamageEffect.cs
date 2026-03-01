@@ -1,16 +1,18 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Godot;
+using System;
 
 [GlobalClass]
 public partial class DamageEffect : EffectResource
 {
 	[Export] public int Damage { get; private set; }
+	public int StrengthModifier { get; set; } = 0;
 	public override async Task Execute(Character caster, Character[] targets)
 	{
 		foreach (Character target in targets)
 		{
-			target.ChangeHP(-Damage);
+			target.ChangeHP(Math.Min(-Damage - StrengthModifier, 0));
 			foreach (var (statusType, status) in target.Statuses)
 			{
 				status.OnDamageReceive(target, caster);
@@ -34,6 +36,6 @@ public partial class DamageEffect : EffectResource
 	}
 	public override string GetDescription()
 	{
-		return $"Наносит [color=red]{Damage}[/color] урона";
+		return $"Наносит [color=red]{Damage + StrengthModifier}[/color] урона";
 	}
 }

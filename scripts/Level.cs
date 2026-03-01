@@ -53,6 +53,7 @@ public partial class Level : Control
 
 		topPanelUi = GetNode<TopPanelUI>("TopPanelUI"); 
 		Player.SetHp(PlayerData.Instance.HP);//такое себе
+		Player.RecalculateStrength();
 	}
 	public void InitRoom(RoomResource roomResource)
 	{

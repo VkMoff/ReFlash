@@ -10,5 +10,6 @@ public partial class CardResource : Resource
 	[Export] public Texture2D Texture;
 	[Export] public Array<EffectResource> Effects;
 	[Export] public bool IsTargeted;
+	[Export] public bool ToPlayer;
 	[Export] public int Cost;
 }

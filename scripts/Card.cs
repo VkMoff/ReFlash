@@ -15,7 +15,7 @@ public partial class Card : Control
 	protected Level level;
 	protected Label costLabel, nameLabel;
 	protected RichTextLabel descriptionLabel;
-	public int Cost	{ get; protected set; }
+	public int Cost { get; protected set; }
 	public bool IsTargeted { get; protected set; }
 	public string CardName { get; protected set; }
 	public string Description { get; protected set; }
@@ -33,16 +33,8 @@ public partial class Card : Control
 
 
 		nameLabel.Text = CardData.Name;
-		descriptionLabel.Text = "[outline_size=2]";
-		foreach (EffectResource effectResource in CardData.Effects)
-		{
-			descriptionLabel.Text += effectResource.GetDescription();
-			if ((effectResource is DamageEffect) && (!CardData.IsTargeted))
-			{
-				descriptionLabel.Text += " всем врагам";
-			}
-			descriptionLabel.Text += "\n";
-		}
+		UpdateDescription();
+		descriptionLabel.Text = $"[outline_size=2]{Description}";
 		GetNode<TextureRect>("Panel/Sprite").Texture = CardTexture;
 
 		MouseEntered += OnMouseEntered;
@@ -59,6 +51,23 @@ public partial class Card : Control
 		Cost = cardResource.Cost;
 
 		return this;
+	}
+	public void UpdateDescription()
+	{
+		Description = "";
+		foreach (EffectResource effectResource in CardData.Effects)
+		{
+			Description += effectResource.GetDescription();
+			if ((effectResource is DamageEffect) && (!CardData.IsTargeted))
+			{
+				Description += " всем врагам";
+			}
+			Description += "\n";
+		}
+		if (descriptionLabel is not null)
+		{
+			descriptionLabel.Text = $"[outline_size=2]{Description}";
+		}
 	}
 
 	private void OnMouseEntered()
@@ -144,7 +153,12 @@ public partial class Card : Control
 		Discard();
 		foreach (EffectResource effect in CardData.Effects)
 		{
-			await effect.Execute(level.Player, CardData.IsTargeted ? [level.TargetEnemy] : level.Enemies.ToArray());
+			Character[] target;
+			if (CardData.ToPlayer) target = [level.Player];
+			else if (CardData.IsTargeted) target = [level.TargetEnemy];
+			else target = level.Enemies.ToArray();
+
+			await effect.Execute(level.Player, target);
 			await ToSignal(PlayerData.Instance.GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
 		}
 	}

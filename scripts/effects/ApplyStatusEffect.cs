@@ -4,22 +4,15 @@ using Godot;
 [GlobalClass]
 public partial class ApplyStatusEffect : EffectResource
 {
-	[Export] public StatusResource StatusToApply
-	{
-		get;
-		private set;
-	}
-    [Export] public int Value
-    {
-        get;
-        private set;
-    }
+	[Export] public StatusResource StatusToApply { get; private set; }
+	[Export] public int Value { get; private set; }
 
 	public override async Task Execute(Character caster, Character[] targets)
 	{
 		foreach (Character target in targets)
 		{
 			target.AddStatus(StatusToApply, Value);
+			await PlayAnimationWithSpriteFrames(target, 3, 0.25f);
 		}
 	}
 

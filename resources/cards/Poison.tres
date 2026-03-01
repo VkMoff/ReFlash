@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://chs6lhuwfspum"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=8 format=3 uid="uid://chs6lhuwfspum"]
 
+[ext_resource type="SpriteFrames" uid="uid://dfyoe3squ4k5p" path="res://resources/animations/anim_heal.tres" id="1_60xxu"]
 [ext_resource type="Script" uid="uid://e385xb50ouf1" path="res://scripts/statuses/PoisonStatus.cs" id="1_u2p62"]
 [ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/resources/CardResource.cs" id="1_x20g4"]
 [ext_resource type="Script" uid="uid://dfsv50ovm3n3k" path="res://scripts/effects/ApplyStatusEffect.cs" id="2_60xxu"]
@@ -13,13 +14,13 @@ metadata/_custom_type_script = "uid://e385xb50ouf1"
 script = ExtResource("2_60xxu")
 StatusToApply = SubResource("Resource_lopwo")
 Value = 5
+Animation = ExtResource("1_60xxu")
 metadata/_custom_type_script = "uid://dfsv50ovm3n3k"
 
 [resource]
 script = ExtResource("1_x20g4")
 Id = "poison"
 Name = "Яд"
-Description = "Накладывает 5 яда"
 Texture = ExtResource("3_2ri0q")
 Effects = Array[Object]([SubResource("Resource_2tbsp")])
 IsTargeted = true

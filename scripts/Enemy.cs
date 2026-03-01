@@ -104,4 +104,25 @@ public partial class Enemy : Character
 			attackDamageLabel.Visible = false;
 		}
 	}
+
+	public override void RecalculateStrength()
+	{
+		foreach (EffectResource[][] level1 in actionPatterns)
+		{
+			foreach (EffectResource[] level2 in level1)
+			{	
+				foreach (EffectResource effect in level2)
+				{
+					if (effect is DamageEffect)
+					{
+						((DamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
+					}
+					if (effect is MultiDamageEffect)
+					{
+						((MultiDamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
+					}
+				}
+			}
+		}
+	}
 }

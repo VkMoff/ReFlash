@@ -34,6 +34,7 @@ public static class Message
         tween.TweenProperty(label, "position", label.Position + Vector2.Up * 50, duration);
         tween.Parallel().TweenProperty(label, "modulate:a", 0.0, duration);
         tween.Finished += label.QueueFree;
+        tween.Finished += layer.QueueFree;
     }
 }
 
