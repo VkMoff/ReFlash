@@ -11,7 +11,6 @@ public partial class Character : VBoxContainer
 	HBoxContainer statusContainer;
 	public Level Level {get; protected set;}
 	public bool IsAlive	{ get; private set; }
-	protected Level level;
 	public int MaxHp { get; private set; }
 	public int Hp { get; protected set; }
 	public Dictionary<Type, Status> Statuses { get; private set; }

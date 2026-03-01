@@ -41,7 +41,7 @@ public partial class Player : Character
 	}
 	public override void RecalculateStrength()
 	{
-		foreach (Card card in level.Deck.Cards)
+		foreach (Card card in Level.Deck.Cards)
 		{
 			foreach (EffectResource effect in card.Effects)
 			{
@@ -56,7 +56,7 @@ public partial class Player : Character
 			}
 			card.UpdateDescription();
 		}
-		foreach (Card card in level.Hand.GetChildren())
+		foreach (Card card in Level.Hand.GetChildren())
 		{
 			foreach (EffectResource effect in card.Effects)
 			{
@@ -71,7 +71,7 @@ public partial class Player : Character
 			}
 			card.UpdateDescription();
 		}
-		foreach (Card card in level.DiscardPile.Cards)
+		foreach (Card card in Level.DiscardPile.Cards)
 		{
 			foreach (EffectResource effect in card.Effects)
 			{
