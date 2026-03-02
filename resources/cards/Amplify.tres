@@ -13,6 +13,7 @@ metadata/_custom_type_script = "uid://c1t37lhyhjdd1"
 script = ExtResource("2_ydcr1")
 StatusToApply = SubResource("Resource_7lubr")
 Value = 2
+AppliableToCaster = true
 metadata/_custom_type_script = "uid://dfsv50ovm3n3k"
 
 [resource]
@@ -21,6 +22,5 @@ Id = "amplify"
 Name = "Усиление"
 Texture = ExtResource("3_6hcyy")
 Effects = Array[Resource]([SubResource("Resource_xy0ty")])
-ToPlayer = true
 Cost = 2
 metadata/_custom_type_script = "uid://ds6nyytwhdiye"

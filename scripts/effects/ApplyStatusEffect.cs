@@ -17,6 +17,11 @@ public partial class ApplyStatusEffect : EffectResource
 	}
 
 	public ApplyStatusEffect() {}
+	public ApplyStatusEffect(StatusResource statusToApply, int value)
+	{
+		StatusToApply = statusToApply;
+		Value = value;
+	}
 	public override string GetDescription()
 	{
 		GD.Print(StatusToApply.Color.ToHtml(false));

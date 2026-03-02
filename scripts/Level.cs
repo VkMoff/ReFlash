@@ -32,7 +32,7 @@ public partial class Level : Control
 		DiscardPile = GetNode<DiscardPile>("DiscardPile");
 
 		artifactScene = GD.Load<PackedScene>("res://scenes/artifact.tscn");
-		
+
 
 		//Кнопки
 		pullCardButton = GetNode<Button>("PullCardButton");
@@ -51,7 +51,7 @@ public partial class Level : Control
 		DefaultHandSize = 5;
 		PullCardFromDeck(DefaultHandSize);
 
-		topPanelUi = GetNode<TopPanelUI>("TopPanelUI"); 
+		topPanelUi = GetNode<TopPanelUI>("TopPanelUI");
 		Player.SetHp(PlayerData.Instance.HP);//такое себе
 		Player.RecalculateStrength();
 	}
@@ -71,7 +71,7 @@ public partial class Level : Control
 		// Enemies[0].AddStatus(new PoisonStatus(), 5);
 		// Player.AddStatus(new SpikesStatus(), 3);
 		// Player.AddStatus(new AccelerationStatus(), 2);
-		
+
 		foreach (Artifact artifact in PlayerData.Instance.Artifacts)
 		{
 			artifactContainer.AddChild(artifact);
@@ -84,16 +84,13 @@ public partial class Level : Control
 		// testArtifact.ArtifactResource.Init(this);
 		// testArtifact.UpdateTexture();
 
-		TurnStart += () => 
-		{
-			foreach (var (statusType, status) in Player.Statuses)
-			{
-				status.OnTurnStart([Player]);
-			}
-		};
-
 		BattleStart?.Invoke();
 		TurnStart?.Invoke();
+
+		foreach (var (statusType, status) in Player.Statuses)
+		{
+			status.OnTurnStart([Player]);
+		}
 	}
 	public void Discard(Card card)
 	{
@@ -199,6 +196,25 @@ public partial class Level : Control
 		UpdateEnergyLabel();
 		PullCardFromDeck(DefaultHandSize);
 
+		foreach (var (statusType, status) in Player.Statuses)
+		{
+			status.OnTurnStart([Player]);
+		}
+		foreach (Enemy enemy in Enemies)
+		{
+			try
+			{
+				foreach (var (statusType, status) in enemy.Statuses)
+				{
+					status.OnTurnStart([enemy]);
+				}
+			}
+			catch
+			{
+				GD.PrintErr("Добавление статуса в переборе статусов всё ломает");
+			}
+		}
+
 		TurnStart?.Invoke();
 	}
 	public void CharacterDied(Character character)
@@ -229,7 +245,8 @@ public partial class Level : Control
 		QueueFree();
 		SceneManager.Instance.LoadLevel(roomResource);
 	}
-	public override void _ExitTree() {
+	public override void _ExitTree()
+	{
 		foreach (Artifact artifact in artifactContainer.GetChildren())
 		{
 			artifactContainer.RemoveChild(artifact);

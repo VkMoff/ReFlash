@@ -154,7 +154,7 @@ public partial class Card : Control
 		foreach (EffectResource effect in CardData.Effects)
 		{
 			Character[] target;
-			if (CardData.ToPlayer) target = [level.Player];
+			if (effect.AppliableToCaster) target = [level.Player];
 			else if (CardData.IsTargeted) target = [level.TargetEnemy];
 			else target = level.Enemies.ToArray();
 

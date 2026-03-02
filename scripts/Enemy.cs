@@ -23,6 +23,9 @@ public partial class Enemy : Character
 		actionPatterns = //ПРОКЛЯТО
 		[
 			[
+				[new ApplyStatusEffect(new AmplificationStatus(), 1) { AppliableToCaster = true }]
+			],
+			[
 				[new DamageEffect(10) {Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_slash_green.tres")}]//дамаг
 			],
 			[
@@ -63,7 +66,7 @@ public partial class Enemy : Character
 		foreach (EffectResource action in nextActions)
 		{
 			GD.Print(action.GetType().Name);
-			await action.Execute(this, [Level.Player]);
+			await action.Execute(this, action.AppliableToCaster ? [this] : [Level.Player]);
 		}
 		//Определение индекса след. действий
 		if (++currentActionIndex == actionPatterns.Length)
@@ -87,13 +90,13 @@ public partial class Enemy : Character
 		//Перенести спрайт в класс ResourceEffect
 		if (nextActions[0] is DamageEffect)
 		{
-			attackDamageLabel.Text = (nextActions[0] as DamageEffect).Damage.ToString();
+			attackDamageLabel.Text = $"{(nextActions[0] as DamageEffect).Damage + (nextActions[0] as DamageEffect).StrengthModifier}";
 			nextActionSprite.Texture = attackTexture;
 			attackDamageLabel.Visible = true;
 		}
 		else if (nextActions[0] is MultiDamageEffect)
 		{
-			attackDamageLabel.Text = $"{(nextActions[0] as MultiDamageEffect).Damage} x {(nextActions[0] as MultiDamageEffect).Count}";
+			attackDamageLabel.Text = $"{(nextActions[0] as MultiDamageEffect).Damage + (nextActions[0] as MultiDamageEffect).StrengthModifier} x {(nextActions[0] as MultiDamageEffect).Count}";
 			nextActionSprite.Texture = attackTexture;
 			attackDamageLabel.Visible = true;
 
@@ -107,6 +110,7 @@ public partial class Enemy : Character
 
 	public override void RecalculateStrength()
 	{
+		if (!Statuses.ContainsKey(typeof(StrengthStatus))) return;
 		foreach (EffectResource[][] level1 in actionPatterns)
 		{
 			foreach (EffectResource[] level2 in level1)
@@ -124,5 +128,6 @@ public partial class Enemy : Character
 				}
 			}
 		}
+		SetDamageLabel();
 	}
 }

@@ -3,6 +3,7 @@
 [ext_resource type="SpriteFrames" uid="uid://dfyoe3squ4k5p" path="res://resources/animations/anim_heal.tres" id="1_826dm"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+position = Vector2(0, -1)
 sprite_frames = ExtResource("1_826dm")
 frame = 12
 frame_progress = 1.0
