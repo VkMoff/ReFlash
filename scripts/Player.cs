@@ -43,49 +43,38 @@ public partial class Player : Character
 	{
 		foreach (Card card in Level.Deck.Cards)
 		{
-			foreach (EffectResource effect in card.Effects)
-			{
-				if (effect is DamageEffect)
-				{
-					((DamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
-				}
-				if (effect is MultiDamageEffect)
-				{
-					((MultiDamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
-				}
-			}
-			card.UpdateDescription();
+			SetStrengthModifierForCards(card, Statuses[typeof(StrengthStatus)].Value);
 		}
 		foreach (Card card in Level.Hand.GetChildren())
 		{
-			foreach (EffectResource effect in card.Effects)
-			{
-				if (effect is DamageEffect)
-				{
-					((DamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
-				}
-				if (effect is MultiDamageEffect)
-				{
-					((MultiDamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
-				}
-			}
-			card.UpdateDescription();
+			SetStrengthModifierForCards(card, Statuses[typeof(StrengthStatus)].Value);
 		}
 		foreach (Card card in Level.DiscardPile.Cards)
 		{
-			foreach (EffectResource effect in card.Effects)
-			{
-				if (effect is DamageEffect)
-				{
-					((DamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
-				}
-				if (effect is MultiDamageEffect)
-				{
-					((MultiDamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
-				}
-			}
-			card.UpdateDescription();
+			SetStrengthModifierForCards(card, Statuses[typeof(StrengthStatus)].Value);
 		}
 	}
-
+	private void SetStrengthModifierForCards(Card card, int value)
+	{
+		foreach (EffectResource effect in card.Effects)
+		{
+			if (effect is DamageEffect)
+			{
+				((DamageEffect)effect).StrengthModifier = value;
+			}
+			if (effect is MultiDamageEffect)
+			{
+				((MultiDamageEffect)effect).StrengthModifier = value;
+			}
+			if (effect is RandomTargetApplyEffect)
+			{
+				EffectResource insideEffect = ((RandomTargetApplyEffect)effect).Effect;
+				if (insideEffect is DamageEffect)
+				{
+					((DamageEffect)insideEffect).StrengthModifier = value;
+				}
+			}
+		}
+		card.UpdateDescription();
+	}
 }
