@@ -78,11 +78,11 @@ public partial class Level : Control
 			artifact.ArtifactResource.Load(this);
 			artifact.UpdateTexture();
 		}
-		// Artifact testArtifact = artifactScene.Instantiate<Artifact>();
-		// artifactContainer.AddChild(testArtifact);
-		// testArtifact.SetArtifact(new HourGlass());
-		// testArtifact.ArtifactResource.Init(this);
-		// testArtifact.UpdateTexture();
+		Artifact testArtifact = artifactScene.Instantiate<Artifact>();
+		artifactContainer.AddChild(testArtifact);
+		testArtifact.SetArtifact(new StrangeMask());
+		testArtifact.ArtifactResource.Load(this);
+		testArtifact.UpdateTexture();
 
 		BattleStart?.Invoke();
 		TurnStart?.Invoke();
