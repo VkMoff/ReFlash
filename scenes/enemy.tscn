@@ -1,14 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://1dtp1k8r4my"]
+[gd_scene load_steps=5 format=3 uid="uid://1dtp1k8r4my"]
 
 [ext_resource type="PackedScene" uid="uid://dj3y15cjhlbdq" path="res://scenes/character.tscn" id="1_md0e3"]
 [ext_resource type="Script" uid="uid://dqn53mw8qvbm4" path="res://scripts/Enemy.cs" id="2_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://bmhc0upn056pv" path="res://resources/sprites/enemy_actions/action_attack.svg" id="3_4ra3w"]
+[ext_resource type="SpriteFrames" uid="uid://brp012yfo2cq7" path="res://resources/animations/enemy.tres" id="3_5uy6h"]
 
 [node name="Enemy" instance=ExtResource("1_md0e3")]
 script = ExtResource("2_4ra3w")
 
 [node name="Control" parent="." index="0"]
 mouse_filter = 2
+
+[node name="AnimatedSprite" parent="Control" index="0"]
+texture_filter = 1
+sprite_frames = ExtResource("3_5uy6h")
+frame_progress = 0.0
 
 [node name="NextActionSprite" type="Sprite2D" parent="." index="2"]
 position = Vector2(105, -19)

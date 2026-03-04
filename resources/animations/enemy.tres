@@ -1,16 +1,12 @@
-[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://brp012yfo2cq7"]
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://brp012yfo2cq7"]
 
-[ext_resource type="Texture2D" uid="uid://cofrdnnd20fwr" path="res://resources/sprites/icon.svg" id="1_o0o35"]
-[ext_resource type="Texture2D" uid="uid://cs322lmclu6jj" path="res://resources/sprites/icon_damage.svg" id="2_xnw1l"]
+[ext_resource type="Texture2D" uid="uid://cy50j1ik1d1nc" path="res://resources/sprites/enemies/enemy_stool.png" id="1_wcwqq"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_o0o35")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_xnw1l")
+"texture": ExtResource("1_wcwqq")
 }],
 "loop": true,
 "name": &"default",
