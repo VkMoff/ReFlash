@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,25 +7,25 @@ using System.Threading.Tasks;
 public partial class Enemy : Character
 {
 	int currentActionIndex = 0;
-	EffectResource[] nextActions;
+	Array<EffectResource> nextActions;
+	Array<EffectResource> initialActions = new(); //Array или []?
 	EffectResource[][][] actionPatterns;
 	Sprite2D nextActionSprite;
 	Label attackDamageLabel;
-	Texture2D attackTexture, healTexture;
+	Texture2D attackTexture, healTexture, positiveEffectTexture;
+	private bool firstTurnPlayed = false;
 	public override void _Ready()
 	{
 		Level = GetParent().GetParent<Level>();
 		nextActionSprite = GetNode<Sprite2D>("NextActionSprite");
 		attackTexture = GD.Load<Texture2D>("res://resources/sprites/enemy_actions/action_attack.svg");
 		healTexture = GD.Load<Texture2D>("res://resources/sprites/enemy_actions/action_heal.svg");
+		positiveEffectTexture = GD.Load<Texture2D>("res://resources/sprites/enemy_actions/action_amplify.svg");
 		attackDamageLabel = GetNode<Label>("NextActionSprite/Label");
 		base._Ready();
 
 		actionPatterns = //ПРОКЛЯТО
 		[
-			[
-				[new ApplyStatusEffect(new AmplificationStatus(), 1) { AppliableToCaster = true }]
-			],
 			[
 				[new DamageEffect(10) {Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_slash_green.tres")}]//дамаг
 			],
@@ -37,7 +38,7 @@ public partial class Enemy : Character
 
 		];
 
-		nextActions = GetActions(currentActionIndex);
+		nextActions = initialActions;
 		SetDamageLabel();
 
 		// MouseEntered += MouseEnter;
@@ -48,6 +49,8 @@ public partial class Enemy : Character
 	{
 		base.Init(enemyResource.MaxHP, enemyResource.Animation);
 		actionPatterns = enemyResource.ActionPatterns;
+		initialActions = enemyResource.InitialActions;
+		GD.Print(initialActions.Count);
 		GetNode<Label>("NameLabel").Text = enemyResource.Name;
 	}
 
@@ -62,6 +65,16 @@ public partial class Enemy : Character
 
 	public async Task ExecuteNextAction()
 	{
+		if (!firstTurnPlayed)
+		{
+			foreach (EffectResource action in initialActions)
+			{
+				await action.Execute(this, action.AppliableToCaster ? [this] : [Level.Player]); //Перенести проверку наложения эффекта на себя в Effect.Execute?
+			}
+			firstTurnPlayed = true;
+			nextActions = GetActions(currentActionIndex);
+			return;
+		}
 		//Выполнение действий
 		foreach (EffectResource action in nextActions)
 		{
@@ -80,9 +93,9 @@ public partial class Enemy : Character
 
 	}
 
-	private EffectResource[] GetActions(int index)
+	private Array<EffectResource> GetActions(int index)
 	{
-		return actionPatterns[index][GD.Randi() % actionPatterns[index].Length];
+		return new(actionPatterns[index][GD.Randi() % actionPatterns[index].Length]);
 	}
 
 	private void SetDamageLabel()
@@ -104,6 +117,11 @@ public partial class Enemy : Character
 		else if (nextActions[0] is HealEffect)
 		{
 			nextActionSprite.Texture = healTexture;
+			attackDamageLabel.Visible = false;
+		}
+		else if ((nextActions[0] is ApplyStatusEffect) && nextActions[0].AppliableToCaster)
+		{
+			nextActionSprite.Texture = positiveEffectTexture;
 			attackDamageLabel.Visible = false;
 		}
 	}
