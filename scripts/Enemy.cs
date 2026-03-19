@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 public partial class Enemy : Character
 {
 	int currentActionIndex = 0;
-	Array<EffectResource> nextActions;
+	Array<EffectResource> nextActions = new();
 	Array<EffectResource> initialActions = new(); //Array или []?
-	EffectResource[][][] actionPatterns;
+	Array<ActionResource> actionPatterns = new();
 	Sprite2D nextActionSprite;
 	Label attackDamageLabel;
 	Texture2D attackTexture, healTexture, positiveEffectTexture;
@@ -24,19 +24,19 @@ public partial class Enemy : Character
 		attackDamageLabel = GetNode<Label>("NextActionSprite/Label");
 		base._Ready();
 
-		actionPatterns = //ПРОКЛЯТО
-		[
-			[
-				[new DamageEffect(10) {Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_slash_green.tres")}]//дамаг
-			],
-			[
-				[new DamageEffect(5) {Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_slash_green.tres")}], [new HealEffect(3){Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_heal.tres")}]//или дамаг, или хил
-			],
-			[
-				[new MultiDamageEffect(1,10) {Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_slash_green.tres")}]
-			]
+		// actionPatterns = //ПРОКЛЯТО
+		// [
+		// 	[
+		// 		[new DamageEffect(10) {Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_slash_green.tres")}]//дамаг
+		// 	],
+		// 	[
+		// 		[new DamageEffect(5) {Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_slash_green.tres")}], [new HealEffect(3){Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_heal.tres")}]//или дамаг, или хил
+		// 	],
+		// 	[
+		// 		[new MultiDamageEffect(1,10) {Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_slash_green.tres")}]
+		// 	]
 
-		];
+		// ];
 
 		nextActions = initialActions;
 		SetDamageLabel();
@@ -82,7 +82,7 @@ public partial class Enemy : Character
 			await action.Execute(this, action.AppliableToCaster ? [this] : [Level.Player]);
 		}
 		//Определение индекса след. действий
-		if (++currentActionIndex == actionPatterns.Length)
+		if (++currentActionIndex == actionPatterns.Count)
 		{
 			currentActionIndex = 0;
 		}
@@ -95,7 +95,7 @@ public partial class Enemy : Character
 
 	private Array<EffectResource> GetActions(int index)
 	{
-		return new(actionPatterns[index][GD.Randi() % actionPatterns[index].Length]);
+		return actionPatterns[index].Effects;
 	}
 
 	private void SetDamageLabel()
@@ -129,20 +129,17 @@ public partial class Enemy : Character
 	public override void RecalculateStrength()
 	{
 		if (!Statuses.ContainsKey(typeof(StrengthStatus))) return;
-		foreach (EffectResource[][] level1 in actionPatterns)
-		{
-			foreach (EffectResource[] level2 in level1)
-			{	
-				foreach (EffectResource effect in level2)
+		foreach (ActionResource action in actionPatterns)
+		{		
+			foreach (EffectResource effect in action.Effects)
+			{
+				if (effect is DamageEffect)
 				{
-					if (effect is DamageEffect)
-					{
-						((DamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
-					}
-					if (effect is MultiDamageEffect)
-					{
-						((MultiDamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
-					}
+					((DamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
+				}
+				if (effect is MultiDamageEffect)
+				{
+					((MultiDamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
 				}
 			}
 		}

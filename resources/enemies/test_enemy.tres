@@ -1,9 +1,50 @@
-[gd_resource type="Resource" load_steps=7 format=3 uid="uid://uphj2ebaqjxl"]
+[gd_resource type="Resource" load_steps=19 format=3 uid="uid://uphj2ebaqjxl"]
 
+[ext_resource type="SpriteFrames" uid="uid://cuxw6ps72ay64" path="res://resources/animations/anim_slash_green.tres" id="1_jlgxb"]
 [ext_resource type="Script" uid="uid://6j10jfwxgj7v" path="res://scripts/resources/EnemyResource.cs" id="1_rk4lu"]
 [ext_resource type="SpriteFrames" uid="uid://brp012yfo2cq7" path="res://resources/animations/enemy.tres" id="1_xdanq"]
+[ext_resource type="Script" uid="uid://nytqoc0ix0v0" path="res://scripts/effects/DamageEffect.cs" id="2_8w74y"]
 [ext_resource type="Script" uid="uid://60k68ysb3pta" path="res://scripts/statuses/AmplificationStatus.cs" id="2_318jf"]
 [ext_resource type="Script" uid="uid://dfsv50ovm3n3k" path="res://scripts/effects/ApplyStatusEffect.cs" id="3_irtgr"]
+[ext_resource type="Script" uid="uid://c6m1ohmsaef1t" path="res://scripts/resources/ActionResource.cs" id="3_yo0yt"]
+[ext_resource type="Script" uid="uid://b3fu3pa3h540e" path="res://scripts/effects/MultiDamageEffect.cs" id="4_eoui6"]
+[ext_resource type="SpriteFrames" uid="uid://dfyoe3squ4k5p" path="res://resources/animations/anim_heal.tres" id="5_78k7y"]
+[ext_resource type="Script" uid="uid://b0uxuyo1n6xsm" path="res://scripts/effects/HealEffect.cs" id="6_s17fa"]
+
+[sub_resource type="Resource" id="Resource_b0oir"]
+script = ExtResource("2_8w74y")
+Damage = 5
+Animation = ExtResource("1_jlgxb")
+metadata/_custom_type_script = "uid://nytqoc0ix0v0"
+
+[sub_resource type="Resource" id="Resource_d1np4"]
+script = ExtResource("3_yo0yt")
+Effects = Array[Resource]([SubResource("Resource_b0oir")])
+metadata/_custom_type_script = "uid://c6m1ohmsaef1t"
+
+[sub_resource type="Resource" id="Resource_3b05s"]
+script = ExtResource("4_eoui6")
+Damage = 1
+Count = 5
+Animation = ExtResource("1_jlgxb")
+metadata/_custom_type_script = "uid://b3fu3pa3h540e"
+
+[sub_resource type="Resource" id="Resource_2x0nm"]
+script = ExtResource("3_yo0yt")
+Effects = Array[Resource]([SubResource("Resource_3b05s")])
+metadata/_custom_type_script = "uid://c6m1ohmsaef1t"
+
+[sub_resource type="Resource" id="Resource_y675g"]
+script = ExtResource("6_s17fa")
+healValue = 5
+Animation = ExtResource("5_78k7y")
+AppliableToCaster = true
+metadata/_custom_type_script = "uid://b0uxuyo1n6xsm"
+
+[sub_resource type="Resource" id="Resource_pgjia"]
+script = ExtResource("3_yo0yt")
+Effects = Array[Resource]([SubResource("Resource_y675g")])
+metadata/_custom_type_script = "uid://c6m1ohmsaef1t"
 
 [sub_resource type="Resource" id="Resource_318jf"]
 script = ExtResource("2_318jf")
@@ -20,6 +61,7 @@ metadata/_custom_type_script = "uid://dfsv50ovm3n3k"
 script = ExtResource("1_rk4lu")
 Name = "Test Enemy"
 InitialActions = Array[Resource]([SubResource("Resource_irtgr")])
+ActionPatterns = Array[Object]([SubResource("Resource_d1np4"), SubResource("Resource_2x0nm"), SubResource("Resource_pgjia")])
 MaxHP = 100
 Animation = ExtResource("1_xdanq")
 metadata/_custom_type_script = "uid://6j10jfwxgj7v"
