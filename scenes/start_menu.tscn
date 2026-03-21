@@ -44,16 +44,5 @@ offset_bottom = 167.0
 theme = SubResource("Theme_h61rw")
 text = "START SUFFERING"
 
-[node name="CardEditorButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 30.0
-offset_top = 340.0
-offset_right = 667.0
-offset_bottom = 447.0
-theme = SubResource("Theme_h61rw")
-disabled = true
-text = "CARD EDITOR"
-
 [connection signal="pressed" from="Exit button" to="." method="ExitGame"]
 [connection signal="pressed" from="Start button" to="." method="StartGame"]
-[connection signal="pressed" from="CardEditorButton" to="." method="OpenCardEditor"]
