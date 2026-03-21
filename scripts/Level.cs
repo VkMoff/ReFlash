@@ -89,6 +89,7 @@ public partial class Level : Control
 
 		foreach (var (statusType, status) in Player.Statuses)
 		{
+			GD.Print(statusType, status.Value);
 			status.OnTurnStart([Player]);
 		}
 	}

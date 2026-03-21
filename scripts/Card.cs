@@ -24,9 +24,9 @@ public partial class Card : Control
 	public override void _Ready()
 	{
 		level = GetParent().GetParent<Level>();
-		costLabel = GetNode<Label>("Panel/Cost/CostLabel");
-		descriptionLabel = GetNode<RichTextLabel>("Panel/DescriptionLabel");
-		nameLabel = GetNode<Label>("Panel/NameLabel");
+		costLabel = GetNode<Label>("Cost/CostLabel");
+		descriptionLabel = GetNode<RichTextLabel>("DescriptionLabel");
+		nameLabel = GetNode<Label>("NameLabel");
 		costLabel.Text = Cost.ToString();
 		originalScale = Scale;
 		originalSize = CustomMinimumSize;
@@ -35,7 +35,7 @@ public partial class Card : Control
 		nameLabel.Text = CardData.Name;
 		UpdateDescription();
 		descriptionLabel.Text = $"[outline_size=2]{Description}";
-		GetNode<TextureRect>("Panel/Sprite").Texture = CardTexture;
+		GetNode<TextureRect>("Sprite").Texture = CardTexture;
 
 		MouseEntered += OnMouseEntered;
 		MouseExited += OnMouseExited;

@@ -41,17 +41,27 @@ public partial class Player : Character
 	}
 	public override void RecalculateStrength()
 	{
+		Status status;
+		int value;
+		if (!Statuses.TryGetValue(typeof(StrengthStatus), out status))
+		{
+			value = 0;
+		}
+		else
+		{
+			value = status.Value;
+		}
 		foreach (Card card in Level.Deck.Cards)
 		{
-			SetStrengthModifierForCards(card, Statuses[typeof(StrengthStatus)].Value);
+			SetStrengthModifierForCards(card, value);
 		}
 		foreach (Card card in Level.Hand.GetChildren())
 		{
-			SetStrengthModifierForCards(card, Statuses[typeof(StrengthStatus)].Value);
+			SetStrengthModifierForCards(card, value);
 		}
 		foreach (Card card in Level.DiscardPile.Cards)
 		{
-			SetStrengthModifierForCards(card, Statuses[typeof(StrengthStatus)].Value);
+			SetStrengthModifierForCards(card, value);
 		}
 	}
 	private void SetStrengthModifierForCards(Card card, int value)

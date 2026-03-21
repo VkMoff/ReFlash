@@ -1,0 +1,39 @@
+<svg width="533" height="738" viewBox="0 0 533 738" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_449_792)">
+<line x1="0.00750468" y1="269" x2="533.007" y2="270" stroke="#444444" stroke-width="8"/>
+<path d="M40 16H493C506.255 16 517 26.7452 517 40V260H16V40C16 26.7452 26.7452 16 40 16Z" stroke="#444444" stroke-width="2"/>
+<path d="M15 30.3846V91.6667C15 100.459 25.53 104.971 31.8965 98.9081L101.897 32.2414C108.433 26.0158 104.027 15 95 15H35C23.9543 15 15 21.8879 15 30.3846Z" fill="#D9D9D9"/>
+<path d="M518 30.3846C518 21.8879 509.046 15 498 15H438C428.973 15 424.567 26.0158 431.103 32.2414L501.103 98.9081C507.47 104.971 518 100.459 518 91.6667V30.3846Z" fill="#D9D9D9"/>
+<mask id="path-6-inside-1_449_792" fill="white">
+<path d="M34 27H79V66H34V27Z"/>
+</mask>
+<path d="M34 27H79V66H34V27Z" fill="white"/>
+<path d="M34 27V22H27V27H34ZM79 27H86V22H79V27ZM79 66V71H86V66H79ZM34 66H27V71H34V66ZM34 27V32H79V27V22H34V27ZM79 27H72V66H79H86V27H79ZM79 66V61H34V66V71H79V66ZM34 66H41V27H34H27V66H34Z" fill="#444444" mask="url(#path-6-inside-1_449_792)"/>
+<rect x="46" y="36" width="21" height="21" fill="#444444"/>
+<rect x="25" y="75" width="18" height="17" fill="white"/>
+<rect x="25" y="75" width="18" height="17" stroke="#444444" stroke-width="4"/>
+<rect x="30.5" y="80" width="7" height="7" fill="#444444"/>
+<rect x="89" y="12" width="13" height="13" fill="white"/>
+<rect x="89" y="12" width="13" height="13" stroke="#444444" stroke-width="2"/>
+<rect x="93.5" y="16.5" width="4" height="4" fill="#444444"/>
+<mask id="path-13-inside-2_449_792" fill="white">
+<path d="M503 25L503 70L464 70L464 25L503 25Z"/>
+</mask>
+<path d="M503 25L503 70L464 70L464 25L503 25Z" fill="white"/>
+<path d="M503 25L508 25L508 18L503 18L503 25ZM503 70L503 77L508 77L508 70L503 70ZM464 70L459 70L459 77L464 77L464 70ZM464 25L464 18L459 18L459 25L464 25ZM503 25L498 25L498 70L503 70L508 70L508 25L503 25ZM503 70L503 63L464 63L464 70L464 77L503 77L503 70ZM464 70L469 70L469 25L464 25L459 25L459 70L464 70ZM464 25L464 32L503 32L503 25L503 18L464 18L464 25Z" fill="#444444" mask="url(#path-13-inside-2_449_792)"/>
+<rect x="494" y="37" width="21" height="21" transform="rotate(90 494 37)" fill="#444444"/>
+<rect x="455" y="16" width="18" height="17" transform="rotate(90 455 16)" fill="white"/>
+<rect x="455" y="16" width="18" height="17" transform="rotate(90 455 16)" stroke="#444444" stroke-width="4"/>
+<rect x="450" y="21.5" width="7" height="7" transform="rotate(90 450 21.5)" fill="#444444"/>
+<rect x="518" y="80.0005" width="13" height="13" transform="rotate(90 518 80.0005)" fill="white"/>
+<rect x="518" y="80.0005" width="13" height="13" transform="rotate(90 518 80.0005)" stroke="#444444" stroke-width="2"/>
+<rect x="513.5" y="84.5005" width="4" height="4" transform="rotate(90 513.5 84.5005)" fill="#444444"/>
+<rect x="15" y="278" width="503" height="445" rx="20" fill="#444444"/>
+</g>
+<rect x="4" y="4" width="525" height="730" rx="31" stroke="#545454" stroke-width="8"/>
+<defs>
+<clipPath id="clip0_449_792">
+<rect width="533" height="738" rx="35" fill="white"/>
+</clipPath>
+</defs>
+</svg>
