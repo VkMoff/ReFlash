@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkhe027ta6mfs"]
+
+[ext_resource type="Script" uid="uid://b0lf1mox1r3kl" path="res://scripts/ui/PauseMenu.cs" id="1_6tw0m"]
+[ext_resource type="Theme" uid="uid://dimnwbckclvgj" path="res://resources/themes/main_button_theme.tres" id="2_0lmf7"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_6tw0m")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Continue" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_0lmf7")
+text = "ПРОДОЛЖИТЬ"
+
+[node name="ExitToMenu" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_0lmf7")
+text = "ВЫЙТИ В МЕНЮ"
+
+[node name="ExitToDesktop" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_0lmf7")
+text = "ВЫЙТИ НА РАБОЧИЙ СТОЛ"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Continue" to="." method="Continue"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ExitToMenu" to="." method="ExitToMenu"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ExitToDesktop" to="." method="ExitToDesktop"]

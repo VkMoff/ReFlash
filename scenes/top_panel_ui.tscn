@@ -66,3 +66,5 @@ texture = ExtResource("4_ikc7c")
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_iuy2t")
+
+[connection signal="pressed" from="HBoxContainer/MenuButton" to="." method="ShowPauseMenu"]

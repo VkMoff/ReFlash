@@ -30,4 +30,9 @@ public partial class TopPanelUI : Control
 	{
 		goldLabel.Text = gold.ToString();
 	}
+	public void ShowPauseMenu()
+	{
+		GetTree().Root.AddChild(GD.Load<PackedScene>("res://scenes/ui/pause_menu.tscn").Instantiate<CanvasLayer>());
+		GetTree().Paused = true;
+	}
 }

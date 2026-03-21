@@ -1,21 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhmkdxjvo6y4l"]
+[gd_scene load_steps=3 format=3 uid="uid://bhmkdxjvo6y4l"]
 
 [ext_resource type="Script" uid="uid://cwaqvcgn1w07f" path="res://scripts/StartMenu.cs" id="1_ouf4f"]
-[ext_resource type="FontFile" uid="uid://c413jf5rxeamh" path="res://resources/styles/Play-Bold.ttf" id="2_thu50"]
-
-[sub_resource type="Gradient" id="Gradient_ouf4f"]
-colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.2, 0.2, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_thu50"]
-gradient = SubResource("Gradient_ouf4f")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m7x51"]
-texture = SubResource("GradientTexture1D_thu50")
-
-[sub_resource type="Theme" id="Theme_h61rw"]
-Button/font_sizes/font_size = 64
-Button/fonts/font = ExtResource("2_thu50")
-Button/styles/normal = SubResource("StyleBoxTexture_m7x51")
+[ext_resource type="Theme" uid="uid://dimnwbckclvgj" path="res://resources/themes/main_button_theme.tres" id="2_thu50"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -32,7 +18,7 @@ offset_left = 30.0
 offset_top = 200.0
 offset_right = 667.0
 offset_bottom = 307.0
-theme = SubResource("Theme_h61rw")
+theme = ExtResource("2_thu50")
 text = "EXIT"
 
 [node name="Start button" type="Button" parent="."]
@@ -41,7 +27,7 @@ offset_left = 30.0
 offset_top = 60.0
 offset_right = 667.0
 offset_bottom = 167.0
-theme = SubResource("Theme_h61rw")
+theme = ExtResource("2_thu50")
 text = "START SUFFERING"
 
 [connection signal="pressed" from="Exit button" to="." method="ExitGame"]
