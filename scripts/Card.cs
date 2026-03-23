@@ -37,8 +37,6 @@ public partial class Card : Control
 		descriptionLabel.Text = $"[outline_size=2]{Description}";
 		GetNode<TextureRect>("Sprite").Texture = CardTexture;
 
-		MouseEntered += OnMouseEntered;
-		MouseExited += OnMouseExited;
 	}
 
 	public Card Init(CardResource cardResource)
