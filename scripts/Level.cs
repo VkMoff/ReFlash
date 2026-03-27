@@ -119,6 +119,11 @@ public partial class Level : Control
 	{
 		energyLabel.Text = Energy.ToString();
 	}
+	public void AddEnergy(int energy = 1)
+	{
+		Energy += energy;
+		UpdateEnergyLabel();
+	}
 	public bool TryPlay(int cost)
 	{
 		if (Energy >= cost)
@@ -136,6 +141,12 @@ public partial class Level : Control
 
 	public async void EndTurn()
 	{
+		foreach (var character in pendingRemovals) //Костыль. Переработать систему смерти врагов
+		{
+			Enemies.Remove(character);
+		}
+		pendingRemovals.Clear();
+		
 		foreach (Card card in Hand.GetChildren())
 		{
 			card.Discard();
@@ -158,12 +169,12 @@ public partial class Level : Control
 			}
 
 		}
-
 		foreach (var character in pendingRemovals)
 		{
 			Enemies.Remove(character);
 		}
 		pendingRemovals.Clear();
+
 
 		// if (Enemies.Count == 0)
 		// {
@@ -214,7 +225,7 @@ public partial class Level : Control
 		{
 			Win();
 		}
-		// character.QueueFree();
+		character.QueueFree();
 	}
 	public void Win()
 	{

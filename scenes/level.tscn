@@ -101,6 +101,13 @@ offset_bottom = 272.0
 text = "[Debug] Win
 "
 
+[node name="AddEnergyButton" type="Button" parent="."]
+layout_mode = 0
+offset_top = 283.0
+offset_right = 103.0
+offset_bottom = 314.0
+text = "[Debug] Add energy"
+
 [node name="EnemyContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -178,3 +185,4 @@ horizontal_alignment = 1
 [connection signal="pressed" from="ReloadSceneButton" to="." method="RestartScene"]
 [connection signal="pressed" from="GoToMapButton" to="." method="GoToMap"]
 [connection signal="pressed" from="WinButton" to="." method="Win"]
+[connection signal="pressed" from="AddEnergyButton" to="." method="AddEnergy" binds= [1]]
