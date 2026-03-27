@@ -33,16 +33,6 @@ public partial class Level : Control
 
 		artifactScene = GD.Load<PackedScene>("res://scenes/artifact.tscn");
 
-
-		//Кнопки
-		pullCardButton = GetNode<Button>("PullCardButton");
-		endTurnButton = GetNode<Button>("EndTurnButton");
-		reloadSceneButton = GetNode<Button>("ReloadSceneButton");
-		//Добавление сигналов
-		pullCardButton.Pressed += PullCardFromDeck;
-		endTurnButton.Pressed += EndTurn;
-		reloadSceneButton.Pressed += RestartScene;
-
 		Enemies = new();
 
 		Energy = 3;
@@ -186,12 +176,7 @@ public partial class Level : Control
 
 			await enemy.ExecuteNextAction();
 			await ToSignal(PlayerData.Instance.GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
-
 		}
-
-
-
-
 
 		Energy = 3;
 		UpdateEnergyLabel();

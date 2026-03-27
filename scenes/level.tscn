@@ -93,6 +93,14 @@ offset_bottom = 232.0
 text = "[Debug] Go to map
 "
 
+[node name="WinButton" type="Button" parent="."]
+layout_mode = 0
+offset_top = 241.0
+offset_right = 103.0
+offset_bottom = 272.0
+text = "[Debug] Win
+"
+
 [node name="EnemyContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -165,4 +173,8 @@ text = "123"
 label_settings = SubResource("LabelSettings_b121j")
 horizontal_alignment = 1
 
+[connection signal="pressed" from="PullCardButton" to="." method="PullCardFromDeck"]
+[connection signal="pressed" from="EndTurnButton" to="." method="EndTurn"]
+[connection signal="pressed" from="ReloadSceneButton" to="." method="RestartScene"]
 [connection signal="pressed" from="GoToMapButton" to="." method="GoToMap"]
+[connection signal="pressed" from="WinButton" to="." method="Win"]
