@@ -54,7 +54,8 @@ theme = ExtResource("2_132xm")
 text = "Карта"
 icon = ExtResource("4_oslnx")
 
-[node name="Button3" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/ButtonContainer"]
+[node name="GoToMapButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/ButtonContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Далее
 "
@@ -62,4 +63,4 @@ text = "Далее
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/ButtonContainer/AddGoldButton" to="." method="GetGold"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/ButtonContainer/AddGoldButton" to="CenterContainer/PanelContainer/MarginContainer/ButtonContainer/AddGoldButton" method="queue_free"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/ButtonContainer/AddCardButton" to="." method="GetCard"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/ButtonContainer/Button3" to="." method="GoToMap"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/ButtonContainer/GoToMapButton" to="." method="GoToMap"]

@@ -25,11 +25,11 @@ public partial class VictoryMenu : CanvasLayer
 			artifactButton.Icon = artifact.ArtifactTexture;
 			artifactButton.Text = artifact.Name;
 			artifactButton.ArtifactResource = artifact;
-			
+			artifactButton.Theme = GD.Load<Theme>("res://resources/themes/selector_button_theme.tres");
 			artifactButton.AddArtifact += PlayerData.Instance.InstantiateArtifact;
 		}
 		
-		
+		GetNode<Button>("%GoToMapButton").MoveToFront();
 	}
 	public void GoToMap()
 	{
