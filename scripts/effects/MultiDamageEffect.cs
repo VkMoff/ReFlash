@@ -15,12 +15,14 @@ public partial class MultiDamageEffect : EffectResource
 		{
             for (int i = 0; i < Count; i++)
             {
+				if (!caster.IsAlive) return;
 				target.ChangeHP(Math.Min(-Damage - StrengthModifier, 0));
 				await PlayAnimationWithSpriteFrames(target, 3, 0.25f);
 				foreach (var (statusType, status) in target.Statuses)
 				{
 					status.OnDamageReceive(target, caster);
 				}
+				if (!target.IsAlive) continue;
             }
 		}
 	}
