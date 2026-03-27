@@ -35,28 +35,31 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+[node name="ButtonContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_uojon")
 
-[node name="Button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="AddGoldButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/ButtonContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_132xm")
 text = "Золото"
 icon = ExtResource("3_f4wvf")
 
-[node name="Button2" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="AddCardButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/ButtonContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_132xm")
 text = "Карта"
 icon = ExtResource("4_oslnx")
 
-[node name="Button3" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button3" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/ButtonContainer"]
 layout_mode = 2
 text = "Далее
 "
 
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="GetGold"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" method="queue_free"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button2" to="." method="GetCard"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button3" to="." method="GoToMap"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/ButtonContainer/AddGoldButton" to="." method="GetGold"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/ButtonContainer/AddGoldButton" to="CenterContainer/PanelContainer/MarginContainer/ButtonContainer/AddGoldButton" method="queue_free"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/ButtonContainer/AddCardButton" to="." method="GetCard"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/ButtonContainer/Button3" to="." method="GoToMap"]

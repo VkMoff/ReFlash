@@ -6,5 +6,4 @@ public partial class ArtifactResource : Resource
     public string Name { get; protected set; }
     public string Description { get; protected set; }
     public virtual void Load(Level level) { }
-    public virtual void Init() {}
 }

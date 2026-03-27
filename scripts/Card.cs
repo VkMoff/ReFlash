@@ -21,9 +21,17 @@ public partial class Card : Control
 	public string Description { get; protected set; }
 	public Texture2D CardTexture { get; protected set; }
 	public Array<EffectResource> Effects;
+	public event Action<Card> Clicked;
 	public override void _Ready()
 	{
-		level = GetParent().GetParent<Level>();
+		try
+		{
+			level = GetParent().GetParent<Level>();
+		}
+		catch (Exception ex)
+		{
+			GD.Print($"Ошибка при загрузке карты: {ex.Message}\nВозможно карта находится не в сцене Level");
+		}
 		costLabel = GetNode<Label>("Cost/CostLabel");
 		descriptionLabel = GetNode<RichTextLabel>("DescriptionLabel");
 		nameLabel = GetNode<Label>("NameLabel");
@@ -70,6 +78,7 @@ public partial class Card : Control
 
 	private void OnMouseEntered()
 	{
+		if (level is null) return;
 		isHovered = true;
 		if (!isDragging)
 		{
@@ -84,6 +93,7 @@ public partial class Card : Control
 
 	private void OnMouseExited()
 	{
+		if (level is null) return;
 		isHovered = false;
 		if (!isDragging)
 		{
@@ -97,6 +107,15 @@ public partial class Card : Control
 
 	public override void _GuiInput(InputEvent @event)
 	{
+		if (level is null)
+		{
+			if (@event is InputEventMouseButton mb && mb.ButtonIndex == MouseButton.Left) //Выглядит отвратительно
+			{
+				Clicked?.Invoke(this);
+			}	
+			return;
+		}
+		;
 		if (@event is InputEventMouseButton mouseButtonEvent && mouseButtonEvent.ButtonIndex == MouseButton.Left)
 		{
 			if (mouseButtonEvent.Pressed)

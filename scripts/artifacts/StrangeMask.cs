@@ -3,7 +3,7 @@ using Godot;
 [GlobalClass]
 public partial class StrangeMask : ArtifactResource
 {
-    public override void Init()
+    public StrangeMask()
     {
         ArtifactTexture = GD.Load<Texture2D>("res://resources/sprites/artifacts/artifact_strangemask.png");
         Name = "Странная маска";
@@ -12,8 +12,6 @@ public partial class StrangeMask : ArtifactResource
 
     public override void Load(Level level)
     {
-        Init();
-        
         level.BattleStart += () =>
         {
             level.PullCardFromDeck(2);

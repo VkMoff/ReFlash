@@ -8,7 +8,6 @@ public partial class ShopItemButton : Button
 	[Signal] public delegate void ClickedEventHandler(ArtifactResource artifact);
 	public override void _Ready()
 	{
-		Artifact.Init();
 		Icon = Artifact.ArtifactTexture;
 		Text = cost.ToString();
 		Pressed += () =>

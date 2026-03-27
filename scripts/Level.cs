@@ -68,11 +68,11 @@ public partial class Level : Control
 			artifact.ArtifactResource.Load(this);
 			artifact.UpdateTexture();
 		}
-		Artifact testArtifact = artifactScene.Instantiate<Artifact>();
-		artifactContainer.AddChild(testArtifact);
-		testArtifact.SetArtifact(new StrangeMask());
-		testArtifact.ArtifactResource.Load(this);
-		testArtifact.UpdateTexture();
+		// Artifact testArtifact = artifactScene.Instantiate<Artifact>();
+		// artifactContainer.AddChild(testArtifact);
+		// testArtifact.SetArtifact(new StrangeMask());
+		// testArtifact.ArtifactResource.Load(this);
+		// testArtifact.UpdateTexture();
 
 		BattleStart?.Invoke();
 		TurnStart?.Invoke();
@@ -230,7 +230,9 @@ public partial class Level : Control
 	public void Win()
 	{
 		GD.Print("LEVEL COMPLETED!");
-		GetTree().Root.AddChild(GD.Load<PackedScene>("res://scenes/ui/victory_menu.tscn").Instantiate<CanvasLayer>());
+		VictoryMenu victoryMenu = GD.Load<PackedScene>("res://scenes/ui/victory_menu.tscn").Instantiate<VictoryMenu>();
+		victoryMenu.Init(goldReward: 50, artifacts: [new PoisonSpray(), new StrangeMask()]);
+		GetTree().Root.AddChild(victoryMenu);
 	}
 	public void GoToMap()
 	{
