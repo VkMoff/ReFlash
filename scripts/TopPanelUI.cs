@@ -32,7 +32,7 @@ public partial class TopPanelUI : Control
 	}
 	public void ShowPauseMenu()
 	{
-		GetTree().Root.AddChild(GD.Load<PackedScene>("res://scenes/ui/pause_menu.tscn").Instantiate<CanvasLayer>());
+		GetTree().Root.AddChild(GD.Load<PackedScene>("res://scenes/ui/pause_menu.tscn").Instantiate<PauseMenu>());
 		GetTree().Paused = true;
 	}
 }

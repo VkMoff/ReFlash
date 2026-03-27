@@ -234,8 +234,7 @@ public partial class Level : Control
 	public void Win()
 	{
 		GD.Print("LEVEL COMPLETED!");
-		PlayerData.Instance.AddGold(50);
-		SceneManager.Instance.GoToMap();
+		GetTree().Root.AddChild(GD.Load<PackedScene>("res://scenes/ui/victory_menu.tscn").Instantiate<CanvasLayer>());
 	}
 	public void GoToMap()
 	{
