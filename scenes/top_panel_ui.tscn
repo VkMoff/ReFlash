@@ -1,10 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcfx5esbh0n7m"]
+[gd_scene load_steps=10 format=3 uid="uid://bcfx5esbh0n7m"]
 
 [ext_resource type="Texture2D" uid="uid://desmhvdy4dkfl" path="res://resources/sprites/menu_button.svg" id="1_hcee0"]
 [ext_resource type="Script" uid="uid://barsnc18j7uew" path="res://scripts/TopPanelUI.cs" id="1_iuy2t"]
 [ext_resource type="FontFile" uid="uid://cxe7kfddmqoln" path="res://resources/styles/Play-Regular.ttf" id="2_ikc7c"]
 [ext_resource type="Texture2D" uid="uid://w3mijiw71dyq" path="res://resources/sprites/heart.svg" id="3_iuy2t"]
 [ext_resource type="Texture2D" uid="uid://dnva13t8vlc5b" path="res://resources/sprites/gold.svg" id="4_ikc7c"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_iuy2t"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_wowjt"]
+events = [SubResource("InputEventKey_iuy2t")]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wowjt"]
 font = ExtResource("2_ikc7c")
@@ -44,6 +50,7 @@ theme_override_constants/separation = 10
 
 [node name="MenuButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+shortcut = SubResource("Shortcut_wowjt")
 icon = ExtResource("1_hcee0")
 icon_alignment = 1
 

@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkhe027ta6mfs"]
+[gd_scene load_steps=5 format=3 uid="uid://dkhe027ta6mfs"]
 
 [ext_resource type="Script" uid="uid://b0lf1mox1r3kl" path="res://scripts/ui/PauseMenu.cs" id="1_6tw0m"]
 [ext_resource type="Theme" uid="uid://dimnwbckclvgj" path="res://resources/themes/main_button_theme.tres" id="2_0lmf7"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_0lmf7"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_f6eus"]
+events = [SubResource("InputEventKey_0lmf7")]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 2
@@ -29,6 +35,7 @@ theme_override_constants/separation = 20
 [node name="Continue" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_0lmf7")
+shortcut = SubResource("Shortcut_f6eus")
 text = "ПРОДОЛЖИТЬ"
 
 [node name="ExitToMenu" type="Button" parent="CenterContainer/VBoxContainer"]
