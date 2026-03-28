@@ -17,8 +17,8 @@ public abstract partial class EffectResource : Resource
         }
         AnimatedSprite2D sprite = new();
         sprite.SpriteFrames = (SpriteFrames)Animation;
-        sprite.Position = target.Size / 2;
-        target.AddChild(sprite);
+        sprite.Position = target.GlobalPosition + target.Size / 2;
+        target.GetTree().Root.AddChild(sprite);
         sprite.Scale *= scale;
         sprite.Play(customSpeed: speed);
         await ToSignal(sprite, AnimatedSprite2D.SignalName.AnimationFinished);

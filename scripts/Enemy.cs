@@ -81,6 +81,7 @@ public partial class Enemy : Character
 			GD.Print(action.GetType().Name);
 			await action.Execute(this, action.AppliableToCaster ? [this] : [Level.Player]);
 		}
+		if (!IsAlive) return;
 		//Определение индекса след. действий
 		if (++currentActionIndex == actionPatterns.Count)
 		{

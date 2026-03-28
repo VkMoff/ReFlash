@@ -62,6 +62,6 @@ script = ExtResource("1_rk4lu")
 Name = "Test Enemy"
 InitialActions = Array[Resource]([SubResource("Resource_irtgr")])
 ActionPatterns = Array[Object]([SubResource("Resource_d1np4"), SubResource("Resource_2x0nm"), SubResource("Resource_pgjia")])
-MaxHP = 100
+MaxHP = 60
 Animation = ExtResource("1_xdanq")
 metadata/_custom_type_script = "uid://6j10jfwxgj7v"

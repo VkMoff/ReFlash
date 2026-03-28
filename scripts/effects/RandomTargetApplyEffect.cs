@@ -11,7 +11,20 @@ public partial class RandomTargetApplyEffect : EffectResource
 	{
         for (int i = 0; i < Count; i++)
         {
-            await Effect.Execute(caster, [targets[GD.Randi() % targets.Length]]); //проклято
+			bool hasAliveTarget = false;
+			foreach (Character character in targets)
+			{
+				if (character.IsAlive) hasAliveTarget = true;
+			}
+			if (!hasAliveTarget) return;
+			Character target;
+			do
+			{
+				target = targets[GD.Randi() % targets.Length];
+				GD.Print(target.IsAlive);
+			}
+			while (!target.IsAlive);
+            await Effect.Execute(caster, [target]); //проклято
         }
 	}
 

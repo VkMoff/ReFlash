@@ -12,11 +12,18 @@ public partial class DamageEffect : EffectResource
 	{
 		foreach (Character target in targets)
 		{
+			GD.Print("Start");
 			target.ChangeHP(Math.Min(-Damage - StrengthModifier, 0));
+			if (!target.IsAlive)
+			{
+				GD.Print("Cont");
+				continue;
+			}
 			foreach (var (statusType, status) in target.Statuses)
 			{
 				status.OnDamageReceive(target, caster);
 			}
+			GD.Print("End");
 		}
 
 		List<Task> animationTasks = new List<Task>();
@@ -26,6 +33,7 @@ public partial class DamageEffect : EffectResource
 		}
 
 		await Task.WhenAll(animationTasks);
+		GD.Print("Completed");
 	}
 
 
