@@ -3,8 +3,10 @@ using System;
 
 public partial class LevelButton : Button
 {
-	Texture2D enemyIcon = GD.Load<Texture2D>("res://resources/sprites/level_buttons/icon_level_sword.svg");
-	Texture2D shopIcon = GD.Load<Texture2D>("res://resources/sprites/level_buttons/icon_level_shop.svg");
+	static Texture2D enemyIcon = GD.Load<Texture2D>("res://resources/sprites/level_buttons/icon_level_sword.svg");
+	static Texture2D enemyIconCompleted = GD.Load<Texture2D>("res://resources/sprites/level_buttons/icon_level_sword_completed.svg");
+	static Texture2D shopIcon = GD.Load<Texture2D>("res://resources/sprites/level_buttons/icon_level_shop.svg");
+	static Texture2D shopIconCompleted = GD.Load<Texture2D>("res://resources/sprites/level_buttons/icon_level_shop_completed.svg");
 	MapMenu mapMenu;
 	RoomTypes roomType;
 	EncounterResource encounterResource;
@@ -30,6 +32,18 @@ public partial class LevelButton : Button
 		mapMenu = GetTree().Root.GetNode<MapMenu>("MapMenu");
 		Pressed += () =>
 		{
+			switch (roomType)
+			{
+				case RoomTypes.EnemyRoom:
+					Icon = enemyIconCompleted;
+					break;
+				case RoomTypes.Shop:
+					Icon = shopIconCompleted;
+					break;
+				default:
+					GD.Print("WTF");
+					break;
+			}
 			mapMenu.StartEncounter(encounterResource);
 		};
 	}

@@ -4,27 +4,57 @@ using System;
 public partial class MapMenu : Control
 {
 	PackedScene levelButtonScene = GD.Load<PackedScene>("res://scenes/level_button.tscn");
+	RoomResource testRoom = GD.Load<RoomResource>("res://resources/encounters/rooms/test_room.tres");
+	HBoxContainer levelsContainer;
+	int currentLevelIdx = 0;
+
 	public override void _Ready()
 	{
-		LevelButton levelButton = levelButtonScene.Instantiate<LevelButton>();
-		levelButton.Init(RoomTypes.EnemyRoom, GD.Load<RoomResource>("res://resources/encounters/rooms/test_room.tres"));
+		levelsContainer = GetNode<HBoxContainer>("LevelsBackground/MapLevelsContainer");
 
-		LevelButton shopButton = levelButtonScene.Instantiate<LevelButton>();
-		shopButton.Init(RoomTypes.Shop, GD.Load<ShopResource>("res://resources/encounters/shops/test_shop.tres"));
+		for (int i = 0; i < 20; i++)
+		{
+			VBoxContainer selectContainer = new VBoxContainer();
+			levelsContainer.AddChild(selectContainer);
 
-		LevelButton shopButton2 = levelButtonScene.Instantiate<LevelButton>();
-		shopButton2.Init(RoomTypes.Shop, GD.Load<ShopResource>("res://resources/encounters/shops/test_shop.tres"));
+			LevelButton levelButton = levelButtonScene.Instantiate<LevelButton>();
+			levelButton.Init(RoomTypes.EnemyRoom, testRoom);
+			
+			LevelButton levelButton1 = levelButtonScene.Instantiate<LevelButton>();
+			levelButton1.Init(RoomTypes.EnemyRoom, testRoom);
 
-		GetNode("LevelsBackground/MapLevels/LevelSelectContainer").AddChild(levelButton);
-		GetNode("LevelsBackground/MapLevels/LevelSelectContainer").AddChild(shopButton);
-		GetNode("LevelsBackground/MapLevels/LevelSelectContainer").AddChild(shopButton2);
+			LevelButton shopButton2 = levelButtonScene.Instantiate<LevelButton>();
+			shopButton2.Init(RoomTypes.Shop, GD.Load<ShopResource>("res://resources/encounters/shops/test_shop.tres"));
+
+			selectContainer.AddChild(levelButton);
+			selectContainer.AddChild(levelButton1);
+			selectContainer.AddChild(shopButton2);
+		}
+		foreach (VBoxContainer vBoxContainer in levelsContainer.GetChildren())
+		{
+			if (vBoxContainer == levelsContainer.GetChild(0)) continue;
+			foreach (LevelButton levelButton in vBoxContainer.GetChildren())
+			{
+				levelButton.Disabled = true;
+			}
+		}
 	}
 
 	public void StartEncounter(EncounterResource encounterResource)
 	{
-		if (encounterResource is RoomResource)
+		foreach (LevelButton levelButton in levelsContainer.GetChild(currentLevelIdx).GetChildren())
 		{
-			SceneManager.Instance.LoadLevel(encounterResource as RoomResource);
+			levelButton.Disabled = true;
+		}
+		currentLevelIdx++;
+		foreach (LevelButton levelButton in levelsContainer.GetChild(currentLevelIdx).GetChildren())
+		{
+			levelButton.Disabled = false;
+		}
+
+		if (encounterResource is RoomResource roomResource)
+		{
+			SceneManager.Instance.LoadLevel(roomResource);
 		}
 		else if (encounterResource is ShopResource)
 		{
