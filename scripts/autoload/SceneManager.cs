@@ -40,6 +40,7 @@ public partial class SceneManager : Node
 
 	public void GoToMenu()
 	{
+		map.Hide();
 		GetTree().ChangeSceneToPacked(startMenu);
 	}
 
