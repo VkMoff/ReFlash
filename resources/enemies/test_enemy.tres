@@ -59,7 +59,7 @@ metadata/_custom_type_script = "uid://dfsv50ovm3n3k"
 
 [resource]
 script = ExtResource("1_rk4lu")
-Name = "Test Enemy"
+Name = "Табуретка"
 InitialActions = Array[Resource]([SubResource("Resource_irtgr")])
 ActionPatterns = Array[Object]([SubResource("Resource_d1np4"), SubResource("Resource_2x0nm"), SubResource("Resource_pgjia")])
 MaxHP = 60

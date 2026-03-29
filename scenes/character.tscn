@@ -1,9 +1,152 @@
-[gd_scene load_steps=5 format=3 uid="uid://dj3y15cjhlbdq"]
+[gd_scene load_steps=17 format=3 uid="uid://dj3y15cjhlbdq"]
 
 [ext_resource type="Script" uid="uid://crm4jsgrofs1t" path="res://scripts/Character.cs" id="1_rkhd4"]
+[ext_resource type="Texture2D" uid="uid://d2qrm3x87k1f7" path="res://resources/animations/stool_sprites/Stool_hose1.svg" id="3_50cep"]
 [ext_resource type="SpriteFrames" uid="uid://pv8myj3lvb8y" path="res://resources/animations/player.tres" id="3_lrhn5"]
 [ext_resource type="PackedScene" uid="uid://bqnhos7yvul2" path="res://scenes/health_bar.tscn" id="3_my7n2"]
+[ext_resource type="Texture2D" uid="uid://4oxv8yyhru6l" path="res://resources/animations/stool_sprites/Stool_hose2.svg" id="4_8yvht"]
+[ext_resource type="Texture2D" uid="uid://uoux5smgbvf3" path="res://resources/animations/stool_sprites/Stool_hose3.svg" id="5_lagn4"]
 [ext_resource type="LabelSettings" uid="uid://cdwtgwcu7kv7r" path="res://resources/styles/baseLabelSettings.tres" id="6_0lw5n"]
+[ext_resource type="Texture2D" uid="uid://b1phk2tq6pp0q" path="res://resources/animations/stool_sprites/Stool_tentacle1.svg" id="6_x8k1v"]
+[ext_resource type="Texture2D" uid="uid://pumcc2vmbdov" path="res://resources/animations/stool_sprites/Stool_tentacle2.svg" id="7_ih8y6"]
+[ext_resource type="Texture2D" uid="uid://bjqquerk4drut" path="res://resources/animations/stool_sprites/Stool_tentacle3.svg" id="8_rbud2"]
+[ext_resource type="Texture2D" uid="uid://2r40et0suygj" path="res://resources/animations/stool_sprites/Stool_tentacle4.svg" id="9_vovfy"]
+[ext_resource type="Texture2D" uid="uid://ep82f1a675te" path="res://resources/animations/stool_sprites/Stool_body.svg" id="10_u0pwc"]
+[ext_resource type="Texture2D" uid="uid://dhqxqw2nu1k5w" path="res://resources/animations/stool_sprites/Stool_head.svg" id="11_cicko"]
+
+[sub_resource type="Animation" id="Animation_50cep"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("polygons/Tentacle1:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.12217304763960307]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("polygons/Tentacle2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.12217304763960307]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("polygons/Tentacle3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.05235987755982989]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("polygons/Tentacle4:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.05235987755982989]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(98, 105), Vector2(98, 125)]
+}
+
+[sub_resource type="Animation" id="Animation_8yvht"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("polygons/Tentacle1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("polygons/Tentacle2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("polygons/Tentacle3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("polygons/Tentacle4:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(98, 105)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lagn4"]
+_data = {
+&"RESET": SubResource("Animation_8yvht"),
+&"idle": SubResource("Animation_50cep")
+}
 
 [node name="Character" type="VBoxContainer"]
 custom_minimum_size = Vector2(200, 200)
@@ -19,14 +162,85 @@ alignment = 1
 script = ExtResource("1_rkhd4")
 
 [node name="Control" type="Control" parent="."]
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_vertical = 4
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="Control"]
+visible = false
 position = Vector2(100, 75)
 sprite_frames = ExtResource("3_lrhn5")
 frame_progress = 0.664454
+
+[node name="Skeleton" type="Node2D" parent="Control"]
+position = Vector2(98, 105)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="polygons" type="Node2D" parent="Control/Skeleton"]
+
+[node name="Hose1" type="Polygon2D" parent="Control/Skeleton/polygons"]
+position = Vector2(32.983696, 43)
+texture = ExtResource("3_50cep")
+polygon = PackedVector2Array(32.281326, -0.86408997, 22.515045, 86.54457, 5.4295654, 239.46062, 10.128677, 273.69702, 20.869507, 272.35443, 29.59645, 264.9701, 18.855606, 235.4328, 33.374725, 118.9653, 48.39685, -1.5370102)
+uv = PackedVector2Array(32.281326, -0.86408997, 5.4295654, 239.46062, 10.128677, 273.69702, 20.869507, 272.35443, 29.59645, 264.9701, 18.855606, 235.4328, 48.39685, -1.5370102)
+
+[node name="Hose2" type="Polygon2D" parent="Control/Skeleton/polygons"]
+position = Vector2(38.983696, 51)
+texture = ExtResource("4_8yvht")
+polygon = PackedVector2Array(-3.2731323, -3.9135475, -2.2944946, 37.189655, 28.04358, 106.673645, 122.97241, 246.62025, 144.50262, 235.85515, 79.91193, 144.84091, 31.95819, 70.463684, 16.299805, 39.146954, 14.342529, -3.9135475)
+uv = PackedVector2Array(-3.2731323, -3.9135475, -2.2944946, 37.189655, 28.04358, 106.673645, 122.97241, 246.62025, 144.50262, 235.85515, 79.91193, 144.84091, 31.95819, 70.463684, 16.299805, 39.146954, 14.342529, -3.9135475)
+
+[node name="Hose3" type="Polygon2D" parent="Control/Skeleton/polygons"]
+position = Vector2(-87.016304, 16)
+texture = ExtResource("5_lagn4")
+polygon = PackedVector2Array(2.27005, -0.00037384033, -3.808258, 51.23094, 9.057129, 133.88008, 16.95102, 164.66623, 12.214691, 293.33655, 22.476746, 300.44104, 35.106964, 294.12595, 34.317566, 164.66623, 20.108582, 103.883316, 15.369995, -5.8417654)
+uv = PackedVector2Array(2.27005, -0.00037384033, -3.808258, 51.23094, 9.057129, 133.88008, 16.95102, 164.66623, 12.214691, 293.33655, 22.476746, 300.44104, 35.106964, 294.12595, 34.317566, 164.66623, 20.108582, 103.883316, 15.369995, -5.8417654)
+
+[node name="Tentacle1" type="Polygon2D" parent="Control/Skeleton/polygons"]
+position = Vector2(-96.016304, 39)
+offset = Vector2(-102, -15)
+texture = ExtResource("6_x8k1v")
+polygon = PackedVector2Array(80.130066, -5.3028316, 16.500183, 172.86087, 8.016235, 251.33772, 39.831177, 303.30215, 65.28314, 290.57617, 75.88812, 241.79326, 63.16211, 208.9178, 52.55713, 231.18828, 54.6781, 186.64734, 128.91302, 9.544142)
+uv = PackedVector2Array(80.130066, -5.3028316, 16.500183, 172.86087, 8.016235, 251.33772, 39.831177, 303.30215, 65.28314, 290.57617, 75.88812, 241.79326, 63.16211, 208.9178, 52.55713, 231.18828, 54.6781, 186.64734, 128.91302, 9.544142)
+
+[node name="Tentacle2" type="Polygon2D" parent="Control/Skeleton/polygons"]
+position = Vector2(115.983696, 43)
+offset = Vector2(-52, -14)
+texture = ExtResource("7_ih8y6")
+polygon = PackedVector2Array(32.576782, 13.739874, 55.829468, 96.18115, 81.195984, 138.45872, 87.53766, 192.36264, 81.195984, 234.64023, 57.9433, 217.72919, 53.715576, 250.49432, 75.911316, 295.94272, 95.993164, 295.94272, 124.53052, 238.86798, 120.302734, 132.1171, 85.42377, 67.64378, 67.45575, -0.00033950806)
+uv = PackedVector2Array(32.576782, 13.739874, 55.829468, 96.18115, 81.195984, 138.45872, 87.53766, 192.36264, 81.195984, 234.64023, 57.9433, 217.72919, 53.715576, 250.49432, 75.911316, 295.94272, 95.993164, 295.94272, 124.53052, 238.86798, 120.302734, 132.1171, 85.42377, 67.64378, 67.45575, -0.00033950806)
+
+[node name="Tentacle3" type="Polygon2D" parent="Control/Skeleton/polygons"]
+position = Vector2(5.983696, 59)
+offset = Vector2(-23, -5)
+texture = ExtResource("8_rbud2")
+polygon = PackedVector2Array(-5.8345947, -2.0994282, 14.1119995, 98.68349, 27.759705, 145.92549, 31.958984, 190.01802, 13.062195, 185.81873, 18.31128, 230.96109, 35.10846, 254.05716, 58.20453, 254.05716, 72.90204, 232.0109, 68.70276, 122.8294, 34.058655, -9.448183)
+uv = PackedVector2Array(-5.8345947, -2.0994282, 14.1119995, 98.68349, 27.759705, 145.92549, 31.958984, 190.01802, 13.062195, 185.81873, 18.31128, 230.96109, 35.10846, 254.05716, 58.20453, 254.05716, 72.90204, 232.0109, 68.70276, 122.8294, 34.058655, -9.448183)
+
+[node name="Tentacle4" type="Polygon2D" parent="Control/Skeleton/polygons"]
+position = Vector2(8.983696, 54)
+offset = Vector2(-48, -17)
+texture = ExtResource("9_vovfy")
+polygon = PackedVector2Array(21.887573, -0.00034713745, 14.627808, 74.41246, -2.6138, 176.95496, 2.8310242, 264.97986, 16.443146, 294.019, 44.57483, 291.29657, 61.816772, 278.59198, 64.539185, 240.47809, 40.944885, 197.82684, 35.50006, 207.80905, 49.112183, 131.5813, 74.5195, -3.6301975)
+uv = PackedVector2Array(21.887573, -0.00034713745, 14.627808, 74.41246, -2.6138, 176.95496, 2.8310242, 264.97986, 16.443146, 294.019, 44.57483, 291.29657, 61.816772, 278.59198, 64.539185, 240.47809, 40.944885, 197.82684, 35.50006, 207.80905, 49.112183, 131.5813, 74.5195, -3.6301975)
+
+[node name="Body" type="Polygon2D" parent="Control/Skeleton/polygons"]
+position = Vector2(-135.0163, -14)
+texture = ExtResource("10_u0pwc")
+polygon = PackedVector2Array(65.24597, 14.577034, 6.068054, -5.148941, -5.081421, 51.45604, 42.089386, 76.32792, 145.00754, 86.61974, 275.37054, 64.32081, 273.6552, 4.2852173, 196.46661, 24.0112)
+uv = PackedVector2Array(65.24597, 14.577034, 6.068054, -5.148941, -5.081421, 51.45604, 42.089386, 76.32792, 145.00754, 86.61974, 275.37054, 64.32081, 273.6552, 4.2852173, 196.46661, 24.0112)
+
+[node name="Head" type="Polygon2D" parent="Control/Skeleton/polygons"]
+position = Vector2(-136.0163, -220)
+texture = ExtResource("11_cicko")
+polygon = PackedVector2Array(5.347351, 48.766766, -3.7435608, 162.40317, -3.7435608, 218.76682, 71.71103, 240.585, 213.52924, 243.31227, 274.43835, 220.58499, 282.62018, 111.49406, 264.43835, 34.221306, 195.34741, -1.2332487, 80.80194, -3.0514317, 39.892822, 15.130392)
+uv = PackedVector2Array(5.347351, 48.766766, -3.7435608, 162.40317, -3.7435608, 218.76682, 71.71103, 240.585, 213.52924, 243.31227, 274.43835, 220.58499, 282.62018, 111.49406, 264.43835, 34.221306, 195.34741, -1.2332487, 80.80194, -3.0514317, 39.892822, 15.130392)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Skeleton"]
+libraries = {
+&"": SubResource("AnimationLibrary_lagn4")
+}
+autoplay = "idle"
 
 [node name="HealthBar" parent="." instance=ExtResource("3_my7n2")]
 layout_mode = 2

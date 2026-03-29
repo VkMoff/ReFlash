@@ -13,11 +13,12 @@ mouse_filter = 2
 
 [node name="AnimatedSprite" parent="Control" index="0"]
 texture_filter = 1
+scale = Vector2(0.5078125, 0.5078125)
 sprite_frames = ExtResource("3_5uy6h")
 frame_progress = 0.0
 
 [node name="NextActionSprite" type="Sprite2D" parent="." index="2"]
-position = Vector2(105, -19)
+position = Vector2(98, -18)
 texture = ExtResource("3_4ra3w")
 
 [node name="Label" type="Label" parent="NextActionSprite" index="0"]
