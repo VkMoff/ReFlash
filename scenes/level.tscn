@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cejoie260lx31"]
+[gd_scene load_steps=12 format=3 uid="uid://cejoie260lx31"]
 
 [ext_resource type="Script" uid="uid://c8crq3cs46p6g" path="res://scripts/Level.cs" id="1_udnaf"]
 [ext_resource type="PackedScene" uid="uid://d10tin671k03" path="res://scenes/hand.tscn" id="2_04hsl"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b7xgj6akffqxm" path="res://scenes/player.tscn" id="7_b121j"]
 [ext_resource type="Texture2D" uid="uid://jf3jwhdghh5u" path="res://resources/sprites/battery.svg" id="8_b121j"]
 [ext_resource type="PackedScene" uid="uid://bcfx5esbh0n7m" path="res://scenes/top_panel_ui.tscn" id="9_8c41q"]
+[ext_resource type="Texture2D" uid="uid://dcdknb0dde4ms" path="res://resources/sprites/target_selector.svg" id="10_olg7q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b121j"]
 font_size = 32
@@ -116,9 +117,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -721.0
-offset_top = -598.0
+offset_top = -664.0
 offset_right = -57.0
-offset_bottom = -322.0
+offset_bottom = -388.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
@@ -179,6 +180,18 @@ grow_vertical = 2
 text = "123"
 label_settings = SubResource("LabelSettings_b121j")
 horizontal_alignment = 1
+
+[node name="TargetRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 497.0
+offset_top = 228.0
+offset_right = 637.0
+offset_bottom = 368.0
+texture = ExtResource("10_olg7q")
+patch_margin_left = 70
+patch_margin_top = 70
+patch_margin_right = 70
+patch_margin_bottom = 70
 
 [connection signal="pressed" from="PullCardButton" to="." method="PullCardFromDeck"]
 [connection signal="pressed" from="EndTurnButton" to="." method="EndTurn"]

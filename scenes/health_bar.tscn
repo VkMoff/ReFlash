@@ -8,12 +8,14 @@
 [node name="HealthBar" type="PanelContainer"]
 offset_right = 200.0
 offset_bottom = 45.0
+mouse_filter = 2
 theme = SubResource("Theme_6opq1")
 script = ExtResource("1_1bvlm")
 
 [node name="Bar" type="ColorRect" parent="."]
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_filter = 2
 color = Color(1, 0, 0, 1)
 
 [node name="Label" type="Label" parent="."]

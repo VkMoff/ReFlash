@@ -31,6 +31,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="Wasteland"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/editor_card_scanner/plugin.cfg")
+
 [file_customization]
 
 folder_colors={

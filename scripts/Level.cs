@@ -19,8 +19,8 @@ public partial class Level : Control
 	private HBoxContainer artifactContainer;
 	private PackedScene artifactScene;
 	private TopPanelUI topPanelUi;
+	private NinePatchRect targetRect;
 	public event Action TurnStart, TurnEnd, BattleStart;
-
 
 	public override void _Ready()
 	{
@@ -30,6 +30,9 @@ public partial class Level : Control
 		Hand = GetNode<Hand>("Hand");
 		Player = GetNode<Player>("Player");
 		DiscardPile = GetNode<DiscardPile>("DiscardPile");
+
+		targetRect = GetNode<NinePatchRect>("TargetRect");
+		targetRect.Visible = false;
 
 		artifactScene = GD.Load<PackedScene>("res://scenes/artifact.tscn");
 
@@ -114,6 +117,16 @@ public partial class Level : Control
 	public void TargetEnemyChanged(Character target)
 	{
 		TargetEnemy = target;
+		if (TargetEnemy is not null)
+		{
+			targetRect.GlobalPosition = TargetEnemy.GlobalPosition;
+			targetRect.Size = TargetEnemy.Size;
+			targetRect.Visible = true;
+		}
+		else
+		{
+			targetRect.Visible = false;
+		}
 	}
 	public void UpdateEnergyLabel()
 	{

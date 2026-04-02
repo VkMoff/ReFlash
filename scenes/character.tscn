@@ -31,6 +31,7 @@ frame_progress = 0.664454
 
 [node name="HealthBar" parent="." instance=ExtResource("3_my7n2")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 2
