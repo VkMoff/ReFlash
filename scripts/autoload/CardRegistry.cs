@@ -1,95 +1,44 @@
-using System;
 using Godot;
 using Godot.Collections;
 
 public partial class CardRegistry : Node
 {
 	public static CardRegistry Instance;
-	private const string CARDS_PATH = "res://resources/cards/";
-
 	public Dictionary<string, CardResource> Cards { get; private set; }
+
+	[Export] private CardManifest manifest = GD.Load<CardManifest>("res://resources/card_manifest.tres");
+
 	public override void _Ready()
 	{
-		if (Instance is null)
-		{
-			Instance = this;
-			ProcessMode = ProcessModeEnum.Always;
-		}
+		Instance = this;
+		ProcessMode = ProcessModeEnum.Always;
 		Cards = new();
-		LoadAllCards();
+		LoadAllCardsFromManifest();
 	}
-	private void LoadAllCards()
+
+	private void LoadAllCardsFromManifest()
 	{
-		Cards.Clear();
-		using var dir = DirAccess.Open(CARDS_PATH);
-		if (dir == null)
+		if (manifest == null || manifest.CardPaths.Length == 0)
 		{
-			GD.PrintErr($"Failed to open directory: {CARDS_PATH}");
+			GD.PrintErr("Card manifest is missing or empty!");
 			return;
 		}
 
-		ScanDirectory(dir, "");
-
-		GD.Print($"Loaded {Cards.Count} cards from {CARDS_PATH}");
-	}
-
-	private void ScanDirectory(DirAccess dir, string currentSubPath) //Чёрная магия
-	{
-		dir.ListDirBegin();
-
-		while (true)
+		foreach (string path in manifest.CardPaths)
 		{
-			string fileName = dir.GetNext();
-			if (string.IsNullOrEmpty(fileName))
-				break;
-
-			if (fileName == "." || fileName == "..")
-				continue;
-
-			string fullPath = dir.GetCurrentDir() + "/" + fileName;
-
-			if (dir.CurrentIsDir())
+			var resource = GD.Load<CardResource>(path);
+			if (resource != null && !string.IsNullOrEmpty(resource.Id))
 			{
-				using var subDir = DirAccess.Open(fullPath);
-				if (subDir != null)
-					ScanDirectory(subDir, currentSubPath + "/" + fileName);
-			}
-			else
-			{
-				if (fileName.EndsWith(".tres") || fileName.EndsWith(".res"))
+				if (Cards.ContainsKey(resource.Id))
 				{
-					LoadCardFromFile(fullPath);
+					GD.PrintErr($"Duplicate card id: {resource.Id}");
+					continue;
 				}
+				Cards[resource.Id] = resource;
+				GD.Print($"Loaded card: {resource.Name} (ID: {resource.Id})");
 			}
 		}
-
-		dir.ListDirEnd();
-	}
-
-	private void LoadCardFromFile(string path)
-	{
-		var resource = GD.Load(path);
-		if (resource is CardResource cardData)
-		{
-			if (string.IsNullOrEmpty(cardData.Id))
-			{
-				GD.PrintErr($"Card at {path} has no Id! Skipping.");
-				return;
-			}
-
-			if (Cards.ContainsKey(cardData.Id))
-			{
-				GD.PrintErr($"Duplicate card id '{cardData.Id}' from {path} and {Cards[cardData.Id].ResourcePath}");
-				return;
-			}
-
-			Cards.Add(cardData.Id, cardData);
-			GD.Print($"Loaded card: {cardData.Name} (ID: {cardData.Id})");
-		}
-		else
-		{
-			GD.PrintErr($"Resource at {path} is not a CardData.");
-		}
+		GD.Print($"Loaded {Cards.Count} cards from manifest.");
 	}
 
 	public Card this[string id]
