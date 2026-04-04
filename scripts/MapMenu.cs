@@ -4,13 +4,15 @@ using System;
 public partial class MapMenu : Control
 {
 	PackedScene levelButtonScene = GD.Load<PackedScene>("res://scenes/level_button.tscn");
+	PackedScene bossButtonScene = GD.Load<PackedScene>("res://scenes/boss_button.tscn");
+
 	RoomResource testRoom = GD.Load<RoomResource>("res://resources/encounters/rooms/test_room.tres");
 	HBoxContainer levelsContainer;
 	int currentLevelIdx = 0;
 
 	public override void _Ready()
 	{
-		levelsContainer = GetNode<HBoxContainer>("LevelsBackground/MapLevelsContainer");
+		levelsContainer = GetNode<HBoxContainer>("%MapLevelsContainer");
 
 		for (int i = 0; i < 20; i++)
 		{
@@ -38,6 +40,7 @@ public partial class MapMenu : Control
 				levelButton.Disabled = true;
 			}
 		}
+		levelsContainer.AddChild(bossButtonScene.Instantiate());
 	}
 
 	public void StartEncounter(EncounterResource encounterResource)
