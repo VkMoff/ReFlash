@@ -64,6 +64,7 @@ offset_bottom = 32.161324
 scale = Vector2(0.92531127, 0.7763158)
 mouse_filter = 2
 texture = ExtResource("2_kg30u")
+expand_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(120.15997, 179.43997)
