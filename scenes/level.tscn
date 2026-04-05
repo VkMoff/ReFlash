@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c8crq3cs46p6g" path="res://scripts/Level.cs" id="1_udnaf"]
 [ext_resource type="PackedScene" uid="uid://d10tin671k03" path="res://scenes/hand.tscn" id="2_04hsl"]
-[ext_resource type="Texture2D" uid="uid://b14d8rags4ckb" path="res://resources/sprites/background_1.jpg" id="2_klq6b"]
+[ext_resource type="Texture2D" uid="uid://dodyixam6u1mt" path="res://resources/sprites/Стена.jpg" id="2_olg7q"]
 [ext_resource type="PackedScene" uid="uid://galmt3uvtupu" path="res://scenes/deck.tscn" id="3_o3n3m"]
 [ext_resource type="PackedScene" uid="uid://cngelmldb7dqq" path="res://scenes/discard_pile.tscn" id="4_ppgk2"]
 [ext_resource type="SpriteFrames" uid="uid://pv8myj3lvb8y" path="res://resources/animations/player.tres" id="6_2r41h"]
@@ -27,9 +27,9 @@ grow_vertical = 2
 script = ExtResource("1_udnaf")
 
 [node name="BackgroundImage" type="Sprite2D" parent="."]
-position = Vector2(1129.2063, 533.5)
-scale = Vector2(1.4404762, 1.4404763)
-texture = ExtResource("2_klq6b")
+position = Vector2(832.2535, 366.00006)
+scale = Vector2(1.337027, 1.3370268)
+texture = ExtResource("2_olg7q")
 
 [node name="Hand" parent="." instance=ExtResource("2_04hsl")]
 custom_minimum_size = Vector2(0, 180)
