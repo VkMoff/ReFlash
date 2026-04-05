@@ -9,11 +9,12 @@ public partial class LevelButton : Button
 	static Texture2D shopIconCompleted = GD.Load<Texture2D>("res://resources/sprites/level_buttons/icon_level_shop_completed.svg");
 	MapMenu mapMenu;
 	RoomTypes roomType;
-	EncounterResource encounterResource;
+	public EncounterResource EncounterResource { get; private set; }
+	public event Action<LevelButton> RoomSelected;
 	public void Init(RoomTypes roomType, EncounterResource encounterResource)
 	{
 		this.roomType = roomType;
-		this.encounterResource = encounterResource;
+		this.EncounterResource = encounterResource;
 		switch (roomType)
 		{
 			case RoomTypes.EnemyRoom:
@@ -29,23 +30,25 @@ public partial class LevelButton : Button
 	}
 	public override void _Ready()
 	{
-		mapMenu = GetTree().Root.GetNode<MapMenu>("MapMenu");
 		Pressed += () =>
 		{
-			switch (roomType)
-			{
-				case RoomTypes.EnemyRoom:
-					Icon = enemyIconCompleted;
-					break;
-				case RoomTypes.Shop:
-					Icon = shopIconCompleted;
-					break;
-				default:
-					GD.Print("WTF");
-					break;
-			}
-			mapMenu.StartEncounter(encounterResource);
+			RoomSelected?.Invoke(this);
 		};
+	}
+	public void Start()
+	{
+		switch (roomType)
+		{
+			case RoomTypes.EnemyRoom:
+				Icon = enemyIconCompleted;
+				break;
+			case RoomTypes.Shop:
+				Icon = shopIconCompleted;
+				break;
+			default:
+				GD.Print("WTF");
+				break;
+		}
 	}
 }
 

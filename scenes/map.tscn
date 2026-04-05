@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://471mfq31k34c"]
+[gd_scene load_steps=5 format=3 uid="uid://471mfq31k34c"]
 
 [ext_resource type="Script" uid="uid://om1lxvybbnq" path="res://scripts/MapMenu.cs" id="1_paxxb"]
 [ext_resource type="Texture2D" uid="uid://b14d8rags4ckb" path="res://resources/sprites/background_1.jpg" id="2_paxxb"]
 [ext_resource type="PackedScene" uid="uid://bcfx5esbh0n7m" path="res://scenes/top_panel_ui.tscn" id="3_gldc4"]
+[ext_resource type="Theme" uid="uid://dimnwbckclvgj" path="res://resources/themes/main_button_theme.tres" id="4_0cso3"]
 
 [node name="MapMenu" type="Control"]
 layout_mode = 3
@@ -14,6 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_paxxb")
 
 [node name="BackgroundImage" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1129.2063, 533.5)
 scale = Vector2(1.4404762, 1.4404763)
 texture = ExtResource("2_paxxb")
@@ -42,3 +44,49 @@ theme_override_constants/margin_right = 5
 [node name="MapLevelsContainer" type="HBoxContainer" parent="LevelsBackground/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="ColorRect" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -776.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="LevelDescription" type="RichTextLabel" parent="ColorRect/ColorRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 1296.0
+grow_vertical = 2
+bbcode_enabled = true
+text = "Здесь нет описания. Вероятно, это ошибка"
+
+[node name="Button" type="Button" parent="ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -290.0
+offset_top = -94.0
+offset_right = -11.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("4_0cso3")
+text = "ВПЕРЁД!"
+
+[connection signal="pressed" from="ColorRect/ColorRect/Button" to="." method="StartEncounter"]

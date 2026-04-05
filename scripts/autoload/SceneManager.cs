@@ -50,6 +50,7 @@ public partial class SceneManager : Node
 		{
 			GetTree().Root.AddChild(map);
 		}
+		(GetTree().CurrentScene as CanvasItem).Visible = false;
 		map.MoveToFront();
 		map.Show();
 	}

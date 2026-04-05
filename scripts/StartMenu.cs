@@ -8,6 +8,7 @@ public partial class StartMenu : Control
 	}
 	public void StartGame()
 	{
+		Visible = false;
 		SceneManager.Instance.GoToMap();
 	}
 	public void ExitGame()
