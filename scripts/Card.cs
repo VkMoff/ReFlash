@@ -167,13 +167,17 @@ public partial class Card : Control
 			GetParent<HBoxContainer>().QueueSort();
 			return;
 		}
+
+		Character[] targetArray;
+		if (CardData.IsTargeted) targetArray = [level.TargetEnemy];
+		else targetArray = level.Enemies.ToArray();
+		
 		Discard();
 		foreach (EffectResource effect in CardData.Effects)
 		{
 			Character[] target;
 			if (effect.AppliableToCaster) target = [level.Player];
-			else if (CardData.IsTargeted) target = [level.TargetEnemy];
-			else target = level.Enemies.ToArray();
+			else target = targetArray;
 
 			await effect.Execute(level.Player, target);
 			await ToSignal(PlayerData.Instance.GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
