@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=10 format=3 uid="uid://cg7y4x5ke0e8w"]
+
+[ext_resource type="SpriteFrames" uid="uid://cuxw6ps72ay64" path="res://resources/animations/anim_slash_green.tres" id="1_4p4ia"]
+[ext_resource type="Script" uid="uid://nytqoc0ix0v0" path="res://scripts/effects/DamageEffect.cs" id="1_7y13r"]
+[ext_resource type="Script" uid="uid://dypo5vnmut2ii" path="res://scripts/statuses/ChargedStatus.cs" id="2_4p4ia"]
+[ext_resource type="Script" uid="uid://dfsv50ovm3n3k" path="res://scripts/effects/ApplyStatusEffect.cs" id="3_3luia"]
+[ext_resource type="Texture2D" uid="uid://260o7ujl5f4q" path="res://resources/sprites/cards/card_charge.png" id="4_85dr0"]
+[ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/resources/CardResource.cs" id="5_xm024"]
+
+[sub_resource type="Resource" id="Resource_hphsh"]
+script = ExtResource("1_7y13r")
+Damage = 3
+Animation = ExtResource("1_4p4ia")
+metadata/_custom_type_script = "uid://nytqoc0ix0v0"
+
+[sub_resource type="Resource" id="Resource_4p4ia"]
+script = ExtResource("2_4p4ia")
+metadata/_custom_type_script = "uid://dypo5vnmut2ii"
+
+[sub_resource type="Resource" id="Resource_tv8fe"]
+script = ExtResource("3_3luia")
+StatusToApply = SubResource("Resource_4p4ia")
+Value = 1
+metadata/_custom_type_script = "uid://dfsv50ovm3n3k"
+
+[resource]
+script = ExtResource("5_xm024")
+Id = "discharge"
+Name = "Разряд"
+Texture = ExtResource("4_85dr0")
+Effects = Array[Resource]([SubResource("Resource_hphsh"), SubResource("Resource_tv8fe")])
+IsTargeted = true
+metadata/_custom_type_script = "uid://ds6nyytwhdiye"

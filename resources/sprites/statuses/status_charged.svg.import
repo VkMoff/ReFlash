@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duqessgerc3jc"
-path="res://.godot/imported/status_acceleration.svg-cb18fb77522c709eb8639738b77529ac.ctex"
+uid="uid://by3p2u4drmyvt"
+path="res://.godot/imported/status_charged.svg-685de3f86f8bd8b521cc5299366c8e61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/sprites/statuses/status_acceleration.svg"
-dest_files=["res://.godot/imported/status_acceleration.svg-cb18fb77522c709eb8639738b77529ac.ctex"]
+source_file="res://resources/sprites/statuses/status_charged.svg"
+dest_files=["res://.godot/imported/status_charged.svg-685de3f86f8bd8b521cc5299366c8e61.ctex"]
 
 [params]
 

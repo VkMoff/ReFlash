@@ -13,7 +13,7 @@ public partial class CardSelector : CanvasLayer
 
 		cards = new();
 		cards.Add(CardRegistry.Instance["amplify"]);
-		cards.Add(CardRegistry.Instance["strike"]);
+		cards.Add(CardRegistry.Instance["discharge"]);
 		cards.Add(CardRegistry.Instance["poison"]);
 
 		foreach (Card card in cards)
