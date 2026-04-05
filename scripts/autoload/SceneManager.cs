@@ -11,7 +11,8 @@ public partial class SceneManager : Node
 	PackedScene level = GD.Load<PackedScene>("res://scenes/level.tscn");
 	PackedScene startMenu = GD.Load<PackedScene>("res://scenes/start_menu.tscn");
 	RoomResource testRoom = GD.Load<RoomResource>("res://resources/encounters/rooms/test_room.tres");
-	MapMenu map = GD.Load<PackedScene>("res://scenes/map.tscn").Instantiate<MapMenu>();
+	PackedScene mapScene = GD.Load<PackedScene>("res://scenes/map.tscn");
+	MapMenu map;
 	PackedScene shop = GD.Load<PackedScene>("res://scenes/shop.tscn");
 
 	public override void _Ready()
@@ -40,12 +41,13 @@ public partial class SceneManager : Node
 
 	public void GoToMenu()
 	{
-		map.Hide();
+		map.QueueFree();
 		GetTree().ChangeSceneToPacked(startMenu);
 	}
 
 	public void GoToMap()
 	{
+		if (!IsInstanceValid(map)) map = mapScene.Instantiate<MapMenu>();
 		if (map.GetParent() is null)
 		{
 			GetTree().Root.AddChild(map);
