@@ -3,9 +3,13 @@
 [ext_resource type="Script" uid="uid://b0tp8qepedmob" path="res://scripts/LevelButton.cs" id="1_i0sit"]
 
 [node name="LevelButton" type="Button"]
+custom_minimum_size = Vector2(24, 24)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_icon = true
 script = ExtResource("1_i0sit")
