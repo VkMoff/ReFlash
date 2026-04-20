@@ -59,7 +59,6 @@ public partial class Level : Control
 		{
 			enemyContainer.AddChild(enemy);
 		}
-
 		//test
 		// Enemies[0].AddStatus(new PoisonStatus(), 5);
 		// Player.AddStatus(new SpikesStatus(), 3);
@@ -264,4 +263,5 @@ public partial class Level : Control
 		}
 		base._ExitTree();
 	}
+
 }

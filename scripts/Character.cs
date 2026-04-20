@@ -21,13 +21,13 @@ public partial class Character : VBoxContainer
 		healthBar = GetNode<HealthBar>("HealthBar");
 		// healthLabel = GetNode<Label>("HealthBar/Label");
 
-		sprite = GetNode<AnimatedSprite2D>("Control/AnimatedSprite");
+		// sprite = GetNode<AnimatedSprite2D>("Control/AnimatedSprite");
 
 		healthBar.MaxValue = MaxHp;
 		healthBar.Value = Hp;
 
-		sprite.SpriteFrames = spriteFrames;
-		sprite.Play();
+		// sprite.SpriteFrames = spriteFrames;
+		// sprite.Play();
 
 		IsAlive = true;
 	}

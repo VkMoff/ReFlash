@@ -19,14 +19,23 @@ public partial class HealthBar : PanelContainer
 	{
 		get
 		{
-			return Value;
+			return value;
 		}
 		set
 		{
 			this.value = value;
-			bar.CreateTween().TweenProperty(bar, "custom_minimum_size", new Vector2((float)this.value / maxValue * Size.X, 0), 0.2f);
-			// bar.CustomMinimumSize = new((float)this.value / maxValue * Size.X, Size.Y);
+			bar.CustomMinimumSize = new((float)this.value / maxValue * Size.X, 0);
 			label.Text = $"{this.value}/{maxValue}";
+		}
+	}
+	public int BeautifulValue
+	{
+		set
+		{
+			this.value = value;
+			bar.CreateTween().TweenProperty(bar, "custom_minimum_size", new Vector2((float)this.value / maxValue * Size.X, 0), 0.2f);
+			label.Text = $"{this.value}/{maxValue}";
+
 		}
 	}
 	private ColorRect bar;
@@ -36,6 +45,17 @@ public partial class HealthBar : PanelContainer
 		bar = GetNode<ColorRect>("Bar");
 		bar.Color = new("#ff0000");
 		label = GetNode<Label>("Label");
-		bar.CustomMinimumSize = new Vector2(Size.X, 0);
+		Resized += OnResized;
+
 	}
+
+	private void OnResized()
+	{
+		if (maxValue > 0 && Size.X > 0)
+		{
+			Value = value;
+			Resized -= OnResized; // только один раз
+		}
+	}
+
 }

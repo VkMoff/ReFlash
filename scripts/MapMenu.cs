@@ -5,6 +5,7 @@ public partial class MapMenu : Control
 	PackedScene levelButtonScene = GD.Load<PackedScene>("res://scenes/level_button.tscn");
 	PackedScene bossButtonScene = GD.Load<PackedScene>("res://scenes/boss_button.tscn");
 	RoomResource testRoom = GD.Load<RoomResource>("res://resources/encounters/rooms/test_room.tres");
+	RoomResource watcherRoom = GD.Load<RoomResource>("res://resources/encounters/rooms/watcher_room.tres");
 	HBoxContainer levelsContainer;
 	int currentLevelIdx = 0;
 	RichTextLabel levelDescription;
@@ -27,7 +28,7 @@ public partial class MapMenu : Control
 				ShowDescription(button.EncounterResource.GetDescription());
 			};
 			LevelButton levelButton1 = levelButtonScene.Instantiate<LevelButton>();
-			levelButton1.Init(RoomTypes.EnemyRoom, testRoom);
+			levelButton1.Init(RoomTypes.EnemyRoom, watcherRoom);
 			levelButton1.RoomSelected += (button) =>
 			{
 				selectedLevel = button;

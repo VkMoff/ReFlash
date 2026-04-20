@@ -69,21 +69,21 @@ layout_mode = 0
 offset_top = 78.0
 offset_right = 140.0
 offset_bottom = 109.0
-text = "[Debug] Pull card"
+text = "[Debug] 🃏 Pull card"
 
 [node name="EndTurnButton" type="Button" parent="."]
 layout_mode = 0
 offset_top = 119.0
 offset_right = 140.0
 offset_bottom = 150.0
-text = "[Debug] End turn"
+text = "[Debug] 🔚 End turn"
 
 [node name="ReloadSceneButton" type="Button" parent="."]
 layout_mode = 0
 offset_top = 160.0
 offset_right = 176.0
 offset_bottom = 191.0
-text = "[Debug] Reload Scene
+text = "[Debug] 🔄 Reload Scene
 "
 
 [node name="GoToMapButton" type="Button" parent="."]
@@ -91,7 +91,7 @@ layout_mode = 0
 offset_top = 201.0
 offset_right = 156.0
 offset_bottom = 232.0
-text = "[Debug] Go to map
+text = "[Debug] 🗺 Go to map
 "
 
 [node name="WinButton" type="Button" parent="."]
@@ -99,7 +99,7 @@ layout_mode = 0
 offset_top = 241.0
 offset_right = 103.0
 offset_bottom = 272.0
-text = "[Debug] Win
+text = "[Debug] 👑 Win
 "
 
 [node name="AddEnergyButton" type="Button" parent="."]
@@ -107,7 +107,7 @@ layout_mode = 0
 offset_top = 283.0
 offset_right = 103.0
 offset_bottom = 314.0
-text = "[Debug] Add energy"
+text = "[Debug] ⚡ Add energy"
 
 [node name="EnemyContainer" type="HBoxContainer" parent="."]
 layout_mode = 1

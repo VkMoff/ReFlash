@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RoomResource" load_steps=3 format=3 uid="uid://vxnxl86y8pm"]
+
+[ext_resource type="Script" uid="uid://ccnftld4p7ds7" path="res://scripts/resources/RoomResource.cs" id="1_nkrxg"]
+[ext_resource type="Resource" uid="uid://cpj6qm8nj7rrv" path="res://resources/enemies/watcher.tres" id="1_ou1ey"]
+
+[resource]
+script = ExtResource("1_nkrxg")
+Enemies = Array[Object]([ExtResource("1_ou1ey")])
+metadata/_custom_type_script = "uid://ccnftld4p7ds7"

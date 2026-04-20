@@ -37,21 +37,33 @@ public partial class Enemy : Character
 		// 	]
 
 		// ];
-
-		nextActions = initialActions;
+		if (initialActions.Count > 0)
+		{
+			nextActions = initialActions;
+		}
+		else
+		{
+			nextActions = actionPatterns[0].Effects;
+			firstTurnPlayed = true;
+		}
 		SetDamageLabel();
-
 		// MouseEntered += MouseEnter;
 		// MouseExited += MouseExit;
+		nextActionSprite.Position = new (Size.X / 2, -20);
+
 	}
 
 	public void Init(EnemyResource enemyResource)
 	{
 		base.Init(enemyResource.MaxHP, enemyResource.Animation);
+		GetNode("Control").AddChild(enemyResource.Visualisation.Instantiate());
+		
 		actionPatterns = enemyResource.ActionPatterns;
 		initialActions = enemyResource.InitialActions;
 		GD.Print(initialActions.Count);
 		GetNode<Label>("NameLabel").Text = enemyResource.Name;
+		GetNode<Control>("Control").CustomMinimumSize = new(GetNode("Control").GetChild(0).GetNode<CollisionShape2D>("CollisionShape2D").Shape.GetRect().Size.X, GetNode("Control").GetChild(0).GetNode<CollisionShape2D>("CollisionShape2D").Shape.GetRect().Size.Y);
+
 	}
 
 	public void MouseEnter()

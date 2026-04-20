@@ -7,6 +7,7 @@ public partial class MultiDamageEffect : EffectResource
 {
 	[Export] public int Damage { get; private set; }
     [Export] public int Count { get; private set; }
+	[Export] public float PlaySpeed { get; private set; } = 3;
 	public int StrengthModifier { get; set; } = 0;
 
 	public override async Task Execute(Character caster, Character[] targets)
@@ -17,7 +18,7 @@ public partial class MultiDamageEffect : EffectResource
             {
 				if (!caster.IsAlive) return;
 				target.ChangeHP(Math.Min(-Damage - StrengthModifier, 0));
-				await PlayAnimationWithSpriteFrames(target, 3, 0.25f);
+				await PlayAnimationWithSpriteFrames(target, PlaySpeed, 0.25f);
 				foreach (var (statusType, status) in target.Statuses)
 				{
 					status.OnDamageReceive(target, caster);

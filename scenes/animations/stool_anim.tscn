@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dmyvi20vwj37y"]
+[gd_scene load_steps=14 format=3 uid="uid://dmyvi20vwj37y"]
 
 [ext_resource type="Texture2D" uid="uid://d2qrm3x87k1f7" path="res://resources/animations/stool_sprites/Stool_hose1.svg" id="1_4flrs"]
 [ext_resource type="Texture2D" uid="uid://4oxv8yyhru6l" path="res://resources/animations/stool_sprites/Stool_hose2.svg" id="2_vxg26"]
@@ -144,10 +144,14 @@ _data = {
 &"idle": SubResource("Animation_50cep")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4flrs"]
+size = Vector2(200, 280)
+
 [node name="Skeleton" type="Node2D"]
-scale = Vector2(0.39999998, 0.39999998)
+position = Vector2(98, 105)
 
 [node name="polygons" type="Node2D" parent="."]
+scale = Vector2(0.4, 0.4)
 
 [node name="Hose1" type="Polygon2D" parent="polygons"]
 position = Vector2(32.983696, 43)
@@ -212,3 +216,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_lagn4")
 }
 autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_4flrs")
