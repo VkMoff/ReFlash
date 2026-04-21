@@ -19,7 +19,7 @@ public partial class MultiDamageEffect : EffectResource
             for (int i = 0; i < Count; i++)
             {
 				if (!caster.IsAlive) return;
-				target.ChangeHP(Math.Min((int)((-Damage - StrengthModifier) * (1 - Weakness)), 0));
+				target.ChangeHP(Math.Min((int)((-Damage - StrengthModifier) * (1 - Weakness) * (1 + (target.GetStatus<VulnerabilityStatus>() > 0 ? 0.5 : 0))), 0));
 				await PlayAnimationWithSpriteFrames(target, PlaySpeed, 0.25f);
 				foreach (var (statusType, status) in target.Statuses)
 				{

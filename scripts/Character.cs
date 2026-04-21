@@ -100,4 +100,14 @@ public partial class Character : VBoxContainer
 		this.ShowMessage("Мёртв");
 		Level.CharacterDied(this);
 	}
+
+	public int GetStatus<T>() where T : StatusResource
+	{
+		Status status;
+		if (!Statuses.TryGetValue(typeof(T), out status))
+		{
+			return 0;
+		}
+		return status.Value;
+	}
 }

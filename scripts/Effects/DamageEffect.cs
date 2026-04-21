@@ -14,7 +14,7 @@ public partial class DamageEffect : EffectResource
 		foreach (Character target in targets)
 		{
 			GD.Print("Start");
-			target.ChangeHP(Math.Min((int)((-Damage - StrengthModifier) * (1 - Weakness)), 0));
+			target.ChangeHP(Math.Min((int)((-Damage - StrengthModifier) * (1 - Weakness) * (1 + (target.GetStatus<VulnerabilityStatus>() > 0 ? 0.5 : 0))), 0));
 			if (!target.IsAlive)
 			{
 				GD.Print("Cont");
