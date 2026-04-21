@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cngelmldb7dqq"]
+[gd_scene format=3 uid="uid://cngelmldb7dqq"]
 
 [ext_resource type="Script" uid="uid://mwsy7ybku87h" path="res://scripts/DiscardPile.cs" id="1_rbtyd"]
-[ext_resource type="Texture2D" uid="uid://cofrdnnd20fwr" path="res://resources/sprites/icon.svg" id="2_mrd3i"]
+[ext_resource type="Texture2D" uid="uid://bgdc2luiw4hmb" path="res://resources/sprites/discard_pile.png" id="2_844um"]
 [ext_resource type="LabelSettings" uid="uid://xfk4cm3qqcae" path="res://resources/PileLabelSettings.tres" id="3_3acib"]
 
-[node name="DiscardPile" type="Control"]
+[node name="DiscardPile" type="Control" unique_id=664558590]
 layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
@@ -19,25 +19,25 @@ grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("1_rbtyd")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2147349162]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_mrd3i")
-expand_mode = 1
+texture = ExtResource("2_844um")
+expand_mode = 3
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1032308395]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -89.0
-offset_top = -33.0
+offset_left = -59.0
+offset_top = -38.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "123"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=10 format=3 uid="uid://bx06yws6bk0tx"]
+[gd_resource type="Resource" script_class="CardResource" format=3 uid="uid://bx06yws6bk0tx"]
 
 [ext_resource type="Script" uid="uid://e385xb50ouf1" path="res://scripts/statuses/PoisonStatus.cs" id="1_m776u"]
 [ext_resource type="Script" uid="uid://dfsv50ovm3n3k" path="res://scripts/effects/ApplyStatusEffect.cs" id="2_y1i4k"]
