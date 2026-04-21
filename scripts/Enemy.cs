@@ -50,6 +50,7 @@ public partial class Enemy : Character
 		// MouseEntered += MouseEnter;
 		// MouseExited += MouseExit;
 		nextActionSprite.Position = new (Size.X / 2, -20);
+		RecalculateStrength();
 
 	}
 
@@ -63,7 +64,6 @@ public partial class Enemy : Character
 		GD.Print(initialActions.Count);
 		GetNode<Label>("NameLabel").Text = enemyResource.Name;
 		GetNode<Control>("Control").CustomMinimumSize = new(GetNode("Control").GetChild(0).GetNode<CollisionShape2D>("CollisionShape2D").Shape.GetRect().Size.X, GetNode("Control").GetChild(0).GetNode<CollisionShape2D>("CollisionShape2D").Shape.GetRect().Size.Y);
-
 	}
 
 	public void MouseEnter()
@@ -116,13 +116,13 @@ public partial class Enemy : Character
 		//Перенести спрайт в класс ResourceEffect
 		if (nextActions[0] is DamageEffect)
 		{
-			attackDamageLabel.Text = $"{(int)(((nextActions[0] as DamageEffect).Damage + (nextActions[0] as DamageEffect).StrengthModifier) * (1 - (nextActions[0] as DamageEffect).Weakness))}";
+			attackDamageLabel.Text = $"{(int)(((nextActions[0] as DamageEffect).Damage + (nextActions[0] as DamageEffect).StrengthModifier) * (1 - (nextActions[0] as DamageEffect).Weakness)) * (1 + (Level.Player.GetStatus<VulnerabilityStatus>() > 0 ? 0.5 : 0))}";
 			nextActionSprite.Texture = attackTexture;
 			attackDamageLabel.Visible = true;
 		}
 		else if (nextActions[0] is MultiDamageEffect)
 		{
-			attackDamageLabel.Text = $"{(int)((nextActions[0] as MultiDamageEffect).Damage + (nextActions[0] as MultiDamageEffect).StrengthModifier  * (1 - (nextActions[0] as MultiDamageEffect).Weakness))} x {(nextActions[0] as MultiDamageEffect).Count}";
+			attackDamageLabel.Text = $"{(int)((nextActions[0] as MultiDamageEffect).Damage + (nextActions[0] as MultiDamageEffect).StrengthModifier  * (1 - (nextActions[0] as MultiDamageEffect).Weakness)) * (1 + (Level.Player.GetStatus<VulnerabilityStatus>() > 0 ? 0.5 : 0))} x {(nextActions[0] as MultiDamageEffect).Count}";
 			nextActionSprite.Texture = attackTexture;
 			attackDamageLabel.Visible = true;
 

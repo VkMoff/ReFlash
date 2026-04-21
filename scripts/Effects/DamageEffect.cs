@@ -45,6 +45,6 @@ public partial class DamageEffect : EffectResource
 	}
 	public override string GetDescription()
 	{
-		return $"Наносит [color=red]{(Damage + StrengthModifier) * (1 - Weakness)}[/color] урона";
+		return $"Наносит [color=red]{(int)((Damage + StrengthModifier) * (1 - Weakness))}[/color] урона";
 	}
 }

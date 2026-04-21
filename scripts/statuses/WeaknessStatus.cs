@@ -16,6 +16,7 @@ public partial class WeaknessStatus : StatusResource
 		if (status.Value <= 0)
 		{
 			status.Remove();
+			status.ParentCharacter.RecalculateStrength();
 		}
 	}
 }

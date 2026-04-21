@@ -38,6 +38,6 @@ public partial class MultiDamageEffect : EffectResource
 	}
 	public override string GetDescription()
 	{
-		return $"Наносит [color=red]{(Damage + StrengthModifier) * (1 - Weakness)}[/color] урона {Count} раз";
+		return $"Наносит [color=red]{(int)((Damage + StrengthModifier) * (1 - Weakness))}[/color] урона {Count} раз";
 	}
 }

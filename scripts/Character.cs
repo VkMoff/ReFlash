@@ -61,7 +61,7 @@ public partial class Character : VBoxContainer
 	}
 
 
-	public void AddStatus(StatusResource statusResource, int value)
+	public virtual void AddStatus(StatusResource statusResource, int value)
 	{
 		Type statusType = statusResource.GetType();
 

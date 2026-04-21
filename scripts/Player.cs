@@ -39,20 +39,24 @@ public partial class Player : Character
 		base.Die();
 		SceneManager.Instance.GoToMenu();
 	}
+	public override void AddStatus(StatusResource statusResource, int value)
+	{
+		base.AddStatus(statusResource, value);
+		Type statusType = statusResource.GetType();
+		if (statusType == typeof(VulnerabilityStatus))
+		{
+			foreach (Enemy enemy in Level.Enemies)
+			{
+				enemy.RecalculateStrength();
+			}
+		}
+	}
 	public override void RecalculateStrength()
 	{
-		Status status;
 		int strength;
 		float weakness;
-		if (!Statuses.TryGetValue(typeof(StrengthStatus), out status))
-		{
-			strength = 0;
-		}
-		else
-		{
-			strength = status.Value;
-		}
-		if (!Statuses.TryGetValue(typeof(WeaknessStatus), out status))
+		strength = GetStatus<StrengthStatus>();
+		if (GetStatus<WeaknessStatus>() <= 0)
 		{
 			weakness = 0;
 		}

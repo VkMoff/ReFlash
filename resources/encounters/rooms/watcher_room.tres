@@ -6,4 +6,5 @@
 [resource]
 script = ExtResource("1_nkrxg")
 Enemies = Array[Object]([ExtResource("1_ou1ey")])
+Difficulty = 40
 metadata/_custom_type_script = "uid://ccnftld4p7ds7"
