@@ -9,6 +9,8 @@ public partial class MultiDamageEffect : EffectResource
     [Export] public int Count { get; private set; }
 	[Export] public float PlaySpeed { get; private set; } = 3;
 	public int StrengthModifier { get; set; } = 0;
+	public float Weakness { get; set; } = 0;
+
 
 	public override async Task Execute(Character caster, Character[] targets)
 	{
@@ -17,7 +19,7 @@ public partial class MultiDamageEffect : EffectResource
             for (int i = 0; i < Count; i++)
             {
 				if (!caster.IsAlive) return;
-				target.ChangeHP(Math.Min(-Damage - StrengthModifier, 0));
+				target.ChangeHP(Math.Min((int)((-Damage - StrengthModifier) * (1 - Weakness)), 0));
 				await PlayAnimationWithSpriteFrames(target, PlaySpeed, 0.25f);
 				foreach (var (statusType, status) in target.Statuses)
 				{
@@ -36,6 +38,6 @@ public partial class MultiDamageEffect : EffectResource
 	}
 	public override string GetDescription()
 	{
-		return $"Наносит [color=red]{Damage + StrengthModifier}[/color] урона {Count} раз";
+		return $"Наносит [color=red]{(Damage + StrengthModifier) * (1 - Weakness)}[/color] урона {Count} раз";
 	}
 }

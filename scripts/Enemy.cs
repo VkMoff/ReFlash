@@ -116,13 +116,13 @@ public partial class Enemy : Character
 		//Перенести спрайт в класс ResourceEffect
 		if (nextActions[0] is DamageEffect)
 		{
-			attackDamageLabel.Text = $"{(nextActions[0] as DamageEffect).Damage + (nextActions[0] as DamageEffect).StrengthModifier}";
+			attackDamageLabel.Text = $"{(int)(((nextActions[0] as DamageEffect).Damage + (nextActions[0] as DamageEffect).StrengthModifier) * (1 - (nextActions[0] as DamageEffect).Weakness))}";
 			nextActionSprite.Texture = attackTexture;
 			attackDamageLabel.Visible = true;
 		}
 		else if (nextActions[0] is MultiDamageEffect)
 		{
-			attackDamageLabel.Text = $"{(nextActions[0] as MultiDamageEffect).Damage + (nextActions[0] as MultiDamageEffect).StrengthModifier} x {(nextActions[0] as MultiDamageEffect).Count}";
+			attackDamageLabel.Text = $"{(int)((nextActions[0] as MultiDamageEffect).Damage + (nextActions[0] as MultiDamageEffect).StrengthModifier  * (1 - (nextActions[0] as MultiDamageEffect).Weakness))} x {(nextActions[0] as MultiDamageEffect).Count}";
 			nextActionSprite.Texture = attackTexture;
 			attackDamageLabel.Visible = true;
 
@@ -141,18 +141,38 @@ public partial class Enemy : Character
 
 	public override void RecalculateStrength()
 	{
-		if (!Statuses.ContainsKey(typeof(StrengthStatus))) return;
+		Status status;
+		int strength;
+		float weakness;
+		if (!Statuses.TryGetValue(typeof(StrengthStatus), out status))
+		{
+			strength = 0;
+		}
+		else
+		{
+			strength = status.Value;
+		}
+		if (!Statuses.TryGetValue(typeof(WeaknessStatus), out status))
+		{
+			weakness = 0;
+		}
+		else
+		{
+			weakness = 0.25f;
+		}
 		foreach (ActionResource action in actionPatterns)
 		{		
 			foreach (EffectResource effect in action.Effects)
 			{
-				if (effect is DamageEffect)
+				if (effect is DamageEffect damageEffect)
 				{
-					((DamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
+					damageEffect.StrengthModifier = strength;
+					damageEffect.Weakness = weakness;
 				}
-				if (effect is MultiDamageEffect)
+				if (effect is MultiDamageEffect multiDamageEffect)
 				{
-					((MultiDamageEffect)effect).StrengthModifier = Statuses[typeof(StrengthStatus)].Value;
+					multiDamageEffect.StrengthModifier = strength;
+					multiDamageEffect.Weakness = weakness;
 				}
 			}
 		}

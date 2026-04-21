@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_5puv0")
-CardPaths = PackedStringArray("res://resources/cards/Amplify.tres", "res://resources/cards/Attack.tres", "res://resources/cards/BerserkAttack.tres", "res://resources/cards/DoubleStrike.tres", "res://resources/cards/Heal.tres", "res://resources/cards/HeavyAttack.tres", "res://resources/cards/Poison.tres", "res://resources/cards/RandomDamage.tres", "res://resources/cards/Violet.tres", "res://resources/cards/Discharge.tres")
+CardPaths = PackedStringArray("res://resources/cards/Amplify.tres", "res://resources/cards/Attack.tres", "res://resources/cards/BerserkAttack.tres", "res://resources/cards/Discharge.tres", "res://resources/cards/DoubleStrike.tres", "res://resources/cards/Flashbang.tres", "res://resources/cards/Heal.tres", "res://resources/cards/HeavyAttack.tres", "res://resources/cards/Poison.tres", "res://resources/cards/RandomDamage.tres", "res://resources/cards/Violet.tres")

@@ -83,7 +83,7 @@ public partial class Character : VBoxContainer
 			Statuses[statusType] = status;
 		}
 
-		if (statusType == typeof(StrengthStatus))
+		if ((statusType == typeof(StrengthStatus)) || (statusType == typeof(WeaknessStatus)))
 		{
 			RecalculateStrength();
 		}

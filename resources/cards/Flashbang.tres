@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://dmean3jjp43ax"]
+
+[ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/resources/CardResource.cs" id="1_70fak"]
+[ext_resource type="Script" uid="uid://dp61sm6b30fw1" path="res://scripts/statuses/WeaknessStatus.cs" id="1_nj2ko"]
+[ext_resource type="Script" uid="uid://dfsv50ovm3n3k" path="res://scripts/effects/ApplyStatusEffect.cs" id="2_dupv4"]
+[ext_resource type="Texture2D" uid="uid://b6hmjf0qjp42u" path="res://resources/sprites/cards/card_flashbang.png" id="3_ckubp"]
+
+[sub_resource type="Resource" id="Resource_l44ou"]
+script = ExtResource("1_nj2ko")
+metadata/_custom_type_script = "uid://dp61sm6b30fw1"
+
+[sub_resource type="Resource" id="Resource_1ne0y"]
+script = ExtResource("2_dupv4")
+StatusToApply = SubResource("Resource_l44ou")
+Value = 2
+metadata/_custom_type_script = "uid://dfsv50ovm3n3k"
+
+[resource]
+script = ExtResource("1_70fak")
+Id = "flashbang"
+Name = "Светошумовая граната"
+Texture = ExtResource("3_ckubp")
+Effects = Array[Resource]([SubResource("Resource_1ne0y")])
+metadata/_custom_type_script = "uid://ds6nyytwhdiye"

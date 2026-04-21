@@ -68,6 +68,10 @@ public partial class Card : Control
 			{
 				Description += " всем врагам";
 			}
+			if ((effectResource is ApplyStatusEffect) && (!CardData.IsTargeted) && (!CardData.ToPlayer))
+			{
+				Description += " на всех врагов";
+			}
 			Description += "\n";
 		}
 		if (descriptionLabel is not null)

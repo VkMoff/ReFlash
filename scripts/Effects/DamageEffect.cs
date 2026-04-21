@@ -8,12 +8,13 @@ public partial class DamageEffect : EffectResource
 {
 	[Export] public int Damage { get; private set; }
 	public int StrengthModifier { get; set; } = 0;
+	public float Weakness { get; set; } = 0;
 	public override async Task Execute(Character caster, Character[] targets)
 	{
 		foreach (Character target in targets)
 		{
 			GD.Print("Start");
-			target.ChangeHP(Math.Min(-Damage - StrengthModifier, 0));
+			target.ChangeHP(Math.Min((int)((-Damage - StrengthModifier) * (1 - Weakness)), 0));
 			if (!target.IsAlive)
 			{
 				GD.Print("Cont");
@@ -44,6 +45,6 @@ public partial class DamageEffect : EffectResource
 	}
 	public override string GetDescription()
 	{
-		return $"Наносит [color=red]{Damage + StrengthModifier}[/color] урона";
+		return $"Наносит [color=red]{(Damage + StrengthModifier) * (1 - Weakness)}[/color] урона";
 	}
 }
