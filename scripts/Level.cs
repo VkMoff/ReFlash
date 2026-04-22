@@ -97,7 +97,7 @@ public partial class Level : Control
 			if (Hand.GetChildCount() >= 10)
 			{
 				Message.ShowMessage(this, "Недостаточно места в руке");
-				return;
+				break;
 			}
 			Hand.Add(Deck.Pull());
 		}

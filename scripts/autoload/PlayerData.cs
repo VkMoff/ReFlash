@@ -84,6 +84,7 @@ public partial class PlayerData : Node
         Deck.Add(cardRegistry["double_strike"]);
         Deck.Add(cardRegistry["random_damage"]);
         Deck.Add(cardRegistry["amplify"]);
+        Deck.Add(cardRegistry["loophole"]);
     }
 
 }
