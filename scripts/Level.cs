@@ -90,14 +90,15 @@ public partial class Level : Control
 		Hand.RemoveChild(card);
 		DiscardPile.Add(card);
 	}
-	public void PullCardFromDeck()
-	{
-		PullCardFromDeck(1);
-	}
-	public void PullCardFromDeck(int count)
+	public void PullCardFromDeck(int count = 1)
 	{
 		for (int i = 0; i < count; i++)
 		{
+			if (Hand.GetChildCount() >= 10)
+			{
+				Message.ShowMessage(this, "Недостаточно места в руке");
+				return;
+			}
 			Hand.Add(Deck.Pull());
 		}
 	}

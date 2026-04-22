@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cejoie260lx31"]
+[gd_scene format=3 uid="uid://cejoie260lx31"]
 
 [ext_resource type="Script" uid="uid://c8crq3cs46p6g" path="res://scripts/Level.cs" id="1_udnaf"]
 [ext_resource type="PackedScene" uid="uid://d10tin671k03" path="res://scenes/hand.tscn" id="2_04hsl"]
@@ -16,7 +16,7 @@ font_size = 32
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Level" type="Control"]
+[node name="Level" type="Control" unique_id=689972626]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,12 +26,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_udnaf")
 
-[node name="BackgroundImage" type="Sprite2D" parent="."]
+[node name="BackgroundImage" type="Sprite2D" parent="." unique_id=1139834510]
 position = Vector2(832.2535, 366.00006)
 scale = Vector2(1.337027, 1.3370268)
 texture = ExtResource("2_olg7q")
 
-[node name="Hand" parent="." instance=ExtResource("2_04hsl")]
+[node name="Hand" parent="." unique_id=1588537833 instance=ExtResource("2_04hsl")]
 custom_minimum_size = Vector2(0, 180)
 layout_mode = 1
 anchors_preset = 7
@@ -39,14 +39,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -397.0
+offset_left = -722.0
 offset_top = -564.0
-offset_right = 397.0
+offset_right = 722.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="Deck" parent="." instance=ExtResource("3_o3n3m")]
+[node name="Deck" parent="." unique_id=492033049 instance=ExtResource("3_o3n3m")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -57,28 +57,28 @@ offset_right = 185.0
 offset_bottom = -32.0
 grow_vertical = 0
 
-[node name="DiscardPile" parent="." instance=ExtResource("4_ppgk2")]
+[node name="DiscardPile" parent="." unique_id=2109752601 instance=ExtResource("4_ppgk2")]
 layout_mode = 1
 offset_left = -172.0
 offset_top = -242.0
 offset_right = -32.0
 offset_bottom = -32.0
 
-[node name="PullCardButton" type="Button" parent="."]
+[node name="PullCardButton" type="Button" parent="." unique_id=1915200114]
 layout_mode = 0
 offset_top = 78.0
 offset_right = 140.0
 offset_bottom = 109.0
 text = "[Debug] 🃏 Pull card"
 
-[node name="EndTurnButton" type="Button" parent="."]
+[node name="EndTurnButton" type="Button" parent="." unique_id=636018161]
 layout_mode = 0
 offset_top = 119.0
 offset_right = 140.0
 offset_bottom = 150.0
 text = "[Debug] 🔚 End turn"
 
-[node name="ReloadSceneButton" type="Button" parent="."]
+[node name="ReloadSceneButton" type="Button" parent="." unique_id=1513973763]
 layout_mode = 0
 offset_top = 160.0
 offset_right = 176.0
@@ -86,7 +86,7 @@ offset_bottom = 191.0
 text = "[Debug] 🔄 Reload Scene
 "
 
-[node name="GoToMapButton" type="Button" parent="."]
+[node name="GoToMapButton" type="Button" parent="." unique_id=1118006126]
 layout_mode = 0
 offset_top = 201.0
 offset_right = 156.0
@@ -94,7 +94,7 @@ offset_bottom = 232.0
 text = "[Debug] 🗺 Go to map
 "
 
-[node name="WinButton" type="Button" parent="."]
+[node name="WinButton" type="Button" parent="." unique_id=938485410]
 layout_mode = 0
 offset_top = 241.0
 offset_right = 103.0
@@ -102,14 +102,14 @@ offset_bottom = 272.0
 text = "[Debug] 👑 Win
 "
 
-[node name="AddEnergyButton" type="Button" parent="."]
+[node name="AddEnergyButton" type="Button" parent="." unique_id=249097492]
 layout_mode = 0
 offset_top = 283.0
 offset_right = 103.0
 offset_bottom = 314.0
 text = "[Debug] ⚡ Add energy"
 
-[node name="EnemyContainer" type="HBoxContainer" parent="."]
+[node name="EnemyContainer" type="HBoxContainer" parent="." unique_id=1981897622]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -126,7 +126,7 @@ mouse_filter = 2
 theme_override_constants/separation = 20
 alignment = 2
 
-[node name="Player" parent="." instance=ExtResource("7_b121j")]
+[node name="Player" parent="." unique_id=905920892 instance=ExtResource("7_b121j")]
 layout_mode = 1
 anchors_preset = 2
 anchor_left = 0.0
@@ -141,17 +141,17 @@ grow_horizontal = 1
 grow_vertical = 0
 spriteFrames = ExtResource("6_2r41h")
 
-[node name="ArtifactContainer" type="HBoxContainer" parent="."]
+[node name="ArtifactContainer" type="HBoxContainer" parent="." unique_id=1579701907]
 layout_mode = 0
 offset_left = 191.0
 offset_top = 80.0
 offset_right = 674.0
 offset_bottom = 121.0
 
-[node name="TopPanelUI" parent="." instance=ExtResource("9_8c41q")]
+[node name="TopPanelUI" parent="." unique_id=1967515060 instance=ExtResource("9_8c41q")]
 layout_mode = 1
 
-[node name="EnergyContainer" type="Control" parent="."]
+[node name="EnergyContainer" type="Control" parent="." unique_id=672162526]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -162,10 +162,10 @@ offset_right = 181.0
 offset_bottom = -349.0
 grow_vertical = 0
 
-[node name="Energy" type="Sprite2D" parent="EnergyContainer"]
+[node name="Energy" type="Sprite2D" parent="EnergyContainer" unique_id=1506225515]
 texture = ExtResource("8_b121j")
 
-[node name="EnergyLabel" type="Label" parent="EnergyContainer/Energy"]
+[node name="EnergyLabel" type="Label" parent="EnergyContainer/Energy" unique_id=1316791916]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -181,7 +181,7 @@ text = "123"
 label_settings = SubResource("LabelSettings_b121j")
 horizontal_alignment = 1
 
-[node name="TargetRect" type="NinePatchRect" parent="."]
+[node name="TargetRect" type="NinePatchRect" parent="." unique_id=1515425842]
 layout_mode = 0
 offset_left = 497.0
 offset_top = 228.0
@@ -193,7 +193,7 @@ patch_margin_top = 70
 patch_margin_right = 70
 patch_margin_bottom = 70
 
-[connection signal="pressed" from="PullCardButton" to="." method="PullCardFromDeck"]
+[connection signal="pressed" from="PullCardButton" to="." method="PullCardFromDeck" binds= [1]]
 [connection signal="pressed" from="EndTurnButton" to="." method="EndTurn"]
 [connection signal="pressed" from="ReloadSceneButton" to="." method="RestartScene"]
 [connection signal="pressed" from="GoToMapButton" to="." method="GoToMap"]

@@ -21,7 +21,8 @@ public partial class Hand : HBoxContainer
 
 	public void ChangeGap(Node node)
 	{
-		AddThemeConstantOverride("separation", -2 * (int)Math.Sqrt(100 * GetChildCount()));
+		GD.Print(-2 * (int)Math.Sqrt(100 * GetChildCount()));
+		AddThemeConstantOverride("separation", -2 * (int)Math.Pow(5 * GetChildCount(), 1.08));
 	}
 	
 }
