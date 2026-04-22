@@ -116,13 +116,13 @@ public partial class Enemy : Character
 		//Перенести спрайт в класс ResourceEffect
 		if (nextActions[0] is DamageEffect)
 		{
-			attackDamageLabel.Text = $"{(int)(((nextActions[0] as DamageEffect).Damage + (nextActions[0] as DamageEffect).StrengthModifier) * (1 - (nextActions[0] as DamageEffect).Weakness)) * (1 + (Level.Player.GetStatus<VulnerabilityStatus>() > 0 ? 0.5 : 0))}";
+			attackDamageLabel.Text = $"{(int)(((nextActions[0] as DamageEffect).Damage + GetStatus<StrengthStatus>()) * (1 - (GetStatus<WeaknessStatus>() > 0 ? 0.25 : 0)) * (1 + (Level.Player.GetStatus<VulnerabilityStatus>() > 0 ? 0.5 : 0)))}";
 			nextActionSprite.Texture = attackTexture;
 			attackDamageLabel.Visible = true;
 		}
 		else if (nextActions[0] is MultiDamageEffect)
 		{
-			attackDamageLabel.Text = $"{(int)((nextActions[0] as MultiDamageEffect).Damage + (nextActions[0] as MultiDamageEffect).StrengthModifier  * (1 - (nextActions[0] as MultiDamageEffect).Weakness)) * (1 + (Level.Player.GetStatus<VulnerabilityStatus>() > 0 ? 0.5 : 0))} x {(nextActions[0] as MultiDamageEffect).Count}";
+			attackDamageLabel.Text = $"{(int)(((nextActions[0] as MultiDamageEffect).Damage + GetStatus<StrengthStatus>())  * (1 - (GetStatus<WeaknessStatus>() > 0 ? 0.25 : 0)) * (1 + (Level.Player.GetStatus<VulnerabilityStatus>() > 0 ? 0.5 : 0)))} x {(nextActions[0] as MultiDamageEffect).Count}";
 			nextActionSprite.Texture = attackTexture;
 			attackDamageLabel.Visible = true;
 
@@ -141,18 +141,10 @@ public partial class Enemy : Character
 
 	public override void RecalculateStrength()
 	{
-		Status status;
 		int strength;
 		float weakness;
-		if (!Statuses.TryGetValue(typeof(StrengthStatus), out status))
-		{
-			strength = 0;
-		}
-		else
-		{
-			strength = status.Value;
-		}
-		if (!Statuses.TryGetValue(typeof(WeaknessStatus), out status))
+		strength = GetStatus<StrengthStatus>();
+		if (GetStatus<WeaknessStatus>() <= 0)
 		{
 			weakness = 0;
 		}

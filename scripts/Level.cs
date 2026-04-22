@@ -173,16 +173,6 @@ public partial class Level : Control
 			status.OnTurnEnd([Player]);
 		}
 
-		foreach (Enemy enemy in Enemies)
-		{
-			if (!enemy.IsAlive) continue;
-
-			foreach (var (statusType, status) in enemy.Statuses)
-			{
-				status.OnTurnEnd([enemy]);
-			}
-
-		}
 		foreach (var character in pendingRemovals)
 		{
 			Enemies.Remove(character);
@@ -197,22 +187,6 @@ public partial class Level : Control
 
 		foreach (Enemy enemy in Enemies)
 		{
-			if (!enemy.IsAlive) continue;
-
-			await enemy.ExecuteNextAction();
-			await ToSignal(PlayerData.Instance.GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
-		}
-
-		Energy = 3;
-		UpdateEnergyLabel();
-		PullCardFromDeck(DefaultHandSize);
-
-		foreach (var (statusType, status) in Player.Statuses)
-		{
-			status.OnTurnStart([Player]);
-		}
-		foreach (Enemy enemy in Enemies)
-		{
 			try
 			{
 				foreach (var (statusType, status) in enemy.Statuses)
@@ -224,6 +198,38 @@ public partial class Level : Control
 			{
 				GD.PrintErr("Добавление статуса в переборе статусов всё ломает");
 			}
+		}
+		foreach (Enemy enemy in Enemies)
+		{
+			if (!enemy.IsAlive) continue;
+
+			await enemy.ExecuteNextAction();
+			await ToSignal(PlayerData.Instance.GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
+		}
+		foreach (Enemy enemy in Enemies)
+		{
+			if (!enemy.IsAlive) continue;
+
+			try
+			{
+				foreach (var (statusType, status) in enemy.Statuses)
+				{
+					status.OnTurnEnd([enemy]);
+				}
+			}
+			catch
+			{
+				GD.PrintErr("Добавление статуса в переборе статусов всё ломает");
+			}
+		}
+
+		Energy = 3;
+		UpdateEnergyLabel();
+		PullCardFromDeck(DefaultHandSize);
+
+		foreach (var (statusType, status) in Player.Statuses)
+		{
+			status.OnTurnStart([Player]);
 		}
 
 		TurnStart?.Invoke();
