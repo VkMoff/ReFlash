@@ -6,6 +6,7 @@ public partial class Level : Control
 {
 	public Deck Deck { get; private set; }
 	public Hand Hand { get; private set; }
+	public List<Card> BurnPile { get; private set; }
 	public Player Player { get; private set; }
 	public List<Character> Enemies { get; private set; }
 	public Character TargetEnemy { get; set; }

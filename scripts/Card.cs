@@ -171,12 +171,23 @@ public partial class Card : Control
 			GetParent<HBoxContainer>().QueueSort();
 			return;
 		}
-
+		MouseFilter = MouseFilterEnum.Ignore;
+		MouseBehaviorRecursive = MouseBehaviorRecursiveEnum.Disabled;
+		GetParent().RemoveChild(this);
+		level.AddChild(this);
+		Position = level.Size / 2 - Size / 2;
 		Character[] targetArray;
 		if (CardData.IsTargeted) targetArray = [level.TargetEnemy];
 		else targetArray = level.Enemies.ToArray();
 		
-		Discard();
+		bool burnable = false;
+		foreach (EffectResource effect in CardData.Effects)
+		{
+			if (effect is BurnEffect)
+			{
+				burnable = true;
+			}
+		}
 		foreach (EffectResource effect in CardData.Effects)
 		{
 			Character[] target;
@@ -186,12 +197,22 @@ public partial class Card : Control
 			await effect.Execute(level.Player, target);
 			await ToSignal(PlayerData.Instance.GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
 		}
+		if (burnable) Burn();
+		else Discard();
+		
+		MouseFilter = MouseFilterEnum.Pass;
+		MouseBehaviorRecursive = MouseBehaviorRecursiveEnum.Enabled;
 	}
 
 	public void Discard()
 	{
 		GetParent().RemoveChild(this);
 		level.DiscardPile.Add(this);
+	}
+	public void Burn()
+	{
+		GetParent().RemoveChild(this);
+		level.BurnPile.Add(this);
 	}
 
 	public Card Clone()

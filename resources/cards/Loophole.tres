@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bi4a22jmicc4c" path="res://resources/sprites/cards/card_loophole.png" id="1_vki3j"]
 [ext_resource type="Script" uid="uid://d06uh1o0mrbbd" path="res://scripts/effects/AddEnergyEffect.cs" id="2_2vi77"]
 [ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/resources/CardResource.cs" id="2_un4ti"]
+[ext_resource type="Script" uid="uid://c6on33iruvrao" path="res://scripts/effects/BurnEffect.cs" id="3_2vi77"]
 
 [sub_resource type="Resource" id="Resource_6v6xt"]
 script = ExtResource("1_jg6l8")
@@ -15,10 +16,14 @@ script = ExtResource("2_2vi77")
 energyValue = 1
 metadata/_custom_type_script = "uid://d06uh1o0mrbbd"
 
+[sub_resource type="Resource" id="Resource_rcviy"]
+script = ExtResource("3_2vi77")
+metadata/_custom_type_script = "uid://c6on33iruvrao"
+
 [resource]
 script = ExtResource("2_un4ti")
 Id = "loophole"
 Name = "Лазейка"
 Texture = ExtResource("1_vki3j")
-Effects = Array[Resource]([SubResource("Resource_6v6xt"), SubResource("Resource_xivp1")])
+Effects = Array[Resource]([SubResource("Resource_6v6xt"), SubResource("Resource_xivp1"), SubResource("Resource_rcviy")])
 metadata/_custom_type_script = "uid://ds6nyytwhdiye"
