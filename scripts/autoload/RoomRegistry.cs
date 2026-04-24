@@ -17,6 +17,9 @@ public partial class RoomRegistry : Node
 		rooms.Add(GD.Load<RoomResource>("res://resources/encounters/rooms/test_room.tres"));
 		rooms.Add(GD.Load<RoomResource>("res://resources/encounters/rooms/guardian_room.tres"));
 		rooms.Add(GD.Load<RoomResource>("res://resources/encounters/rooms/guardians_room.tres"));
+		rooms.Add(GD.Load<RoomResource>("res://resources/encounters/rooms/scavenger_room.tres"));
+		rooms.Add(GD.Load<RoomResource>("res://resources/encounters/rooms/scavenger_stool_room.tres"));
+		rooms.Add(GD.Load<RoomResource>("res://resources/encounters/rooms/scorpispikes_room.tres"));
 	}
 	public RoomResource GetRoom(int fromDifficulty, int toDifficulty)
 	{

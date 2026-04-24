@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RoomResource" format=3 uid="uid://cnpletgrjxk8p"]
+
+[ext_resource type="Resource" uid="uid://uphj2ebaqjxl" path="res://resources/enemies/test_enemy.tres" id="1_7umvo"]
+[ext_resource type="Script" uid="uid://ccnftld4p7ds7" path="res://scripts/resources/RoomResource.cs" id="1_fx5bm"]
+[ext_resource type="Resource" uid="uid://dv8ie1olfp8yp" path="res://resources/enemies/scavenger.tres" id="2_pbdea"]
+
+[resource]
+script = ExtResource("1_fx5bm")
+Enemies = Array[Object]([ExtResource("1_7umvo"), ExtResource("1_7umvo"), ExtResource("2_pbdea")])
+Difficulty = 30
+metadata/_custom_type_script = "uid://ccnftld4p7ds7"
