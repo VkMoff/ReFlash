@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public partial class MapMenu : Control
@@ -10,6 +11,7 @@ public partial class MapMenu : Control
 	LevelButton selectedLevel;
 	public override void _Ready()
 	{
+		Random r = new();
 		levelsContainer = GetNode<HBoxContainer>("%MapLevelsContainer");
 		levelDescription = GetNode<RichTextLabel>("%LevelDescription");
 
@@ -33,7 +35,8 @@ public partial class MapMenu : Control
 				ShowDescription(button.EncounterResource.GetDescription());
 			};
 			LevelButton shopButton2 = levelButtonScene.Instantiate<LevelButton>();
-			shopButton2.Init(RoomTypes.EnemyRoom, RoomRegistry.Instance.GetRoom(0,100));
+			if (r.NextDouble() < 0.1) shopButton2.Init(RoomTypes.Shop, RoomRegistry.Instance.SHOP);
+			else shopButton2.Init(RoomTypes.EnemyRoom, RoomRegistry.Instance.GetRoom(0,100));
 			shopButton2.RoomSelected += (button) => //А нафига?
 			{
 				selectedLevel = button;

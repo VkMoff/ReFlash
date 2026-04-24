@@ -7,6 +7,7 @@ public partial class RoomRegistry : Node
 {
 	public static RoomRegistry Instance;
 	private List<RoomResource> rooms = new();
+	public readonly ShopResource SHOP = GD.Load<ShopResource>("res://resources/encounters/shops/test_shop.tres");
 	public override void _Ready()
 	{
 		Instance = this;
