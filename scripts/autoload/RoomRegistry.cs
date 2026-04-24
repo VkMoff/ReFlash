@@ -26,6 +26,7 @@ public partial class RoomRegistry : Node
 	{
 		Random r = new();
 		RoomResource[] selectedRooms = rooms.Where(r => (r.Difficulty >= fromDifficulty) && (r.Difficulty <= toDifficulty)).ToArray();
+		if (selectedRooms.Length == 0) return rooms[0];
 		return selectedRooms[r.Next() % selectedRooms.Length];
 	}
 }

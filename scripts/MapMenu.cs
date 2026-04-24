@@ -15,36 +15,36 @@ public partial class MapMenu : Control
 		levelsContainer = GetNode<HBoxContainer>("%MapLevelsContainer");
 		levelDescription = GetNode<RichTextLabel>("%LevelDescription");
 
+		int sinceLastShop = 0;
 		for (int i = 0; i < 20; i++)
 		{
 			VBoxContainer selectContainer = new VBoxContainer();
 			levelsContainer.AddChild(selectContainer);
+			bool hasShop = false;
+			for (int j = 0; j < 3; j++)
+			{
+				LevelButton levelButton = levelButtonScene.Instantiate<LevelButton>();
 
-			LevelButton levelButton = levelButtonScene.Instantiate<LevelButton>();
-			levelButton.Init(RoomTypes.EnemyRoom, RoomRegistry.Instance.GetRoom(0,100));
-			levelButton.RoomSelected += (button) =>
-			{
-				selectedLevel = button;
-				ShowDescription(button.EncounterResource.GetDescription());
-			};
-			LevelButton levelButton1 = levelButtonScene.Instantiate<LevelButton>();
-			levelButton1.Init(RoomTypes.EnemyRoom, RoomRegistry.Instance.GetRoom(0,100));
-			levelButton1.RoomSelected += (button) =>
-			{
-				selectedLevel = button;
-				ShowDescription(button.EncounterResource.GetDescription());
-			};
-			LevelButton shopButton2 = levelButtonScene.Instantiate<LevelButton>();
-			if (r.NextDouble() < 0.1) shopButton2.Init(RoomTypes.Shop, RoomRegistry.Instance.SHOP);
-			else shopButton2.Init(RoomTypes.EnemyRoom, RoomRegistry.Instance.GetRoom(0,100));
-			shopButton2.RoomSelected += (button) => //А нафига?
-			{
-				selectedLevel = button;
-				ShowDescription(button.EncounterResource.GetDescription());
-			};
-			selectContainer.AddChild(levelButton);
-			selectContainer.AddChild(levelButton1);
-			selectContainer.AddChild(shopButton2);
+				if (!hasShop && (sinceLastShop > 2) && (r.NextDouble() < 0.2))
+				{
+					hasShop = true;
+					sinceLastShop = 0;
+					levelButton.Init(RoomTypes.Shop, RoomRegistry.Instance.SHOP);
+				}
+				else
+				{
+					levelButton.Init(RoomTypes.EnemyRoom, RoomRegistry.Instance.GetRoom(i, i + 20));
+				}	
+
+				levelButton.RoomSelected += (button) =>
+				{
+					selectedLevel = button;
+					ShowDescription(button.EncounterResource.GetDescription());
+				};
+
+				selectContainer.AddChild(levelButton);
+			}
+			if (!hasShop) sinceLastShop++;
 		}
 		foreach (VBoxContainer vBoxContainer in levelsContainer.GetChildren())
 		{
