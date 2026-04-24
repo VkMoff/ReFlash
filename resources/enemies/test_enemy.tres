@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyResource" load_steps=20 format=3 uid="uid://uphj2ebaqjxl"]
+[gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://uphj2ebaqjxl"]
 
 [ext_resource type="SpriteFrames" uid="uid://cuxw6ps72ay64" path="res://resources/animations/anim_slash_green.tres" id="1_jlgxb"]
 [ext_resource type="Script" uid="uid://6j10jfwxgj7v" path="res://scripts/resources/EnemyResource.cs" id="1_rk4lu"]

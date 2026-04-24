@@ -151,7 +151,7 @@ public partial class Card : Control
 		isDragging = false;
 		ZIndex = 0; // Возвращаем исходный ZIndex
 
-		if (level.TargetEnemy is not null || (!IsTargeted && GetGlobalMousePosition().Y < 500)) //заглушка
+		if (level.TargetEnemy is not null || (!IsTargeted && GetGlobalMousePosition().Y < GetWindow().Size.Y - Size.Y * 1.25)) //заглушка
 		{
 			Scale = originalScale;
 			CustomMinimumSize = originalSize;

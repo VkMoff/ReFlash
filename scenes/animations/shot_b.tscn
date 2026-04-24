@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cjlta28d756uf"]
+
+[ext_resource type="Texture2D" uid="uid://dgpsh3mh75057" path="res://resources/sprites/enemies/enemy_shot_b.svg" id="1_lpd1k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3ws4"]
+size = Vector2(170, 166)
+
+[node name="Shot" type="Node2D" unique_id=2138556408]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2081800605]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_lpd1k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2107040868]
+visible = false
+shape = SubResource("RectangleShape2D_g3ws4")

@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://ob6kg77oarit"]
+
+[ext_resource type="Script" uid="uid://c0djujixvr2kg" path="res://scripts/statuses/VulnerabilityStatus.cs" id="1_e8ab6"]
+[ext_resource type="Script" uid="uid://6j10jfwxgj7v" path="res://scripts/resources/EnemyResource.cs" id="1_ovbea"]
+[ext_resource type="Script" uid="uid://dfsv50ovm3n3k" path="res://scripts/effects/ApplyStatusEffect.cs" id="2_bfxf1"]
+[ext_resource type="Script" uid="uid://dp61sm6b30fw1" path="res://scripts/statuses/WeaknessStatus.cs" id="3_8rqx8"]
+[ext_resource type="Script" uid="uid://c6m1ohmsaef1t" path="res://scripts/resources/ActionResource.cs" id="4_w36li"]
+[ext_resource type="Script" uid="uid://nytqoc0ix0v0" path="res://scripts/effects/DamageEffect.cs" id="5_phr6y"]
+[ext_resource type="PackedScene" uid="uid://cs7au2orstsdg" path="res://scenes/animations/guardian.tscn" id="6_bfxf1"]
+
+[sub_resource type="Resource" id="Resource_mlfi7"]
+script = ExtResource("1_e8ab6")
+metadata/_custom_type_script = "uid://c0djujixvr2kg"
+
+[sub_resource type="Resource" id="Resource_wsg5q"]
+script = ExtResource("2_bfxf1")
+StatusToApply = SubResource("Resource_mlfi7")
+Value = 2
+metadata/_custom_type_script = "uid://dfsv50ovm3n3k"
+
+[sub_resource type="Resource" id="Resource_rkk8g"]
+script = ExtResource("3_8rqx8")
+metadata/_custom_type_script = "uid://dp61sm6b30fw1"
+
+[sub_resource type="Resource" id="Resource_lh40n"]
+script = ExtResource("2_bfxf1")
+StatusToApply = SubResource("Resource_rkk8g")
+Value = 2
+metadata/_custom_type_script = "uid://dfsv50ovm3n3k"
+
+[sub_resource type="Resource" id="Resource_k27dx"]
+script = ExtResource("4_w36li")
+Effects = Array[Resource]([SubResource("Resource_wsg5q"), SubResource("Resource_lh40n")])
+metadata/_custom_type_script = "uid://c6m1ohmsaef1t"
+
+[sub_resource type="Resource" id="Resource_kxxak"]
+script = ExtResource("5_phr6y")
+Damage = 15
+metadata/_custom_type_script = "uid://nytqoc0ix0v0"
+
+[sub_resource type="Resource" id="Resource_80dl4"]
+script = ExtResource("4_w36li")
+Effects = Array[Resource]([SubResource("Resource_kxxak")])
+metadata/_custom_type_script = "uid://c6m1ohmsaef1t"
+
+[resource]
+script = ExtResource("1_ovbea")
+Name = "Страж"
+InitialActions = null
+ActionPatterns = Array[Object]([SubResource("Resource_k27dx"), SubResource("Resource_80dl4")])
+MaxHP = 60
+Visualisation = ExtResource("6_bfxf1")
+metadata/_custom_type_script = "uid://6j10jfwxgj7v"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RoomResource" load_steps=3 format=3 uid="uid://b5fu6tv0ajf7s"]
+[gd_resource type="Resource" script_class="RoomResource" format=3 uid="uid://b5fu6tv0ajf7s"]
 
 [ext_resource type="Script" uid="uid://ccnftld4p7ds7" path="res://scripts/resources/RoomResource.cs" id="1_hay8c"]
 [ext_resource type="Resource" uid="uid://uphj2ebaqjxl" path="res://resources/enemies/test_enemy.tres" id="1_kjnfn"]
@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource("1_hay8c")
 Enemies = Array[Resource]([ExtResource("1_kjnfn"), ExtResource("1_kjnfn")])
-Difficulty = 1
+Difficulty = 10
 metadata/_custom_type_script = "uid://ccnftld4p7ds7"

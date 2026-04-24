@@ -1,18 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfnio3swvfdlu"]
+[gd_scene format=3 uid="uid://dfnio3swvfdlu"]
 
 [ext_resource type="Texture2D" uid="uid://3mjbxtrkw3hj" path="res://resources/sprites/enemies/enemy_watcher.svg" id="1_g3ws4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g3ws4"]
 size = Vector2(414.7, 402.3)
 
-[node name="Watcher" type="Node2D"]
+[node name="Watcher" type="Node2D" unique_id=434258486]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(206.70001, 195.3)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2104629856]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_g3ws4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1891814509]
 visible = false
 position = Vector2(208.35, 203.15)
 shape = SubResource("RectangleShape2D_g3ws4")

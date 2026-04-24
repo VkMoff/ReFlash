@@ -12,8 +12,9 @@ public partial class Enemy : Character
 	Array<ActionResource> actionPatterns = new();
 	Sprite2D nextActionSprite;
 	Label attackDamageLabel;
-	Texture2D attackTexture, healTexture, positiveEffectTexture;
+	Texture2D attackTexture, healTexture, positiveEffectTexture, negativeEffectTexture;
 	private bool firstTurnPlayed = false;
+	Vector2 visualisationSize = new();
 	public override void _Ready()
 	{
 		Level = GetParent().GetParent<Level>();
@@ -21,22 +22,10 @@ public partial class Enemy : Character
 		attackTexture = GD.Load<Texture2D>("res://resources/sprites/enemy_actions/action_attack.svg");
 		healTexture = GD.Load<Texture2D>("res://resources/sprites/enemy_actions/action_heal.svg");
 		positiveEffectTexture = GD.Load<Texture2D>("res://resources/sprites/enemy_actions/action_amplify.svg");
+		negativeEffectTexture = GD.Load<Texture2D>("res://resources/sprites/enemy_actions/action_debuff.svg");
 		attackDamageLabel = GetNode<Label>("NextActionSprite/Label");
 		base._Ready();
 
-		// actionPatterns = //ПРОКЛЯТО
-		// [
-		// 	[
-		// 		[new DamageEffect(10) {Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_slash_green.tres")}]//дамаг
-		// 	],
-		// 	[
-		// 		[new DamageEffect(5) {Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_slash_green.tres")}], [new HealEffect(3){Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_heal.tres")}]//или дамаг, или хил
-		// 	],
-		// 	[
-		// 		[new MultiDamageEffect(1,10) {Animation = GD.Load<SpriteFrames>("res://resources/animations/anim_slash_green.tres")}]
-		// 	]
-
-		// ];
 		if (initialActions.Count > 0)
 		{
 			nextActions = initialActions;
@@ -47,11 +36,10 @@ public partial class Enemy : Character
 			firstTurnPlayed = true;
 		}
 		SetDamageLabel();
-		// MouseEntered += MouseEnter;
-		// MouseExited += MouseExit;
-		nextActionSprite.Position = new (Size.X / 2, -20);
-		RecalculateStrength();
 
+		nextActionSprite.Position = new (Size.X / 2, -20);
+		GetNode("Control").GetChild<Node2D>(0).Position = new(Size.X / 2, GetNode<Control>("Control").CustomMinimumSize.Y / 2);
+		RecalculateStrength();
 	}
 
 	public void Init(EnemyResource enemyResource)
@@ -63,7 +51,8 @@ public partial class Enemy : Character
 		initialActions = enemyResource.InitialActions;
 		GD.Print(initialActions.Count);
 		GetNode<Label>("NameLabel").Text = enemyResource.Name;
-		GetNode<Control>("Control").CustomMinimumSize = new(GetNode("Control").GetChild(0).GetNode<CollisionShape2D>("CollisionShape2D").Shape.GetRect().Size.X, GetNode("Control").GetChild(0).GetNode<CollisionShape2D>("CollisionShape2D").Shape.GetRect().Size.Y);
+		visualisationSize = new(GetNode("Control").GetChild(0).GetNode<CollisionShape2D>("CollisionShape2D").Shape.GetRect().Size.X, GetNode("Control").GetChild(0).GetNode<CollisionShape2D>("CollisionShape2D").Shape.GetRect().Size.Y);
+		GetNode<Control>("Control").CustomMinimumSize = visualisationSize;
 	}
 
 	public void MouseEnter()
@@ -135,6 +124,11 @@ public partial class Enemy : Character
 		else if ((nextActions[0] is ApplyStatusEffect) && nextActions[0].AppliableToCaster)
 		{
 			nextActionSprite.Texture = positiveEffectTexture;
+			attackDamageLabel.Visible = false;
+		}
+		else if ((nextActions[0] is ApplyStatusEffect) && !nextActions[0].AppliableToCaster)
+		{
+			nextActionSprite.Texture = negativeEffectTexture;
 			attackDamageLabel.Visible = false;
 		}
 	}
