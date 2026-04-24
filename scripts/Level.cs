@@ -249,9 +249,16 @@ public partial class Level : Control
 	}
 	public void Win()
 	{
-		GD.Print("LEVEL COMPLETED!");
+		Random random = new(); //Переместить в синглтон, отвечающий за рандом и сиды
 		VictoryMenu victoryMenu = GD.Load<PackedScene>("res://scenes/ui/victory_menu.tscn").Instantiate<VictoryMenu>();
-		victoryMenu.Init(goldReward: 50, artifacts: [new PoisonSpray(), new StrangeMask()]);
+		float artifactChance = 0;
+		if (roomResource.Difficulty < 10) artifactChance = 0;
+		else if (roomResource.Difficulty < 20) artifactChance = 0.2f;
+		else if (roomResource.Difficulty < 30) artifactChance = 0.5f;
+		else artifactChance = 1f;
+		ArtifactResource[] artifacts = [];
+		if (random.NextDouble() < artifactChance) artifacts = [new PoisonSpray()];
+		victoryMenu.Init(goldReward: 50 + roomResource.Difficulty, artifacts: artifacts);
 		GetTree().Root.AddChild(victoryMenu);
 	}
 	public void GoToMap()
