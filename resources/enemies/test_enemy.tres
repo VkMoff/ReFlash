@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=19 format=3 uid="uid://uphj2ebaqjxl"]
+[gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://uphj2ebaqjxl"]
 
 [ext_resource type="SpriteFrames" uid="uid://cuxw6ps72ay64" path="res://resources/animations/anim_slash_green.tres" id="1_jlgxb"]
 [ext_resource type="Script" uid="uid://6j10jfwxgj7v" path="res://scripts/resources/EnemyResource.cs" id="1_rk4lu"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b3fu3pa3h540e" path="res://scripts/effects/MultiDamageEffect.cs" id="4_eoui6"]
 [ext_resource type="SpriteFrames" uid="uid://dfyoe3squ4k5p" path="res://resources/animations/anim_heal.tres" id="5_78k7y"]
 [ext_resource type="Script" uid="uid://b0uxuyo1n6xsm" path="res://scripts/effects/HealEffect.cs" id="6_s17fa"]
+[ext_resource type="PackedScene" uid="uid://dmyvi20vwj37y" path="res://scenes/animations/stool_anim.tscn" id="10_8w74y"]
 
 [sub_resource type="Resource" id="Resource_b0oir"]
 script = ExtResource("2_8w74y")
@@ -64,4 +65,5 @@ InitialActions = Array[Resource]([SubResource("Resource_irtgr")])
 ActionPatterns = Array[Object]([SubResource("Resource_d1np4"), SubResource("Resource_2x0nm"), SubResource("Resource_pgjia")])
 MaxHP = 60
 Animation = ExtResource("1_xdanq")
+Visualisation = ExtResource("10_8w74y")
 metadata/_custom_type_script = "uid://6j10jfwxgj7v"

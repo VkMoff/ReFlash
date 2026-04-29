@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://upvd2qij7bha"]
+
+[ext_resource type="Script" uid="uid://b3fu3pa3h540e" path="res://scripts/effects/MultiDamageEffect.cs" id="1_gudqb"]
+[ext_resource type="Script" uid="uid://6j10jfwxgj7v" path="res://scripts/resources/EnemyResource.cs" id="1_jxyky"]
+[ext_resource type="Script" uid="uid://c6m1ohmsaef1t" path="res://scripts/resources/ActionResource.cs" id="2_jhqtr"]
+[ext_resource type="Script" uid="uid://c1km7tgn4imj4" path="res://scripts/statuses/SpikesStatus.cs" id="3_d8gfe"]
+[ext_resource type="Script" uid="uid://dfsv50ovm3n3k" path="res://scripts/effects/ApplyStatusEffect.cs" id="4_hdehv"]
+[ext_resource type="Script" uid="uid://c0djujixvr2kg" path="res://scripts/statuses/VulnerabilityStatus.cs" id="5_rtxp2"]
+[ext_resource type="PackedScene" uid="uid://d2eqn8q6adlml" path="res://scenes/animations/scorpispike_a.tscn" id="6_0npy6"]
+
+[sub_resource type="Resource" id="Resource_2odx3"]
+script = ExtResource("1_gudqb")
+Damage = 3
+Count = 3
+metadata/_custom_type_script = "uid://b3fu3pa3h540e"
+
+[sub_resource type="Resource" id="Resource_sya8h"]
+script = ExtResource("2_jhqtr")
+Effects = Array[Resource]([SubResource("Resource_2odx3")])
+metadata/_custom_type_script = "uid://c6m1ohmsaef1t"
+
+[sub_resource type="Resource" id="Resource_e26fg"]
+script = ExtResource("3_d8gfe")
+metadata/_custom_type_script = "uid://c1km7tgn4imj4"
+
+[sub_resource type="Resource" id="Resource_jwqx8"]
+script = ExtResource("4_hdehv")
+StatusToApply = SubResource("Resource_e26fg")
+Value = 2
+AppliableToCaster = true
+metadata/_custom_type_script = "uid://dfsv50ovm3n3k"
+
+[sub_resource type="Resource" id="Resource_pgjmb"]
+script = ExtResource("2_jhqtr")
+Effects = Array[Resource]([SubResource("Resource_jwqx8")])
+metadata/_custom_type_script = "uid://c6m1ohmsaef1t"
+
+[sub_resource type="Resource" id="Resource_85c4s"]
+script = ExtResource("5_rtxp2")
+metadata/_custom_type_script = "uid://c0djujixvr2kg"
+
+[sub_resource type="Resource" id="Resource_2frxf"]
+script = ExtResource("4_hdehv")
+StatusToApply = SubResource("Resource_85c4s")
+Value = 3
+metadata/_custom_type_script = "uid://dfsv50ovm3n3k"
+
+[sub_resource type="Resource" id="Resource_4tsm7"]
+script = ExtResource("3_d8gfe")
+metadata/_custom_type_script = "uid://c1km7tgn4imj4"
+
+[sub_resource type="Resource" id="Resource_0jgj6"]
+script = ExtResource("4_hdehv")
+StatusToApply = SubResource("Resource_4tsm7")
+Value = 1
+AppliableToCaster = true
+metadata/_custom_type_script = "uid://dfsv50ovm3n3k"
+
+[resource]
+script = ExtResource("1_jxyky")
+InitialActions = Array[Resource]([SubResource("Resource_2frxf"), SubResource("Resource_0jgj6")])
+ActionPatterns = Array[Object]([SubResource("Resource_sya8h"), SubResource("Resource_pgjmb")])
+MaxHP = 60
+Visualisation = ExtResource("6_0npy6")
+metadata/_custom_type_script = "uid://6j10jfwxgj7v"

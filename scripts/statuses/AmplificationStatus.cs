@@ -9,7 +9,7 @@ public partial class AmplificationStatus : StatusResource
         Name = "Услиление"; // В начале хода увеличить силу на X
         Color = new("0BC2D6");
     }
-    public override void OnTurnStart(Status status, Character[] targets)
+    public override void OnTurnEnd(Status status, Character[] targets)
     {
         status.ParentCharacter.AddStatus(new StrengthStatus(), status.Value);
     }

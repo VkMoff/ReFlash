@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d2eqn8q6adlml"]
+
+[ext_resource type="Texture2D" uid="uid://bm0isektjbpl8" path="res://resources/sprites/enemies/enemy_skorpispike_a.png" id="1_n0kmr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0kmr"]
+size = Vector2(398, 250)
+
+[node name="Visualisation" type="Node2D" unique_id=434258486]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=534873062]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_n0kmr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1891814509]
+visible = false
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_n0kmr")

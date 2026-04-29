@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RoomResource" format=3 uid="uid://dwqg8cmcafaoo"]
+
+[ext_resource type="Resource" uid="uid://bmuf1j5riudy2" path="res://resources/enemies/scorpispike.tres" id="1_1100e"]
+[ext_resource type="Resource" uid="uid://upvd2qij7bha" path="res://resources/enemies/scorpispike_a.tres" id="2_b56m2"]
+[ext_resource type="Script" uid="uid://ccnftld4p7ds7" path="res://scripts/resources/RoomResource.cs" id="3_le6xf"]
+
+[resource]
+script = ExtResource("3_le6xf")
+Enemies = Array[Object]([ExtResource("1_1100e"), ExtResource("2_b56m2")])
+Difficulty = 30
+metadata/_custom_type_script = "uid://ccnftld4p7ds7"

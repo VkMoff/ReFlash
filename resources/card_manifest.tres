@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="CardManifest" load_steps=2 format=3 uid="uid://bj4a6wio8msk3"]
+[gd_resource type="Resource" script_class="CardManifest" format=3 uid="uid://bj4a6wio8msk3"]
 
 [ext_resource type="Script" uid="uid://dfstqaacf6uco" path="res://scripts/tools/CardManifest.cs" id="1_5puv0"]
 
 [resource]
 script = ExtResource("1_5puv0")
-CardPaths = PackedStringArray("res://resources/cards/Amplify.tres", "res://resources/cards/Attack.tres", "res://resources/cards/BerserkAttack.tres", "res://resources/cards/DoubleStrike.tres", "res://resources/cards/Heal.tres", "res://resources/cards/HeavyAttack.tres", "res://resources/cards/Poison.tres", "res://resources/cards/RandomDamage.tres", "res://resources/cards/Violet.tres", "res://resources/cards/Discharge.tres")
+CardPaths = PackedStringArray("res://resources/cards/AcidSplash.tres", "res://resources/cards/Amplify.tres", "res://resources/cards/Attack.tres", "res://resources/cards/BerserkAttack.tres", "res://resources/cards/Discharge.tres", "res://resources/cards/DoubleStrike.tres", "res://resources/cards/Flashbang.tres", "res://resources/cards/Heal.tres", "res://resources/cards/HeavyAttack.tres", "res://resources/cards/Loophole.tres", "res://resources/cards/Poison.tres", "res://resources/cards/RandomDamage.tres", "res://resources/cards/Violet.tres")

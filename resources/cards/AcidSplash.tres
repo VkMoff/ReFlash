@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="CardResource" format=3 uid="uid://bx06yws6bk0tx"]
+
+[ext_resource type="Script" uid="uid://e385xb50ouf1" path="res://scripts/statuses/PoisonStatus.cs" id="1_m776u"]
+[ext_resource type="Script" uid="uid://dfsv50ovm3n3k" path="res://scripts/effects/ApplyStatusEffect.cs" id="2_y1i4k"]
+[ext_resource type="Script" uid="uid://c0djujixvr2kg" path="res://scripts/statuses/VulnerabilityStatus.cs" id="3_iqfbq"]
+[ext_resource type="Texture2D" uid="uid://bbp14oyneju2g" path="res://resources/sprites/cards/card_toxic_splash.png" id="4_dfs1t"]
+[ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/resources/CardResource.cs" id="5_3n8wl"]
+
+[sub_resource type="Resource" id="Resource_y7nyu"]
+script = ExtResource("1_m776u")
+metadata/_custom_type_script = "uid://e385xb50ouf1"
+
+[sub_resource type="Resource" id="Resource_ogxgx"]
+script = ExtResource("2_y1i4k")
+StatusToApply = SubResource("Resource_y7nyu")
+Value = 3
+metadata/_custom_type_script = "uid://dfsv50ovm3n3k"
+
+[sub_resource type="Resource" id="Resource_tdh8i"]
+script = ExtResource("3_iqfbq")
+metadata/_custom_type_script = "uid://c0djujixvr2kg"
+
+[sub_resource type="Resource" id="Resource_5oeft"]
+script = ExtResource("2_y1i4k")
+StatusToApply = SubResource("Resource_tdh8i")
+Value = 2
+metadata/_custom_type_script = "uid://dfsv50ovm3n3k"
+
+[resource]
+script = ExtResource("5_3n8wl")
+Id = "acid_splash"
+Name = "Брызги кислоты"
+Texture = ExtResource("4_dfs1t")
+Effects = Array[Resource]([SubResource("Resource_ogxgx"), SubResource("Resource_5oeft")])
+IsTargeted = true
+Cost = 2
+metadata/_custom_type_script = "uid://ds6nyytwhdiye"

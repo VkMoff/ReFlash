@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://dv8ie1olfp8yp"]
+
+[ext_resource type="Script" uid="uid://6j10jfwxgj7v" path="res://scripts/resources/EnemyResource.cs" id="1_5kj0g"]
+[ext_resource type="Script" uid="uid://nytqoc0ix0v0" path="res://scripts/effects/DamageEffect.cs" id="1_h1c80"]
+[ext_resource type="Script" uid="uid://c6m1ohmsaef1t" path="res://scripts/resources/ActionResource.cs" id="2_w4wqc"]
+[ext_resource type="Script" uid="uid://dp61sm6b30fw1" path="res://scripts/statuses/WeaknessStatus.cs" id="3_3xcep"]
+[ext_resource type="Script" uid="uid://dfsv50ovm3n3k" path="res://scripts/effects/ApplyStatusEffect.cs" id="4_mokio"]
+[ext_resource type="PackedScene" uid="uid://ccffsllajekfj" path="res://scenes/animations/scavenger.tscn" id="5_txec4"]
+
+[sub_resource type="Resource" id="Resource_pq2qn"]
+script = ExtResource("1_h1c80")
+Damage = 10
+metadata/_custom_type_script = "uid://nytqoc0ix0v0"
+
+[sub_resource type="Resource" id="Resource_ad27v"]
+script = ExtResource("2_w4wqc")
+Effects = Array[Resource]([SubResource("Resource_pq2qn")])
+metadata/_custom_type_script = "uid://c6m1ohmsaef1t"
+
+[sub_resource type="Resource" id="Resource_3fk6k"]
+script = ExtResource("3_3xcep")
+metadata/_custom_type_script = "uid://dp61sm6b30fw1"
+
+[sub_resource type="Resource" id="Resource_m0qjt"]
+script = ExtResource("4_mokio")
+StatusToApply = SubResource("Resource_3fk6k")
+Value = 2
+metadata/_custom_type_script = "uid://dfsv50ovm3n3k"
+
+[resource]
+script = ExtResource("1_5kj0g")
+Name = "Мусорщик"
+InitialActions = Array[Resource]([SubResource("Resource_m0qjt")])
+ActionPatterns = Array[Object]([SubResource("Resource_ad27v")])
+MaxHP = 50
+Visualisation = ExtResource("5_txec4")
+metadata/_custom_type_script = "uid://6j10jfwxgj7v"

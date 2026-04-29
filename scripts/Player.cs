@@ -39,49 +39,65 @@ public partial class Player : Character
 		base.Die();
 		SceneManager.Instance.GoToMenu();
 	}
+	public override void AddStatus(StatusResource statusResource, int value)
+	{
+		base.AddStatus(statusResource, value);
+		Type statusType = statusResource.GetType();
+		if (statusType == typeof(VulnerabilityStatus))
+		{
+			foreach (Enemy enemy in Level.Enemies)
+			{
+				enemy.RecalculateStrength();
+			}
+		}
+	}
 	public override void RecalculateStrength()
 	{
-		Status status;
-		int value;
-		if (!Statuses.TryGetValue(typeof(StrengthStatus), out status))
+		int strength;
+		float weakness;
+		strength = GetStatus<StrengthStatus>();
+		if (GetStatus<WeaknessStatus>() <= 0)
 		{
-			value = 0;
+			weakness = 0;
 		}
 		else
 		{
-			value = status.Value;
+			weakness = 0.25f;
 		}
 		foreach (Card card in Level.Deck.Cards)
 		{
-			SetStrengthModifierForCards(card, value);
+			SetStrengthModifierForCards(card, strength, weakness);
 		}
 		foreach (Card card in Level.Hand.GetChildren())
 		{
-			SetStrengthModifierForCards(card, value);
+			SetStrengthModifierForCards(card, strength, weakness);
 		}
 		foreach (Card card in Level.DiscardPile.Cards)
 		{
-			SetStrengthModifierForCards(card, value);
+			SetStrengthModifierForCards(card, strength, weakness);
 		}
 	}
-	private void SetStrengthModifierForCards(Card card, int value)
+	private void SetStrengthModifierForCards(Card card, int strength, float weakness)
 	{
 		foreach (EffectResource effect in card.Effects)
 		{
-			if (effect is DamageEffect)
+			if (effect is DamageEffect damageEffect)
 			{
-				((DamageEffect)effect).StrengthModifier = value;
+				damageEffect.StrengthModifier = strength;
+				damageEffect.Weakness = weakness;
 			}
-			if (effect is MultiDamageEffect)
+			if (effect is MultiDamageEffect multiDamageEffect)
 			{
-				((MultiDamageEffect)effect).StrengthModifier = value;
+				multiDamageEffect.StrengthModifier = strength;
+				multiDamageEffect.Weakness = weakness;
 			}
 			if (effect is RandomTargetApplyEffect)
 			{
 				EffectResource insideEffect = ((RandomTargetApplyEffect)effect).Effect;
-				if (insideEffect is DamageEffect)
+				if (insideEffect is DamageEffect innerDamageEffect)
 				{
-					((DamageEffect)insideEffect).StrengthModifier = value;
+					innerDamageEffect.StrengthModifier = strength;
+					innerDamageEffect.Weakness = weakness;
 				}
 			}
 		}

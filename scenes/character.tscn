@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dj3y15cjhlbdq"]
+[gd_scene load_steps=4 format=3 uid="uid://dj3y15cjhlbdq"]
 
 [ext_resource type="Script" uid="uid://crm4jsgrofs1t" path="res://scripts/Character.cs" id="1_rkhd4"]
-[ext_resource type="SpriteFrames" uid="uid://pv8myj3lvb8y" path="res://resources/animations/player.tres" id="3_lrhn5"]
 [ext_resource type="PackedScene" uid="uid://bqnhos7yvul2" path="res://scenes/health_bar.tscn" id="3_my7n2"]
 [ext_resource type="LabelSettings" uid="uid://cdwtgwcu7kv7r" path="res://resources/styles/baseLabelSettings.tres" id="6_0lw5n"]
 
@@ -23,15 +22,8 @@ custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="AnimatedSprite" type="AnimatedSprite2D" parent="Control"]
-visible = false
-position = Vector2(100, 75)
-sprite_frames = ExtResource("3_lrhn5")
-frame_progress = 0.664454
-
 [node name="HealthBar" parent="." instance=ExtResource("3_my7n2")]
 layout_mode = 2
-mouse_filter = 2
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 2

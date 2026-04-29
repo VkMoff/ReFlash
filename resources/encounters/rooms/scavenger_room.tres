@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RoomResource" format=3 uid="uid://crd0biidcurns"]
+
+[ext_resource type="Resource" uid="uid://dv8ie1olfp8yp" path="res://resources/enemies/scavenger.tres" id="1_2dl0m"]
+[ext_resource type="Script" uid="uid://ccnftld4p7ds7" path="res://scripts/resources/RoomResource.cs" id="2_duwxl"]
+
+[resource]
+script = ExtResource("2_duwxl")
+Enemies = Array[Object]([ExtResource("1_2dl0m")])
+Difficulty = 10
+metadata/_custom_type_script = "uid://ccnftld4p7ds7"

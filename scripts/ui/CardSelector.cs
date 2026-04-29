@@ -12,9 +12,9 @@ public partial class CardSelector : CanvasLayer
 		cardContainer = GetNode<HBoxContainer>("%CardContainer");
 
 		cards = new();
-		cards.Add(CardRegistry.Instance["amplify"]);
+		cards.Add(CardRegistry.Instance["flashbang"]);
 		cards.Add(CardRegistry.Instance["discharge"]);
-		cards.Add(CardRegistry.Instance["poison"]);
+		cards.Add(CardRegistry.Instance["acid_splash"]);
 
 		foreach (Card card in cards)
 		{

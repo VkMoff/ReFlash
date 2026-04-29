@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RoomResource" format=3 uid="uid://2vsp4aygivy8"]
+
+[ext_resource type="Resource" uid="uid://ob6kg77oarit" path="res://resources/enemies/guardian.tres" id="1_qhjwb"]
+[ext_resource type="Script" uid="uid://ccnftld4p7ds7" path="res://scripts/resources/RoomResource.cs" id="2_ifwvk"]
+
+[resource]
+script = ExtResource("2_ifwvk")
+Enemies = Array[Object]([ExtResource("1_qhjwb")])
+Difficulty = 10
+metadata/_custom_type_script = "uid://ccnftld4p7ds7"

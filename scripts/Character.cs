@@ -21,13 +21,13 @@ public partial class Character : VBoxContainer
 		healthBar = GetNode<HealthBar>("HealthBar");
 		// healthLabel = GetNode<Label>("HealthBar/Label");
 
-		sprite = GetNode<AnimatedSprite2D>("Control/AnimatedSprite");
+		// sprite = GetNode<AnimatedSprite2D>("Control/AnimatedSprite");
 
 		healthBar.MaxValue = MaxHp;
 		healthBar.Value = Hp;
 
-		sprite.SpriteFrames = spriteFrames;
-		sprite.Play();
+		// sprite.SpriteFrames = spriteFrames;
+		// sprite.Play();
 
 		IsAlive = true;
 	}
@@ -61,7 +61,7 @@ public partial class Character : VBoxContainer
 	}
 
 
-	public void AddStatus(StatusResource statusResource, int value)
+	public virtual void AddStatus(StatusResource statusResource, int value)
 	{
 		Type statusType = statusResource.GetType();
 
@@ -83,7 +83,7 @@ public partial class Character : VBoxContainer
 			Statuses[statusType] = status;
 		}
 
-		if (statusType == typeof(StrengthStatus))
+		if ((statusType == typeof(StrengthStatus)) || (statusType == typeof(WeaknessStatus)))
 		{
 			RecalculateStrength();
 		}
@@ -99,5 +99,15 @@ public partial class Character : VBoxContainer
 		IsAlive = false;
 		this.ShowMessage("Мёртв");
 		Level.CharacterDied(this);
+	}
+
+	public int GetStatus<T>() where T : StatusResource
+	{
+		Status status;
+		if (!Statuses.TryGetValue(typeof(T), out status))
+		{
+			return 0;
+		}
+		return status.Value;
 	}
 }

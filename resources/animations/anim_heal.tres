@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=15 format=3 uid="uid://dfyoe3squ4k5p"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://dfyoe3squ4k5p"]
 
 [ext_resource type="Texture2D" uid="uid://dldulng8o8f0r" path="res://resources/sprites/animations/sphere_atlas.png" id="1_kfmit"]
 
@@ -96,7 +96,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fuh87")
 }],
-"loop": false,
+"loop": 0,
 "name": &"default",
 "speed": 18.0
 }]

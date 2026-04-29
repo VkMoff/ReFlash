@@ -6,6 +6,7 @@ public partial class Level : Control
 {
 	public Deck Deck { get; private set; }
 	public Hand Hand { get; private set; }
+	public List<Card> BurnPile { get; private set; }
 	public Player Player { get; private set; }
 	public List<Character> Enemies { get; private set; }
 	public Character TargetEnemy { get; set; }
@@ -59,7 +60,6 @@ public partial class Level : Control
 		{
 			enemyContainer.AddChild(enemy);
 		}
-
 		//test
 		// Enemies[0].AddStatus(new PoisonStatus(), 5);
 		// Player.AddStatus(new SpikesStatus(), 3);
@@ -91,14 +91,15 @@ public partial class Level : Control
 		Hand.RemoveChild(card);
 		DiscardPile.Add(card);
 	}
-	public void PullCardFromDeck()
-	{
-		PullCardFromDeck(1);
-	}
-	public void PullCardFromDeck(int count)
+	public void PullCardFromDeck(int count = 1)
 	{
 		for (int i = 0; i < count; i++)
 		{
+			if (Hand.GetChildCount() >= 10)
+			{
+				Message.ShowMessage(this, "Недостаточно места в руке");
+				break;
+			}
 			Hand.Add(Deck.Pull());
 		}
 	}
@@ -172,16 +173,6 @@ public partial class Level : Control
 			status.OnTurnEnd([Player]);
 		}
 
-		foreach (Enemy enemy in Enemies)
-		{
-			if (!enemy.IsAlive) continue;
-
-			foreach (var (statusType, status) in enemy.Statuses)
-			{
-				status.OnTurnEnd([enemy]);
-			}
-
-		}
 		foreach (var character in pendingRemovals)
 		{
 			Enemies.Remove(character);
@@ -196,22 +187,6 @@ public partial class Level : Control
 
 		foreach (Enemy enemy in Enemies)
 		{
-			if (!enemy.IsAlive) continue;
-
-			await enemy.ExecuteNextAction();
-			await ToSignal(PlayerData.Instance.GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
-		}
-
-		Energy = 3;
-		UpdateEnergyLabel();
-		PullCardFromDeck(DefaultHandSize);
-
-		foreach (var (statusType, status) in Player.Statuses)
-		{
-			status.OnTurnStart([Player]);
-		}
-		foreach (Enemy enemy in Enemies)
-		{
 			try
 			{
 				foreach (var (statusType, status) in enemy.Statuses)
@@ -223,6 +198,38 @@ public partial class Level : Control
 			{
 				GD.PrintErr("Добавление статуса в переборе статусов всё ломает");
 			}
+		}
+		foreach (Enemy enemy in Enemies)
+		{
+			if (!enemy.IsAlive) continue;
+
+			await enemy.ExecuteNextAction();
+			await ToSignal(PlayerData.Instance.GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
+		}
+		foreach (Enemy enemy in Enemies)
+		{
+			if (!enemy.IsAlive) continue;
+
+			try
+			{
+				foreach (var (statusType, status) in enemy.Statuses)
+				{
+					status.OnTurnEnd([enemy]);
+				}
+			}
+			catch
+			{
+				GD.PrintErr("Добавление статуса в переборе статусов всё ломает");
+			}
+		}
+
+		Energy = 3;
+		UpdateEnergyLabel();
+		PullCardFromDeck(DefaultHandSize);
+
+		foreach (var (statusType, status) in Player.Statuses)
+		{
+			status.OnTurnStart([Player]);
 		}
 
 		TurnStart?.Invoke();
@@ -242,9 +249,16 @@ public partial class Level : Control
 	}
 	public void Win()
 	{
-		GD.Print("LEVEL COMPLETED!");
+		Random random = new(); //Переместить в синглтон, отвечающий за рандом и сиды
 		VictoryMenu victoryMenu = GD.Load<PackedScene>("res://scenes/ui/victory_menu.tscn").Instantiate<VictoryMenu>();
-		victoryMenu.Init(goldReward: 50, artifacts: [new PoisonSpray(), new StrangeMask()]);
+		float artifactChance = 0;
+		if (roomResource.Difficulty < 10) artifactChance = 0;
+		else if (roomResource.Difficulty < 20) artifactChance = 0.2f;
+		else if (roomResource.Difficulty < 30) artifactChance = 0.5f;
+		else artifactChance = 1f;
+		ArtifactResource[] artifacts = [];
+		if (random.NextDouble() < artifactChance) artifacts = [new PoisonSpray()];
+		victoryMenu.Init(goldReward: 50 + roomResource.Difficulty, artifacts: artifacts);
 		GetTree().Root.AddChild(victoryMenu);
 	}
 	public void GoToMap()
@@ -264,4 +278,5 @@ public partial class Level : Control
 		}
 		base._ExitTree();
 	}
+
 }

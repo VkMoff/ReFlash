@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dmyvi20vwj37y"]
+[gd_scene format=3 uid="uid://dmyvi20vwj37y"]
 
 [ext_resource type="Texture2D" uid="uid://d2qrm3x87k1f7" path="res://resources/animations/stool_sprites/Stool_hose1.svg" id="1_4flrs"]
 [ext_resource type="Texture2D" uid="uid://4oxv8yyhru6l" path="res://resources/animations/stool_sprites/Stool_hose2.svg" id="2_vxg26"]
@@ -144,71 +144,79 @@ _data = {
 &"idle": SubResource("Animation_50cep")
 }
 
-[node name="Skeleton" type="Node2D"]
-scale = Vector2(0.39999998, 0.39999998)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4flrs"]
+size = Vector2(200, 280)
 
-[node name="polygons" type="Node2D" parent="."]
+[node name="Skeleton" type="Node2D" unique_id=2098188802]
+position = Vector2(98, 105)
 
-[node name="Hose1" type="Polygon2D" parent="polygons"]
+[node name="polygons" type="Node2D" parent="." unique_id=516758664]
+position = Vector2(-7.6293945e-06, -0.27365875)
+scale = Vector2(0.4, 0.4)
+
+[node name="Hose1" type="Polygon2D" parent="polygons" unique_id=1853835994]
 position = Vector2(32.983696, 43)
 texture = ExtResource("1_4flrs")
 polygon = PackedVector2Array(32.281326, -0.86408997, 22.515045, 86.54457, 5.4295654, 239.46062, 10.128677, 273.69702, 20.869507, 272.35443, 29.59645, 264.9701, 18.855606, 235.4328, 33.374725, 118.9653, 48.39685, -1.5370102)
 uv = PackedVector2Array(32.281326, -0.86408997, 5.4295654, 239.46062, 10.128677, 273.69702, 20.869507, 272.35443, 29.59645, 264.9701, 18.855606, 235.4328, 48.39685, -1.5370102)
 
-[node name="Hose2" type="Polygon2D" parent="polygons"]
+[node name="Hose2" type="Polygon2D" parent="polygons" unique_id=2076018030]
 position = Vector2(38.983696, 51)
 texture = ExtResource("2_vxg26")
 polygon = PackedVector2Array(-3.2731323, -3.9135475, -2.2944946, 37.189655, 28.04358, 106.673645, 122.97241, 246.62025, 144.50262, 235.85515, 79.91193, 144.84091, 31.95819, 70.463684, 16.299805, 39.146954, 14.342529, -3.9135475)
 uv = PackedVector2Array(-3.2731323, -3.9135475, -2.2944946, 37.189655, 28.04358, 106.673645, 122.97241, 246.62025, 144.50262, 235.85515, 79.91193, 144.84091, 31.95819, 70.463684, 16.299805, 39.146954, 14.342529, -3.9135475)
 
-[node name="Hose3" type="Polygon2D" parent="polygons"]
+[node name="Hose3" type="Polygon2D" parent="polygons" unique_id=400316860]
 position = Vector2(-87.016304, 16)
 texture = ExtResource("3_o0od7")
 polygon = PackedVector2Array(2.27005, -0.00037384033, -3.808258, 51.23094, 9.057129, 133.88008, 16.95102, 164.66623, 12.214691, 293.33655, 22.476746, 300.44104, 35.106964, 294.12595, 34.317566, 164.66623, 20.108582, 103.883316, 15.369995, -5.8417654)
 uv = PackedVector2Array(2.27005, -0.00037384033, -3.808258, 51.23094, 9.057129, 133.88008, 16.95102, 164.66623, 12.214691, 293.33655, 22.476746, 300.44104, 35.106964, 294.12595, 34.317566, 164.66623, 20.108582, 103.883316, 15.369995, -5.8417654)
 
-[node name="Tentacle1" type="Polygon2D" parent="polygons"]
+[node name="Tentacle1" type="Polygon2D" parent="polygons" unique_id=525734961]
 position = Vector2(-96.016304, 39)
 offset = Vector2(-102, -15)
 texture = ExtResource("4_f2w1h")
 polygon = PackedVector2Array(80.130066, -5.3028316, 16.500183, 172.86087, 8.016235, 251.33772, 39.831177, 303.30215, 65.28314, 290.57617, 75.88812, 241.79326, 63.16211, 208.9178, 52.55713, 231.18828, 54.6781, 186.64734, 128.91302, 9.544142)
 uv = PackedVector2Array(80.130066, -5.3028316, 16.500183, 172.86087, 8.016235, 251.33772, 39.831177, 303.30215, 65.28314, 290.57617, 75.88812, 241.79326, 63.16211, 208.9178, 52.55713, 231.18828, 54.6781, 186.64734, 128.91302, 9.544142)
 
-[node name="Tentacle2" type="Polygon2D" parent="polygons"]
+[node name="Tentacle2" type="Polygon2D" parent="polygons" unique_id=270298362]
 position = Vector2(115.983696, 43)
 offset = Vector2(-52, -14)
 texture = ExtResource("5_ookrx")
 polygon = PackedVector2Array(32.576782, 13.739874, 55.829468, 96.18115, 81.195984, 138.45872, 87.53766, 192.36264, 81.195984, 234.64023, 57.9433, 217.72919, 53.715576, 250.49432, 75.911316, 295.94272, 95.993164, 295.94272, 124.53052, 238.86798, 120.302734, 132.1171, 85.42377, 67.64378, 67.45575, -0.00033950806)
 uv = PackedVector2Array(32.576782, 13.739874, 55.829468, 96.18115, 81.195984, 138.45872, 87.53766, 192.36264, 81.195984, 234.64023, 57.9433, 217.72919, 53.715576, 250.49432, 75.911316, 295.94272, 95.993164, 295.94272, 124.53052, 238.86798, 120.302734, 132.1171, 85.42377, 67.64378, 67.45575, -0.00033950806)
 
-[node name="Tentacle3" type="Polygon2D" parent="polygons"]
+[node name="Tentacle3" type="Polygon2D" parent="polygons" unique_id=786677298]
 position = Vector2(5.983696, 59)
 offset = Vector2(-23, -5)
 texture = ExtResource("6_vseyd")
 polygon = PackedVector2Array(-5.8345947, -2.0994282, 14.1119995, 98.68349, 27.759705, 145.92549, 31.958984, 190.01802, 13.062195, 185.81873, 18.31128, 230.96109, 35.10846, 254.05716, 58.20453, 254.05716, 72.90204, 232.0109, 68.70276, 122.8294, 34.058655, -9.448183)
 uv = PackedVector2Array(-5.8345947, -2.0994282, 14.1119995, 98.68349, 27.759705, 145.92549, 31.958984, 190.01802, 13.062195, 185.81873, 18.31128, 230.96109, 35.10846, 254.05716, 58.20453, 254.05716, 72.90204, 232.0109, 68.70276, 122.8294, 34.058655, -9.448183)
 
-[node name="Tentacle4" type="Polygon2D" parent="polygons"]
+[node name="Tentacle4" type="Polygon2D" parent="polygons" unique_id=1017944]
 position = Vector2(8.983696, 54)
 offset = Vector2(-48, -17)
 texture = ExtResource("7_gw1lo")
 polygon = PackedVector2Array(21.887573, -0.00034713745, 14.627808, 74.41246, -2.6138, 176.95496, 2.8310242, 264.97986, 16.443146, 294.019, 44.57483, 291.29657, 61.816772, 278.59198, 64.539185, 240.47809, 40.944885, 197.82684, 35.50006, 207.80905, 49.112183, 131.5813, 74.5195, -3.6301975)
 uv = PackedVector2Array(21.887573, -0.00034713745, 14.627808, 74.41246, -2.6138, 176.95496, 2.8310242, 264.97986, 16.443146, 294.019, 44.57483, 291.29657, 61.816772, 278.59198, 64.539185, 240.47809, 40.944885, 197.82684, 35.50006, 207.80905, 49.112183, 131.5813, 74.5195, -3.6301975)
 
-[node name="Body" type="Polygon2D" parent="polygons"]
+[node name="Body" type="Polygon2D" parent="polygons" unique_id=523046119]
 position = Vector2(-135.0163, -14)
 texture = ExtResource("8_p06my")
 polygon = PackedVector2Array(65.24597, 14.577034, 6.068054, -5.148941, -5.081421, 51.45604, 42.089386, 76.32792, 145.00754, 86.61974, 275.37054, 64.32081, 273.6552, 4.2852173, 196.46661, 24.0112)
 uv = PackedVector2Array(65.24597, 14.577034, 6.068054, -5.148941, -5.081421, 51.45604, 42.089386, 76.32792, 145.00754, 86.61974, 275.37054, 64.32081, 273.6552, 4.2852173, 196.46661, 24.0112)
 
-[node name="Head" type="Polygon2D" parent="polygons"]
+[node name="Head" type="Polygon2D" parent="polygons" unique_id=1713023284]
 position = Vector2(-136.0163, -220)
 texture = ExtResource("9_qp78d")
 polygon = PackedVector2Array(5.347351, 48.766766, -3.7435608, 162.40317, -3.7435608, 218.76682, 71.71103, 240.585, 213.52924, 243.31227, 274.43835, 220.58499, 282.62018, 111.49406, 264.43835, 34.221306, 195.34741, -1.2332487, 80.80194, -3.0514317, 39.892822, 15.130392)
 uv = PackedVector2Array(5.347351, 48.766766, -3.7435608, 162.40317, -3.7435608, 218.76682, 71.71103, 240.585, 213.52924, 243.31227, 274.43835, 220.58499, 282.62018, 111.49406, 264.43835, 34.221306, 195.34741, -1.2332487, 80.80194, -3.0514317, 39.892822, 15.130392)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_lagn4")
-}
-autoplay = "idle"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=569480753]
+libraries/ = SubResource("AnimationLibrary_lagn4")
+autoplay = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=348125418]
+visible = false
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_4flrs")

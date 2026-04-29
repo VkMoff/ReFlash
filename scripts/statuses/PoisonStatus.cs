@@ -9,7 +9,7 @@ public partial class PoisonStatus : StatusResource
 		Name = "Яд";
 		Color = new("01E101");
 	}
-	public override void OnTurnEnd(Status status, Character[] targets)
+	public override void OnTurnStart(Status status, Character[] targets)
 	{
 		foreach (Character target in targets)
 		{

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ccffsllajekfj"]
+
+[ext_resource type="Texture2D" uid="uid://b6ddedyyjsiv6" path="res://resources/sprites/enemies/enemy_scavenger.png" id="1_crhp5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3ws4"]
+size = Vector2(222, 282)
+
+[node name="Scavenger" type="Node2D" unique_id=434258486]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2104629856]
+position = Vector2(-3.8146973e-06, -3.8146973e-06)
+scale = Vector2(0.40773195, 0.40773195)
+texture = ExtResource("1_crhp5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1891814509]
+visible = false
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_g3ws4")

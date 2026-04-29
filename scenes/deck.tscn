@@ -1,34 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://galmt3uvtupu"]
+[gd_scene format=3 uid="uid://galmt3uvtupu"]
 
 [ext_resource type="Script" uid="uid://dmaevcnnl2dkw" path="res://scripts/Deck.cs" id="1_sdhao"]
-[ext_resource type="Texture2D" uid="uid://cofrdnnd20fwr" path="res://resources/sprites/icon.svg" id="2_6rnap"]
+[ext_resource type="Texture2D" uid="uid://cmhjq2dwmy2ux" path="res://resources/sprites/pile.png" id="2_gdbsr"]
 [ext_resource type="LabelSettings" uid="uid://xfk4cm3qqcae" path="res://resources/PileLabelSettings.tres" id="3_gdbsr"]
 
-[node name="Deck" type="Control"]
+[node name="Deck" type="Control" unique_id=1498957926]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 200.0
 offset_bottom = 300.0
 script = ExtResource("1_sdhao")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1760081438]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_6rnap")
+texture = ExtResource("2_gdbsr")
+expand_mode = 3
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=701487095]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -55.0
-offset_top = -45.0
+offset_left = -56.0
+offset_top = -38.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "123"
