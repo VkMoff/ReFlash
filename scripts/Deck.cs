@@ -43,6 +43,7 @@ public partial class Deck : Control
 		{
 			Visible = false;
 		}
+		AudioPlayer.Instance.PlayCardShuffle();
 		return ret;
 	}
 

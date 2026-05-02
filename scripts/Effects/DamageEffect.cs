@@ -14,6 +14,7 @@ public partial class DamageEffect : EffectResource
 		foreach (Character target in targets)
 		{
 			GD.Print("Start");
+			AudioPlayer.Instance.PlayStrike();
 			target.ChangeHP(Math.Min((int)((-Damage - StrengthModifier) * (1 - (caster.GetStatus<WeaknessStatus>() > 0 ? 0.25 : 0)) * (1 + (target.GetStatus<VulnerabilityStatus>() > 0 ? 0.5 : 0))), 0));
 			if (!target.IsAlive)
 			{
