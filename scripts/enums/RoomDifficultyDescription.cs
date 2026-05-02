@@ -1,5 +1,3 @@
-using Godot.Collections;
-
 public class RoomDifficultyDescription
 {
     public const string EASY = @"[font=res://resources/styles/Play-Regular.ttf][font_size=48][outline_size=2][color=01E101]Лёгкая битва[/color]

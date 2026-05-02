@@ -19,6 +19,7 @@ public partial class MapMenu : Control
 		for (int i = 0; i < 20; i++)
 		{
 			VBoxContainer selectContainer = new VBoxContainer();
+			selectContainer.SizeFlagsHorizontal = SizeFlags.ExpandFill;
 			levelsContainer.AddChild(selectContainer);
 			bool hasShop = false;
 			for (int j = 0; j < 3; j++)
@@ -54,7 +55,8 @@ public partial class MapMenu : Control
 				levelButton.Disabled = true;
 			}
 		}
-		levelsContainer.AddChild(bossButtonScene.Instantiate());
+		Button bossButton = bossButtonScene.Instantiate<Button>();
+		levelsContainer.AddChild(bossButton);
 	}
 
 	public void StartEncounter(EncounterResource encounterResource)

@@ -27,6 +27,7 @@ public partial class SceneManager : Node
 	public void LoadLevel(RoomResource roomResource)
 	{
 		map.Hide();
+		map.ProcessMode = ProcessModeEnum.Disabled;
 		CallDeferred(MethodName.DeferredLoadLevel, roomResource);
 	}
 
@@ -54,6 +55,7 @@ public partial class SceneManager : Node
 		}
 		(GetTree().CurrentScene as CanvasItem).Visible = false;
 		map.MoveToFront();
+		map.ProcessMode = ProcessModeEnum.Inherit;
 		map.Show();
 	}
 	public void LoadShop()
