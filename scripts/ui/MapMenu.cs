@@ -3,8 +3,8 @@ using Godot;
 
 public partial class MapMenu : Control
 {
-	PackedScene levelButtonScene = GD.Load<PackedScene>("res://scenes/level_button.tscn");
-	PackedScene bossButtonScene = GD.Load<PackedScene>("res://scenes/boss_button.tscn");
+	PackedScene levelButtonScene = GD.Load<PackedScene>("res://scenes/ui/level_button.tscn");
+	PackedScene bossButtonScene = GD.Load<PackedScene>("res://scenes/ui/boss_button.tscn");
 	HBoxContainer levelsContainer;
 	int currentLevelIdx = 0;
 	RichTextLabel levelDescription;

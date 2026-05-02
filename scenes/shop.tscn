@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://k0dduq63u0rw"]
+[gd_scene format=3 uid="uid://k0dduq63u0rw"]
 
-[ext_resource type="Script" uid="uid://ea8x5muoeruk" path="res://scripts/Shop.cs" id="1_lx5au"]
-[ext_resource type="PackedScene" uid="uid://cnr2i64bmnehk" path="res://scenes/shop_item_button.tscn" id="2_xfvoa"]
+[ext_resource type="Script" uid="uid://ea8x5muoeruk" path="res://scripts/ui/Shop.cs" id="1_lx5au"]
+[ext_resource type="PackedScene" uid="uid://cnr2i64bmnehk" path="res://scenes/ui/shop_item_button.tscn" id="2_xfvoa"]
 [ext_resource type="Script" uid="uid://dyk1mlj83rdco" path="res://scripts/artifacts/PoisonSpray.cs" id="3_1l46r"]
 [ext_resource type="Script" uid="uid://bel7d4270feh1" path="res://scripts/artifacts/HourGlass.cs" id="3_032fp"]
-[ext_resource type="PackedScene" uid="uid://bcfx5esbh0n7m" path="res://scenes/top_panel_ui.tscn" id="5_2fc2m"]
+[ext_resource type="PackedScene" uid="uid://bcfx5esbh0n7m" path="res://scenes/ui/top_panel_ui.tscn" id="5_2fc2m"]
 [ext_resource type="Script" uid="uid://cb8d0s30iufhs" path="res://scripts/artifacts/BarbedWire.cs" id="5_8r1wq"]
 
 [sub_resource type="Resource" id="Resource_2fc2m"]

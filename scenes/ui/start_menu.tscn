@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bhmkdxjvo6y4l"]
 
-[ext_resource type="Script" uid="uid://cwaqvcgn1w07f" path="res://scripts/StartMenu.cs" id="1_ouf4f"]
 [ext_resource type="Theme" uid="uid://dimnwbckclvgj" path="res://resources/themes/main_button_theme.tres" id="2_thu50"]
+[ext_resource type="PackedScene" uid="uid://eqx0p7dpc8iy" path="res://scenes/ui/SettingsMenu.tscn" id="3_km2yg"]
+[ext_resource type="Script" uid="uid://cwaqvcgn1w07f" path="res://scripts/ui/StartMenu.cs" id="3_m0hmm"]
 
 [node name="MainMenu" type="Control" unique_id=876389796]
 layout_mode = 3
@@ -10,14 +11,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ouf4f")
+script = ExtResource("3_m0hmm")
 
 [node name="Exit button" type="Button" parent="." unique_id=805347352]
 layout_mode = 0
 offset_left = 30.0
-offset_top = 200.0
+offset_top = 340.0
 offset_right = 667.0
-offset_bottom = 307.0
+offset_bottom = 447.0
 theme = ExtResource("2_thu50")
 text = "Выйти"
 
@@ -30,5 +31,19 @@ offset_bottom = 167.0
 theme = ExtResource("2_thu50")
 text = "Начать"
 
+[node name="SettingsButton" type="Button" parent="." unique_id=1863617040]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 200.0
+offset_right = 667.0
+offset_bottom = 307.0
+theme = ExtResource("2_thu50")
+text = "Настройки"
+
+[node name="SettingsMenu" parent="." unique_id=1280260402 instance=ExtResource("3_km2yg")]
+unique_name_in_owner = true
+visible = false
+
 [connection signal="pressed" from="Exit button" to="." method="ExitGame"]
 [connection signal="pressed" from="Start button" to="." method="StartGame"]
+[connection signal="pressed" from="SettingsButton" to="." method="ShowSettings"]

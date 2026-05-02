@@ -9,7 +9,7 @@ public partial class SceneManager : Node
 	}
 
 	PackedScene level = GD.Load<PackedScene>("res://scenes/level.tscn");
-	PackedScene startMenu = GD.Load<PackedScene>("res://scenes/start_menu.tscn");
+	PackedScene startMenu = GD.Load<PackedScene>("res://scenes/ui/start_menu.tscn");
 	RoomResource testRoom = GD.Load<RoomResource>("res://resources/encounters/rooms/test_room.tres");
 	PackedScene mapScene = GD.Load<PackedScene>("res://scenes/map.tscn");
 	MapMenu map;

@@ -16,6 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="ReFlash"
 run/main_scene="uid://bhmkdxjvo6y4l"
+config/use_custom_user_dir=true
 config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
 config/icon="res://resources/sprites/icon.svg"
 
@@ -26,6 +27,7 @@ SceneManager="*res://scripts/autoload/SceneManager.cs"
 PlayerData="*res://scripts/autoload/PlayerData.cs"
 RoomRegistry="*uid://c3tep8xt58mcl"
 AudioPlayer="*uid://cdp3bpo5ejo7"
+SettingsManager="*uid://bdm5dptoa8b5u"
 
 [display]
 

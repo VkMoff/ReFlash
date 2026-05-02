@@ -8,8 +8,9 @@
 [ext_resource type="SpriteFrames" uid="uid://pv8myj3lvb8y" path="res://resources/animations/player.tres" id="6_2r41h"]
 [ext_resource type="PackedScene" uid="uid://b7xgj6akffqxm" path="res://scenes/player.tscn" id="7_b121j"]
 [ext_resource type="Texture2D" uid="uid://jf3jwhdghh5u" path="res://resources/sprites/battery.svg" id="8_b121j"]
-[ext_resource type="PackedScene" uid="uid://bcfx5esbh0n7m" path="res://scenes/top_panel_ui.tscn" id="9_8c41q"]
+[ext_resource type="PackedScene" uid="uid://bcfx5esbh0n7m" path="res://scenes/ui/top_panel_ui.tscn" id="9_8c41q"]
 [ext_resource type="Texture2D" uid="uid://dcdknb0dde4ms" path="res://resources/sprites/target_selector.svg" id="10_olg7q"]
+[ext_resource type="FontFile" uid="uid://cxe7kfddmqoln" path="res://resources/styles/Play-Regular.ttf" id="11_t1rx8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b121j"]
 font_size = 32
@@ -64,51 +65,6 @@ offset_top = -242.0
 offset_right = -32.0
 offset_bottom = -32.0
 
-[node name="PullCardButton" type="Button" parent="." unique_id=1915200114]
-layout_mode = 0
-offset_top = 78.0
-offset_right = 140.0
-offset_bottom = 109.0
-text = "[Debug] 🃏 Pull card"
-
-[node name="EndTurnButton" type="Button" parent="." unique_id=636018161]
-layout_mode = 0
-offset_top = 119.0
-offset_right = 140.0
-offset_bottom = 150.0
-text = "[Debug] 🔚 End turn"
-
-[node name="ReloadSceneButton" type="Button" parent="." unique_id=1513973763]
-layout_mode = 0
-offset_top = 160.0
-offset_right = 176.0
-offset_bottom = 191.0
-text = "[Debug] 🔄 Reload Scene
-"
-
-[node name="GoToMapButton" type="Button" parent="." unique_id=1118006126]
-layout_mode = 0
-offset_top = 201.0
-offset_right = 156.0
-offset_bottom = 232.0
-text = "[Debug] 🗺 Go to map
-"
-
-[node name="WinButton" type="Button" parent="." unique_id=938485410]
-layout_mode = 0
-offset_top = 241.0
-offset_right = 103.0
-offset_bottom = 272.0
-text = "[Debug] 👑 Win
-"
-
-[node name="AddEnergyButton" type="Button" parent="." unique_id=249097492]
-layout_mode = 0
-offset_top = 283.0
-offset_right = 103.0
-offset_bottom = 314.0
-text = "[Debug] ⚡ Add energy"
-
 [node name="EnemyContainer" type="HBoxContainer" parent="." unique_id=1981897622]
 layout_mode = 1
 anchors_preset = 3
@@ -140,13 +96,6 @@ offset_bottom = -367.0
 grow_horizontal = 1
 grow_vertical = 0
 spriteFrames = ExtResource("6_2r41h")
-
-[node name="ArtifactContainer" type="HBoxContainer" parent="." unique_id=1579701907]
-layout_mode = 0
-offset_left = 191.0
-offset_top = 80.0
-offset_right = 674.0
-offset_bottom = 121.0
 
 [node name="TopPanelUI" parent="." unique_id=1967515060 instance=ExtResource("9_8c41q")]
 layout_mode = 1
@@ -193,9 +142,62 @@ patch_margin_top = 70
 patch_margin_right = 70
 patch_margin_bottom = 70
 
-[connection signal="pressed" from="PullCardButton" to="." method="PullCardFromDeck" binds= [1]]
-[connection signal="pressed" from="EndTurnButton" to="." method="EndTurn"]
-[connection signal="pressed" from="ReloadSceneButton" to="." method="RestartScene"]
-[connection signal="pressed" from="GoToMapButton" to="." method="GoToMap"]
-[connection signal="pressed" from="WinButton" to="." method="Win"]
-[connection signal="pressed" from="AddEnergyButton" to="." method="AddEnergy" binds= [1]]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1762281554]
+layout_mode = 0
+offset_top = 82.0
+offset_right = 206.0
+offset_bottom = 288.0
+
+[node name="DebugButtons" type="VBoxContainer" parent="HBoxContainer" unique_id=88312329]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PullCardButton" type="Button" parent="HBoxContainer/DebugButtons" unique_id=1915200114]
+layout_mode = 2
+text = "[Debug] 🃏 Pull card"
+
+[node name="EndTurnButton" type="Button" parent="HBoxContainer/DebugButtons" unique_id=636018161]
+layout_mode = 2
+text = "[Debug] 🔚 End turn"
+
+[node name="ReloadSceneButton" type="Button" parent="HBoxContainer/DebugButtons" unique_id=1513973763]
+layout_mode = 2
+text = "[Debug] 🔄 Reload Scene
+"
+
+[node name="GoToMapButton" type="Button" parent="HBoxContainer/DebugButtons" unique_id=1118006126]
+layout_mode = 2
+text = "[Debug] 🗺 Go to map
+"
+
+[node name="WinButton" type="Button" parent="HBoxContainer/DebugButtons" unique_id=938485410]
+layout_mode = 2
+text = "[Debug] 👑 Win
+"
+
+[node name="AddEnergyButton" type="Button" parent="HBoxContainer/DebugButtons" unique_id=249097492]
+layout_mode = 2
+text = "[Debug] ⚡ Add energy"
+
+[node name="ArtifactContainer" type="HBoxContainer" parent="HBoxContainer" unique_id=1579701907]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Button" type="Button" parent="." unique_id=1644430299]
+layout_mode = 0
+offset_left = 1575.0
+offset_top = 734.0
+offset_right = 1837.0
+offset_bottom = 778.0
+theme_override_fonts/font = ExtResource("11_t1rx8")
+theme_override_font_sizes/font_size = 30
+text = "Следующий ход"
+
+[connection signal="pressed" from="HBoxContainer/DebugButtons/PullCardButton" to="." method="PullCardFromDeck" binds= [1]]
+[connection signal="pressed" from="HBoxContainer/DebugButtons/EndTurnButton" to="." method="EndTurn"]
+[connection signal="pressed" from="HBoxContainer/DebugButtons/ReloadSceneButton" to="." method="RestartScene"]
+[connection signal="pressed" from="HBoxContainer/DebugButtons/GoToMapButton" to="." method="GoToMap"]
+[connection signal="pressed" from="HBoxContainer/DebugButtons/WinButton" to="." method="Win"]
+[connection signal="pressed" from="HBoxContainer/DebugButtons/AddEnergyButton" to="." method="AddEnergy" binds= [1]]
+[connection signal="pressed" from="Button" to="." method="EndTurn"]

@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://471mfq31k34c"]
+[gd_scene format=3 uid="uid://471mfq31k34c"]
 
-[ext_resource type="Script" uid="uid://om1lxvybbnq" path="res://scripts/MapMenu.cs" id="1_paxxb"]
+[ext_resource type="Script" uid="uid://om1lxvybbnq" path="res://scripts/ui/MapMenu.cs" id="1_paxxb"]
 [ext_resource type="Texture2D" uid="uid://b14d8rags4ckb" path="res://resources/sprites/background_1.jpg" id="2_paxxb"]
-[ext_resource type="PackedScene" uid="uid://bcfx5esbh0n7m" path="res://scenes/top_panel_ui.tscn" id="3_gldc4"]
+[ext_resource type="PackedScene" uid="uid://bcfx5esbh0n7m" path="res://scenes/ui/top_panel_ui.tscn" id="3_gldc4"]
 [ext_resource type="Theme" uid="uid://dimnwbckclvgj" path="res://resources/themes/main_button_theme.tres" id="4_0cso3"]
 
 [node name="MapMenu" type="Control"]

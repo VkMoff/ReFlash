@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://eqx0p7dpc8iy"]
+
+[ext_resource type="Script" uid="uid://bnu8fok4btan4" path="res://scripts/ui/SettingsMenu.cs" id="1_gtm51"]
+
+[node name="SettingsMenu" type="CanvasLayer" unique_id=1280260402]
+script = ExtResource("1_gtm51")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1024339764]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=313375522]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="ButtonContainer" type="VBoxContainer" parent="CenterContainer" unique_id=359002155]
+layout_mode = 2
+
+[node name="DebugModeCheck" type="CheckButton" parent="CenterContainer/ButtonContainer" unique_id=1598021597]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Режим отладки"
+
+[node name="Button" type="Button" parent="CenterContainer/ButtonContainer" unique_id=1097703914]
+layout_mode = 2
+text = "ПРИМЕНИТЬ"
+
+[node name="Button2" type="Button" parent="CenterContainer/ButtonContainer" unique_id=970805697]
+layout_mode = 2
+text = "ОТМЕНИТЬ"
+
+[node name="Button3" type="Button" parent="CenterContainer/ButtonContainer" unique_id=1147405978]
+layout_mode = 2
+text = "СОХРАНИТЬ"
+
+[connection signal="toggled" from="CenterContainer/ButtonContainer/DebugModeCheck" to="." method="SetDebugMode"]
+[connection signal="pressed" from="CenterContainer/ButtonContainer/Button" to="." method="Save"]
+[connection signal="pressed" from="CenterContainer/ButtonContainer/Button2" to="." method="Close"]
+[connection signal="pressed" from="CenterContainer/ButtonContainer/Button3" to="." method="Close"]
+[connection signal="pressed" from="CenterContainer/ButtonContainer/Button3" to="." method="Save"]

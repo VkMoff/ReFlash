@@ -26,7 +26,7 @@ public partial class Level : Control
 	public override void _Ready()
 	{
 		enemyContainer = GetNode<HBoxContainer>("EnemyContainer");
-		artifactContainer = GetNode<HBoxContainer>("ArtifactContainer");
+		artifactContainer = GetNode<HBoxContainer>("%ArtifactContainer");
 		Deck = GetNode<Deck>("Deck");
 		Hand = GetNode<Hand>("Hand");
 		Player = GetNode<Player>("Player");
@@ -48,6 +48,11 @@ public partial class Level : Control
 		topPanelUi = GetNode<TopPanelUI>("TopPanelUI");
 		Player.SetHp(PlayerData.Instance.HP);//такое себе
 		Player.RecalculateStrength();
+
+		bool debugMode = Convert.ToBoolean(SettingsManager.Instance.GetSetting("debug_mode").AsString());
+		GetNode<VBoxContainer>("%DebugButtons").Visible = debugMode;
+		GetNode<VBoxContainer>("%DebugButtons").ProcessMode = debugMode ? ProcessModeEnum.Always : ProcessModeEnum.Disabled;
+
 	}
 	public void InitRoom(RoomResource roomResource)
 	{
