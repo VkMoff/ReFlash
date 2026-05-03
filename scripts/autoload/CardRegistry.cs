@@ -1,10 +1,13 @@
+using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using Godot.Collections;
 
 public partial class CardRegistry : Node
 {
 	public static CardRegistry Instance;
-	public Dictionary<string, CardResource> Cards { get; private set; }
+	public Godot.Collections.Dictionary<string, CardResource> Cards { get; private set; }
+	private PackedScene cardScene = GD.Load<PackedScene>("res://scenes/card.tscn");
 
 	[Export] private CardManifest manifest = GD.Load<CardManifest>("res://resources/card_manifest.tres");
 
@@ -50,11 +53,34 @@ public partial class CardRegistry : Node
 				GD.PrintErr($"Card with id '{id}' not found!");
 				return null;
 			}
-
-			PackedScene scene = GD.Load<PackedScene>("res://scenes/card.tscn");
-			Card card = scene.Instantiate<Card>();
+			
+			Card card = cardScene.Instantiate<Card>();
 			card.Init(data);
 			return card;
 		}
+	}
+
+	public List<Card> GetRandom(int count = 1)
+	{
+		var rng = new RandomNumberGenerator();
+		Array<CardResource> resources = new();
+		List<Card> returned = new();
+		for (int i = 0; i < count; i++)
+		{
+			CardResource cardResource;
+			do
+			{
+				cardResource = Cards.Values.ToArray()[rng.Randi() % Cards.Count];
+			}
+			while (resources.Contains(cardResource));
+			resources.Add(cardResource);
+		}
+		for (int i = 0; i < count; i++)
+		{
+			Card card = cardScene.Instantiate<Card>();
+			returned.Add(card.Init(resources[i]));
+		}
+		
+		return returned;
 	}
 }

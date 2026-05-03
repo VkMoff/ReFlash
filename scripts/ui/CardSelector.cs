@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class CardSelector : CanvasLayer
 {
@@ -11,11 +12,7 @@ public partial class CardSelector : CanvasLayer
 	{
 		cardContainer = GetNode<HBoxContainer>("%CardContainer");
 
-		cards = new();
-		cards.Add(CardRegistry.Instance["flashbang"]);
-		cards.Add(CardRegistry.Instance["discharge"]);
-		cards.Add(CardRegistry.Instance["acid_splash"]);
-
+		cards = CardRegistry.Instance.GetRandom(3);
 		foreach (Card card in cards)
 		{
 			cardContainer.AddChild(card);
