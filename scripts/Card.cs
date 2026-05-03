@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 [GlobalClass]
@@ -178,7 +179,7 @@ public partial class Card : Control
 		Position = level.Size / 2 - Size / 2;
 		Character[] targetArray;
 		if (CardData.IsTargeted) targetArray = [level.TargetEnemy];
-		else targetArray = level.Enemies.ToArray();
+		else targetArray = level.Enemies.Where(e => e.IsAlive == true).ToArray();
 		
 		bool burnable = false;
 		foreach (EffectResource effect in CardData.Effects)

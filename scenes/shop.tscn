@@ -2,10 +2,13 @@
 
 [ext_resource type="Script" uid="uid://ea8x5muoeruk" path="res://scripts/ui/Shop.cs" id="1_lx5au"]
 [ext_resource type="PackedScene" uid="uid://cnr2i64bmnehk" path="res://scenes/ui/shop_item_button.tscn" id="2_xfvoa"]
+[ext_resource type="Texture2D" uid="uid://xgcit5efest0" path="res://resources/sprites/shop_back.jpg" id="2_y6sft"]
 [ext_resource type="Script" uid="uid://dyk1mlj83rdco" path="res://scripts/artifacts/PoisonSpray.cs" id="3_1l46r"]
 [ext_resource type="Script" uid="uid://bel7d4270feh1" path="res://scripts/artifacts/HourGlass.cs" id="3_032fp"]
+[ext_resource type="Texture2D" uid="uid://4nher40ax22s" path="res://resources/sprites/merchant.png" id="3_m4ofw"]
 [ext_resource type="PackedScene" uid="uid://bcfx5esbh0n7m" path="res://scenes/ui/top_panel_ui.tscn" id="5_2fc2m"]
 [ext_resource type="Script" uid="uid://cb8d0s30iufhs" path="res://scripts/artifacts/BarbedWire.cs" id="5_8r1wq"]
+[ext_resource type="PackedScene" uid="uid://b7xgj6akffqxm" path="res://scenes/player.tscn" id="9_m4ofw"]
 
 [sub_resource type="Resource" id="Resource_2fc2m"]
 script = ExtResource("3_032fp")
@@ -19,7 +22,7 @@ metadata/_custom_type_script = "uid://dyk1mlj83rdco"
 script = ExtResource("5_8r1wq")
 metadata/_custom_type_script = "uid://cb8d0s30iufhs"
 
-[node name="Shop" type="Control"]
+[node name="Shop" type="Control" unique_id=2043881147]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,43 +33,90 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lx5au")
 
-[node name="GoToMapButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 83.0
-offset_right = 166.0
-offset_bottom = 114.0
-text = "[Debug] Go to map
-"
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1880432781]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_y6sft")
+expand_mode = 2
 
-[node name="ShopItems" type="HBoxContainer" parent="."]
+[node name="Sprite2D" type="TextureRect" parent="TextureRect" unique_id=1522848482]
 layout_mode = 0
-offset_left = 79.0
-offset_top = 226.0
-offset_right = 211.0
-offset_bottom = 317.0
+offset_left = 1032.0
+offset_top = 265.0
+offset_right = 1560.441
+offset_bottom = 739.0
+texture = ExtResource("3_m4ofw")
+expand_mode = 1
 
-[node name="ShopItemButton" parent="ShopItems" instance=ExtResource("2_xfvoa")]
+[node name="GoToMapButton" type="Button" parent="." unique_id=249886814]
+layout_mode = 0
+offset_left = 1650.0
+offset_top = 971.0
+offset_right = 1884.0
+offset_bottom = 1013.0
+theme_override_font_sizes/font_size = 24
+text = "Покинуть магазин"
+
+[node name="ShopItems" type="HBoxContainer" parent="." unique_id=1195968036]
+layout_mode = 0
+offset_left = 1033.0
+offset_top = 780.0
+offset_right = 1341.0
+offset_bottom = 871.0
+
+[node name="ShopItemButton" parent="ShopItems" unique_id=1594000301 instance=ExtResource("2_xfvoa")]
 layout_mode = 2
 text = "Placeholder"
 Artifact = SubResource("Resource_2fc2m")
 cost = 50
 
-[node name="ShopItemButton2" parent="ShopItems" instance=ExtResource("2_xfvoa")]
+[node name="ShopItemButton2" parent="ShopItems" unique_id=1006445082 instance=ExtResource("2_xfvoa")]
 layout_mode = 2
 text = "Placeholder"
 Artifact = SubResource("Resource_8r1wq")
 cost = 100
 
-[node name="ShopItemButton3" parent="ShopItems" instance=ExtResource("2_xfvoa")]
+[node name="ShopItemButton3" parent="ShopItems" unique_id=1310146341 instance=ExtResource("2_xfvoa")]
 layout_mode = 2
 text = "Placeholder"
 Artifact = SubResource("Resource_ajxib")
 
-[node name="TopPanelUI" parent="." instance=ExtResource("5_2fc2m")]
+[node name="TopPanelUI" parent="." unique_id=239772737 instance=ExtResource("5_2fc2m")]
 layout_mode = 1
+
+[node name="Player" parent="." unique_id=2100519879 instance=ExtResource("9_m4ofw")]
+layout_mode = 1
+offset_left = -751.0
+offset_top = 345.0
+offset_right = -420.0
+offset_bottom = 845.0
+
+[node name="Control" parent="Player" index="0"]
+custom_minimum_size = Vector2(0, 500)
+
+[node name="RobotSkeleton" parent="Player/Control" index="0"]
+position = Vector2(103, 291)
+scale = Vector2(0.7, 0.7)
+
+[node name="AnimationPlayer" parent="Player/Control/RobotSkeleton" index="2"]
+autoplay = &"idle"
+
+[node name="HealthBar" parent="Player" index="1"]
+visible = false
+
+[node name="NameLabel" parent="Player" index="2"]
+visible = false
+
+[node name="StatusContainer" parent="Player" index="3"]
+visible = false
 
 [connection signal="pressed" from="GoToMapButton" to="." method="GoToMap"]
 [connection signal="Clicked" from="ShopItems/ShopItemButton" to="." method="BuyArtifact"]
 [connection signal="Clicked" from="ShopItems/ShopItemButton2" to="." method="BuyArtifact"]
 [connection signal="Clicked" from="ShopItems/ShopItemButton3" to="." method="BuyArtifact"]
+
+[editable path="Player"]
