@@ -11,6 +11,7 @@ public partial class StartMenu : Control
 	public void StartGame()
 	{
 		Visible = false;
+		PlayerData.Instance.Reset();
 		SceneManager.Instance.GoToMap();
 	}
 	public void ExitGame()

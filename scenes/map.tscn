@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bcfx5esbh0n7m" path="res://scenes/ui/top_panel_ui.tscn" id="3_gldc4"]
 [ext_resource type="Theme" uid="uid://dimnwbckclvgj" path="res://resources/themes/main_button_theme.tres" id="4_0cso3"]
 
-[node name="MapMenu" type="Control"]
+[node name="MapMenu" type="Control" unique_id=1189671144]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,16 +14,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_paxxb")
 
-[node name="BackgroundImage" type="Sprite2D" parent="."]
+[node name="BackgroundImage" type="Sprite2D" parent="." unique_id=153102677]
 visible = false
 position = Vector2(1129.2063, 533.5)
 scale = Vector2(1.4404762, 1.4404763)
 texture = ExtResource("2_paxxb")
 
-[node name="TopPanelUI" parent="." instance=ExtResource("3_gldc4")]
+[node name="TopPanelUI" parent="." unique_id=180824255 instance=ExtResource("3_gldc4")]
 layout_mode = 1
 
-[node name="LevelsBackground" type="ColorRect" parent="."]
+[node name="LevelsBackground" type="ColorRect" parent="." unique_id=1147141680]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -33,7 +33,7 @@ offset_bottom = -0.2000122
 grow_vertical = 0
 color = Color(0, 0, 0, 0.5019608)
 
-[node name="MarginContainer" type="MarginContainer" parent="LevelsBackground"]
+[node name="MarginContainer" type="MarginContainer" parent="LevelsBackground" unique_id=1976958747]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,11 +43,11 @@ grow_vertical = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="MapLevelsContainer" type="HBoxContainer" parent="LevelsBackground/MarginContainer"]
+[node name="MapLevelsContainer" type="HBoxContainer" parent="LevelsBackground/MarginContainer" unique_id=2119473739]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ColorRect" type="MarginContainer" parent="."]
+[node name="ColorRect" type="MarginContainer" parent="." unique_id=1645353929]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.34600002
@@ -61,11 +61,11 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+[node name="ColorRect" type="ColorRect" parent="ColorRect" unique_id=1810944623]
 layout_mode = 2
 color = Color(0, 0, 0, 0.5019608)
 
-[node name="LevelDescription" type="RichTextLabel" parent="ColorRect/ColorRect"]
+[node name="LevelDescription" type="RichTextLabel" parent="ColorRect/ColorRect" unique_id=850055700]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 9
@@ -73,9 +73,9 @@ anchor_bottom = 1.0
 offset_right = 1296.0
 grow_vertical = 2
 bbcode_enabled = true
-text = "Здесь нет описания. Вероятно, это ошибка"
+text = "[font_size=48]Выбери путь"
 
-[node name="Button" type="Button" parent="ColorRect/ColorRect"]
+[node name="Button" type="Button" parent="ColorRect/ColorRect" unique_id=1378574931]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
