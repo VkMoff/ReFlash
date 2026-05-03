@@ -23,5 +23,6 @@ public partial class SettingsMenu : CanvasLayer
 	public void Save()
 	{
 		SettingsManager.Instance.Save();
+		Message.ShowMessage(this, "Настройки сохранены");
 	}
 }

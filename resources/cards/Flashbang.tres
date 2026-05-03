@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://dmean3jjp43ax"]
+[gd_resource type="Resource" script_class="CardResource" format=3 uid="uid://dmean3jjp43ax"]
 
 [ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/resources/CardResource.cs" id="1_70fak"]
 [ext_resource type="Script" uid="uid://dp61sm6b30fw1" path="res://scripts/statuses/WeaknessStatus.cs" id="1_nj2ko"]

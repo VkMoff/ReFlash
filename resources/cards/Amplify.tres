@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=7 format=3 uid="uid://dfahd4von2nxi"]
+[gd_resource type="Resource" script_class="CardResource" format=3 uid="uid://dfahd4von2nxi"]
 
 [ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/resources/CardResource.cs" id="1_h17jt"]
 [ext_resource type="Script" uid="uid://c1t37lhyhjdd1" path="res://scripts/statuses/StrengthStatus.cs" id="1_l85jg"]

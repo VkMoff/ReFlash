@@ -1,22 +1,21 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=6 format=3 uid="uid://ddcqq21qt83uq"]
+[gd_resource type="Resource" script_class="CardResource" format=3 uid="uid://ddcqq21qt83uq"]
 
 [ext_resource type="SpriteFrames" uid="uid://cuxw6ps72ay64" path="res://resources/animations/anim_slash_green.tres" id="1_2vdyr"]
 [ext_resource type="Script" uid="uid://nytqoc0ix0v0" path="res://scripts/effects/DamageEffect.cs" id="1_fufmi"]
 [ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/resources/CardResource.cs" id="1_gc4vm"]
-[ext_resource type="Texture2D" uid="uid://cs322lmclu6jj" path="res://resources/sprites/icon_damage.svg" id="2_2vdyr"]
+[ext_resource type="Texture2D" uid="uid://2l8tepjrjs8y" path="res://resources/sprites/cards/card_heavy_strike.png" id="3_2vdyr"]
 
 [sub_resource type="Resource" id="Resource_s75wx"]
 script = ExtResource("1_fufmi")
 Damage = 20
 Animation = ExtResource("1_2vdyr")
-metadata/_custom_type_script = "uid://df0u5yf65u8um"
 
 [resource]
 resource_name = "HeavyAttack"
 script = ExtResource("1_gc4vm")
 Id = "heavy_strike"
 Name = "Сильный удар"
-Texture = ExtResource("2_2vdyr")
+Texture = ExtResource("3_2vdyr")
 Effects = Array[Object]([SubResource("Resource_s75wx")])
 IsTargeted = true
 Cost = 2

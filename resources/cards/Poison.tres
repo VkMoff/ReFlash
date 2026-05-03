@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=8 format=3 uid="uid://chs6lhuwfspum"]
+[gd_resource type="Resource" script_class="CardResource" format=3 uid="uid://chs6lhuwfspum"]
 
 [ext_resource type="SpriteFrames" uid="uid://dfyoe3squ4k5p" path="res://resources/animations/anim_heal.tres" id="1_60xxu"]
 [ext_resource type="Script" uid="uid://e385xb50ouf1" path="res://scripts/statuses/PoisonStatus.cs" id="1_u2p62"]
 [ext_resource type="Script" uid="uid://ds6nyytwhdiye" path="res://scripts/resources/CardResource.cs" id="1_x20g4"]
 [ext_resource type="Script" uid="uid://dfsv50ovm3n3k" path="res://scripts/effects/ApplyStatusEffect.cs" id="2_60xxu"]
-[ext_resource type="Texture2D" uid="uid://cyrsr57jbpg4p" path="res://resources/sprites/icon_poison.svg" id="3_2ri0q"]
+[ext_resource type="Texture2D" uid="uid://dkgnrjwjmo8gy" path="res://resources/sprites/cards/card_poison.png" id="4_60xxu"]
 
 [sub_resource type="Resource" id="Resource_lopwo"]
 script = ExtResource("1_u2p62")
@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://dfsv50ovm3n3k"
 script = ExtResource("1_x20g4")
 Id = "poison"
 Name = "Яд"
-Texture = ExtResource("3_2ri0q")
+Texture = ExtResource("4_60xxu")
 Effects = Array[Object]([SubResource("Resource_2tbsp")])
 IsTargeted = true
 Cost = 1

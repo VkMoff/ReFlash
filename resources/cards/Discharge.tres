@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=10 format=3 uid="uid://cg7y4x5ke0e8w"]
+[gd_resource type="Resource" script_class="CardResource" format=3 uid="uid://cg7y4x5ke0e8w"]
 
 [ext_resource type="SpriteFrames" uid="uid://cuxw6ps72ay64" path="res://resources/animations/anim_slash_green.tres" id="1_4p4ia"]
 [ext_resource type="Script" uid="uid://nytqoc0ix0v0" path="res://scripts/effects/DamageEffect.cs" id="1_7y13r"]
