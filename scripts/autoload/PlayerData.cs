@@ -44,7 +44,7 @@ public partial class PlayerData : Node
 
         artifactScene = GD.Load<PackedScene>("res://scenes/artifact.tscn");
 
-        InstantiateArtifact(new StrangeMask());
+        // InstantiateArtifact(new StrangeMask());
         // InstantiateArtifact(new PoisonSpray());
     }
 

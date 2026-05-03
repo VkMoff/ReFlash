@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://4nher40ax22s" path="res://resources/sprites/merchant.png" id="3_m4ofw"]
 [ext_resource type="PackedScene" uid="uid://bcfx5esbh0n7m" path="res://scenes/ui/top_panel_ui.tscn" id="5_2fc2m"]
 [ext_resource type="Script" uid="uid://cb8d0s30iufhs" path="res://scripts/artifacts/BarbedWire.cs" id="5_8r1wq"]
+[ext_resource type="Script" uid="uid://0qi475e0h0t1" path="res://scripts/artifacts/StrangeMask.cs" id="8_heatd"]
 [ext_resource type="PackedScene" uid="uid://b7xgj6akffqxm" path="res://scenes/player.tscn" id="9_m4ofw"]
 
 [sub_resource type="Resource" id="Resource_2fc2m"]
@@ -21,6 +22,10 @@ metadata/_custom_type_script = "uid://dyk1mlj83rdco"
 [sub_resource type="Resource" id="Resource_ajxib"]
 script = ExtResource("5_8r1wq")
 metadata/_custom_type_script = "uid://cb8d0s30iufhs"
+
+[sub_resource type="Resource" id="Resource_1v8qu"]
+script = ExtResource("8_heatd")
+metadata/_custom_type_script = "uid://0qi475e0h0t1"
 
 [node name="Shop" type="Control" unique_id=2043881147]
 layout_mode = 3
@@ -72,18 +77,25 @@ offset_bottom = 871.0
 layout_mode = 2
 text = "Placeholder"
 Artifact = SubResource("Resource_2fc2m")
-cost = 50
+cost = 70
 
 [node name="ShopItemButton2" parent="ShopItems" unique_id=1006445082 instance=ExtResource("2_xfvoa")]
 layout_mode = 2
 text = "Placeholder"
 Artifact = SubResource("Resource_8r1wq")
-cost = 100
+cost = 150
 
 [node name="ShopItemButton3" parent="ShopItems" unique_id=1310146341 instance=ExtResource("2_xfvoa")]
 layout_mode = 2
 text = "Placeholder"
 Artifact = SubResource("Resource_ajxib")
+cost = 120
+
+[node name="ShopItemButton4" parent="ShopItems" unique_id=145797854 instance=ExtResource("2_xfvoa")]
+layout_mode = 2
+text = "Placeholder"
+Artifact = SubResource("Resource_1v8qu")
+cost = 100
 
 [node name="TopPanelUI" parent="." unique_id=239772737 instance=ExtResource("5_2fc2m")]
 layout_mode = 1
@@ -118,5 +130,6 @@ visible = false
 [connection signal="Clicked" from="ShopItems/ShopItemButton" to="." method="BuyArtifact"]
 [connection signal="Clicked" from="ShopItems/ShopItemButton2" to="." method="BuyArtifact"]
 [connection signal="Clicked" from="ShopItems/ShopItemButton3" to="." method="BuyArtifact"]
+[connection signal="Clicked" from="ShopItems/ShopItemButton4" to="." method="BuyArtifact"]
 
 [editable path="Player"]
