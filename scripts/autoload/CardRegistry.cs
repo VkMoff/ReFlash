@@ -83,4 +83,19 @@ public partial class CardRegistry : Node
 		
 		return returned;
 	}
+
+	public List<CardResource> GetRandomUniqueResources(int count)
+    {
+        if (count > Cards.Count) count = Cards.Count;
+        var shuffled = Cards.Values.OrderBy(x => GD.Randi()).Take(count).ToList();
+        return shuffled;
+    }
+
+    public Card CreateCard(CardResource resource)
+    {
+        Card card = cardScene.Instantiate<Card>();
+        card.Init(resource);
+        return card;
+    }
+
 }

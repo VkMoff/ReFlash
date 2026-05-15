@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RandomEncounterResource" format=3 uid="uid://dxekn7kf0u6dw"]
+
+[ext_resource type="PackedScene" uid="uid://bu1arwlvbp88h" path="res://scenes/encounters/memo_encounter.tscn" id="1_1ve4g"]
+[ext_resource type="Script" uid="uid://cw4iuh44uc0n4" path="res://scripts/resources/RandomEncounterResource.cs" id="1_3icxl"]
+
+[resource]
+script = ExtResource("1_3icxl")
+Scene = ExtResource("1_1ve4g")
+metadata/_custom_type_script = "uid://cw4iuh44uc0n4"

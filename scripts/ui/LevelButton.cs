@@ -7,6 +7,8 @@ public partial class LevelButton : Button
 	static Texture2D enemyIconCompleted = GD.Load<Texture2D>("res://resources/sprites/level_buttons/icon_level_sword_completed.svg");
 	static Texture2D shopIcon = GD.Load<Texture2D>("res://resources/sprites/level_buttons/icon_level_shop.svg");
 	static Texture2D shopIconCompleted = GD.Load<Texture2D>("res://resources/sprites/level_buttons/icon_level_shop_completed.svg");
+	static Texture2D randomIcon = GD.Load<Texture2D>("res://resources/sprites/level_buttons/icon_level_random.svg");
+	static Texture2D randomIconCompleted = GD.Load<Texture2D>("res://resources/sprites/level_buttons/icon_level_random_completed.svg");
 	MapMenu mapMenu;
 	RoomTypes roomType;
 	public EncounterResource EncounterResource { get; private set; }
@@ -22,6 +24,9 @@ public partial class LevelButton : Button
 				break;
 			case RoomTypes.Shop:
 				Icon = shopIcon;
+				break;
+			case RoomTypes.Unknown:
+				Icon = randomIcon;
 				break;
 			default:
 				GD.Print("WTF");
@@ -44,6 +49,9 @@ public partial class LevelButton : Button
 				break;
 			case RoomTypes.Shop:
 				Icon = shopIconCompleted;
+				break;
+			case RoomTypes.Unknown:
+				Icon = randomIconCompleted;
 				break;
 			default:
 				GD.Print("WTF");

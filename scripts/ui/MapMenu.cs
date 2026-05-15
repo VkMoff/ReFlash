@@ -32,6 +32,10 @@ public partial class MapMenu : Control
 					sinceLastShop = 0;
 					levelButton.Init(RoomTypes.Shop, RoomRegistry.Instance.SHOP);
 				}
+				else if (r.NextDouble() < 0.1)
+				{
+					levelButton.Init(RoomTypes.Unknown, RoomRegistry.Instance.GetEncounter());
+				}
 				else
 				{
 					levelButton.Init(RoomTypes.EnemyRoom, RoomRegistry.Instance.GetRoom(i, i + 20));
@@ -78,6 +82,10 @@ public partial class MapMenu : Control
 		else if (encounterResource is ShopResource)
 		{
 			SceneManager.Instance.LoadShop();
+		}
+		else
+		{
+			SceneManager.Instance.LoadEncounter(RoomRegistry.Instance.GetEncounter().Scene);
 		}
 	}
 	public void StartEncounter()

@@ -23,6 +23,10 @@ public partial class Card : Control
 	public Texture2D CardTexture { get; protected set; }
 	public Array<EffectResource> Effects;
 	public event Action<Card> Clicked;
+
+	private Control frontSide;
+	private Control backSide;
+	public bool IsFlipped = false;
 	public override void _Ready()
 	{
 		try
@@ -33,18 +37,21 @@ public partial class Card : Control
 		{
 			GD.Print($"Ошибка при загрузке карты: {ex.Message}\nВозможно карта находится не в сцене Level");
 		}
-		costLabel = GetNode<Label>("Cost/CostLabel");
-		descriptionLabel = GetNode<RichTextLabel>("DescriptionLabel");
-		nameLabel = GetNode<Label>("NameLabel");
+		costLabel = GetNode<Label>("%Cost/CostLabel");
+		descriptionLabel = GetNode<RichTextLabel>("%DescriptionLabel");
+		nameLabel = GetNode<Label>("%NameLabel");
 		costLabel.Text = Cost.ToString();
 		originalScale = Scale;
 		originalSize = CustomMinimumSize;
 
+		frontSide = GetNode<Control>("Front");
+		backSide = GetNode<Control>("Back");
+		backSide.Visible = false; 
 
 		nameLabel.Text = CardData.Name;
 		UpdateDescription();
 		descriptionLabel.Text = $"[outline_size=2]{Description}";
-		GetNode<TextureRect>("Sprite").Texture = CardTexture;
+		GetNode<TextureRect>("%Sprite").Texture = CardTexture;
 
 	}
 
@@ -221,5 +228,44 @@ public partial class Card : Control
 		Card clone = GD.Load<PackedScene>(SceneFilePath).Instantiate<Card>().Init(CardData);
 		return clone;
 	}
+
+	public async Task FlipToBack()
+	{
+		if (IsFlipped) return;
+		IsFlipped = true;
+
+		Tween tween = CreateTween();
+		// Сжимаем по горизонтали до 0
+		tween.TweenProperty(this, "scale:x", 0, 0.2f).SetTrans(Tween.TransitionType.Cubic);
+		await ToSignal(tween, Tween.SignalName.Finished);
+
+		// Меняем видимость сторон
+		frontSide.Visible = false;
+		backSide.Visible = true;
+
+		// Растягиваем обратно
+		tween = CreateTween();
+		tween.TweenProperty(this, "scale:x", originalScale.X, 0.2f).SetTrans(Tween.TransitionType.Cubic);
+		await ToSignal(tween, Tween.SignalName.Finished);
+	}
+
+	// Анимация переворота на лицевую сторону
+	public async Task FlipToFront()
+	{
+		if (!IsFlipped) return;
+		IsFlipped = false;
+
+		Tween tween = CreateTween();
+		tween.TweenProperty(this, "scale:x", 0, 0.2f).SetTrans(Tween.TransitionType.Cubic);
+		await ToSignal(tween, Tween.SignalName.Finished);
+
+		backSide.Visible = false;
+		frontSide.Visible = true;
+
+		tween = CreateTween();
+		tween.TweenProperty(this, "scale:x", originalScale.X, 0.2f).SetTrans(Tween.TransitionType.Cubic);
+		await ToSignal(tween, Tween.SignalName.Finished);
+	}
+
 
 }

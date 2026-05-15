@@ -63,4 +63,9 @@ public partial class SceneManager : Node
 		map.Hide();
 		GetTree().ChangeSceneToPacked(shop);
 	}
+	public void LoadEncounter(PackedScene encounter)
+	{
+		map.Hide();
+		GetTree().ChangeSceneToPacked(encounter);
+	}
 }

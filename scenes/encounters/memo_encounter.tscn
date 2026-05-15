@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bu1arwlvbp88h"]
+
+[ext_resource type="Script" uid="uid://dvy8ks0y6axa2" path="res://scripts/MemoEncounter.cs" id="1_6ekow"]
+[ext_resource type="FontFile" uid="uid://c413jf5rxeamh" path="res://resources/styles/Play-Bold.ttf" id="2_6ekow"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ukspj"]
+font = ExtResource("2_6ekow")
+font_size = 48
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MemoEncounter" type="Control" unique_id=1734050842]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6ekow")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1460639516]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 4
+
+[node name="TryCountLabel" type="Label" parent="." unique_id=244771278]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -493.0
+offset_top = 24.0
+offset_right = -21.0
+offset_bottom = 47.0
+grow_horizontal = 0
+text = "ТУТ ДОЛЖНО БЫТЬ КОЛИЧЕСТВО ОСТАВШИХСЯ ПОПЫТОК"
+label_settings = SubResource("LabelSettings_ukspj")
+horizontal_alignment = 2
