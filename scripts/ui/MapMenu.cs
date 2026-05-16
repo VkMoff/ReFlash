@@ -16,6 +16,7 @@ public partial class MapMenu : Control
 		levelDescription = GetNode<RichTextLabel>("%LevelDescription");
 
 		int sinceLastShop = 0;
+		int sinceLastRandom = 0;
 		for (int i = 0; i < 20; i++)
 		{
 			VBoxContainer selectContainer = new VBoxContainer();
@@ -32,9 +33,10 @@ public partial class MapMenu : Control
 					sinceLastShop = 0;
 					levelButton.Init(RoomTypes.Shop, RoomRegistry.Instance.SHOP);
 				}
-				else if (r.NextDouble() < 0.1)
+				else if ((r.NextDouble() < 0.3) && (sinceLastRandom > 5))
 				{
 					levelButton.Init(RoomTypes.Unknown, RoomRegistry.Instance.GetEncounter());
+					sinceLastRandom = 0;
 				}
 				else
 				{
@@ -50,6 +52,7 @@ public partial class MapMenu : Control
 				selectContainer.AddChild(levelButton);
 			}
 			if (!hasShop) sinceLastShop++;
+			sinceLastRandom++;
 		}
 		foreach (VBoxContainer vBoxContainer in levelsContainer.GetChildren())
 		{
