@@ -39,7 +39,7 @@ public partial class Status : Control
 	{
 		this.statusResource = statusResource;
 		statusSprite.Texture = statusResource.StatusTexture;
-		TooltipText = this.statusResource.Name;
+		TooltipText = $"{this.statusResource.Name}\n{this.statusResource.Description}";
 	}
 	public void AddValue(int additionalValue)
 	{
@@ -47,23 +47,23 @@ public partial class Status : Control
 	}
 	public void Remove()
 	{
-		GD.Print($"Removing status {statusResource.GetType()}");
+		// GD.Print($"Removing status {statusResource.GetType()}");
 		ParentCharacter.Statuses.Remove(statusResource.GetType());
 		QueueFree();
 	}
 	public void OnTurnEnd(Character[] targets)
 	{
-		GD.Print($"Status.OnTurnEnd - {statusResource.GetType()}, {value}");
+		// GD.Print($"Status.OnTurnEnd - {statusResource.GetType()}, {value}");
 		statusResource.OnTurnEnd(this, targets);
 	}
 	public void OnTurnStart(Character[] targets)
 	{
-		GD.Print($"Status.OnTurnStart - {statusResource.GetType()}, {value}");
+		// GD.Print($"Status.OnTurnStart - {statusResource.GetType()}, {value}");
 		statusResource.OnTurnStart(this, targets);
 	}
 	public void OnDamageReceive(Character receiver, Character dealer)
 	{
-		GD.Print($"Status.OnDamageReceive - {statusResource.GetType()}, {value}, {receiver}, {dealer}");
+		// GD.Print($"Status.OnDamageReceive - {statusResource.GetType()}, {value}, {receiver}, {dealer}");
 		statusResource.OnDamageReceive(this, receiver, dealer);
 	}
 }

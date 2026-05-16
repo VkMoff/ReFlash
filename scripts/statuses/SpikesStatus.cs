@@ -7,6 +7,7 @@ public partial class SpikesStatus : StatusResource
     {
         StatusTexture = GD.Load<Texture2D>("res://resources/sprites/statuses/status_spikes.svg");
         Name = "Шипы";
+        Description = "Наносит атакующему X урона в ответ";
         Color = new("6D8E92");
     }
     public override void OnDamageReceive(Status status, Character receiver, Character dealer)

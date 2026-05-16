@@ -7,6 +7,7 @@ public partial class WeaknessStatus : StatusResource
 	{
 		StatusTexture = GD.Load<Texture2D>("res://resources/sprites/statuses/status_weakness.svg");
 		Name = "Слабость";
+		Description = "Персонаж наносит на 25% меньше урона атаками";
 		Color = new("0BC2D6");
 	}
 	public override void OnTurnEnd(Status status, Character[] targets)

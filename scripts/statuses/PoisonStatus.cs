@@ -7,6 +7,7 @@ public partial class PoisonStatus : StatusResource
 	{
 		StatusTexture = GD.Load<Texture2D>("res://resources/sprites/statuses/status_poison.svg");
 		Name = "Яд";
+		Description = "Наносит X урона и уменьшает своё значение на 1 в начале хода";
 		Color = new("01E101");
 	}
 	public override void OnTurnStart(Status status, Character[] targets)
