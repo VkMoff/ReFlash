@@ -50,9 +50,9 @@ public partial class MapMenu : Control
 				};
 
 				selectContainer.AddChild(levelButton);
+				sinceLastRandom++;
 			}
 			if (!hasShop) sinceLastShop++;
-			sinceLastRandom++;
 		}
 		foreach (VBoxContainer vBoxContainer in levelsContainer.GetChildren())
 		{
