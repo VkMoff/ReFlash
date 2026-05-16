@@ -7,7 +7,7 @@ public partial class BarbedWire : ArtifactResource
     {
         ArtifactTexture = GD.Load<Texture2D>("res://resources/sprites/artifacts/artifact_barbedwire.svg");
         Name = "Колючая проволока";
-        Description = "Give 3 spikes at the beginning of battle";
+        Description = "Накладывает на игрока 3 шипов в начале боя";
     }
 
     public override void Load(Level level)

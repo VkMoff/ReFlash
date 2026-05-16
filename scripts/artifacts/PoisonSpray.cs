@@ -7,7 +7,7 @@ public partial class PoisonSpray : ArtifactResource
     {
         ArtifactTexture = GD.Load<Texture2D>("res://resources/sprites/artifacts/artifact_poisonspray.svg");
         Name = "Распылитель яда";
-        Description = "Apply 1 poison on every enemy in the end of turn";
+        Description = "Накладывает 2 яда на всех врагов в начале хода";
     }
 
     public override void Load(Level level)

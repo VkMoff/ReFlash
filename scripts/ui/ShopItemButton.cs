@@ -10,6 +10,9 @@ public partial class ShopItemButton : Button
 	{
 		Icon = Artifact.ArtifactTexture;
 		Text = cost.ToString();
+		
+		TooltipText = $"{Artifact.Name}\n{Artifact.Description}";
+	
 		Pressed += () =>
 		{
 			if (PlayerData.Instance.Gold < cost)

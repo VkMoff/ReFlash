@@ -9,6 +9,7 @@ public partial class Artifact : Control
 	{
 		sprite = GetNode<TextureRect>("TextureRect");
 		ArtifactResource = artifactResource;
+		TooltipText = artifactResource.Description;
 	}
 	public void UpdateTexture()
 	{

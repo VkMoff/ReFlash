@@ -5,6 +5,10 @@ public partial class ArtifactButton : Button
 {
 	public ArtifactResource ArtifactResource;
 	public event Action<ArtifactResource> AddArtifact;
+	public override void _Ready()
+	{
+		TooltipText = $"{ArtifactResource.Name}\n{ArtifactResource.Description}";
+	}
 	public override void _Pressed()
 	{
 		base._Pressed();
