@@ -121,6 +121,7 @@ scripts/
  ui/
   ArtifactButton.cs
   CardSelector.cs
+  FailMenu.cs
   LevelButton.cs
   MapMenu.cs
   PauseMenu.cs

@@ -37,7 +37,10 @@ public partial class Player : Character
 	public override void Die()
 	{
 		base.Die();
-		SceneManager.Instance.GoToMenu();
+		FailMenu failMenu = GD.Load<PackedScene>("res://scenes/ui/fail_menu.tscn").Instantiate<FailMenu>();
+		GetTree().Root.AddChild(failMenu);
+
+		// SceneManager.Instance.GoToMenu();
 	}
 	public override void AddStatus(StatusResource statusResource, int value)
 	{
