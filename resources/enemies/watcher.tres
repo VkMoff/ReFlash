@@ -82,6 +82,6 @@ script = ExtResource("1_iw1m7")
 Name = "Смотритель"
 InitialActions = null
 ActionPatterns = Array[Object]([SubResource("Resource_d6sdf"), SubResource("Resource_wtqil"), SubResource("Resource_tnia7"), SubResource("Resource_53uai")])
-MaxHP = 100
+MaxHP = 200
 Visualisation = ExtResource("6_m3j5m")
 metadata/_custom_type_script = "uid://6j10jfwxgj7v"
