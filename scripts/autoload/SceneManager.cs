@@ -24,20 +24,20 @@ public partial class SceneManager : Node
 		}
 	}
 
-	public void LoadLevel(RoomResource roomResource)
+	public void LoadLevel(RoomResource roomResource, bool isBoss = false)
 	{
 		map.Hide();
 		map.ProcessMode = ProcessModeEnum.Disabled;
-		CallDeferred(MethodName.DeferredLoadLevel, roomResource);
+		CallDeferred(MethodName.DeferredLoadLevel, roomResource, isBoss);
 	}
 
-	private void DeferredLoadLevel(RoomResource roomResource)
+	private void DeferredLoadLevel(RoomResource roomResource, bool isBoss = false)
 	{
 		GetTree().CurrentScene.Free();
 		Level nextLevel = level.Instantiate<Level>();
 		GetTree().Root.AddChild(nextLevel);
 		GetTree().CurrentScene = nextLevel;
-		nextLevel.InitRoom(roomResource);
+		nextLevel.InitRoom(roomResource, isBoss);
 	}
 
 	public void GoToMenu()

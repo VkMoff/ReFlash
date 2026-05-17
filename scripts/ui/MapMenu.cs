@@ -5,6 +5,7 @@ public partial class MapMenu : Control
 {
 	PackedScene levelButtonScene = GD.Load<PackedScene>("res://scenes/ui/level_button.tscn");
 	PackedScene bossButtonScene = GD.Load<PackedScene>("res://scenes/ui/boss_button.tscn");
+	Button bossButton;
 	HBoxContainer levelsContainer;
 	int currentLevelIdx = 0;
 	RichTextLabel levelDescription;
@@ -62,8 +63,13 @@ public partial class MapMenu : Control
 				levelButton.Disabled = true;
 			}
 		}
-		Button bossButton = bossButtonScene.Instantiate<Button>();
+		bossButton = bossButtonScene.Instantiate<Button>();
 		levelsContainer.AddChild(bossButton);
+		bossButton.Pressed += () =>
+		{
+			SceneManager.Instance.LoadLevel(GD.Load<RoomResource>("res://resources/encounters/rooms/watcher_room.tres"), true);
+		};
+		bossButton.Disabled = true;
 	}
 
 	public void StartEncounter(EncounterResource encounterResource)
@@ -89,6 +95,10 @@ public partial class MapMenu : Control
 		else
 		{
 			SceneManager.Instance.LoadEncounter(RoomRegistry.Instance.GetEncounter().Scene);
+		}
+		if (currentLevelIdx == 20)
+		{
+			bossButton.Disabled = false;
 		}
 	}
 	public void StartEncounter()

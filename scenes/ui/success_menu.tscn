@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://4jxksw1duju0"]
+
+[ext_resource type="Script" uid="uid://w7c7u0p10jn3" path="res://scripts/ui/FailMenu.cs" id="1_xd3vf"]
+[ext_resource type="FontFile" uid="uid://c413jf5rxeamh" path="res://resources/styles/Play-Bold.ttf" id="2_01dny"]
+[ext_resource type="Theme" uid="uid://d3msffqbx1bbd" path="res://resources/themes/selector_button_theme.tres" id="3_3n7bs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s3yep"]
+font = ExtResource("2_01dny")
+font_size = 48
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="FailMenu" type="CanvasLayer" unique_id=183786518]
+script = ExtResource("1_xd3vf")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=91415940]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1318459921]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1624552888]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1029672860]
+layout_mode = 2
+text = "Вы победили!
+Спасибо, что сыграли в ReFlash!"
+label_settings = SubResource("LabelSettings_s3yep")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1803244483]
+layout_mode = 2
+theme = ExtResource("3_3n7bs")
+text = "В главное меню"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="GoToMenu"]

@@ -14,7 +14,7 @@ public partial class RoomRegistry : Node
 		Instance = this;
 		ProcessMode = ProcessModeEnum.Always;
 
-		rooms.Add(GD.Load<RoomResource>("res://resources/encounters/rooms/watcher_room.tres"));
+		// rooms.Add(GD.Load<RoomResource>("res://resources/encounters/rooms/watcher_room.tres"));
 		rooms.Add(GD.Load<RoomResource>("res://resources/encounters/rooms/shot_room.tres"));
 		rooms.Add(GD.Load<RoomResource>("res://resources/encounters/rooms/test_room.tres"));
 		rooms.Add(GD.Load<RoomResource>("res://resources/encounters/rooms/guardian_room.tres"));

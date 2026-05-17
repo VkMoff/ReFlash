@@ -22,6 +22,7 @@ public partial class Level : Control
 	private TopPanelUI topPanelUi;
 	private NinePatchRect targetRect;
 	public event Action TurnStart, TurnEnd, BattleStart;
+	bool isBoss;
 
 	public override void _Ready()
 	{
@@ -54,9 +55,10 @@ public partial class Level : Control
 		GetNode<VBoxContainer>("%DebugButtons").ProcessMode = debugMode ? ProcessModeEnum.Always : ProcessModeEnum.Disabled;
 
 	}
-	public void InitRoom(RoomResource roomResource)
+	public void InitRoom(RoomResource roomResource, bool isBoss = false)
 	{
 		this.roomResource = roomResource;
+		this.isBoss = isBoss;
 		foreach (EnemyResource enemyResource in roomResource.Enemies)
 		{
 			Enemies.Add(EnemyFactory.CreateEnemy(enemyResource));
@@ -254,6 +256,12 @@ public partial class Level : Control
 	}
 	public void Win()
 	{
+		if (isBoss)
+		{
+			FailMenu successMenu = GD.Load<PackedScene>("res://scenes/ui/success_menu.tscn").Instantiate<FailMenu>();
+			GetTree().Root.AddChild(successMenu);
+			return;
+		}
 		Random random = new(); //Переместить в синглтон, отвечающий за рандом и сиды
 		VictoryMenu victoryMenu = GD.Load<PackedScene>("res://scenes/ui/victory_menu.tscn").Instantiate<VictoryMenu>();
 		float artifactChance = 0;
