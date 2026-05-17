@@ -40,9 +40,25 @@ text = "Вы победили!
 label_settings = SubResource("LabelSettings_s3yep")
 horizontal_alignment = 1
 
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1028262043]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Name" type="LineEdit" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=879838989]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Под каким именем вас запомнят в пустоши?"
+
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=1931715141]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Подтвердить"
+
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1803244483]
 layout_mode = 2
 theme = ExtResource("3_3n7bs")
 text = "В главное меню"
 
+[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/Button2" to="." method="Submit"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="GoToMenu"]

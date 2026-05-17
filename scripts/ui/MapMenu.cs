@@ -69,7 +69,7 @@ public partial class MapMenu : Control
 		{
 			SceneManager.Instance.LoadLevel(GD.Load<RoomResource>("res://resources/encounters/rooms/watcher_room.tres"), true);
 		};
-		bossButton.Disabled = true;
+		// bossButton.Disabled = true;
 	}
 
 	public void StartEncounter(EncounterResource encounterResource)
