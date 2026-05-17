@@ -256,6 +256,7 @@ public partial class Level : Control
 	}
 	public void Win()
 	{
+		PlayerData.Instance.AddScore(roomResource.Difficulty);
 		if (isBoss)
 		{
 			FailMenu successMenu = GD.Load<PackedScene>("res://scenes/ui/success_menu.tscn").Instantiate<FailMenu>();

@@ -6,6 +6,7 @@ public partial class PlayerData : Node
 {
     public static PlayerData Instance { get; private set; }
     public List<Card> Deck { get; private set; }
+    public int Score {get; private set; } = 0;
     public int MaxHP { get; set; } = 100;
     private int hp;
     public int HP
@@ -73,6 +74,7 @@ public partial class PlayerData : Node
         HP = MaxHP;
         Deck = new();
         Gold = 0;
+        Score = 0;
         var cardRegistry = CardRegistry.Instance;
 
         Deck.Add(cardRegistry["strike"]);
@@ -83,4 +85,8 @@ public partial class PlayerData : Node
         Deck.Add(cardRegistry["heavy_strike"]);
     }
 
+    public void AddScore(int score)
+    {
+        Score += score;
+    }
 }
