@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://o12ap78ics1g" path="res://resources/sprites/Group 287.jpg" id="2_crflt"]
 [ext_resource type="Texture2D" uid="uid://bpwf6xrrgknt1" path="res://resources/sprites/Frame 49.png" id="3_ukspj"]
 [ext_resource type="FontFile" uid="uid://cxe7kfddmqoln" path="res://resources/styles/Play-Regular.ttf" id="4_6o5h0"]
+[ext_resource type="PackedScene" uid="uid://bcfx5esbh0n7m" path="res://scenes/ui/top_panel_ui.tscn" id="6_66guw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ukspj"]
 font = ExtResource("2_6ekow")
@@ -36,8 +37,11 @@ color = Color(0, 0, 0, 0.5019608)
 
 [node name="GridContainer" type="GridContainer" parent="." unique_id=1460639516]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_top = 74.0
+offset_right = 972.0
+offset_bottom = 1082.0
+theme_override_constants/h_separation = -35
+theme_override_constants/v_separation = -35
 columns = 4
 
 [node name="TryCountLabel" type="Label" parent="." unique_id=244771278]
@@ -47,17 +51,17 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -1444.0
-offset_top = 258.0
+offset_top = 323.0
 offset_right = -54.0
-offset_bottom = 314.0
+offset_bottom = 379.0
 grow_horizontal = 0
 text = "ТУТ ДОЛЖНО БЫТЬ КОЛИЧЕСТВО ОСТАВШИХСЯ ПОПЫТОК"
 label_settings = SubResource("LabelSettings_ukspj")
 horizontal_alignment = 2
 
 [node name="Frame49" type="Sprite2D" parent="." unique_id=404712503]
-position = Vector2(1617, 661.2285)
-scale = Vector2(1.1035714, 1.1035714)
+position = Vector2(1484, 700.99994)
+scale = Vector2(0.99999994, 1)
 texture = ExtResource("3_ukspj")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=105046811]
@@ -66,8 +70,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -890.0
+offset_top = 77.0
 offset_right = -50.0
-offset_bottom = 238.0
+offset_bottom = 315.0
 grow_horizontal = 0
 theme_override_fonts/normal_font = ExtResource("4_6o5h0")
 bbcode_enabled = true
@@ -77,3 +82,6 @@ text = "[font_size=30][i]Перед вами появляется странны
 [font_size=48][color=0ff][outline_size=3][outline_color=333]Пять попыток по две карты.
 Совпало – карты твои"
 horizontal_alignment = 2
+
+[node name="TopPanelUI" parent="." unique_id=1924321153 instance=ExtResource("6_66guw")]
+layout_mode = 1

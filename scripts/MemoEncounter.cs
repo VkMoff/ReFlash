@@ -40,6 +40,8 @@ public partial class MemoEncounter : Control
 		{
 			cardContainer.AddChild(card);
 			card.FlipToBack();
+			card.OffsetTransformEnabled = true;
+			card.OffsetTransformScale = new(0.8f,0.8f);
 			card.Clicked += OnCardClicked;
 		}
 	}
@@ -49,7 +51,7 @@ public partial class MemoEncounter : Control
 		if (isLocked) return;
 		if (!card.IsFlipped) return;
 		if (tryCount >= MAX_TRY_COUNT) return;
-		await card.FlipToFront();
+		card.FlipToFront();
 		flippedCards.Add(card);
 		flippedCount++;
 		
